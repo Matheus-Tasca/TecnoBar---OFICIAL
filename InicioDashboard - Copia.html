@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: gray;
+        }
+
+        /* container */ 
+        .css-botoes{
+            padding: 20px;
+            width: 200px;
+            height: 95px;
+            overflow: auto;
+        }
+
+        /* divs dados (os 3 quadrados)*/
+        .dados{
+            border: 1px solid black;
+            background-color: gray;
+            font-weight: bold;
+            height: 250px;
+            width: 250px;
+            font-size: 35px;
+            text-align: center;
+            color: white;
+        }
+
+        .botoes{
+            padding-left: 90px;
+        }
+
+        /* Primeira linha = Parte de cima */
+        #row1{
+            padding-bottom: 20px;
+            background-color: black;
+        }
+
+        /* Ajustar a posição dos dados */
+        .dado123{ 
+            padding-top: 50px;
+        }
+
+        #row2{
+            background-color: gray;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Parte de cima -->
+    <div class="container-fluid pl-10" >
+        <div class="row" id="row1">
+            <div class="col-3 border-black" class="botoes">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDZan_sWxDVQftakMLCoZXb3EkK0BzQvAVVA&usqp=CAU" width="200px" height="200px">
+                <br><br>
+                <button class="css-botoes"> Início </button>
+            </div>
+            <div class="col-md-3 dado123">
+                <div class="dados"> Lucro nos últimos 30 dias </div>
+            </div>
+            <div class="col-md-3 dado123">
+                <div class="dados"> Faturamento nos últimos 30 dias </div>
+            </div>
+            <div class="col-md-3 dado123">
+                <div class="dados"> Vendas nos últimos 30 dias </div>
+            </div>
+        </div>
+    
+    <!-- Fim da Parte de cima -->
+
+    <!-- Parte de baixo -->
+        <div class="row pt-2" id="row2">
+            <div class="col-md-3" class="botoes">
+                <button class="css-botoes"> Dashboard<br> Específico </button> <br> <br>
+                <button class="css-botoes"> Configurações </button>
+            </div>
+            <div class="col-md-3" id="produtos">
+                Dados de produtos mais vendidos<br>
+                <img src="https://static.significados.com.br/foto/grafico-coluna-cke.jpg" width="230px" height="180">
+            </div>
+            <div class="col-md-3">
+                Vendas X Dias<br>
+                <img src="https://static.significados.com.br/foto/grafico-coluna-cke.jpg" width="230px" height="180">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
