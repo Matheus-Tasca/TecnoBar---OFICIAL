@@ -1,0 +1,15 @@
+/* div {
+    border: 1px solid red;
+} */
+
+#espacamento {
+    margin: 10vh;
+}
+
+.centralizar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}

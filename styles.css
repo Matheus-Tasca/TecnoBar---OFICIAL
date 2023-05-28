@@ -1,0 +1,330 @@
+
+body{
+    background-color: #10ABB4;
+}
+
+.navbarColor{
+    background-color: #004C50;
+}
+/* Começo CSS apresentação */
+#apresentacao{
+    margin-top: 10.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #00939C ;
+    width: 100%;
+    height: 30.5vh;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#tituloApresentacao{
+    font-weight: bold;
+    font-size: 3.5em;
+}
+
+#textoIntroucao{
+    padding-top: 3.5vh;
+    text-align: justify;
+}
+/* Final CSS apresentação */
+
+/* Começo CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
+#introducaoContainer{
+    background-color: #00939C;
+    margin-top: 5.5vh;
+    border-radius: 10px;
+    height: 85vh;
+}
+
+#quemSomosText{
+    margin-top: 5.5vh;
+}
+
+#formatacaoBodyTitle{
+    font-size: 2.5em !important;
+    text-align: center !important;
+    font-weight: bolder !important;
+}
+
+#formatacaoBodyText{
+    font-size: 1.1em!important;
+    text-align: justify!important;
+}
+
+#valoresEMissaoText{
+    margin-top: 5.5vh;
+}
+
+#valoresEMissaoImage{
+    padding-left: 1.5vw;
+}
+
+#quemSomosImage{
+    border-radius: 10px;
+}
+/* Final CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
+
+/* Começo CSS parte de sistemas*/
+#titulo_oferecemos{
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.cardIntroducao{
+    background-color: #10abb4;
+    margin-top: 0.5vh;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+}
+
+.cardFuncionalidade{
+    background-color:#10abb4 !important;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+}
+
+
+#sistema{
+    margin-top: 10.5vh;
+    background-color: #00939C !important ;
+    height: 40.5vh;
+    padding-top: 2.5vh;
+    border-radius: 10px;
+}
+
+.card-title{
+    font-size: 1.5em !important;
+    text-align: center !important;
+    font-weight: bolder !important;
+}
+
+.card-text{
+    font-size: 1.1em!important;
+    text-align: justify!important;
+}
+
+.cardFuncionalidade:hover{
+  z-index: 2;
+  transition: all 200ms ease-in;
+  transform: scale(1.3);
+}
+/* Final CSS parte de sistemas*/
+/*Começo CSS contato*/
+#place{
+    font-weight: bolder;
+  }
+
+  .topMensagemForumlario{
+    background-color: #02858b !important;
+    text-align: center;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    height: 5.5vh !important;
+}
+
+  #form{
+    border: 4.5vw solid #10ABB4;
+    border-radius: 5vh;
+    background-color: #10ABB4;
+    margin-top: 5%;
+    margin-right: 10%;
+ }
+
+ #maps{
+    margin-left: 20%;
+ }
+
+ #fone{
+    margin-left: 30%;
+    margin-top: 30%;
+    margin-bottom: 15%;
+ }
+
+ #foneText{
+    font-size: 1.2em;
+  }
+
+#contato{
+    margin-top: 10.5vh;
+    background-color: #00939C !important ;
+    
+}
+
+.cardContato{
+    height: 50.5vh !important;
+    background-color: #10abb4!important;
+}
+
+.btnSubmiteContato{
+    width: 26.2vw;
+    height: 5.5vh;
+    margin-top: 2.5vh;
+    background-color:#00939C;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.btnSubmiteContato:hover{
+  transition: all 200ms ease-in;
+  transform: scale(1.2);
+}
+
+.bodyFormulario{
+    background-color: #00939C !important ;    
+}
+
+.btnSubmite{
+    align-items: center;
+    margin-left: -0.5em;
+}
+#form{
+    height: 100%;
+    margin-top: 0px;
+    border-radius: 0px;
+    width: 35vw;
+}
+
+.social-icons{
+	background-color:#00939C;
+    text-align: center;
+    margin-left: 10%;
+}
+.social-icons a{
+	color:#fff;
+  line-height:30px;
+  font-size:30px;
+  margin: 0 5px;
+  text-decoration:none;
+  
+}
+.social-icons a i{
+	line-height:25px;
+  font-size:30px;
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+.social-icons a:hover i{
+  box-shadow: 0px 0px 150px #000000;
+  z-index: 2;
+  transition: all 200ms ease-in;
+  transform: scale(1.5);
+}
+
+/*Final CSS contato*/
+/* começo Media query */
+
+/* Celular */
+@media screen and (max-width: 600px){
+    #quemSomosText{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #quemSomosImage{
+       display: none;
+    }
+
+    #valoresEMissaoImage{
+        display: none;
+    }
+
+   #formatacaoBodyText{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+   }
+
+   #textoApresentacao{
+    font-size: 25px;
+    margin-left: 10px;
+   }
+
+   #sistema{
+    height: 80.4vh;
+   }
+
+   #contato{
+    height: 125vh;
+   }
+
+   #fone{
+    margin-top: 10%;
+    margin-left: 5%;
+   }
+   
+   #form{
+    border: 1vw solid #00939C;
+    background-color: #00939C;
+   }
+
+   .cardContato{
+    width: 70vw;
+    align-self: center;
+   }
+
+   .btnSubmiteContato{
+    width: 70vw;
+    background-color: #10abb4;
+   }
+}
+
+/* Tablet */
+@media screen and (min-width:601px) and (max-width: 767px){
+#textoApresentacao{
+    font-size: 1.2em;
+}
+
+#introducaoContainer{
+    height: 92vh;
+}
+
+#quemSomosImage{
+    display: none;
+ }
+
+ #valoresEMissaoImage{
+     display: none;
+ }
+
+ #quemSomosText{
+    padding-left: 3.5vw;
+    padding-right: 3.5vw;
+    margin-bottom: 15.5vh;
+    height: 20vh;
+ }
+
+ #valoresEMissaoText{
+    padding-left: 3.5vw;
+    padding-right: 3.5vw;
+ }
+ 
+ #sistema{
+    height: 80vh;
+ }
+ #form{
+    border: 1vw solid #00939C;
+    background-color: #00939C; 
+    width: 60vw;
+   }
+.btnSubmiteContato{
+    width: 58vw;
+    background-color: #10abb4;
+    
+   }
+
+}
+
+/* Notebook */
+@media screen and (min-width: 768px) and (min-width: 992px){
+    
+}
+
+/* PC */
+@media screen and (min-width: 1200px){
+
+}
+
+/* final Media query */
