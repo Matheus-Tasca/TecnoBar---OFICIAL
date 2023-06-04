@@ -1,38 +1,53 @@
+@font-face {
+    font-family: 'Eina 02';
+    src: url(Eina/Eina02-Regular.ttf);
+}
 
 body{
-    background-color: #10ABB4;
+    font-family: 'Eina 02',sans-serif;
+    overflow-x: hidden;
+}
+.navbarColor{
+    background-color: #262626;
 }
 
-.navbarColor{
-    background-color: #004C50;
+.navbarTextColor{
+    color: white !important;
 }
+
 /* Começo CSS apresentação */
 #apresentacao{
-    margin-top: 10.5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #00939C ;
+    background-color: #444 ;
     width: 100%;
-    height: 30.5vh;
+    height: 55.5vh;
     justify-content: center;
-    border-radius: 10px;
+    color: white;
 }
 
 #tituloApresentacao{
     font-weight: bold;
     font-size: 3.5em;
+    text-align: center;
 }
 
 #textoIntroucao{
-    padding-top: 3.5vh;
     text-align: justify;
+}
+
+#subTituloApresentacao{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-top: 3.5vh;
 }
 /* Final CSS apresentação */
 
 /* Começo CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
 #introducaoContainer{
-    background-color: #00939C;
+
     margin-top: 5.5vh;
     border-radius: 10px;
     height: 85vh;
@@ -53,16 +68,8 @@ body{
     text-align: justify!important;
 }
 
-#valoresEMissaoText{
-    margin-top: 5.5vh;
-}
-
-#valoresEMissaoImage{
-    padding-left: 1.5vw;
-}
-
 #quemSomosImage{
-    border-radius: 10px;
+    padding-left: 10%;
 }
 /* Final CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
 
@@ -73,14 +80,14 @@ body{
 }
 
 .cardIntroducao{
-    background-color: #10abb4;
+    background-color: #363f48;
     margin-top: 0.5vh;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
 }
 
 .cardFuncionalidade{
-    background-color:#10abb4 !important;
+    background-color:#2e3740 !important;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
 }
@@ -88,8 +95,8 @@ body{
 
 #sistema{
     margin-top: 10.5vh;
-    background-color: #00939C !important ;
-    height: 40.5vh;
+    background-color: #444 !important ;
+    height: 75.5vh;
     padding-top: 2.5vh;
     border-radius: 10px;
 }
@@ -98,11 +105,13 @@ body{
     font-size: 1.5em !important;
     text-align: center !important;
     font-weight: bolder !important;
+    color: white;
 }
 
 .card-text{
     font-size: 1.1em!important;
     text-align: justify!important;
+    color: white;
 }
 
 .cardFuncionalidade:hover{
@@ -117,7 +126,7 @@ body{
   }
 
   .topMensagemForumlario{
-    background-color: #02858b !important;
+    background-color: #444 !important;
     text-align: center;
     font-size: 1.3em;
     display: flex;
@@ -126,9 +135,9 @@ body{
 }
 
   #form{
-    border: 4.5vw solid #10ABB4;
+    border: 4.5vw solid white;
     border-radius: 5vh;
-    background-color: #10ABB4;
+    background-color: white;
     margin-top: 5%;
     margin-right: 10%;
  }
@@ -138,33 +147,39 @@ body{
  }
 
  #fone{
-    margin-left: 30%;
-    margin-top: 30%;
+    text-align:center;
     margin-bottom: 15%;
+    background-color: #efefef;
+    height: 55vh;
+    padding-top: 10%;
+    margin-top: 15%;
  }
 
  #foneText{
+    display: flex;
     font-size: 1.2em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 10%;
   }
-
-#contato{
-    margin-top: 10.5vh;
-    background-color: #00939C !important ;
-    
-}
 
 .cardContato{
     height: 50.5vh !important;
-    background-color: #10abb4!important;
+    background-color: #444!important;
 }
 
+.list-group{
+    height: 27vh;
+}
 .btnSubmiteContato{
     width: 26.2vw;
     height: 5.5vh;
     margin-top: 2.5vh;
-    background-color:#00939C;
+    background-color:#444;
     align-items: center;
     font-size: 1.5em;
+    color: white;
 }
 
 .btnSubmiteContato:hover{
@@ -173,7 +188,8 @@ body{
 }
 
 .bodyFormulario{
-    background-color: #00939C !important ;    
+    background-color: #444 !important ;  
+    color: white;  
 }
 
 .btnSubmite{
@@ -182,15 +198,12 @@ body{
 }
 #form{
     height: 100%;
-    margin-top: 0px;
-    border-radius: 0px;
     width: 35vw;
 }
 
 .social-icons{
-	background-color:#00939C;
+	background-color:#444;
     text-align: center;
-    margin-left: 10%;
 }
 .social-icons a{
 	color:#fff;
@@ -221,6 +234,7 @@ body{
     #quemSomosText{
         display: flex;
         flex-direction: column;
+        
     }
 
     #quemSomosImage{
@@ -256,8 +270,8 @@ body{
    }
    
    #form{
-    border: 1vw solid #00939C;
-    background-color: #00939C;
+    border: 1vw solid white;
+    background-color: white;
    }
 
    .cardContato{
@@ -305,14 +319,13 @@ body{
     height: 80vh;
  }
  #form{
-    border: 1vw solid #00939C;
-    background-color: #00939C; 
+    border: 1vw solid white;
+    background-color: white; 
     width: 60vw;
    }
 .btnSubmiteContato{
     width: 58vw;
     background-color: #10abb4;
-    
    }
 
 }
