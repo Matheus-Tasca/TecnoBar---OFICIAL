@@ -99,7 +99,6 @@ body{
     background-color: #444 !important ;
     height: 75.5vh;
     padding-top: 2.5vh;
-    border-radius: 10px;
 }
 
 .card-title{
@@ -115,7 +114,7 @@ body{
     color: white;
 }
 .container{
-    border: 1px solid black;
+   
 }
 .cardFuncionalidade:hover{
   z-index: 2;
@@ -148,19 +147,32 @@ body{
  #maps{
     margin-left: 20%;
  }
+#contato{
+    background-color: #363f48;
+}
 
  #fone{
+    background-color: #2e3740;
+    height: 55vh;
+ }
+ #contateNosTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em !important;
+    text-align: center !important;
+    font-weight: bolder !important;
+    color: white;
+ }
+ #informacoesFone{
+    height: 35.5vh;
     display: flex;
     flex-direction:column;
-    text-align:center;
-    justify-content: space-evenly;
-    margin-bottom: 15%;
-    background-color: #efefef;
-    height: 55vh;
-    padding-top: 10%;
-    margin-top: 15%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em !important;
+    color: white;
  }
-
  #foneText{
     display: flex;
     font-size: 1.2em;
@@ -169,7 +181,9 @@ body{
     text-align: center;
     padding-top: 10%;
   }
-
+.informacoesFoneCampos{
+    padding-bottom: 5.5vh;
+}
 .cardContato{
     height: 50.5vh !important;
     background-color: #444!important;
@@ -210,6 +224,7 @@ body{
 .social-icons{
 	background-color:#444;
     text-align: center;
+    width: 100%;
 }
 .social-icons a{
 	color:#fff;
@@ -268,6 +283,8 @@ body{
 
    #contato{
     height: 125vh;
+    width: 100%;
+    background-color: #262626;
    }
 
    #fone{
@@ -337,12 +354,7 @@ body{
 }
 
 /* Notebook */
-@media screen and (min-width: 768px) and (min-width: 992px){
-    
-}
-
-/* PC */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) and (max-width:1600px) {
     *{
         font-size: 1em;
     }
@@ -367,7 +379,7 @@ body{
         margin-top: 12vh;
     }
     #form{
-        border: 1px solid red;
+        
         height: 80vh;
     }
     #contato{
@@ -385,6 +397,10 @@ body{
     }
 }
 
+/*PC*/
+@media screen and (min-width:1920px) {
+    
+}
 /* final Media query */
 
 
