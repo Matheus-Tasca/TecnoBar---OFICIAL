@@ -84,6 +84,7 @@ body{
     margin-top: 0.5vh;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
+    border: 1px solid red;
 }
 
 .cardFuncionalidade{
@@ -113,7 +114,9 @@ body{
     text-align: justify!important;
     color: white;
 }
-
+.container{
+    border: 1px solid black;
+}
 .cardFuncionalidade:hover{
   z-index: 2;
   transition: all 200ms ease-in;
@@ -337,7 +340,7 @@ body{
 
 /* PC */
 @media screen and (min-width: 1200px){
-
+    
 }
 
 /* final Media query */
