@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="styles.css">
     <title>TecnoBar</title>
 </head>
-<body> 
+<body class="body"> 
     <!--Comeco apresentacao-->
     <div id="apresentacao">
-         <!-- Início Navbar -->
+    <!-- Início Navbar -->
     <nav class="navbar navbar-expand-lg navbarColor fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand navbarTextColor" href="#">Tecnobar</a>
@@ -33,25 +33,41 @@
                         <a class="nav-link navbarTextColor" href="#">Sistema</a>
                     </li>
                 </ul>
-            </div>
+                <a class="btn ml-auto btnNavbar" type="button" href="#">Login</a>
+            </div>  
         </div>
     </nav>
     <!-- Fim Navbar -->
+    <!--Começo login Popup-->
+    <div class="card text-center loginPopUpContainer">
+        <div class="card-header">
+          LOGIN
+          <i class="bi bi-x-lg esconderLoginBtn"></i>
+        </div>
+        <div class="card-body loginPopUpBody">
+            <input type="text" class="form-control inputUsername" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="password" class="form-control inputSenha" placeholder="Senha" aria-label="Username" aria-describedby="addon-wrapping">
+            <span id="msg"></span>
+            <a href="#" class="btn btnLogin">Entrar</a>
+            <a class="esqueceuSuaSenha">Esqueceu sua senha ?</a>
+        </div>
+      </div>
+    <!--Final login Popup-->
+
         <div class="container">
-            <div id="tituloApresentacao">TECNOBAR</div><hr>
+            <div id="tituloApresentacao">TECNOBAR</div>
             <div id="subTituloApresentacao">
                 O sistema que facilitará o seu Gerenciamento de Vendas, <br>
                 te informando de modo intuitivo e eficiente sobre o que acontece em seu estabelecimento.
-            </div>
-
-            
+            </div>        
         </div>
-        
+    <!--Final apresentação-->
     </div>
     <!--comeco introducao-->
     <div id="introducaoContainer">
         <div class="container">
         <div class="row">
+        <!--Quem somos container-->
             <div class="col-xl-6 col-md-12">
                 <div id="quemSomosText">
                     <span id="formatacaoBodyTitle"><p>QUEM SOMOS</p></span>
@@ -63,9 +79,9 @@
             <div class="col-xl-6 col-md-12">
                 <div id="quemSomosImage"><img class="img" src="srcImage/sobreNos.jpg"></div>
             </div>
-        </div>
-            
+        </div>        
         <div class="row">
+        <!--Valores e missão container-->
                 <div class="col-xl-6 col-md-12">
                     <div id="valoresEMissaoImage"><img class="img" src="srcImage/quem somos.jpg"></div>
                 </div>
@@ -80,7 +96,6 @@
         </div>
     </div>
 </div> 
-    <!--Fim apresentacao-->
      <!--Começo sessão sistema-->
      <div id="sistema">
         
@@ -187,6 +202,8 @@
             <div class="col-md-7 col-sm-12">
             <form>
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Insira seu nome">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Insira seu email">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Insira seu telefone">
             </form>
             </div>
             
@@ -207,5 +224,6 @@
             
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>

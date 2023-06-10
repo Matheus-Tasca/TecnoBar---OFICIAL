@@ -1,3 +1,4 @@
+/**CSS GERAL*/
 @font-face {
     font-family: 'Eina 02';
     src: url(Eina/Eina02-Regular.ttf);
@@ -7,6 +8,7 @@ body{
     font-family: 'Eina 02',sans-serif;
     overflow-x: hidden;
 }
+/*CSS NAVBAR*/
 .navbarColor{
     background-color: #262626;
 }
@@ -14,7 +16,65 @@ body{
 .navbarTextColor{
     color: white !important;
 }
+.btnNavbar{
+    background-color: #444;
+    width: 7vw;
+    margin-left: 75%;
+    color: white;
+}
+.btnNavbar:hover{
+    background-color: #6f6f6f;
+}
+/*CSS login popUp*/
+.loginPopUpContainer{
+    background-color: #262626;
+    height: 45vh;
+    width: 20vw;
+    margin-top: 10%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transform: scale(1.1);
+}
 
+.mostrar{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+}
+.loginPopUpContainer .card-header{
+    font-size: 2.2em ;
+}
+.card-body .btn{
+    background-color: #444;
+    width: 15vw;
+    position: relative;
+    top: 25%;
+    color: white;
+    cursor: pointer;
+}
+.card-body .btn:hover{
+    background-color: #6f6f6f;
+}
+
+.loginPopUpContainer .card-header i{
+    font-size: 0.5em;
+    position: absolute;
+    left: 92%;
+    top: 1.5%;
+    cursor: pointer;
+}
+
+.loginPopUpContainer .card-header i:hover{
+    color: #444;
+}
+.loginPopUpBody input{
+    margin-bottom: 15%;
+}
 /* Começo CSS apresentação */
 #apresentacao{
     display: flex;
@@ -112,9 +172,6 @@ body{
     font-size: 1.1em!important;
     text-align: justify!important;
     color: white;
-}
-.container{
-   
 }
 .cardFuncionalidade:hover{
   z-index: 2;
