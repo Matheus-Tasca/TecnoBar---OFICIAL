@@ -111,8 +111,15 @@ dialog{
 /* Final CSS apresentação */
 
 /* Começo CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
+#quemSomosContainer{
+    display: flex;
+    flex-direction: row;
+}
+#valoresEMissaoContainer{
+    display: flex;
+    flex-direction: row-reverse;
+}
 #introducaoContainer{
-
     margin-top: 5.5vh;
     border-radius: 10px;
     height: 85vh;
@@ -132,9 +139,11 @@ dialog{
     font-size: 1.1em!important;
     text-align: justify!important;
 }
-
+#valoresEMissaoImage{
+    margin-right: 0.5vw;
+}
 #quemSomosImage{
-    padding-left: 10%;
+    margin-left: 0.5vw;
 }
 /* Final CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
 
@@ -359,104 +368,283 @@ dialog{
    #contato .row{
     display: flex;
     align-items: center;
-    margin-left: 10vw;
+    justify-content: center;
 }
 }
 
 /* Tablet */
-@media screen and (min-width:601px) and (max-width: 768px){
-#textoApresentacao{
-    font-size: 1.2em;
+@media screen and (max-width: 768px){
+   /*Navbar*/
+   .btnNavbar{
+    width: 25vw;
 }
-
-#introducaoContainer{
-    height: 92vh;
+.loginPopUpContainer{
+    width: 100%;
 }
-
+.navbarColor .navbar-toggler .navbar-toggler-icon{
+    color: white;
+}
+/*Sessão Quem Somos*/
+#quemSomosText{
+    display: flex;
+    flex-direction: column;
+}
 #quemSomosImage{
+   display: none;
+}
+#valoresEMissaoImage{
     display: none;
- }
-
- #valoresEMissaoImage{
-     display: none;
- }
-
- #quemSomosText{
-    padding-left: 3.5vw;
-    padding-right: 3.5vw;
-    margin-bottom: 15.5vh;
-    height: 20vh;
- }
-
- #valoresEMissaoText{
-    padding-left: 3.5vw;
-    padding-right: 3.5vw;
- }
- 
- #sistema{
-    height: 80vh;
- }
- #form{
-    border: 1vw solid white;
-    background-color: white; 
-    width: 60vw;
-   }
-.btnSubmiteContato{
-    width: 58vw;
-    background-color: #10abb4;
-   }
-
+}
+#formatacaoBodyText{
+font-size: 20px;
+margin-left: 10px;
+margin-right: 10px;
 }
 
-/* Notebook */
-@media screen and (min-width: 1200px) and (max-width:1600px) {
-    *{
-        font-size: 1em;
-    }
-    #introducaoContainer{
-        margin-top: 10vh;
-        margin-bottom: 30vh;
-    }
-    img{
-        width: 78vh;
-        margin-top: 1vh;
-        height: 48vh;
-    }
-    .cardFuncionalidade:hover{
-        z-index: 20;
-        transition: all 200ms ease-in;
-        transform: scale(1.1);
-    }
-    .cardFuncionalidade{
-        height: 15em;
-    }
-    .btnSubmiteContato{
-        margin-top: 12vh;
-    }
-    #form{
-        
-        height: 80vh;
-    }
-    #contato{
-        margin-bottom: 1vh;
-    }
-    .social-icons{
-        margin-bottom: 1vh;
-    }
-    #fone{
-        height: 60vh;
-        margin-top: 2vh;
-    }
-    #formatacaoBodyTitle{
-        margin-bottom: 1vh;
-    }
+#textoApresentacao{
+font-size: 25px;
+margin-left: 10px;
+}
+/*Sessão sistema*/
+#sistema{
+height: 155vh;
+}
+.containerCards{
+flex-direction: column;
+margin-top: 45vh;
+} 
+.cardFuncionalidade{
+width: 50vw;
+margin-bottom: 5.5vh;
+}
+
+/*Sessão contato*/
+#contato{
+height: 125vh;
+width: 100%;
+background-color: #262626;
+}
+.cardContato{
+width: 65vw;
+align-self: center;
+margin-bottom: 0.5vh;
+height:20vh !important;
+}
+#contato .row{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+}
+
+/* Tablet grande */
+@media screen and (min-width: 769px) and (max-width:992px) {
+/*Navbar*/
+    .btnNavbar{
+    width: 25vw;
+    margin-left: 55%;
+    color: white;
+}
+.loginPopUpContainer{
+    width: 100%;
+}
+.navbarColor .navbar-toggler .navbar-toggler-icon{
+    color: white;
+}
+/*Sessão Quem Somos*/
+#introducaoContainer{
+    height: 155vh;
+}
+#quemSomosContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#valoresEMissaoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#valoresEMissaoImage{
+     display: flex;
+     align-items: center;
+}
+#quemSomosText{
+    display: flex;
+    flex-direction: column;
+}
+#formatacaoBodyText{
+font-size: 20px;
+margin-left: 10px;
+margin-right: 10px;
+}
+
+#textoApresentacao{
+font-size: 25px;
+margin-left: 10px;
+}
+/*Sessão sistema*/
+#sistema{
+height: 135vh;
+}
+.containerCards{
+flex-direction: column;
+margin-top: 45vh;
+} 
+.cardFuncionalidade{
+width: 50vw;
+margin-bottom: 5.5vh;
+}
+
+/*Sessão contato*/
+#contato{
+height: 125vh;
+width: 100%;
+background-color: #262626;
+}
+.cardContato{
+width: 65vw;
+align-self: center;
+margin-bottom: 0.5vh;
+height:22vh !important;
+}
+#contato .row{
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+align-items: center;
+
+}
+.formularioContatenosContainer .contateNosForm input{
+    width: 59vw;
+}
+.formularioContatenosContainer .contateNosForm textarea{
+    width: 59vw;
+}
+.btnSubmiteContato{
+    width: 59vw;
+}
+}
+
+/*Notebook*/
+@media screen and (min-width:993px) and (max-width:1200px) {
+/*Navbar*/
+.btnNavbar{
+width: 25vw;
+margin-left: 55%;
+color: white;
+}
+.loginPopUpContainer{
+    width: 100%;
+}
+.navbarColor .navbar-toggler .navbar-toggler-icon{
+    color: white;
+}
+/*Sessão Quem Somos*/
+#introducaoContainer{
+    height: 155vh;
+}
+#quemSomosContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#valoresEMissaoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#valoresEMissaoImage{
+     display: flex;
+     align-items: center;
+}
+#quemSomosText{
+    display: flex;
+    flex-direction: column;
+}
+#formatacaoBodyText{
+font-size: 20px;
+margin-left: 10px;
+margin-right: 10px;
+}
+
+#textoApresentacao{
+font-size: 25px;
+margin-left: 10px;
+}
+/*Sessão sistema*/
+#sistema{
+height: 135vh;
+}
+.containerCards{
+    flex-direction: column;
+    margin-top: 35vh;
+    
+} 
+.cardFuncionalidade{
+width: 50vw;
+margin-bottom: 5.5vh;
+}
+
+/*Sessão contato*/
+#contato{
+height: 95vh;
+width: 100%;
+background-color: #262626;
+}
+.cardContato{
+width: 35vw;
+align-self: center;
+margin-bottom: 0.5vh;
+height:20vh !important;
+}
+
+.formularioContatenosContainer .contateNosForm input{
+    width: 59vw;
+}
+.formularioContatenosContainer .contateNosForm textarea{
+    width: 59vw;
+}
+.btnSubmiteContato{
+    width: 59vw;
+}
 }
 
 /*PC*/
-@media screen and (min-width:1920px) {
-    
+@media screen and (min-width:1201px) and (max-width:1600px){
+#quemSomosContainer{
+    margin-bottom: 2.5vh;
+}
+
+#sistema{
+    height: 75vh;
+}
+
+.cardFuncionalidade{
+    width: 35vw;
+}
+
+.containerCards{
+    flex-wrap: wrap;
+    margin-top: 10vh;
+}
+.cardContato{
+    width: 25vw;
+    height: 22vh !important;
+}
+.btnNavbar{
+width: 25vw;
+margin-left: 55%;
+color: white;
+}
 }
 /* final Media query */
-
-
-
