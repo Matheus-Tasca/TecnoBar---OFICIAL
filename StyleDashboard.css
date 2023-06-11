@@ -56,7 +56,7 @@ body{
 }
 
 .wrapper .sidebar ul li:hover{
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
     
 .wrapper .sidebar ul li:hover a{
@@ -106,9 +106,9 @@ body{
   margin-bottom: 20px;
 }
 
-@media (max-height: 500px){
-  .social_media{
-    display: none !important;
+@media (max-width: 600px){
+  .sidebar{
+    display: none ;
   }
 }
 /* Fim da Sidebar */
@@ -123,22 +123,43 @@ body{
     max-height: 100%;
 }
 
-.cards{
+.graficos{
     display: inline-block;
     width: 27vw;
     background-color: #969191a1;
     font-weight: bolder;
     color: black;
-}
-
-#grafico1{
-    margin: 50px;
-}
-
-#grafico2{
     margin: 50px;
 }
 
 .card-text{
     font-size: 60px;
+}
+
+.texto_filtro{
+  color: rgb(2, 2, 2);
+}
+
+.texto_filtro:hover{
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+    .graficos{
+      display: block;
+      margin: 0;
+    }
+
+    .card{
+      display: block;
+      width: 30vw;
+    }
+
+    .wrapper{
+      align-items: center;
+    }
+
+    .card-text{
+      font-size: 30px;
+    }
 }
