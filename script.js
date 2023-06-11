@@ -1,16 +1,19 @@
 var btnMostrarLogin = document.querySelector(".btnNavbar")
 var btnEscondeLogin = document.querySelector(".esconderLoginBtn")
 var btnLogin = document.querySelector(".btnLogin")
-btnMostrarLogin.addEventListener('click',function mostrarLogin(){
-    var body = document.querySelector("*")
+const popLogin = document.querySelector("#popUp")
+
+
+btnMostrarLogin.addEventListener('click',function(){
+    popLogin.showModal();
+})
+/*btnMostrarLogin.addEventListener('click',function mostrarLogin(){
     var loginTela = document.querySelector(".loginPopUpContainer")
     loginTela.classList.add("mostrar");
-    body.style.backgroundColor= "blue";
 })
-
-btnEscondeLogin.addEventListener('click', function esconderLogin(){
-    var loginTela = document.querySelector(".loginPopUpContainer")
-    loginTela.classList.remove("mostrar");
+*/
+btnEscondeLogin.addEventListener('click', function (){
+    popLogin.close();
 })
 
 btnLogin.addEventListener('click', function realizarLogin(){
@@ -21,7 +24,7 @@ btnLogin.addEventListener('click', function realizarLogin(){
     campoUsernameValue = campoUsername.value;
     campoPasswordValue = campoPassword.value;
     if ((campoUsernameValue === "master") && (campoPasswordValue === "12345678")){
-       alert("LOGIN REALIZADO")
+       alert("LOGIN REALIZADO, BEM VINDO")
     } else{
         mensagemLogin.innerHTML = "ERRO - SENHA OU USUÁRIO INVÁLIDOS"
         mensagemLogin.style.color = 'red';

@@ -30,17 +30,22 @@ body{
     background-color: #262626;
     height: 45vh;
     width: 20vw;
-    margin-top: 10%;
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
-    transform: scale(1.1);
+    color: white;
 }
 
+dialog::backdrop{
+    background-color: rgb(0 0 0 / .5);
+}
+
+dialog{
+    border: none !important;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgb(0 0 0 / .3);
+    background-color: #262626;
+}
 .mostrar{
     opacity: 1;
     visibility: visible;
@@ -134,33 +139,38 @@ body{
 /* Final CSS introdução (QUEM SOMOS / VALORES E MISSÃO) */
 
 /* Começo CSS parte de sistemas*/
-#titulo_oferecemos{
-    font-weight: bold;
-    font-size: 1.4em;
-}
+.containerIntroducaoCards{
+    display: flex;
+    justify-content: center;
 
+}
 .cardIntroducao{
     background-color: #363f48;
     margin-top: 0.5vh;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
-    border: 1px solid red;
+    width: 65vw;
 }
 
 .cardFuncionalidade{
     background-color:#2e3740 !important;
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
-}
-
-
+    width: 15vw;
+    text-align: justify;
+}   
 #sistema{
     margin-top: 10.5vh;
     background-color: #444 !important ;
-    height: 75.5vh;
+    height: 50vh;
     padding-top: 2.5vh;
 }
 
+.containerCards{
+    display: flex;
+    height: 30vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
 .card-title{
     font-size: 1.5em !important;
     text-align: center !important;
@@ -180,39 +190,10 @@ body{
 }
 /* Final CSS parte de sistemas*/
 /*Começo CSS contato*/
-#place{
-    font-weight: bolder;
-  }
-
-  .topMensagemForumlario{
-    background-color: #444 !important;
-    text-align: center;
-    font-size: 1.3em;
-    display: flex;
-    align-items: center;
-    height: 5.5vh !important;
-}
-
-  #form{
-    border: 4.5vw solid white;
-    border-radius: 5vh;
-    background-color: white;
-    margin-top: 5%;
-    margin-right: 10%;
- }
-
- #maps{
-    margin-left: 20%;
- }
 #contato{
     background-color: #363f48;
 }
-
- #fone{
-    background-color: #2e3740;
-    height: 55vh;
- }
- #contateNosTitle{
+#contateNosTitle{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,42 +223,51 @@ body{
     padding-bottom: 5.5vh;
 }
 .cardContato{
-    height: 50.5vh !important;
+    height: 17.0vh !important;
+    width: 19vw;
+    font-size: 1.1em;
     background-color: #444!important;
+    color: white;
+}
+#contato .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contateNosForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #262626;
+    height: 45vh;
+    margin-top: -5%;
+    border-radius: 10px;
+}
+.contateNosForm input{
+    margin: 1.2vh;
 }
 
-.list-group{
-    height: 27vh;
+.contateNosForm textarea{
+    margin: 1.2vh;
 }
+
 .btnSubmiteContato{
-    width: 26.2vw;
+    width: 100%;
     height: 5.5vh;
-    margin-top: 2.5vh;
+    margin: 1.2vh;
     background-color:#444;
     align-items: center;
     font-size: 1.5em;
     color: white;
 }
-
 .btnSubmiteContato:hover{
-  transition: all 200ms ease-in;
-  transform: scale(1.2);
+    background-color: white;
 }
-
 .bodyFormulario{
     background-color: #444 !important ;  
     color: white;  
 }
-
-.btnSubmite{
-    align-items: center;
-    margin-left: -0.5em;
-}
-#form{
-    height: 100%;
-    width: 35vw;
-}
-
 .social-icons{
 	background-color:#444;
     text-align: center;
@@ -304,6 +294,8 @@ body{
   transform: scale(1.5);
 }
 
+
+
 /*Final CSS contato*/
 /* começo Media query */
 
@@ -312,7 +304,6 @@ body{
     #quemSomosText{
         display: flex;
         flex-direction: column;
-        
     }
 
     #quemSomosImage{

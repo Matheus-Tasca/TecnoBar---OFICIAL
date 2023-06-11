@@ -39,7 +39,8 @@
     </nav>
     <!-- Fim Navbar -->
     <!--Começo login Popup-->
-    <div class="card text-center loginPopUpContainer">
+    <dialog id="popUp">
+        <div class="card text-center loginPopUpContainer">
         <div class="card-header">
           LOGIN
           <i class="bi bi-x-lg esconderLoginBtn"></i>
@@ -52,6 +53,7 @@
             <a class="esqueceuSuaSenha">Esqueceu sua senha ?</a>
         </div>
       </div>
+    </dialog>
     <!--Final login Popup-->
 
         <div class="container">
@@ -98,68 +100,53 @@
 </div> 
      <!--Começo sessão sistema-->
      <div id="sistema">
-        
-        <div class="row">
-            <!-- Texto de introducao -->
-            <div class="container">
-            <div class="col-md-9 mx-auto text-center">
-                <div class="card cardIntroducao" >
-                    <div class="card-body">
-                        <h5 class="card-title formatacaoBodyTitle">O que oferecemos ?</h5>
-                        <p class="card-text formatacaoBodyText">Dashboards e gráficos intuítivos e amigáveis, cadastro de produtos separados por categorias para melhor visualização e gerenciamento, 
-                        resumos mensais de desempenho de vendas do produto, controle e caixa e muito mais</p>
-                    </div>
-                </div>        
+        <div class="containerIntroducaoCards">
+        <div class="card cardIntroducao" >
+            <div class="card-body">
+                <h5 class="card-title formatacaoBodyTitle">O que oferecemos ?</h5>
+                <p class="card-text formatacaoBodyText">Dashboards e gráficos intuítivos e amigáveis, cadastro de produtos separados por categorias para melhor visualização e gerenciamento, 
+                resumos mensais de desempenho de vendas do produto, controle e caixa e muito mais</p>
             </div>
         </div>
-        </div>
-        <br><br>
-        
            
-        <!-- cards das funcionalidade -->
-        <div class="row">       
-        <!-- comeco card 1 -->
-              <div class="col-md-3 mx-auto">
+        </div>
+        <div class="containerCards">
+        <!-- cards das funcionalidade -->    
+        <!-- comeco card 1 -->      
                     <div class="card cardFuncionalidade" >
                             <div class="card-body">
                                 <h5 class="card-title TituloCards">Dashboard</h5>
                                 <p class="card-text">Um visualização rápida e intuitiva do seu sistema, com relatórios sorbre vendas, faturamento, lucro e muito mais</p>
                             </div>
-                    </div>
-                </div>
+                    </div>           
         <!-- final card 1 -->
-        <!-- comeco card 2 -->
-                <div class="col-md-3 mx-auto">
+        <!-- comeco card 2 -->            
                     <div class="card cardFuncionalidade">
                         <div class="card-body">
                           <h5 class="card-title TituloCards">Estoque</h5>
-                          <p class="card-text">Uma forma organizada e centrada de saber o que tem em sua loja, sem precisar de planilhas físicas ou digitais.</p>
+                          <p class="card-text">Uma forma organizada e centrada de saber o que tem em sua loja, sem precisar de planilhas físicas ou digitais, facilitando sua gestão.</p>
                         </div>
-                    </div>
-                </div>
+                    </div>             
         <!-- final card 2 -->
         <!-- comeco card 3 -->     
-                <div class="col-md-3 mx-auto">
                     <div class="card cardFuncionalidade">
                         <div class="card-body">
                           <h5 class="card-title TituloCards">Caixa</h5>
                           <p class="card-text">Um controle de quais produtos são vendidos e com qual frequência, essencial para uma administração eficiente e uma estratégia de marketing assertiva</p>
                          </div>
                      </div>
-                 </div>
         <!-- final card 3 -->
         <!--Começo card 4-->
-                <div class="col-md-3 mx-auto">
                     <div class="card cardFuncionalidade">
                         <div class="card-body">
                         <h5 class="card-title TituloCards">Relatorios personalizados</h5>
                         <p class="card-text">Tenha uma visão inteligente do seu negócio e desenvolva uma estatrégia única com nossos relatórios personalizados.</p>
                         </div>
                     </div>
-                </div>
         <!--Final card 4-->
         </div>
         </div>
+
         <!--Final sessão sistema-->
 
     <!--Começo sessão contato-->
@@ -167,48 +154,59 @@
         <div class="container">
             <span id="contateNosTitle">Contate-Nos</span>
         <div class="row">
-            <div class="col-md-4 col-sm-12 contateNosDiv">
-                <div id="fone">
-                    <div id="informacoesFone">
-                        <div class="row informacoesFoneCampos">
-                            <div class="col-1"><i class="bi bi-envelope"></i></div>
-                        <div class="col-11">
-                            <span id="foneEmail">
-                                Email: contato@tecnobar.com
-                            </span>
+                <!--Card email-->
+                    <div class="card cardContato">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="row informacoesFoneCampos">
+                                    <i class="bi bi-envelope">EMAIL</i> 
+                                </div>
+                            </h5>
+                        <span id="foneEmail">
+                            Email: contato@tecnobar.com
+                        </span>
                         </div>
-                            
+                    </div>     
+                
+                <!--Card endereco-->
+                    <div class="card cardContato">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="row informacoesFoneCampos">
+                                    <i class="bi bi-geo-alt">Endereço</i>
+                                </div>
+                            </h5>
+                        <span id="foneEndereco">
+                            Endereço: R. Paschoal Marmo, 1888 - Jardim Nova Italia, Limeira - SP
+                        </span>
                         </div>
-                        <div class="row informacoesFoneCampos">
-                            <div class="col-1"><i class="bi bi-geo-alt"></i></div>
-                            <div class="col-11">
-                            <span id="foneEndereco">
-                                Endereço: R. Paschoal Marmo, 1888 - Jardim Nova Italia, Limeira - SP
-                            </span>
-                        </div>
-                            </div>
-                        <div class="row informacoesFoneCampos">
-                            <div class="col-1"><i class="bi bi-telephone"></i></div>
-                        <div class="col 11">     
-                            <span id="foneFone">
-                                Fone: 9999 - 999
-                            </span>
-                        </div>
-                        </div>
-                   
                     </div>
+                <!--Card telefone-->
+                    <div class="card cardContato">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="row informacoesFoneCampos">
+                                    <i class="bi bi-telephone">Telefone</i>
+                                </div>
+                            </h5>
+                        <span id="foneEndereco">
+                            Fone: 9999 - 999
+                        </span>
+                        </div>
+                    </div>
+            </div>
+            <div class="formularioContatenosContainer">
+                <div class="contateNosForm">
+                    <form>
+                        <input type="text" class="form-control" placeholder="Insira seu nome">
+                        <input type="text" class="form-control" placeholder="Insira seu email">
+                        <textarea placeholder="Insira sua mensagem" rows="4" cols="50" name="message" class="form-control" required=""></textarea>
+                        <button class="btn btnSubmiteContato" type="submit">Enviar</button>
+                    </form>
                 </div>
             </div>
-            <div class="col-md-7 col-sm-12">
-            <form>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Insira seu nome">
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Insira seu email">
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Insira seu telefone">
-            </form>
-            </div>
-            
         </div>
-        </div>
+    </div>
         <div class="social-icons">
             <a href="#"  title="facebook"> 
               <i class="fa fa-facebook-square" aria-hidden="true"></i>
