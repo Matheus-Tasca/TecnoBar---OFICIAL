@@ -301,19 +301,27 @@ dialog{
 
 /* Celular */
 @media screen and (max-width: 600px){
+    /*Navbar*/
+    .btnNavbar{
+        width: 25vw;
+    }
+    .loginPopUpContainer{
+        width: 100%;
+    }
+    .navbarColor .navbar-toggler .navbar-toggler-icon{
+        color: white;
+    }
+    /*Sessão Quem Somos*/
     #quemSomosText{
         display: flex;
         flex-direction: column;
     }
-
     #quemSomosImage{
        display: none;
     }
-
     #valoresEMissaoImage{
         display: none;
     }
-
    #formatacaoBodyText{
     font-size: 20px;
     margin-left: 10px;
@@ -324,40 +332,39 @@ dialog{
     font-size: 25px;
     margin-left: 10px;
    }
-
-   #sistema{
-    height: 80.4vh;
+/*Sessão sistema*/
+    #sistema{
+    height: 195vh;
    }
-
+   .containerCards{
+    flex-direction: column;
+    margin-top: 65vh;
+   } 
+   .cardFuncionalidade{
+    width: 50vw;
+    margin-bottom: 5.5vh;
+    }
+/*Sessão contato*/
    #contato{
     height: 125vh;
     width: 100%;
     background-color: #262626;
    }
-
-   #fone{
-    margin-top: 10%;
-    margin-left: 5%;
-   }
-   
-   #form{
-    border: 1vw solid white;
-    background-color: white;
-   }
-
    .cardContato{
     width: 70vw;
     align-self: center;
-   }
-
-   .btnSubmiteContato{
-    width: 70vw;
-    background-color: #10abb4;
-   }
+    margin-bottom: 0.5vh;
+    height:20vh !important;
+    }
+   #contato .row{
+    display: flex;
+    align-items: center;
+    margin-left: 10vw;
+}
 }
 
 /* Tablet */
-@media screen and (min-width:601px) and (max-width: 767px){
+@media screen and (min-width:601px) and (max-width: 768px){
 #textoApresentacao{
     font-size: 1.2em;
 }
