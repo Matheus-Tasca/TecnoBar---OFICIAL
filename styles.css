@@ -646,5 +646,11 @@ width: 25vw;
 margin-left: 55%;
 color: white;
 }
+#introducaoContainer{
+    height: 95vh;
+}
+.contateNosForm{
+    margin-top: 2.5vh;
+}
 }
 /* final Media query */

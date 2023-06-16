@@ -25,6 +25,7 @@ btnLogin.addEventListener('click', function realizarLogin(){
     campoPasswordValue = campoPassword.value;
     if ((campoUsernameValue === "master") && (campoPasswordValue === "12345678")){
        alert("LOGIN REALIZADO, BEM VINDO")
+       window.location.href = "inicio_dashboard_web/InicioDashboard.html"
     } else{
         mensagemLogin.innerHTML = "ERRO - SENHA OU USUÁRIO INVÁLIDOS"
         mensagemLogin.style.color = 'red';
