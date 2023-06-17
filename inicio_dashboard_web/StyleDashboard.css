@@ -17,6 +17,7 @@ body{
 #logo{
     width: 10vw; 
     height: 20vh;
+    
 }
 
 .wrapper{
@@ -176,4 +177,8 @@ body{
     .card-text{
       font-size: 30px;
     }
+}
+#divLogo{
+  justify-content: center;
+  display: flex;
 }
