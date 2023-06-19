@@ -19,7 +19,7 @@ body {
 
 /* Nav CSS - Início */
 nav.menu-lateral {
-    width: 80px;
+    width: 25vw;
     height: 100%;
     background-color: grey;
     padding: 40px 0 40px;
