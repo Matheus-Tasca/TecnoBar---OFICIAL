@@ -21,7 +21,7 @@ namespace TCC
         {
             if (campoInserir.Value > 0)
             {
-                MessageBox.Show("Foi para o banco");
+                MessageBox.Show("Quantidade inserida no estoque com sucesso", "Estoque inserido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //banco
             }
             else {

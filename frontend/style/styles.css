@@ -316,7 +316,9 @@ img{
   transform: scale(1.5);
 }
 
-
+img{
+    border-radius: 12px;
+}
 
 /*Final CSS contato*/
 /* começo Media query */

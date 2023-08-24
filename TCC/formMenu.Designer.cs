@@ -71,6 +71,7 @@
             // 
             // btnEstoque
             // 
+            btnEstoque.BackColor = SystemColors.ButtonFace;
             btnEstoque.Font = new Font("Calibri", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnEstoque.ForeColor = SystemColors.ActiveCaptionText;
             btnEstoque.Image = (Image)resources.GetObject("btnEstoque.Image");
@@ -81,11 +82,12 @@
             btnEstoque.TabIndex = 2;
             btnEstoque.Text = "Estoque";
             btnEstoque.TextAlign = ContentAlignment.BottomCenter;
-            btnEstoque.UseVisualStyleBackColor = true;
+            btnEstoque.UseVisualStyleBackColor = false;
             btnEstoque.Click += btnEstoque_Click;
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.ButtonFace;
             button1.Font = new Font("Calibri", 13F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.TopCenter;
@@ -95,14 +97,14 @@
             button1.TabIndex = 3;
             button1.Text = "Sair";
             button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_2;
             // 
             // formMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = SystemColors.AppWorkspace;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(546, 298);
             Controls.Add(button1);
@@ -110,7 +112,7 @@
             Controls.Add(btnProduto);
             Controls.Add(btnCaixa);
             Name = "formMenu";
-            Text = "Form2";
+            Text = "Menu";
             Load += formMenu_Load;
             ResumeLayout(false);
         }

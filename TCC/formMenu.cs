@@ -15,7 +15,7 @@ namespace TCC
         public formMenu()
         {
             InitializeComponent();
-            BackColor = ColorTranslator.FromHtml("#252B48");
+
         }
 
         private void button1_Click(object sender, EventArgs e)

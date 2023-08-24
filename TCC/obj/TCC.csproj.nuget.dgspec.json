@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj": {}
+    "C:\\Users\\joaop\\source\\repos\\Desktop C#\\TCC\\TCC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj": {
+    "C:\\Users\\joaop\\source\\repos\\Desktop C#\\TCC\\TCC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj",
+        "projectUniqueName": "C:\\Users\\joaop\\source\\repos\\Desktop C#\\TCC\\TCC.csproj",
         "projectName": "TCC",
-        "projectPath": "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj",
+        "projectPath": "C:\\Users\\joaop\\source\\repos\\Desktop C#\\TCC\\TCC.csproj",
         "packagesPath": "C:\\Users\\joaop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\obj\\",
+        "outputPath": "C:\\Users\\joaop\\source\\repos\\Desktop C#\\TCC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joaop\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -121,7 +121,7 @@
   <data name="btnProduto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJcSURBVHhe7Zs9
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJcSURBVHhe7Zs9
         roFBFIaVhBIJvYodKMQCJBYgsQRLsALiJ2xFQ6uxBaVKoaCTyNwcZiYn4iTfZf5Ocp7kjWROvDPzRHH9
         3JwKwGAwULlczkmgKwTexTwej48X/CXQ6RvvYobD4cfL/RLo9I13MfhC9/tdr/4feC7u8o3XHUajkb1I
         p9PRq98DHaYPun3iVYy5BOR0OunV74EO3OkTb+3j8dhewMWrxYBfNbCHLzKLaTQa9kBcA3fISmYx7Xb7
@@ -138,7 +138,7 @@
   <data name="btnEstoque.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEkAAABJCAYAAABxcwvcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAXGSURBVHhe7ZxP
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAXGSURBVHhe7ZxP
         SFVNGMY1s9poKi7aBZWgmxa1baGWhfZPMsqslFwIiloitUgiClu1CAylIvPfRuiPkrhqF5UulFJRBN1p
         ghBKUFlqvN/3TDOnmblzj8fvnuu9fnd+8GS+8870zJOcO+d4NY4sa2JD8oANyQO+hTQ7O0u3bt2ixsbG
         iAs+4McvfAlpfHyc4uLiok7w5Qchh/Tlyxf68OGD0WSkBV/wFyohh7SwsECDg4NGk5EWfMFfqNiQPOB7
@@ -169,7 +169,7 @@
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASHSURBVHhe7ZzP
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAASHSURBVHhe7ZzP
         KzVRGMcnSVJEEQux9CMhio2SEiFZ2JEdWUihsJHYKJKNRDZKlKWFksRf4MeCrY2NH0lZICnnfc507tsd
         8x1z5r73GcdrvvXpeuc8z/M992vmuvdyX0vEaXFxUZSVlYmUlBSRlpYmLMv6NlJTU0VJSYkYHh4W19fX
         aofhyQ7m9fUVbs4kGhoa7A2HJTsYtBFTCUuWvHzQBkxFXuZhyJKPKWgDJjM0NKS2zydLfgeQebLIzc0V

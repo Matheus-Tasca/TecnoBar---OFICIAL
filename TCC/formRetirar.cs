@@ -21,7 +21,7 @@ namespace TCC
         {
             if (campoRetirar.Value > 0)
             {
-                MessageBox.Show("Foi para o banco");
+                MessageBox.Show("Quantidade retirada do estoque com sucesso", "Estoque retirado", MessageBoxButtons.OK, MessageBoxIcon.Warning) ;
                 //banco
             }
             else
