@@ -13,15 +13,14 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _body() {
     return Container(
-      child: SingleChildScrollView(
         child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.width,
+          //width: MediaQuery.of(context).size.width,
+          //height: MediaQuery.of(context).size.width,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: [ Expanded(child: ListView(children: [
                 SizedBox(height: 30,),
                 Container(
                   width: 200,
@@ -91,9 +90,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          ),
+          ),]
         ),
-      ),
+      ),),
     );
   }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tecnobar/app_controller.dart';
 import 'package:tecnobar/home_page.dart';
-//import 'package:tecnobar/home_page.dart';
 import 'package:tecnobar/login_page.dart';
 
 class AppWidget extends StatelessWidget {
