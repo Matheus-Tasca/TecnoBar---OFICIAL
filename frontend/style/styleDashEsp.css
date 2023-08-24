@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+*{/*Configuração padrão para todos os elementos*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+    /* font-weight: ; para modificar a fonte */
+    font-size: 0.95em;
+    @media (max-width: 425px) {
+        font-size: 0.9em;
+    }
+}
+
+body {
+    height: 100vh;
+    background-color: #e3f2fd;
+}
+
+/* Nav CSS - Início */
+nav.menu-lateral {
+    width:  18rem;
+    height: 100%;
+    background-color: grey;
+    padding: 40px 0 40px;
+    box-shadow: 3px 0 0 black;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .3s;
+    @media (max-width: 1400px) {
+        width: 14rem;
+    }
+    @media (max-width: 1100px) {
+        width: 80px;
+    }
+    }
+nav.menu-lateral:hover {
+    width: 25rem;
+    @media (max-width: 1400px) {
+        width: 17rem;
+    }
+    @media (max-width: 1200px) {
+        width: 80px;
+    }
+}
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+ul li.item-menu {
+    transition: .3s;
+}
+ul li.item-menu:hover {
+    background: white;
+    border-radius: 20px 0px 0px 20px;
+    @media (max-width: 1000px) {
+        background: none;
+    }
+}
+ul li.item-menu a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.3em;
+    padding: 20px 4%;
+    display: flex;
+    /* margin-bottom: 20px; */
+    line-height: 40px;
+}
+ul li.item-menu a .txt-link {
+    margin-left: 40px;
+}
+ul li.item-menu a .icon > i {
+    font-size: 30px;
+}
+/* Nav CSS - Fim */
+
+/* *Selecione CSS - Início */
+.containerForm{ /*Conainer feito à mão*/
+    position: relative;
+    max-width: 90vw;
+    width: 100%;
+    margin: 2vh 0vw  auto 8vw;
+
+    /* border: solid#333; */
+
+    @media (max-width: 1024px) {
+        max-width: 80vw;
+        margin: 2vh 0vw  auto 14vw;
+    }
+    @media (max-width: 768px) {
+        max-width: 75vw;
+        margin: 2vh 0vw auto 19vw;
+    }
+    @media (max-width: 425px) {
+        max-width: 70vw;
+        margin: 3vh 0vh auto 25vw;
+    }
+    @media (max-width: 375px) {
+        margin: 3vh 0vh auto 26vw;
+    }
+    @media (max-width: 325px) {
+        max-width: 65vw;
+        margin: 3vh 0vh auto 30vw;
+    }
+}
+.select-title{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.select-btn{
+    display: flex;
+    height: 70px;
+    width: 40vw;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(0, 0, 0, 0.1);
+}
+.select-btn .btn-text{
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #333;
+}
+.select-btn .arrow-dwn{
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #6e93f7;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.select-btn.open .arrow-dwn{
+    transform: rotate(-180deg);
+}
+.list-items{
+    position: relative;
+    width: 40vw;
+    margin-top: 15px;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    border: 1px solid rgba(128, 128, 128, 0.064);
+}
+.select-btn.open ~ .list-items{
+    display: block;
+}
+.list-items .item{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 15px;
+    border-radius: 8px;
+}
+.list-items .item:hover{
+    background-color: #e7edfe;
+}
+.item .item-text{
+    font-size: 1.3em;
+    font-weight: 400px;
+    color: #333;
+}
+.item .checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1.5px solid #c0c0c0;
+    transition: all 0.3s ease-in-out;
+}
+.item.checked .checkbox{
+    background-color: #4070f4;
+    border-color: #4070f4;
+}
+.checkbox .check-icon{
+    color: #fff;
+    font-size: 11px;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+}
+.item.checked .check-icon{
+    transform: scale(1);
+}
+.select-btn-arq.open ~ .list-items{
+    display: block;
+}
+.input-date{
+    height: 70px;
+    width: 200px;
+    padding: 15px;
+    color: #333;
+    font-size: 1.3em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(0, 0, 0, 0.1);
+    @media (max-width: 1440px) {
+        width: 200px;
+    }
+    @media (max-width: 1024px) {
+        width: 200px;
+    }
+    @media (max-width: 767px) {
+        width: 40vw;
+    }
+    @media (max-width: 425px) {
+        width: 40vw;
+    }
+    @media (max-width: 375px) {
+        width: 40vw;
+        font-size: 1.0em;
+    }
+    @media (max-width: 320px) {
+        width: 40vw;
+        font-size: 0.9em;
+    }
+}
+.input-date::-webkit-calendar-picker-indicator{
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.date-inicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    @media (max-width: 1440px) {
+        align-items: flex-end;
+    }
+    @media (max-width: 767px) {
+        align-items: center;
+    }
+}
+.date-final{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    @media (max-width: 1440px) {
+        align-items: flex-start;
+    }
+    @media (max-width: 767px) {
+        align-items: center;
+    }
+}
+/* Data CSS - Fim */
+
+/* Botão GD CSS - Início */
+.btn-gd{
+    font-size: 1.3em;
+    font-weight: bold;
+    background: #fff;
+    width: 300px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(0, 0, 0, 0.1);
+    @media (max-width: 1024px) {
+        width: 250px;
+    }
+    @media (max-width: 768px) {
+        width: 200px;
+    }
+    @media (max-width: 425px) {
+        font-size: 1.0em;
+        width: 150px;
+    }
+    @media (max-width: 320px) {
+        width: 120px;
+    }
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.item-text{
+    width: 100vh;
+}
+#chart{
+    width: 50rem;
+    height: 28rem;
+    display: flex;
+    margin-top: 40px;
+    @media (max-width: 890px) {
+        width: 500px;
+        margin-top: 100px;
+    }
+    @media (max-width: 706px){
+        width: 400px;
+    }
+}
+#containerChart{
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+    height: 28rem;
+}

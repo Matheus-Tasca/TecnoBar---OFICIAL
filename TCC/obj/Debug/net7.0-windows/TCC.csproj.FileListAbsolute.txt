@@ -1,0 +1,146 @@
+C:\Users\joaop\source\repos\TCC\TCC\bin\Debug\net7.0-windows\TCC.exe
+C:\Users\joaop\source\repos\TCC\TCC\bin\Debug\net7.0-windows\TCC.deps.json
+C:\Users\joaop\source\repos\TCC\TCC\bin\Debug\net7.0-windows\TCC.runtimeconfig.json
+C:\Users\joaop\source\repos\TCC\TCC\bin\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\TCC\TCC\bin\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.csproj.AssemblyReference.cache
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.Form1.resources
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.Form2.resources
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.Properties.Resources.resources
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.csproj.GenerateResource.cache
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfoInputs.cache
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfo.cs
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.csproj.CoreCompileInputs.cache
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\refint\TCC.dll
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
+C:\Users\joaop\source\repos\TCC\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
+C:\Users\joaop\source\repos\Caixa\TCC\bin\Debug\net7.0-windows\TCC.exe
+C:\Users\joaop\source\repos\Caixa\TCC\bin\Debug\net7.0-windows\TCC.deps.json
+C:\Users\joaop\source\repos\Caixa\TCC\bin\Debug\net7.0-windows\TCC.runtimeconfig.json
+C:\Users\joaop\source\repos\Caixa\TCC\bin\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\Caixa\TCC\bin\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.csproj.AssemblyReference.cache
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.Form1.resources
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.Form2.resources
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.Properties.Resources.resources
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.csproj.GenerateResource.cache
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfoInputs.cache
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfo.cs
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.csproj.CoreCompileInputs.cache
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\refint\TCC.dll
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
+C:\Users\joaop\source\repos\Caixa\TCC\obj\Debug\net7.0-windows\TCC.Form3.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.csproj.AssemblyReference.cache
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.csproj.GenerateResource.cache
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\refint\TCC.dll
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\TCC\App\TCC\bin\Debug\net7.0-windows\TCC.exe
+C:\Users\joaop\source\repos\TCC\App\TCC\bin\Debug\net7.0-windows\TCC.deps.json
+C:\Users\joaop\source\repos\TCC\App\TCC\bin\Debug\net7.0-windows\TCC.runtimeconfig.json
+C:\Users\joaop\source\repos\TCC\App\TCC\bin\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\TCC\App\TCC\bin\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.Properties.Resources.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfoInputs.cache
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfo.cs
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.csproj.CoreCompileInputs.cache
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formCaixa.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formMenu.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formProduto.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formQtdProduto.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formEstoque.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formAjustar.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formInserir.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formRetirar.resources
+C:\Users\joaop\source\repos\TCC\App\TCC\obj\Debug\net7.0-windows\TCC.formConsulta.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\bin\Debug\net7.0-windows\TCC.exe
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\bin\Debug\net7.0-windows\TCC.deps.json
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\bin\Debug\net7.0-windows\TCC.runtimeconfig.json
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\bin\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\bin\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.csproj.AssemblyReference.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formAjustar.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formCaixa.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formConsulta.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formEstoque.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formInserir.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formMenu.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formProduto.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formQtdProduto.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.formRetirar.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.Properties.Resources.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.csproj.GenerateResource.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfoInputs.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfo.cs
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.csproj.CoreCompileInputs.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\refint\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\App\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.exe
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.deps.json
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.runtimeconfig.json
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.AssemblyReference.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formAjustar.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formCaixa.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formConsulta.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formEstoque.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formInserir.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formMenu.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formProduto.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formQtdProduto.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formRetirar.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.Properties.Resources.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.GenerateResource.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfoInputs.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfo.cs
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.CoreCompileInputs.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\refint\TCC.dll
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\Desktop C#\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
+C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.exe
+C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.deps.json
+C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.runtimeconfig.json
+C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.AssemblyReference.cache
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formAjustar.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formCaixa.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formConsulta.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formEstoque.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formInserir.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formMenu.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formNovaCate.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formProduto.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formQtdProduto.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formRetirar.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.Properties.Resources.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.GenerateResource.cache
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfoInputs.cache
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.AssemblyInfo.cs
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.CoreCompileInputs.cache
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.dll
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\refint\TCC.dll
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.pdb
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formExlcuirProduto.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formLogin.resources

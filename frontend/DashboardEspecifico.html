@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard específico</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js" ></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="style/styleDashEsp.css">
+        <!-- bootstrap-icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <!-- bootstrap Link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <!-- bootstrap-JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+        <!-- Fontawesome CDN Link -->
+        <link rel="icon" href="srcImage/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="srcImage/favicon.ico" type="image/x-icon"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+</head>
+
+<body>
+    <!-- Nav início -->
+    <nav class="menu-lateral">
+        <ul>
+            <li class="item-menu">
+                <a href="InicioDashboard.html">
+                    <span class="icon">
+                        <i class="bi bi-house"></i>
+                    </span>
+                    <span class="txt-link">Home</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="DashboardEspecifico.html">
+                    <span class="icon">
+                        <i class="bi bi-columns-gap"></i>
+                    </span>
+                    <span class="txt-link">Dashboard</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="index.html">
+                    <span class="icon">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </span>
+                    <span class="txt-link">Sair</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+    <!-- Nav Fim -->
+
+    <!-- Tipo de gráfico - Início-->
+    <form class="containerForm text-center">
+        <div class="row">
+            <p class="select-title">Tipo de gráfico</p>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col center">
+                <div class="select-btn">
+                    <span class="btn-text">Selecione</span>
+                    <span class="arrow-dwn">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </div>
+
+                <ul class="list-items ">
+
+                    <li class="item selecionavel tipo"   data-value="line">
+                        <span class="checkbox" >
+                            <i class="fa-solid fa-check check-icon" ></i>
+                        </span>
+                        <span class="item-text">Linha</span>
+                    </li>
+
+                    <li class="item selecionavel tipo"  data-value="bar">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Barra</span>
+                    </li>
+
+                    <li class="item selecionavel tipo" data-value="pie">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Pizza</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </form>
+    <!-- Tipo de gráfico - Fim -->
+
+    <!-- Dado Desejado - Início -->
+    <form class="containerForm text-center">
+        <div class="row">
+            <!-- Dado Desejado - Início-->
+            <h5>Dado Desejado</h5>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col center">
+                <div class="select-btn">
+                    <span class="btn-text">Selecione</span>
+                   <span class="arrow-dwn">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </div>
+                <ul class="list-items">
+
+                    <li class="item selecionavel dado" data-value="Lucro">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon "></i>
+                        </span>
+                        <span class="item-text">Lucro</span>
+                    </li>
+
+                    <li class="item selecionavel dado" data-value="Vendas">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon" ></i>
+                        </span>
+                        <span class="item-text">Vendas</span>
+                    </li>
+
+                    <li class="item selecionavel dado" data-value="Faturamento">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Faturamento</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </form>
+    <!-- Dado Desejado - Fim -->
+
+    <!-- Categoria - Início-->
+    <form class="containerForm text-center">
+        <div class="row">
+            <!-- Categoria - Início-->
+            <h5>Categoria</h5>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col center">
+                <div class="select-btn">
+                    <span class="btn-text">Selecione</span>
+                    <span class="arrow-dwn">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </div>
+
+                <ul class="list-items" id="categorias" >
+
+                    <li class="item selecionavel consumable" data-value="Bebidas" onclick="loadItem()">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Bebidas</span>
+                    </li>
+
+                    <li class="item selecionavel consumable" data-value="Alimentos">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon" ></i>
+                        </span>
+                        <span class="item-text">Alimentos</span>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </form>
+    <!-- Categoria - Fim -->
+
+    <form class="containerForm text-center">
+        <div class="row">
+            <!-- Item - Início-->
+            <h5>Item</h5>
+        </div>
+
+        <br>
+        <div class="row" >
+            <div class="col center">
+                <div class="select-btn">
+                    <span class="btn-text">Selecione</span>
+                    <span class="arrow-dwn">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </div>
+                <ul class="list-items" id="apendaqui">
+                    <li class="item">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Opção 1</span>
+                    </li>
+                    <li class="item">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Opção 2</span>
+                    </li>
+                    <li class="item">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Opção 3</span>
+                    </li>
+                    <li class="item">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Opção 4</span>
+                    </li>
+                    <li class="item">
+                        <span class="checkbox">
+                            <i class="fa-solid fa-check check-icon"></i>
+                        </span>
+                        <span class="item-text">Opção 5</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    <!-- Item - Fim -->
+
+    <!-- Tipo do Arquivo/data - Início-->
+    <form class="containerForm">
+        <div class="row ">
+            <div class="col-md-6 col-sm-12 date-inicio">
+                <h5>Data Inicial</h5>
+                
+                <input type="date" class="input-date" id="dataInicio">
+            </div>
+
+            <div class="col-md-6 col-sm-12 date-final">
+                <h5>Data Final</h5>
+            
+                <input type="date" class="input-date" id="dataFinal">
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <!-- Botão gd - Início -->
+        <div class="row">
+            <div class="col center">
+                <input type="button" value="Gerar Dashboard" class="btn-gd" id="gerar" >
+            </div>
+        </div>
+        <!-- Botão gd - Fim -->
+    </form>    
+    <!-- Tipo do Arquivo/data - Fim-->
+
+    <div id="containerChart" >
+        <div id="chart">
+            <canvas id="line-chart"></canvas>
+        </div>
+    </div>
+
+    
+    <!-- JavaScript -->
+    <script  src="./script/scriptDashEsp.js" ></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</body>
+
+</html>

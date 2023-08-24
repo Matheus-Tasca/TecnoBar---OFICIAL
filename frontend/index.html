@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="srcImage/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="srcImage/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style/styles.css">
+    <title>TecnoBar</title>
+</head>
+<body class="body"> 
+    <!--Comeco apresentacao-->
+    <div id="apresentacao">
+    <!-- Início Navbar -->
+    <nav class="navbar navbar-expand-lg navbarColor fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand navbarTextColor" href="#">Tecnobar</a>
+            <button class="navbar-toggler navbarTextColor" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active navbarTextColor" aria-current="page" href="#introducaoContainer">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbarTextColor" href="#introducaoContainer">Empresa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbarTextColor" href="#sistema">Sistema</a>
+                    </li>
+                </ul>
+                <a class="btn ml-auto btnNavbar" type="button" href="#">Login</a>
+            </div>  
+        </div>
+    </nav>
+    <!-- Fim Navbar -->
+    <!--Começo login Popup-->
+    <dialog id="popUp">
+        <div class="card text-center loginPopUpContainer">
+        <div class="card-header">
+          LOGIN
+          <i class="bi bi-x-lg esconderLoginBtn"></i>
+        </div>
+        <div class="card-body loginPopUpBody">
+            <input type="text" class="form-control inputUsername" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+            <input type="password" class="form-control inputSenha" placeholder="Senha" aria-label="Username" aria-describedby="addon-wrapping">
+            <span id="msg"></span>
+            <a href="#" class="btn btnLogin">Entrar</a>
+        </div>
+      </div>
+    </dialog>
+    <!--Final login Popup-->
+        <div class="container">
+            <div id="tituloApresentacao">TECNOBAR</div>
+            <div id="subTituloApresentacao">
+                O sistema que facilitará o seu Gerenciamento de Vendas, <br>
+                te informando de modo intuitivo e eficiente sobre o que acontece em seu estabelecimento.
+            </div>        
+        </div>
+    <!--Final apresentação-->
+    </div>
+    <!--comeco introducao-->
+    <div id="introducaoContainer">
+        <div class="container">
+        
+        <!--Quem somos container-->
+            <div id="quemSomosContainer">
+                <div id="quemSomosText">
+                    <span id="formatacaoBodyTitle"><p>QUEM SOMOS</p></span>
+                    <span id="formatacaoBodyText"><p> A Tecnobar foi fundada na cidade de Limeira, em 2022, no Colégio Técnico de Limeira (COTIL). 
+                    A iniciativa veio a partir de uma demanda que os fundadores notaram nos bares próximos à região, que tinham um sistema de gerenciamento defasado e ineficiente.
+                    A partir disso, criamos o sistema Tecnobar Gerenciamento e Administração, que consegue ser implantado em qualquer estabelecimento com facilidade e permite uma visualização intuitiva e amigável para todos.</p></span>
+                </div>
+                <div id="quemSomosImage"><img class="img" src="srcImage/sobreNos.jpg"></div>
+            </div>
+        <!--Valores e missão container-->
+            <div id="valoresEMissaoContainer">
+            <div id="valoresEMissaoText">    
+                <p id="formatacaoBodyTitle">VALORES E MISSÃO</p>
+                    <p id="formatacaoBodyText">A Tecnobar tem como missão oferecer as melhores soluções para a administração do seu negócio, sempre com uma interface muito intuitiva, que qualquer um consiga administrar e gerenciar seu próprio comércio.
+                    Sempre com muita transparência e responsabilidade, entregando o melhor sistema e pós venda aos clientes, 
+                    com relatórios e gráficos essenciais em uma boa gestão administrativa.</p>
+            </div>    
+            <div id="valoresEMissaoImage"><img class="img" src="srcImage/quem somos.jpg"></div>
+            </div>  
+        </div>
+    </div>
+    </div>
+</div> 
+     <!--Começo sessão sistema-->
+     <div id="sistema">
+        <div class="containerIntroducaoCards">
+        <div class="card cardIntroducao" >
+            <div class="card-body">
+                <h5 class="card-title formatacaoBodyTitle">O que oferecemos ?</h5>
+                <p class="card-text formatacaoBodyText">Dashboards e gráficos intuítivos e amigáveis, cadastro de produtos separados por categorias para melhor visualização e gerenciamento, 
+                resumos mensais de desempenho de vendas do produto, controle e caixa e muito mais</p>
+            </div>
+        </div>
+           
+        </div>
+        <div class="containerCards">
+        <!-- cards das funcionalidade -->    
+        <!-- comeco card 1 -->      
+                    <div class="card cardFuncionalidade" >
+                            <div class="card-body">
+                                <h5 class="card-title TituloCards">Dashboard</h5>
+                                <p class="card-text">Um visualização rápida e intuitiva do seu sistema, com relatórios sorbre vendas, faturamento, lucro e muito mais</p>
+                            </div>
+                    </div>           
+        <!-- final card 1 -->
+        <!-- comeco card 2 -->            
+                    <div class="card cardFuncionalidade">
+                        <div class="card-body">
+                          <h5 class="card-title TituloCards">Estoque</h5>
+                          <p class="card-text">Uma forma organizada e centrada de saber o que tem em sua loja, sem precisar de planilhas físicas ou digitais, facilitando sua gestão.</p>
+                        </div>
+                    </div>             
+        <!-- final card 2 -->
+        <!-- comeco card 3 -->     
+                    <div class="card cardFuncionalidade">
+                        <div class="card-body">
+                          <h5 class="card-title TituloCards">Caixa</h5>
+                          <p class="card-text">Um controle de quais produtos são vendidos e com qual frequência, essencial para uma administração eficiente e uma estratégia de marketing assertiva</p>
+                         </div>
+                     </div>
+        <!-- final card 3 -->
+        <!--Começo card 4-->
+                    <div class="card cardFuncionalidade">
+                        <div class="card-body">
+                        <h5 class="card-title TituloCards">Relatorios personalizados</h5>
+                        <p class="card-text">Tenha uma visão inteligente do seu negócio e desenvolva uma estatrégia única com nossos relatórios personalizados.</p>
+                        </div>
+                    </div>
+        <!--Final card 4-->
+        </div>
+        </div>
+
+        <!--Final sessão sistema-->
+
+    <!--Começo sessão contato-->
+    <div id="contato">
+        <div class="container">
+            <span id="contateNosTitle">Contate-Nos</span>
+        <div class="row">
+                <!--Card email-->
+                    <div class="card cardContato">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="informacoesFoneCampos">
+                                    <i class="bi bi-envelope">EMAIL</i> 
+                                </div>
+                            </h5>
+                        <span id="foneEmail">
+                            Email: contato@tecnobar.com
+                        </span>
+                        </div>
+                    </div>     
+                
+                <!--Card endereco-->
+                    <div class="card cardContato">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="informacoesFoneCampos">
+                                    <i class="bi bi-geo-alt">Endereço</i>
+                                </div>
+                            </h5>
+                        <span id="foneEndereco">
+                            Endereço: R. Paschoal Marmo, 1888 - Jardim Nova Italia, Limeira - SP
+                        </span>
+                        </div>
+                    </div>
+                <!--Card telefone-->
+                    <div class="card cardContato">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="informacoesFoneCampos">
+                                    <i class="bi bi-telephone">Telefone</i>
+                                </div>
+                            </h5>
+                        <span id="foneEndereco">
+                            Fone: 9999 - 999
+                        </span>
+                        </div>
+                    </div>
+            </div>
+            <div class="formularioContatenosContainer">
+                <div class="contateNosForm">
+                    <form>
+                        <input type="text" class="form-control" placeholder="Insira seu nome">
+                        <input type="text" class="form-control" placeholder="Insira seu email">
+                        <textarea placeholder="Insira sua mensagem" rows="4" cols="50" name="message" class="form-control" required=""></textarea>
+                        <button class="btn btnSubmiteContato" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="social-icons">
+            <a href="#"  title="facebook"> 
+              <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            </a>
+            <a href="#" title="twitter"> 
+                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            </a>
+            <a href="#" title="instagram">  
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+            
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>
