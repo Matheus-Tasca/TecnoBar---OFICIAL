@@ -13,7 +13,7 @@ const loadData = async (req,res)=>{
 }
 
 const loadItem = async (req,res)=>{
-    const itens = await dashModel.loadItem()
+    const itens = await dashModel.loadItem(req.body)
     return res.status(200).json(itens)
 }
 module.exports = {

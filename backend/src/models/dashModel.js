@@ -125,16 +125,18 @@ const loadData = async (days) =>{
     const datas = [lucro, vendasReal[0].VendasTotais ,faturamento]
     return datas
 }
-const loadItem = async ()=>{
+const loadItem = async (tipo)=>{
+    const {cat} = tipo
     const produtos = await (await connection).query(`
     select 
         produto.nomeProd 
     from 
         produto 
     where 
-        produto.codCategoria = 2;
+        produto.codCategoria = ?;
 
-    `
+    `,
+    [cat]
     )
     return produtos[0]
 }

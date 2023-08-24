@@ -4,6 +4,6 @@ const dashController = require('./controllers/dashController')
 
 router.post('/data', dashController.getData)
 router.post('/dataload',dashController.loadData)
-router.get('/itens',dashController.loadItem)
+router.post('/itens',dashController.loadItem)
 
 module.exports = router

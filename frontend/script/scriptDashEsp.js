@@ -30,12 +30,14 @@ const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
   return element
 }
 
-const loadItem = async()=>{
+const loadItem = async(valor )=>{
+  const cat = valor
   const res = await fetch ('http://localhost:4001/itens')
   const item = await res.json()
   
   createOptions()
   console.log(item)
+  configura()
 }
 
 const createOptions = ()=>{
@@ -43,18 +45,17 @@ const createOptions = ()=>{
     'li',
     'item',
     '',
-    `
-      <span class="checkbox">
-        <i class="fa-solid fa-check check-icon"></i>
-      </span>
-      <span class="item-text">Opção 1</span>
-    
-  `)
+    `<span class="checkbox">
+       <i class="fa-solid fa-check check-icon"></i> 
+     </span><span class="item-text">
+        Opçãossss 1
+     </span>`)
 
   pai.appendChild(item1)
+  configura()
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+const configura = () =>{
   const selectBtns = document.querySelectorAll(".select-btn");
 
   selectBtns.forEach(function (btn) {
@@ -124,8 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
-
+}
 
   const selectChartType = (clickedChart) => { //adicionar selected a um elemeto do array chartsType
     chartsType.forEach(chart => {
@@ -241,3 +241,5 @@ function getSelectedOptions() {
 botao.addEventListener('click',() =>{
   getSelectedOptions()
 })
+
+configura()
