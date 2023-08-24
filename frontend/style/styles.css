@@ -88,6 +88,9 @@ dialog{
     margin-bottom: 15%;
 }
 /* Começo CSS apresentação */
+img{
+    border-radius: 10px;
+}
 #apresentacao{
     display: flex;
     flex-direction: column;
@@ -201,7 +204,11 @@ dialog{
 .cardFuncionalidade:hover{
   z-index: 2;
   transition: all 200ms ease-in;
-  transform: scale(1.3);
+  transform: scale(1.1);
+}
+.cardFuncionalidade{
+    margin-left: 1.5vw;
+    margin-bottom: 1.5vh;
 }
 /* Final CSS parte de sistemas*/
 /*Começo CSS contato*/
@@ -242,6 +249,7 @@ dialog{
     font-size: 1.1em;
     background-color: #5B9A8B!important;
     color: white;
+    text-align: center;
 }
 #contato .row{
     display: flex;
@@ -630,6 +638,12 @@ height:20vh !important;
     margin-bottom: 2.5vh;
 }
 
+#quemSomosText{
+    margin-right:2.5vw ;
+}
+#valoresEMissaoText{
+    margin-left: 2.4vw;
+}
 #sistema{
     height: 75vh;
 }
@@ -652,7 +666,7 @@ margin-left: 55%;
 color: white;
 }
 #introducaoContainer{
-    height: 95vh;
+    height: 100vh;
 }
 .contateNosForm{
     margin-top: 2.5vh;

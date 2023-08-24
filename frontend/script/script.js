@@ -5,7 +5,10 @@ const popLogin = document.querySelector("#popUp")
 const campoUsername = document.querySelector(".inputUsername")
 const campoPassword = document.querySelector(".inputSenha")
 const mensagemLogin = document.querySelector("#msg")
-
+const nomeInputContato = document.querySelector("#nomeInputContato")
+const emailInputContato = document.querySelector("#emailInputContato")
+const messageInputContato = document.querySelector("#messageInputContato")
+const btnSubmiteContato = document.querySelector(".btnSubmiteContato")
 
 btnMostrarLogin.addEventListener('click',function(){
     popLogin.showModal();
@@ -36,4 +39,16 @@ btnLogin.addEventListener('click',(e)=>{
 campoPassword.addEventListener('keyup',(e)=>{
     if(e.code === 'Enter')
         login()
+})
+
+btnSubmiteContato.addEventListener('click',()=>{
+    if(nomeInputContato.value == "" || emailInputContato.value == "" || messageInputContato.value == ""){
+        alert("Preencha todos os campos de contato!")
+    }
+    else{
+        alert("Dados enviados com suceso !")
+        nomeInputContato.value = "";
+        emailInputContato.value = "";
+        messageInputContato.value = "";
+    }
 })
