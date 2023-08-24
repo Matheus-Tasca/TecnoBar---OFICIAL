@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // para trabalhar com arquivos
+using MySql.Data.MySqlClient;
 
 namespace TCC
 {
     public partial class formProduto : Form
     {
+        MySqlConnection conection;
 
         string origemCompleto = "";
         string foto = "";
@@ -29,9 +31,9 @@ namespace TCC
             campoCate.SelectedIndex = -1;
             campoCod.Clear();
             campoNome.Clear();
-            origemCompleto = "";
-            textBox1.Clear();
+            campoCusto.Clear();
             campoQtdE.Clear();
+            campoQtdMin.Clear();
         }
 
 
@@ -39,45 +41,61 @@ namespace TCC
         {
             try
             {
+               
+
+                string data_source = "";
+
+                conection = new MySqlConnection(); //Criar conexão com o banco
+
+                string queryProd = "INSERT into produto nomeProd, qtdMin, qtdEstoque, valorEntrada, valorVenda"
+                    + "VALUES ('" + campoNome.Text + "', " +
+                    "'" + campoQtdMin.Text + "', " +
+                    "'" + campoQtdE.Text + "'," +
+                    " '" + campoCusto.Text + "'," +
+                    "'" + campoPreco.Text + "')";
+
+                MySqlCommand comando = new MySqlCommand(queryProd, conection);
+
                 //Quando tiver o banco. Da para tirar isso daqui e colocar o message no catch
-                if ((campoCate.SelectedIndex == -1) || (campoCod.Text == "") || (campoNome.Text == ""))
+                if ((campoCate.SelectedIndex == -1) || (campoPreco.Text == "") || (campoNome.Text == "") || (campoCusto.Text == "") || (campoQtdE.Text == "") || (campoQtdMin.Text == ""))
                 {
                     MessageBox.Show("Todos os campos devem ser preenchidos", "Campos vazios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                //foto
-                if (destinoCompleto == "")
+                else
                 {
-                    if (MessageBox.Show("Nenhuma foto foi selecionada. Tem certeza que deseja salvar?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    //foto
+                    if (destinoCompleto == "")
                     {
-                        return;
+                        if (MessageBox.Show("Nenhuma foto foi selecionada. Tem certeza que deseja salvar?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Produto cadastrado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                    if (destinoCompleto != "")
+                    {
+                        System.IO.File.Copy(origemCompleto, destinoCompleto, true);
+                        if (File.Exists(destinoCompleto))
+                        {
+                            pb_Imagem.ImageLocation = origemCompleto; //atribuindo o caminho de origem ao picture box
+                            MessageBox.Show("Produto cadastrado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\FotoProduto;                     
+                        }
+                        else
+                        {
+                            MessageBox.Show("Arquivo não copiado");
+                        }
+                    }
+                    // fim da foto
                 }
-                if (destinoCompleto != "")
-                {
-                    System.IO.File.Copy(origemCompleto, destinoCompleto, true);
-                    if (File.Exists(destinoCompleto))
-                    {
-                        pb_Imagem.ImageLocation = origemCompleto; //atribuindo o caminho de origem ao picture box
-                        MessageBox.Show("Foi para o banco");
-                        //C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\FotoProduto;                     
-                    }
-                    else
-                    {
-                        MessageBox.Show("Arquivo não copiado");
-                    }
-                }
-                // fim da foto
-
-                string queryInserProduto = String.Format(@"");
-
                 //OnChange categoria
-
-                //manda para o banco
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -151,6 +169,12 @@ namespace TCC
         private void campoQtdE_KeyPress(object sender, KeyPressEventArgs e)
         {
             Program.IntNumber(e);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            formAlterar formAlterar = new formAlterar();
+            formAlterar.Show();
         }
     }
 }

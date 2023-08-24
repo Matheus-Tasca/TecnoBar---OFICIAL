@@ -45,12 +45,16 @@
             panel1 = new Panel();
             btnExcluir = new Button();
             openFileDialog1 = new OpenFileDialog();
-            textBox1 = new TextBox();
+            campoCusto = new TextBox();
             label3 = new Label();
             campoQtdE = new TextBox();
             label4 = new Label();
+            campoQtdMin = new TextBox();
+            label5 = new Label();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)pb_Imagem).BeginInit();
             panel1.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lblNome
@@ -109,6 +113,7 @@
             campoCate.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
             campoCate.FormattingEnabled = true;
             campoCate.ImeMode = ImeMode.On;
+            campoCate.Items.AddRange(new object[] { "Refrigerante", "Salgado", "Água" });
             campoCate.Location = new Point(21, 204);
             campoCate.MaximumSize = new Size(258, 0);
             campoCate.Name = "campoCate";
@@ -163,7 +168,7 @@
             // button1
             // 
             button1.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(381, 232);
+            button1.Location = new Point(381, 208);
             button1.Name = "button1";
             button1.Size = new Size(201, 30);
             button1.TabIndex = 17;
@@ -202,6 +207,7 @@
             button3.TabIndex = 20;
             button3.Text = "Alterar";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel1
             // 
@@ -210,7 +216,7 @@
             panel1.Controls.Add(btnSalvar);
             panel1.Controls.Add(btnNovo);
             panel1.Controls.Add(button3);
-            panel1.Location = new Point(21, 303);
+            panel1.Location = new Point(21, 342);
             panel1.Name = "panel1";
             panel1.Size = new Size(519, 43);
             panel1.TabIndex = 22;
@@ -233,13 +239,13 @@
             openFileDialog1.FileName = "openFileDialog1";
             openFileDialog1.Filter = "JPG(*.jpg)|*.jpg|PNG(*.png)|*.png|JPEG(*.jpeg)|*.jpeg";
             // 
-            // textBox1
+            // campoCusto
             // 
-            textBox1.Location = new Point(195, 147);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 22);
-            textBox1.TabIndex = 23;
-            textBox1.KeyPress += textBox1_KeyPress;
+            campoCusto.Location = new Point(195, 147);
+            campoCusto.Name = "campoCusto";
+            campoCusto.Size = new Size(146, 22);
+            campoCusto.TabIndex = 23;
+            campoCusto.KeyPress += textBox1_KeyPress;
             // 
             // label3
             // 
@@ -253,7 +259,7 @@
             // 
             // campoQtdE
             // 
-            campoQtdE.Location = new Point(21, 262);
+            campoQtdE.Location = new Point(6, 35);
             campoQtdE.Name = "campoQtdE";
             campoQtdE.Size = new Size(155, 22);
             campoQtdE.TabIndex = 25;
@@ -263,21 +269,50 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(21, 245);
+            label4.Location = new Point(6, 18);
             label4.Name = "label4";
             label4.Size = new Size(152, 14);
             label4.TabIndex = 26;
             label4.Text = "Quantidade Inical Estoque";
             // 
+            // campoQtdMin
+            // 
+            campoQtdMin.Location = new Point(185, 35);
+            campoQtdMin.Name = "campoQtdMin";
+            campoQtdMin.Size = new Size(139, 22);
+            campoQtdMin.TabIndex = 24;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(185, 18);
+            label5.Name = "label5";
+            label5.Size = new Size(115, 14);
+            label5.TabIndex = 27;
+            label5.Text = "Quantidade mínima";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(campoQtdE);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(campoQtdMin);
+            groupBox1.Location = new Point(20, 257);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(350, 63);
+            groupBox1.TabIndex = 28;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Estoque";
+            // 
             // formProduto
             // 
             AutoScaleDimensions = new SizeF(6F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(594, 358);
-            Controls.Add(label4);
-            Controls.Add(campoQtdE);
+            ClientSize = new Size(609, 397);
+            Controls.Add(groupBox1);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(campoCusto);
             Controls.Add(panel1);
             Controls.Add(button2);
             Controls.Add(pb_Imagem);
@@ -295,6 +330,8 @@
             Text = "Cadastro de Produto";
             ((System.ComponentModel.ISupportInitialize)pb_Imagem).EndInit();
             panel1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -317,9 +354,12 @@
         private Panel panel1;
         private Button btnExcluir;
         private OpenFileDialog openFileDialog1;
-        private TextBox textBox1;
+        private TextBox campoCusto;
         private Label label3;
         private TextBox campoQtdE;
         private Label label4;
+        private TextBox campoQtdMin;
+        private Label label5;
+        private GroupBox groupBox1;
     }
 }

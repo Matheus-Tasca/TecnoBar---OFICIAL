@@ -3,6 +3,9 @@ namespace TCC
 
     public partial class formCaixa : Form
     {
+
+        public decimal quant;
+
         string[] nomeProd = new string[3];
         string[] descProd = new string[3];
         string[] codProd = new string[3];
@@ -14,6 +17,7 @@ namespace TCC
         public formCaixa()
         {
             InitializeComponent();
+            quant = 1;
         }
 
         private void bt_final_Click(object sender, EventArgs e)
@@ -35,12 +39,12 @@ namespace TCC
 
         private void loadProd()
         {
-            codProd[1] = "123";
-            codProd[2] = "789";
-            descProd[1] = "Bola de futebol azul";
-            descProd[2] = "Carrinho de controle remote verde";
-            nomeProd[1] = "Bola jabulani";
-            nomeProd[2] = "Carrinho hot wheels";
+            codProd[1] = "8";
+            codProd[2] = "9";
+            descProd[1] = "com catupiry";
+            descProd[2] = "300ml";
+            nomeProd[1] = "Empada de palmito";
+            nomeProd[2] = "Água sem gás";
             valorProd[1] = 80.00;
             valorProd[2] = 120.00;
         }
@@ -67,8 +71,10 @@ namespace TCC
 
                 if (ind > 0)
                 {
-                    listBox1.Items.Add(String.Format("{0} - {1} - {2} - {3}", codProd[ind], nomeProd[ind], descProd[ind], valorProd[ind]));
+                    listBox1.Items.Clear();
+                    listBox1.Items.Add(String.Format("{0} : {1} : {2} : {3}", codProd[ind], nomeProd[ind], descProd[ind], valorProd[ind]));
                     campoCod.Clear();
+
                 }
                 else
                 {
@@ -96,7 +102,7 @@ namespace TCC
             {
                 somaTotal += valorProd[ind];
                 lbl_valorTotal.Text = Convert.ToString(somaTotal);
-                Itens_Venda.Items.Add(String.Format("{0} - {1}", nomeProd[ind], valorProd[ind] /*COLOCAR QUANTIDADE*/));
+                Itens_Venda.Items.Add(String.Format("{0} - {1} ({2})", nomeProd[ind], valorProd[ind]/*COLOCAR QUANTIDADE*/, quant));
                 listBox1.Items.Clear();
             }
         }
@@ -112,6 +118,17 @@ namespace TCC
                 listBox1.Items.Clear();
                 lbl_valorTotal.Text = "0,00";
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show(quant.ToString());
+        }
+
+        private void Itens_Venda_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Itens_Venda.Items.Remove(Itens_Venda.SelectedItem);
         }
     }
 }

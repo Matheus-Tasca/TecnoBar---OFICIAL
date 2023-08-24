@@ -1,6 +1,6 @@
 ﻿namespace TCC
 {
-    partial class formExlcuirProduto
+    partial class formAlterar
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnAjuste = new Button();
+            listBox1 = new ListBox();
             groupBox2 = new GroupBox();
             campoCod = new TextBox();
             campoCate = new ComboBox();
@@ -35,10 +37,29 @@
             label2 = new Label();
             label1 = new Label();
             campoNome = new TextBox();
-            listBox1 = new ListBox();
-            button1 = new Button();
             groupBox2.SuspendLayout();
             SuspendLayout();
+            // 
+            // btnAjuste
+            // 
+            btnAjuste.Location = new Point(12, 381);
+            btnAjuste.Name = "btnAjuste";
+            btnAjuste.Size = new Size(575, 44);
+            btnAjuste.TabIndex = 13;
+            btnAjuste.Text = "Alterar";
+            btnAjuste.UseVisualStyleBackColor = true;
+            btnAjuste.Click += btnAjuste_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 23;
+            listBox1.Items.AddRange(new object[] { "1 Coca Cola 500ml", "2 Pepsi 500ml", "3 Guaraná Antártica 500ml", "4 Esfirra de frango ", "5 Picole de chocolate", "6 Água com gás 350ml", "7 Coxinha de frango", "8 Empada de palmito", "9 Água sem gás" });
+            listBox1.Location = new Point(12, 115);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(575, 234);
+            listBox1.TabIndex = 12;
             // 
             // groupBox2
             // 
@@ -52,10 +73,10 @@
             groupBox2.FlatStyle = FlatStyle.Flat;
             groupBox2.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.ForeColor = SystemColors.ActiveCaptionText;
-            groupBox2.Location = new Point(33, 12);
+            groupBox2.Location = new Point(12, 18);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(575, 91);
-            groupBox2.TabIndex = 8;
+            groupBox2.TabIndex = 11;
             groupBox2.TabStop = false;
             groupBox2.Text = "Filtrar Produtos";
             // 
@@ -112,37 +133,16 @@
             campoNome.Size = new Size(123, 27);
             campoNome.TabIndex = 7;
             // 
-            // listBox1
-            // 
-            listBox1.Font = new Font("Calibri", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 23;
-            listBox1.Items.AddRange(new object[] { "1 Coca Cola 500ml", "2 Pepsi 500ml", "3 Guaraná Antártica 500ml", "4 Esfirra de frango ", "5 Picole de chocolate", "6 Água com gás 350ml", "7 Coxinha de frango", "8 Empada de palmito", "9 Água sem gás" });
-            listBox1.Location = new Point(33, 109);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(575, 234);
-            listBox1.TabIndex = 9;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(33, 375);
-            button1.Name = "button1";
-            button1.Size = new Size(575, 44);
-            button1.TabIndex = 10;
-            button1.Text = "Excluir";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // formExlcuirProduto
+            // formAlterar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(630, 454);
-            Controls.Add(button1);
+            ClientSize = new Size(608, 450);
+            Controls.Add(btnAjuste);
             Controls.Add(listBox1);
             Controls.Add(groupBox2);
-            Name = "formExlcuirProduto";
-            Text = "Exlcuir Produto";
+            Name = "formAlterar";
+            Text = "formAlterar";
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
@@ -150,6 +150,8 @@
 
         #endregion
 
+        private Button btnAjuste;
+        private ListBox listBox1;
         private GroupBox groupBox2;
         private TextBox campoCod;
         private ComboBox campoCate;
@@ -157,7 +159,5 @@
         private Label label2;
         private Label label1;
         private TextBox campoNome;
-        private ListBox listBox1;
-        private Button button1;
     }
 }

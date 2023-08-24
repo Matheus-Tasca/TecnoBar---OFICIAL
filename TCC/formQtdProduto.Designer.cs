@@ -30,8 +30,8 @@
         {
             button1 = new Button();
             label1 = new Label();
-            campoNum = new NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)campoNum).BeginInit();
+            campoQtd = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)campoQtd).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -54,26 +54,25 @@
             label1.TabIndex = 2;
             label1.Text = "Quantidade";
             // 
-            // campoNum
+            // campoQtd
             // 
-            campoNum.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            campoNum.Location = new Point(12, 57);
-            campoNum.Name = "campoNum";
-            campoNum.Size = new Size(149, 22);
-            campoNum.TabIndex = 3;
-            
+            campoQtd.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            campoQtd.Location = new Point(12, 57);
+            campoQtd.Name = "campoQtd";
+            campoQtd.Size = new Size(149, 22);
+            campoQtd.TabIndex = 3;
             // 
             // formQtdProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(305, 109);
-            Controls.Add(campoNum);
+            Controls.Add(campoQtd);
             Controls.Add(label1);
             Controls.Add(button1);
             Name = "formQtdProduto";
             Text = "Form4";
-            ((System.ComponentModel.ISupportInitialize)campoNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)campoQtd).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -81,6 +80,6 @@
         #endregion
         private Button button1;
         private Label label1;
-        private NumericUpDown campoNum;
+        private NumericUpDown campoQtd;
     }
 }

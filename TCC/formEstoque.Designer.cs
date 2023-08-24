@@ -119,6 +119,7 @@
             // 
             campoCate.BackColor = SystemColors.ButtonHighlight;
             campoCate.FormattingEnabled = true;
+            campoCate.Items.AddRange(new object[] { "", "Refrigerante", "Salgado", "Água" });
             campoCate.Location = new Point(302, 44);
             campoCate.Name = "campoCate";
             campoCate.Size = new Size(121, 27);
@@ -161,11 +162,13 @@
             // 
             // listBox1
             // 
+            listBox1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
+            listBox1.ItemHeight = 19;
+            listBox1.Items.AddRange(new object[] { "1 Coca Cola 500ml", "2 Pepsi 500ml", "3 Guaraná Antártica 500ml", "4 Esfirra de frango ", "5 Picole de chocolate", "6 Água com gás 350ml", "7 Coxinha de frango", "8 Empada de palmito", "9 Água sem gás" });
             listBox1.Location = new Point(35, 123);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(576, 244);
+            listBox1.Size = new Size(576, 232);
             listBox1.TabIndex = 24;
             // 
             // groupBox1

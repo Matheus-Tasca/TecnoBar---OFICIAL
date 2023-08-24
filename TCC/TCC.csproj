@@ -27,4 +27,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.1.0" />
+  </ItemGroup>
+
 </Project>

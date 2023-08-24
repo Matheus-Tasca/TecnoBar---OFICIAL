@@ -40,5 +40,10 @@ namespace TCC
             formAjustar formAjustar = new formAjustar();
             formAjustar.Show();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string qryProd = "SELECT * from produto";
+        }
     }
 }

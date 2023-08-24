@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace TCC
 {
-    public partial class formQtdProduto : Form
+    public partial class formAlterar : Form
     {
-        public formQtdProduto()
+        public formAlterar()
         {
             InitializeComponent();
-            //this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e, formCaixa fc)
+        private void btnAjuste_Click(object sender, EventArgs e)
         {
-            fc.quant = campoQtd.Value;
+            this.Close();
         }
     }
 }
