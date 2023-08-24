@@ -17,9 +17,11 @@ let arqType = ''
 let cont = 0 
 
 
-const createElement = (tag, innerText = '', innerHTML = '') =>{
+const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
   const element = document.createElement(tag)
 
+  if(classe)
+    element.classList.add(classe)
   if(innerText)
       element.innerText = innerText
   if(innerHTML)
@@ -30,21 +32,22 @@ const createElement = (tag, innerText = '', innerHTML = '') =>{
 
 const loadItem = async()=>{
   const res = await fetch ('http://localhost:4001/itens')
-  const item = res.json()
+  const item = await res.json()
   
-  createOptions
+  createOptions()
   console.log(item)
 }
 
 const createOptions = ()=>{
   const item1 = createElement(
     'li',
+    'item',
     '',
     `
       <span class="checkbox">
         <i class="fa-solid fa-check check-icon"></i>
       </span>
-      <span class="item-text">Opçsafasasão 1</span>
+      <span class="item-text">Opção 1</span>
     
   `)
 
