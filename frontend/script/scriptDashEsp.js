@@ -31,6 +31,7 @@ const createElement = (tag, innerText = '', innerHTML = '') =>{
 const loadItem = async()=>{
   const res = await fetch ('http://localhost:4001/itens')
   const item = res.json()
+  
   createOptions
   console.log(item)
 }
