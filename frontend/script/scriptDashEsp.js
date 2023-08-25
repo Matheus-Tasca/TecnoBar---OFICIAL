@@ -30,11 +30,22 @@ const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
   return element
 }
 
-const loadItem = async(valor )=>{
+const loadItem = async (valor)=>{
   const cat = valor
-  const res = await fetch ('http://localhost:4001/itens')
-  const item = await res.json()
-  
+
+  await fetch ('http://localhost:4001/itens',{
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(cat)
+  }).then((res)=>{
+    if(!res.ok){
+      console.log('ERRO')
+    }
+  }).then((dados)=>{
+    retorno = dados
+  })
+
+  let item = dados[0]
   createOptions()
   console.log(item)
   configura()
