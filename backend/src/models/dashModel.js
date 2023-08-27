@@ -127,6 +127,7 @@ const loadData = async (days) =>{
 }
 const loadItem = async (tipo)=>{
     const {cat} = tipo
+    console.log(cat)
     const produtos = await (await connection).query(`
     select 
         produto.nomeProd 

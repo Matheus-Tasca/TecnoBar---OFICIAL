@@ -31,8 +31,7 @@ const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
 }
 
 const loadItem = async (valor)=>{
-  const cat = valor
-
+  const cat = {"tipo": valor}
   await fetch ('http://localhost:4001/itens',{
     method: 'post',
     headers: {'Content-Type': 'application/json'},
@@ -43,9 +42,10 @@ const loadItem = async (valor)=>{
     }
   }).then((dados)=>{
     retorno = dados
+    console.log(dados)
   })
 
-  let item = dados[0]
+  let item = retorno
   createOptions()
   console.log(item)
   configura()
