@@ -48,9 +48,9 @@ const loadItem = async (valor)=>{
   let item = retorno
   for(let i in item){
     createOptions(item[i].nomeProd)
+    configura()
   }
   console.log(item)
-  configura()
 }
 
 const createOptions = (nomeProd)=>{
