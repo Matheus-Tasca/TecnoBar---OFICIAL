@@ -31,27 +31,29 @@ const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
 }
 
 const loadItem = async (valor)=>{
-  const cat = {"tipo": valor}
+  const categoria = {tipo: valor}
   await fetch ('http://localhost:4001/itens',{
     method: 'post',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(cat)
+    body: JSON.stringify(categoria)
   }).then((res)=>{
     if(!res.ok){
       console.log('ERRO')
     }
+    return res.json()
   }).then((dados)=>{
     retorno = dados
-    console.log(dados)
   })
 
   let item = retorno
-  createOptions()
+  for(let i in item){
+    createOptions(item[i].nomeProd)
+  }
   console.log(item)
   configura()
 }
 
-const createOptions = ()=>{
+const createOptions = (nomeProd)=>{
   const item1 = createElement(
     'li',
     'item',
@@ -59,7 +61,7 @@ const createOptions = ()=>{
     `<span class="checkbox">
        <i class="fa-solid fa-check check-icon"></i> 
      </span><span class="item-text">
-        Opçãossss 1
+       ${nomeProd}
      </span>`)
 
   pai.appendChild(item1)

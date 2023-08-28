@@ -125,9 +125,8 @@ const loadData = async (days) =>{
     const datas = [lucro, vendasReal[0].VendasTotais ,faturamento]
     return datas
 }
-const loadItem = async (tipo)=>{
-    const {cat} = tipo
-    console.log(cat)
+const loadItem = async (categoria)=>{
+    const {tipo} = categoria
     const produtos = await (await connection).query(`
     select 
         produto.nomeProd 
@@ -137,7 +136,7 @@ const loadItem = async (tipo)=>{
         produto.codCategoria = ?;
 
     `,
-    [cat]
+    [tipo]
     )
     return produtos[0]
 }
