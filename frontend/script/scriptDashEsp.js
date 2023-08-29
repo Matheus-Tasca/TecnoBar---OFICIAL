@@ -45,7 +45,13 @@ const loadItem = async (valor)=>{
     retorno = dados
   })
 
+
   let item = retorno
+
+  for(let i in item){
+    pai.removeChild()
+  }
+
   for(let i in item){
     createOptions(item[i].nomeProd)
     configura()
@@ -67,6 +73,7 @@ const createOptions = (nomeProd)=>{
   pai.appendChild(item1)
   configura()
 }
+
 
 const configura = () =>{
   const selectBtns = document.querySelectorAll(".select-btn");
