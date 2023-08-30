@@ -4,6 +4,7 @@ const containerChart = document.querySelector('#containerChart')
 const dataType = Array.from(document.getElementsByClassName('dado')) //array tipos de graficos(linha, barra...)
 const chartsType = Array.from(document.getElementsByClassName('tipo'))//array tipo dado (lucro, vendas...)
 const consumableType = Array.from(document.getElementsByClassName('consumable'))//array tipo de consumivel(bebida,alimentos....)
+const itemType = Array.from(document.getElementsByClassName('consumivel'))
 const dateInitial = document.querySelector('#dataInicio')
 const dateFinal = document.querySelector('#dataFinal')
 const categorias = document.querySelector('#categorias')
@@ -17,11 +18,13 @@ let arqType = ''
 let cont = 0 
 
 
-const createElement = (tag, classe ='',innerText = '', innerHTML = '',value = '') =>{
+const createElement = (tag, classe ='',innerText = '', innerHTML = '',value = '', classe2 = '') =>{
   const element = document.createElement(tag)
 
-  if(classe)
+  if(classe) //class para estilização
     element.classList.add(classe)
+  if(classe2) //class para array de produtos
+    element.classList.add(classe2)
   if(innerText)
       element.innerText = innerText
   if(innerHTML)
@@ -46,14 +49,21 @@ const loadItem = async (valor)=>{ //retorna todos os itens da categoria com base
     retorno = dados
   })
 
-  limpaSelect(pai)
+  limpaSelect(pai) //funcao para caso ele selecione uma opçaõ de categoria e depois mude, os itens ja inseridos sejam limpados
   
   let item = retorno
   console.log(item)
+
   for(let i in item){ //chama a função de criar item para cada elemento retornado do array
     createOptions(item[i].nomeProd, item[i].codProd)
     configura()
   }
+
+  itemType.forEach(item =>{
+    item.addEventListener("click",function () {
+      selectItemType()
+    })
+  })
 }
 
 const createOptions = (nomeProd,valor)=>{ //cria item e adiciona a lista
@@ -61,16 +71,18 @@ const createOptions = (nomeProd,valor)=>{ //cria item e adiciona a lista
     'li',
     'item',
     '',
-    `<span class="checkbox">
-       <i class="fa-solid fa-check check-icon"></i> 
-     </span><span class="item-text">
-       ${nomeProd}
-     </span>`,
-     valor
-     
+    `
+      <span class="checkbox">
+        <i class="fa-solid fa-check check-icon"></i> 
+      </span><span class="item-text">
+        ${nomeProd}
+      </span>
+     `,
+     valor,
+     'consumivel'
      )
-
   pai.appendChild(item1)
+  itemType.push(item1)
   configura()
 }
 
@@ -179,8 +191,16 @@ const configura = () =>{
         } else {
           consumable.classList.remove("selected")
         }
-        console.log()
       })
+  }
+
+  const selectItemType = () => {
+    itemType.forEach(item => {
+      let classe = item.classList
+      if(classe.contains("checked")){
+        console.log(item.value)
+      }
+    })
   }
 
   chartsType.forEach(chart => { //chamada da funcao ao clicar num elemnto do array
@@ -200,6 +220,9 @@ const configura = () =>{
         selectConsumableType(this)
       })
   })
+
+
+
 
 function getSelectedOptions() {
   if (chart) {// regera o grafico
