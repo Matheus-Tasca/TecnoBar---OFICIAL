@@ -129,7 +129,8 @@ const loadItem = async (categoria)=>{
     const {tipo} = categoria
     const produtos = await (await connection).query(`
     select 
-        produto.nomeProd 
+        produto.nomeProd, 
+        produto.codProd 
     from 
         produto 
     where 

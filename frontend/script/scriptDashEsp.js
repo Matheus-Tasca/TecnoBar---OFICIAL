@@ -17,7 +17,7 @@ let arqType = ''
 let cont = 0 
 
 
-const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
+const createElement = (tag, classe ='',innerText = '', innerHTML = '',value = '') =>{
   const element = document.createElement(tag)
 
   if(classe)
@@ -26,11 +26,12 @@ const createElement = (tag, classe ='',innerText = '', innerHTML = '') =>{
       element.innerText = innerText
   if(innerHTML)
       element.innerHTML = innerHTML
-      
+  if(value)
+      element.value = value    
   return element
 }
 
-const loadItem = async (valor)=>{
+const loadItem = async (valor)=>{ //retorna todos os itens da categoria com base no valor passado em 'valor'
   const categoria = {tipo: valor}
   await fetch ('http://localhost:4001/itens',{
     method: 'post',
@@ -45,21 +46,17 @@ const loadItem = async (valor)=>{
     retorno = dados
   })
 
-
+  limpaSelect(pai)
+  
   let item = retorno
-
-  for(let i in item){
-    pai.removeChild()
-  }
-
-  for(let i in item){
-    createOptions(item[i].nomeProd)
+  console.log(item)
+  for(let i in item){ //chama a função de criar item para cada elemento retornado do array
+    createOptions(item[i].nomeProd, item[i].codProd)
     configura()
   }
-  console.log(item)
 }
 
-const createOptions = (nomeProd)=>{
+const createOptions = (nomeProd,valor)=>{ //cria item e adiciona a lista
   const item1 = createElement(
     'li',
     'item',
@@ -68,12 +65,20 @@ const createOptions = (nomeProd)=>{
        <i class="fa-solid fa-check check-icon"></i> 
      </span><span class="item-text">
        ${nomeProd}
-     </span>`)
+     </span>`,
+     valor
+     
+     )
 
   pai.appendChild(item1)
   configura()
 }
 
+const limpaSelect = (elemento) =>{ //funcao para limpar valores ja existentes em item 
+  while(elemento.firstChild){
+    elemento.removeChild(elemento.firstChild)
+  }
+}
 
 const configura = () =>{
   const selectBtns = document.querySelectorAll(".select-btn");
