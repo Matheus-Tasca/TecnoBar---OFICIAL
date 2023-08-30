@@ -22,6 +22,7 @@ nav.menu-lateral {
     background-color: grey;
     padding: 40px 0 40px;
     box-shadow: 3px 0 0 black;
+    z-index: 3;
 
     position: fixed;
     top: 0;
