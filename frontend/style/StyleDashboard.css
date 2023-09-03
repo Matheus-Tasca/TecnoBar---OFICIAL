@@ -85,7 +85,7 @@ ul li.item-menu a .icon > i {
   align-items: center;
   justify-content: center;
   display: flex;
-  margin-top: 7.5vh;
+  margin-top: 0.5vh;
   margin-bottom: 5.5vh;
 }
 
@@ -123,6 +123,7 @@ ul li.item-menu a .icon > i {
     text-align: center;
 }
 .containerFiltroDados{
+  margin-top: 30px;
   align-items: center;
   justify-content: center;
   display: flex;
