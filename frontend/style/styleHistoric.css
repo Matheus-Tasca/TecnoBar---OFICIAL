@@ -99,15 +99,7 @@ ul li.item-menu a .icon > i {
     align-items: center;
 }
 table{
-    border-collapse: collapse;
+    margin-top: 22px;
     width: 100%;
  }
- td,th{
-    padding: 10px 15px;
-    border: 1px solid red;
-    text-align: center;
- }
- td{
-    color: #333;
-    font-weight: 600;
- }
+ 
