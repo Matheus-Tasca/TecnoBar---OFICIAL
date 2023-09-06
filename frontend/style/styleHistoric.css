@@ -95,11 +95,23 @@ ul li.item-menu a .icon > i {
 .center{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 table{
     margin-top: 22px;
-    width: 100%;
+    width: 20px;
+    text-align: center;
+
  }
- 
+
+ .tabelaCentralizar{
+    width: 400px;
+    
+ }
+ .tabela{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+ }
