@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnConsultar = new Button();
             btnRetirar = new Button();
             btnNovo = new Button();
             btnAjustar = new Button();
@@ -39,21 +38,11 @@
             label2 = new Label();
             label1 = new Label();
             campoNome = new TextBox();
-            listBox1 = new ListBox();
+            listProd = new ListBox();
             groupBox1 = new GroupBox();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnConsultar
-            // 
-            btnConsultar.Location = new Point(364, 17);
-            btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(90, 32);
-            btnConsultar.TabIndex = 23;
-            btnConsultar.Text = "Consultar";
-            btnConsultar.UseVisualStyleBackColor = true;
-            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnRetirar
             // 
@@ -160,26 +149,25 @@
             campoNome.Size = new Size(123, 27);
             campoNome.TabIndex = 7;
             // 
-            // listBox1
+            // listProd
             // 
-            listBox1.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 19;
-            listBox1.Items.AddRange(new object[] { "1 Coca Cola 500ml", "2 Pepsi 500ml", "3 Guaraná Antártica 500ml", "4 Esfirra de frango ", "5 Picole de chocolate", "6 Água com gás 350ml", "7 Coxinha de frango", "8 Empada de palmito", "9 Água sem gás" });
-            listBox1.Location = new Point(35, 123);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(576, 232);
-            listBox1.TabIndex = 24;
+            listProd.Font = new Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            listProd.FormattingEnabled = true;
+            listProd.ItemHeight = 19;
+            listProd.Location = new Point(35, 123);
+            listProd.Name = "listProd";
+            listProd.Size = new Size(576, 232);
+            listProd.TabIndex = 24;
+            listProd.SelectedIndexChanged += listBox1_SelectedIndexChanged_1;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(btnNovo);
             groupBox1.Controls.Add(btnRetirar);
-            groupBox1.Controls.Add(btnConsultar);
             groupBox1.Controls.Add(btnAjustar);
             groupBox1.Location = new Point(36, 383);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(463, 55);
+            groupBox1.Size = new Size(347, 55);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             groupBox1.Text = "Controle de Estoque";
@@ -190,7 +178,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(636, 450);
             Controls.Add(groupBox1);
-            Controls.Add(listBox1);
+            Controls.Add(listProd);
             Controls.Add(groupBox2);
             Name = "formEstoque";
             Text = "Estoque";
@@ -201,7 +189,6 @@
         }
 
         #endregion
-        private Button btnConsultar;
         private Button btnRetirar;
         private Button btnNovo;
         private Button btnAjustar;
@@ -212,7 +199,7 @@
         private Label label2;
         private Label label1;
         private TextBox campoNome;
-        private ListBox listBox1;
+        private ListBox listProd;
         private GroupBox groupBox1;
     }
 }

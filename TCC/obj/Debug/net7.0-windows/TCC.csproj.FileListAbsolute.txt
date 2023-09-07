@@ -143,7 +143,6 @@ C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.pdb
 C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.genruntimeconfig.cache
 C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\ref\TCC.dll
 C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formExlcuirProduto.resources
-C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formLogin.resources
 C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\Google.Protobuf.dll
 C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
 C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
@@ -159,3 +158,4 @@ C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\runtimes\win
 C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.csproj.CopyComplete
 C:\Users\joaop\source\repos\Desktop C#\TCC\obj\Debug\net7.0-windows\TCC.formAlterar.resources
+C:\Users\joaop\source\repos\Desktop C#\TCC\bin\Debug\net7.0-windows\TCC.dll.config

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jv296\\OneDrive\\Área de Trabalho\\TecnoBar---OFICIAL\\TCC\\TCC.csproj": {}
+    "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jv296\\OneDrive\\Área de Trabalho\\TecnoBar---OFICIAL\\TCC\\TCC.csproj": {
+    "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jv296\\OneDrive\\Área de Trabalho\\TecnoBar---OFICIAL\\TCC\\TCC.csproj",
+        "projectUniqueName": "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj",
         "projectName": "TCC",
-        "projectPath": "C:\\Users\\jv296\\OneDrive\\Área de Trabalho\\TecnoBar---OFICIAL\\TCC\\TCC.csproj",
-        "packagesPath": "C:\\Users\\jv296\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jv296\\OneDrive\\Área de Trabalho\\TecnoBar---OFICIAL\\TCC\\obj\\",
+        "projectPath": "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\TCC.csproj",
+        "packagesPath": "C:\\Users\\joaop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joaop\\Desktop\\TecnoBar---OFICIAL\\TCC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jv296\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\joaop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

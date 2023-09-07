@@ -4,9 +4,6 @@
     <Compile Update="formAlterar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="formExcluirProduto.cs">
       <SubType>Form</SubType>
     </Compile>

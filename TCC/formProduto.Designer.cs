@@ -41,8 +41,9 @@
             button1 = new Button();
             pb_Imagem = new PictureBox();
             button2 = new Button();
-            button3 = new Button();
+            btnAlterar = new Button();
             panel1 = new Panel();
+            btnCancelar = new Button();
             btnExcluir = new Button();
             openFileDialog1 = new OpenFileDialog();
             campoCusto = new TextBox();
@@ -61,7 +62,7 @@
             // 
             lblNome.AutoSize = true;
             lblNome.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNome.Location = new Point(21, 64);
+            lblNome.Location = new Point(20, 49);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(39, 14);
             lblNome.TabIndex = 1;
@@ -70,7 +71,7 @@
             // campoNome
             // 
             campoNome.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            campoNome.Location = new Point(21, 81);
+            campoNome.Location = new Point(20, 66);
             campoNome.MaximumSize = new Size(340, 38);
             campoNome.Multiline = true;
             campoNome.Name = "campoNome";
@@ -81,7 +82,7 @@
             // 
             lblCateg.AutoSize = true;
             lblCateg.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCateg.Location = new Point(21, 188);
+            lblCateg.Location = new Point(20, 173);
             lblCateg.Name = "lblCateg";
             lblCateg.Size = new Size(59, 14);
             lblCateg.TabIndex = 3;
@@ -95,7 +96,7 @@
             campoCod.Multiline = true;
             campoCod.Name = "campoCod";
             campoCod.ReadOnly = true;
-            campoCod.Size = new Size(72, 22);
+            campoCod.Size = new Size(59, 22);
             campoCod.TabIndex = 8;
             // 
             // label1
@@ -114,7 +115,7 @@
             campoCate.FormattingEnabled = true;
             campoCate.ImeMode = ImeMode.On;
             campoCate.Items.AddRange(new object[] { "Refrigerante", "Salgado", "Água" });
-            campoCate.Location = new Point(21, 204);
+            campoCate.Location = new Point(20, 189);
             campoCate.MaximumSize = new Size(258, 0);
             campoCate.Name = "campoCate";
             campoCate.Size = new Size(226, 22);
@@ -124,9 +125,9 @@
             // 
             btnNovo.BackColor = SystemColors.ActiveCaption;
             btnNovo.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnNovo.Location = new Point(3, 0);
+            btnNovo.Location = new Point(4, 7);
             btnNovo.Name = "btnNovo";
-            btnNovo.Size = new Size(125, 37);
+            btnNovo.Size = new Size(96, 37);
             btnNovo.TabIndex = 12;
             btnNovo.Text = "Novo";
             btnNovo.UseVisualStyleBackColor = false;
@@ -137,9 +138,9 @@
             btnSalvar.BackColor = Color.Lime;
             btnSalvar.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalvar.ForeColor = Color.Black;
-            btnSalvar.Location = new Point(130, 0);
+            btnSalvar.Location = new Point(345, 7);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(125, 37);
+            btnSalvar.Size = new Size(96, 37);
             btnSalvar.TabIndex = 13;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
@@ -148,7 +149,7 @@
             // campoPreco
             // 
             campoPreco.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            campoPreco.Location = new Point(21, 147);
+            campoPreco.Location = new Point(20, 132);
             campoPreco.MaximumSize = new Size(300, 40);
             campoPreco.Name = "campoPreco";
             campoPreco.Size = new Size(155, 22);
@@ -159,7 +160,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(21, 130);
+            label2.Location = new Point(20, 115);
             label2.Name = "label2";
             label2.Size = new Size(36, 14);
             label2.TabIndex = 16;
@@ -168,7 +169,7 @@
             // button1
             // 
             button1.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(381, 208);
+            button1.Location = new Point(381, 250);
             button1.Name = "button1";
             button1.Size = new Size(201, 30);
             button1.TabIndex = 17;
@@ -179,9 +180,9 @@
             // pb_Imagem
             // 
             pb_Imagem.BorderStyle = BorderStyle.Fixed3D;
-            pb_Imagem.Location = new Point(381, 11);
+            pb_Imagem.Location = new Point(381, 21);
             pb_Imagem.Name = "pb_Imagem";
-            pb_Imagem.Size = new Size(201, 191);
+            pb_Imagem.Size = new Size(201, 218);
             pb_Imagem.SizeMode = PictureBoxSizeMode.StretchImage;
             pb_Imagem.TabIndex = 18;
             pb_Imagem.TabStop = false;
@@ -189,7 +190,7 @@
             // button2
             // 
             button2.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(271, 201);
+            button2.Location = new Point(252, 186);
             button2.Name = "button2";
             button2.Size = new Size(70, 25);
             button2.TabIndex = 19;
@@ -197,38 +198,49 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
             // 
-            // button3
+            // btnAlterar
             // 
-            button3.BackColor = Color.FromArgb(255, 255, 128);
-            button3.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(260, 0);
-            button3.Name = "button3";
-            button3.Size = new Size(125, 37);
-            button3.TabIndex = 20;
-            button3.Text = "Alterar";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            btnAlterar.BackColor = Color.FromArgb(255, 255, 128);
+            btnAlterar.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAlterar.Location = new Point(230, 7);
+            btnAlterar.Name = "btnAlterar";
+            btnAlterar.Size = new Size(96, 37);
+            btnAlterar.TabIndex = 20;
+            btnAlterar.Text = "Alterar";
+            btnAlterar.UseVisualStyleBackColor = false;
+            btnAlterar.Click += button3_Click;
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(btnCancelar);
             panel1.Controls.Add(btnExcluir);
             panel1.Controls.Add(btnSalvar);
             panel1.Controls.Add(btnNovo);
-            panel1.Controls.Add(button3);
-            panel1.Location = new Point(21, 342);
+            panel1.Controls.Add(btnAlterar);
+            panel1.Location = new Point(20, 295);
             panel1.Name = "panel1";
-            panel1.Size = new Size(519, 43);
+            panel1.Size = new Size(562, 51);
             panel1.TabIndex = 22;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(459, 7);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(96, 37);
+            btnCancelar.TabIndex = 29;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnExcluir
             // 
             btnExcluir.BackColor = Color.Red;
             btnExcluir.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExcluir.Location = new Point(386, 0);
+            btnExcluir.Location = new Point(113, 7);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(125, 37);
+            btnExcluir.Size = new Size(96, 37);
             btnExcluir.TabIndex = 23;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
@@ -241,7 +253,7 @@
             // 
             // campoCusto
             // 
-            campoCusto.Location = new Point(195, 147);
+            campoCusto.Location = new Point(194, 132);
             campoCusto.Name = "campoCusto";
             campoCusto.Size = new Size(146, 22);
             campoCusto.TabIndex = 23;
@@ -251,7 +263,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(195, 130);
+            label3.Location = new Point(194, 115);
             label3.Name = "label3";
             label3.Size = new Size(37, 14);
             label3.TabIndex = 24;
@@ -281,6 +293,7 @@
             campoQtdMin.Name = "campoQtdMin";
             campoQtdMin.Size = new Size(139, 22);
             campoQtdMin.TabIndex = 24;
+            campoQtdMin.KeyPress += campoQtdMin_KeyPress;
             // 
             // label5
             // 
@@ -298,7 +311,7 @@
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(campoQtdMin);
-            groupBox1.Location = new Point(20, 257);
+            groupBox1.Location = new Point(20, 217);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(350, 63);
             groupBox1.TabIndex = 28;
@@ -309,7 +322,7 @@
             // 
             AutoScaleDimensions = new SizeF(6F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(609, 397);
+            ClientSize = new Size(609, 361);
             Controls.Add(groupBox1);
             Controls.Add(label3);
             Controls.Add(campoCusto);
@@ -350,7 +363,7 @@
         private Button button1;
         private PictureBox pb_Imagem;
         private Button button2;
-        private Button button3;
+        private Button btnAlterar;
         private Panel panel1;
         private Button btnExcluir;
         private OpenFileDialog openFileDialog1;
@@ -361,5 +374,6 @@
         private TextBox campoQtdMin;
         private Label label5;
         private GroupBox groupBox1;
+        private Button btnCancelar;
     }
 }

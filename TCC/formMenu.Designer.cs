@@ -46,7 +46,7 @@
             btnCaixa.Name = "btnCaixa";
             btnCaixa.Size = new Size(83, 107);
             btnCaixa.TabIndex = 0;
-            btnCaixa.Text = "Caixa";
+            btnCaixa.Text = "PDV";
             btnCaixa.TextAlign = ContentAlignment.BottomCenter;
             btnCaixa.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCaixa.UseVisualStyleBackColor = false;
