@@ -106,7 +106,7 @@ table{
  }
 thead{
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
  .tabelaCentralizar{
     width: 400px;
@@ -124,4 +124,15 @@ thead{
     justify-content: center;
     text-align: center;
     margin-bottom: 10px;
+ }
+ .linha{
+    font-size: 1rem;
+    font-weight: bold;
+    font-style: italic;
+ }
+ .itens-vendidos{
+    display: none;
+ }
+ .cabecalho{
+    display: none;
  }

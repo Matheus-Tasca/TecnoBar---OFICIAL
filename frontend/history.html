@@ -86,9 +86,9 @@
     <div class="tabelaCentralizar center">
     <table  class=" table table-bordered table-hover table-sm" > 
         <thead class="thead-light">
-            <tr style="border: 1px solid rgb(119, 105, 105);">
+            <tr style="border: 1px solid rgb(119, 105, 105);" class="table-success">
                <th scope="col">
-                    Nº de <br> venda
+                    Nº da <br> venda
                </th>
                <th scope="col">
                 <div class="meio">
@@ -102,17 +102,30 @@
                 </th>
             </tr>
         </thead>
-
+        
+        
         <tbody>
             <tr class="linha">
                <td>1</td> 
                <td>06/09/2023</td>
                <td>R$200,00</td>
             </tr>
+                <tr class="cabecalho table-secondary">
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                </tr>
+                <tr class="itens-vendidos table-active">
+                    <td>1 - Brahma</td>
+                    <td>2</td>
+                    <td>R$8,00</td>
+                </tr>
         </tbody>
     </table>
     </div>
     </div>
     </main>
 </body>
+
+<script src="script/scriptHistory.js"></script>
 </html>
