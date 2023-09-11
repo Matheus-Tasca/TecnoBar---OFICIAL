@@ -125,6 +125,7 @@ const loadData = async (days) =>{
     const datas = [lucro, vendasReal[0].VendasTotais ,faturamento]
     return datas
 }
+
 const loadItem = async (categoria)=>{
     const {tipo} = categoria
     const produtos = await (await connection).query(`
@@ -141,7 +142,17 @@ const loadItem = async (categoria)=>{
     )
     return produtos[0]
 }
+/*
+const salesHistory = async (days)=>{
+    const {dia} = days
+    const datamin = new Date()
+    datamin.setDate(datamin.getDate() - [dia])
+    const dataSale = await (await connection).query(`
+    SELECT 
 
+    `)
+}
+*/
 module.exports = {
     getData,
     loadData,
