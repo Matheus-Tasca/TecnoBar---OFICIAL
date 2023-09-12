@@ -193,47 +193,45 @@ const formataDatas = (datas) =>{
         "fim" : fimFormatado,
         "dataAtual" : dataFormatada,
         "mesComeco" : mesFormatadoIncio,
-        "mesFim" : mesFormatadoFim
+        "mesFim" : mesFormatadoFim,
+        "diaIncio" : diaFormatadoIncio,
+        "diaFim" : diaFormatadoFim
     }
     return datasJSON
+
 }
 const dashEsp = (datas) =>{
     var nomeMes
+    var meses = []
     const retorno = formataDatas(datas)
     const {dataInicio} = retorno
     const {dataFim} = retorno
     const {dataAtual} = retorno
     const {mesComeco} = retorno
     const {mesFim} = retorno
+    const {diaIncio} = retorno
+    const {diaFim} = retorno
 
-    if(mesComeco == '01')
-        var nomeMes = 'Janeiro'
-    else if(mesComeco == '02')
-        var nomeMes = 'Fevereiro'
-    else if(mesComeco == '03')
-        var nomeMes = 'Março'
-    else if(mesComeco == '04')
-        var nomeMes = 'Abril'
-    else if(mesComeco == '05')
-        var nomeMes = 'Maio'
-    else if(mesComeco == '06')
-        var nomeMes = 'Junho'
-    else if(mesComeco == '07')
-        var nomeMes = 'Julho'
-    else if(mesComeco == '08')
-        var nomeMes = 'Agosto'
-    else if(mesComeco == '09')
-        var nomeMes = 'Setembro'    
-    else if(mesComeco == '10')
-        var nomeMes = 'Outubro'
-    else if(mesComeco == '11')
-        var nomeMes = 'Novembro'
-    else if(mesComeco == '12')
-        var nomeMes = 'Dezembro'
-
+    if(mesFim - mesComeco >=3){
+        meses = []
+        console.log('-----')
+        for(var i = mesComeco; i<=mesFim; i++){
+            console.log(i)
+            var convert = parseInt(i)
+            meses.push(convert)
+        }
+        console.log(meses)
+    }
+    else if(mesFim - mesComeco <3 && mesFim - mesComeco >1){
+        //ir dimnuindo de duas em duas semanas
         
-    console.log(nomeMes)
+    }
+    else if(mesFim - mesComeco <=1){
+        //verificar data (dia)
+        //ir diminuindo de semana por semana 
+    }
     /*
+
     RETORNAR 
         -VALOR DO MES (PARA COLOCAR NO RODAPE)
         -SUBDIVIDIR DATAS PARA AS LABELS
