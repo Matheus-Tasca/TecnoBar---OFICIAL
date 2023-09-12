@@ -187,16 +187,58 @@ const formataDatas = (datas) =>{
 
     const dataFormatada = `${ano}-${mes}-${dia}`
 
+    
     const datasJSON = {
        "inicio" : inicioFormatado,
         "fim" : fimFormatado,
-        "dataAtual" : dataFormatada
+        "dataAtual" : dataFormatada,
+        "mesComeco" : mesFormatadoIncio,
+        "mesFim" : mesFormatadoFim
     }
     return datasJSON
 }
 const dashEsp = (datas) =>{
+    var nomeMes
     const retorno = formataDatas(datas)
-    console.log(retorno)
+    const {dataInicio} = retorno
+    const {dataFim} = retorno
+    const {dataAtual} = retorno
+    const {mesComeco} = retorno
+    const {mesFim} = retorno
+
+    if(mesComeco == '01')
+        var nomeMes = 'Janeiro'
+    else if(mesComeco == '02')
+        var nomeMes = 'Fevereiro'
+    else if(mesComeco == '03')
+        var nomeMes = 'Março'
+    else if(mesComeco == '04')
+        var nomeMes = 'Abril'
+    else if(mesComeco == '05')
+        var nomeMes = 'Maio'
+    else if(mesComeco == '06')
+        var nomeMes = 'Junho'
+    else if(mesComeco == '07')
+        var nomeMes = 'Julho'
+    else if(mesComeco == '08')
+        var nomeMes = 'Agosto'
+    else if(mesComeco == '09')
+        var nomeMes = 'Setembro'    
+    else if(mesComeco == '10')
+        var nomeMes = 'Outubro'
+    else if(mesComeco == '11')
+        var nomeMes = 'Novembro'
+    else if(mesComeco == '12')
+        var nomeMes = 'Dezembro'
+
+        
+    console.log(nomeMes)
+    /*
+    RETORNAR 
+        -VALOR DO MES (PARA COLOCAR NO RODAPE)
+        -SUBDIVIDIR DATAS PARA AS LABELS
+        -LABELS
+    */
 }
 module.exports = {
     getData,
