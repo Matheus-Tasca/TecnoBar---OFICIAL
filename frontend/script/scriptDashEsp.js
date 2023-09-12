@@ -245,6 +245,9 @@ function getSelectedOptions() {
   else if(dataFinal === ""){
     alert("Insira uma data final!")
     document.querySelector('#dataFinal').focus()
+  }
+  else if(dataFinal < dataIncio){
+    alert("A data final não pode ser menor que a data inicial.")
   }/*
   else if (tipoGraph == null || dadoSelected == null || cat == null)
     alert("Preencha todos os campos!") 

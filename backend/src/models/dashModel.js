@@ -142,8 +142,8 @@ const loadItem = async (categoria)=>{
     )
     return produtos[0]
 }
-/*
-const salesHistory = async (days)=>{
+/*AGUARDANDO RESTRUTURAÇÃO DO DB
+const salesHistory = async (days)=>{ 
     const {dia} = days
     const datamin = new Date()
     datamin.setDate(datamin.getDate() - [dia])
@@ -153,8 +153,54 @@ const salesHistory = async (days)=>{
     `)
 }
 */
+const formataDatas = (datas) =>{
+    const {inicio} = datas
+    const {fim} = datas
+
+    const inicioArray = inicio.split('-')
+    const fimArray = fim.split('-')
+
+    const anoInicio = parseInt(inicioArray[0])
+    const mesInicio = parseInt(inicioArray[1]) - 1
+    const diaIncio = parseInt(inicioArray[2])
+    const anoFim = parseInt(fimArray[0])
+    const mesFim = parseInt(fimArray[1]) - 1
+    const diasFim = parseInt(fimArray[2])
+
+    const objectDataIncio = new Date(anoInicio, mesInicio, diaIncio)
+    const objectDataFim = new Date(anoFim,mesFim,diasFim)
+
+    const anoFormatadoIncio = objectDataIncio.getFullYear()
+    const mesFormatadoIncio = (objectDataIncio.getMonth()+1).toString().padStart(2,'0')
+    const diaFormatadoIncio = objectDataIncio.getDate().toString().padStart(2,'0')
+    const anoFormatadoFim = objectDataFim.getFullYear()
+    const mesFormatadoFim = (objectDataFim.getMonth()+1).toString().padStart(2,'0')
+    const diaFormatadoFim = objectDataFim.getDate().toString().padStart(2,'0')
+
+    const inicioFormatado = `${anoFormatadoIncio}-${mesFormatadoIncio}-${diaFormatadoIncio}`
+    const fimFormatado = `${anoFormatadoFim}-${mesFormatadoFim}-${diaFormatadoFim}`
+
+    const data = new Date()
+    const ano = data.getFullYear()
+    const mes = (data.getMonth()+1).toString().padStart(2,'0')
+    const dia = data.getDate().toString().padStart(2,'0')
+
+    const dataFormatada = `${ano}-${mes}-${dia}`
+
+    const datasJSON = {
+       "inicio" : inicioFormatado,
+        "fim" : fimFormatado,
+        "dataAtual" : dataFormatada
+    }
+    return datasJSON
+}
+const dashEsp = (datas) =>{
+    const retorno = formataDatas(datas)
+    console.log(retorno)
+}
 module.exports = {
     getData,
     loadData,
-    loadItem
+    loadItem,
+    dashEsp
 }
