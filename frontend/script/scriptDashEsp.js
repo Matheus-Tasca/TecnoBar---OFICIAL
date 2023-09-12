@@ -254,7 +254,7 @@ function getSelectedOptions() {
     */
   else{
   const [ tipoGraph,dadoSelected, cat] = valoresSelecionados
-  
+  console.log(valoresSelecionados)
   const options = {
     responsive: true,
     scales: {

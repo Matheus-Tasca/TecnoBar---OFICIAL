@@ -1,4 +1,5 @@
 const connection = require('./connection')
+const { subWeeks, subMonths ,format } = require('date-fns')
 
 const getData = async (days) =>{
     const {dia} = days
@@ -203,6 +204,7 @@ const formataDatas = (datas) =>{
 const dashEsp = (datas) =>{
     var nomeMes
     var meses = []
+    const {dadoSelecionado} = datas
     const retorno = formataDatas(datas)
     const {dataInicio} = retorno
     const {dataFim} = retorno
@@ -211,7 +213,7 @@ const dashEsp = (datas) =>{
     const {mesFim} = retorno
     const {diaIncio} = retorno
     const {diaFim} = retorno
-
+    
     if(mesFim - mesComeco >=3){
         meses = []
         console.log('-----')
@@ -219,24 +221,29 @@ const dashEsp = (datas) =>{
             console.log(i)
             var convert = parseInt(i)
             meses.push(convert)
+            var dataTemp = subMonths()
         }
         console.log(meses)
     }
     else if(mesFim - mesComeco <3 && mesFim - mesComeco >1){
         //ir dimnuindo de duas em duas semanas
+
         
     }
     else if(mesFim - mesComeco <=1){
         //verificar data (dia)
         //ir diminuindo de semana por semana 
     }
-    /*
 
+
+
+    /*
     RETORNAR 
         -VALOR DO MES (PARA COLOCAR NO RODAPE)
         -SUBDIVIDIR DATAS PARA AS LABELS
         -LABELS
     */
+   return meses
 }
 module.exports = {
     getData,
