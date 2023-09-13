@@ -76,7 +76,6 @@ C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\bin\Debug\Syst
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.csproj.AssemblyReference.cache
-C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.csproj.SuggestedBindingRedirects.cache
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.CDPROD.resources
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\TCC.formCaixa.resources
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.Properties.Resources.resources
@@ -85,3 +84,4 @@ C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESK
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.csproj.CopyComplete
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.exe
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.pdb
+C:\Users\joaop\source\repos\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.csproj.SuggestedBindingRedirects.cache

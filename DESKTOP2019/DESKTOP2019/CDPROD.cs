@@ -65,11 +65,9 @@ namespace DESKTOP2019
 
         }
 
-        public CDPROD()
+        public void Busca()
         {
-            InitializeComponent();
-
-            String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ; // Substitua pela sua string de conexão
+            String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ;
             string query = "SELECT * FROM produto"; // Substitua pelo seu SQL
 
             using (conection = new MySqlConnection(conString))
@@ -82,7 +80,7 @@ namespace DESKTOP2019
 
                     while (reader.Read())
                     {
-                        string nome = reader["nomeProd"].ToString(); // Substitua "Nome" pelo nome da coluna desejada
+                        string nome = reader["nomeProd"].ToString();
                         string cod = reader["codProd"].ToString();
                         string qtd = reader["qtdEstoque"].ToString();
                         listProd.Items.Add($"{cod} - {nome} - {qtd}");
@@ -91,6 +89,12 @@ namespace DESKTOP2019
                     reader.Close();
                 }
             }
+        }
+
+        public CDPROD()
+        {
+            InitializeComponent();
+            Busca();
         }
 
         private void campoQTDInicio_KeyPress(object sender, KeyPressEventArgs e)
@@ -118,11 +122,6 @@ namespace DESKTOP2019
             limpar();
             modo = 1;
             habilitar();
-        }
-
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -164,6 +163,8 @@ namespace DESKTOP2019
                         if (linhasAfetadas > 0)
                         {
                             MessageBox.Show("Produto inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            listProd.Items.Clear();
+                            Busca();                        
                         }
                         else
                         {
@@ -177,6 +178,35 @@ namespace DESKTOP2019
                 MessageBox.Show($"{cv.Message}");
             }
 
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            int id;
+            id = Convert.ToInt32(this.listProd.SelectedValue);
+            String qryDelete = $"DELETE from produto where codProd = {id}";
+            if (MessageBox.Show("Tem certeza que deseja excluir este produto do seu sistema? A ação será irreversível", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes) {
+                try
+                {
+                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                    conection = new MySqlConnection(conString);
+
+                    conection.Open();
+                    MySqlCommand delete = new MySqlCommand(qryDelete, conection);
+
+                    conection.Close();
+                    MessageBox.Show("Produto excluído com sucesso", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possível excluir esse produto", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                finally
+                {
+                    if (conection.State == ConnectionState.Open)
+                        conection.Close();
+                } 
+            }
         }
     }
 }
