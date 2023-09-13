@@ -42,21 +42,16 @@ namespace DESKTOP2019
             this.campoCusto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.campoFoto = new System.Windows.Forms.PictureBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.btnFoto = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.listProd = new System.Windows.Forms.ListBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.campoCategoria = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnNovaCate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.campoFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // campoCod
@@ -173,19 +168,6 @@ namespace DESKTOP2019
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estoque";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // campoFoto
-            // 
-            this.campoFoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.campoFoto.Location = new System.Drawing.Point(343, 22);
-            this.campoFoto.Name = "campoFoto";
-            this.campoFoto.Size = new System.Drawing.Size(191, 225);
-            this.campoFoto.TabIndex = 12;
-            this.campoFoto.TabStop = false;
-            // 
             // btnNovo
             // 
             this.btnNovo.Location = new System.Drawing.Point(24, 307);
@@ -204,7 +186,6 @@ namespace DESKTOP2019
             this.btnAlterar.TabIndex = 14;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
@@ -212,8 +193,9 @@ namespace DESKTOP2019
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(88, 23);
             this.btnExcluir.TabIndex = 15;
-            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Text = "Inativar";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSalvar
             // 
@@ -224,15 +206,6 @@ namespace DESKTOP2019
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // btnFoto
-            // 
-            this.btnFoto.Location = new System.Drawing.Point(343, 250);
-            this.btnFoto.Name = "btnFoto";
-            this.btnFoto.Size = new System.Drawing.Size(191, 30);
-            this.btnFoto.TabIndex = 17;
-            this.btnFoto.Text = "Selecionar foto";
-            this.btnFoto.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -247,19 +220,10 @@ namespace DESKTOP2019
             // listProd
             // 
             this.listProd.FormattingEnabled = true;
-            this.listProd.Location = new System.Drawing.Point(24, 381);
+            this.listProd.Location = new System.Drawing.Point(311, 16);
             this.listProd.Name = "listProd";
-            this.listProd.Size = new System.Drawing.Size(510, 199);
+            this.listProd.Size = new System.Drawing.Size(223, 264);
             this.listProd.TabIndex = 19;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 355);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Produtos Cadastrados";
             // 
             // campoCategoria
             // 
@@ -296,19 +260,16 @@ namespace DESKTOP2019
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 589);
+            this.ClientSize = new System.Drawing.Size(562, 362);
             this.Controls.Add(this.btnNovaCate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.campoCategoria);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.listProd);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnFoto);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.campoFoto);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -323,7 +284,6 @@ namespace DESKTOP2019
             this.Text = "CDPROD";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.campoFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,16 +304,12 @@ namespace DESKTOP2019
         private System.Windows.Forms.TextBox campoCusto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.PictureBox campoFoto;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button btnFoto;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ListBox listProd;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox campoCategoria;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnNovaCate;
