@@ -246,31 +246,7 @@ ul li.item-menu a .icon > i {
                 -4px -4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.date-inicio{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    @media (max-width: 1440px) {
-        align-items: flex-end;
-    }
-    @media (max-width: 767px) {
-        align-items: center;
-    }
-}
-.date-final{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    
-    @media (max-width: 1440px) {
-        align-items: flex-start;
-    }
-    @media (max-width: 767px) {
-        align-items: center;
-    }
-}
+
 /* Data CSS - Fim */
 
 /* Botão GD CSS - Início */
@@ -330,4 +306,18 @@ ul li.item-menu a .icon > i {
     justify-content: center;
     margin-top: 6rem;
     height: 28rem;
+}
+.texto_filtro{
+    font-weight: bold;
+    font-size: 1rem;
+}
+.containerFiltroDados{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    
+}
+#filtroDados{
+    width: 200px;
+    border: 1px solid black;
 }

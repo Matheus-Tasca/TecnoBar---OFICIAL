@@ -226,18 +226,21 @@
 
     <!-- Tipo do Arquivo/data - Início-->
     <form class="containerForm">
+        
         <div class="row ">
-            <div class="col-md-6 col-sm-12 date-inicio">
-                <h5>Data Inicial</h5>
-                
-                <input type="date" class="input-date" id="dataInicio">
-            </div>
-
-            <div class="col-md-6 col-sm-12 date-final">
-                <h5>Data Final</h5>
-            
-                <input type="date" class="input-date" id="dataFinal">
-            </div>
+           <div class="containerFiltroDados">
+        <div id="filtroDados" class="">
+            <span class="texto_filtro">Dados dos últimos:</span><br>
+                <select name="filtro" id="filtroDias"> 
+                    <option value="1 dia"> 1 dia </option> 
+                    <option value="7 dias">7 dias</option> 
+                    <option value="30 dias" selected>30 dias</option> 
+                    <option value="3 meses">3 meses</option>
+                    <option value="6 meses">6 meses</option>
+                    <option value="1 ano">1 ano</option>
+                </select>
+        </div>
+    </div>
 
         </div>
 
