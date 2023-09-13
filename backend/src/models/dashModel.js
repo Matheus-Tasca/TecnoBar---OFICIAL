@@ -213,30 +213,9 @@ const dashEsp = (datas) =>{
     const {mesFim} = retorno
     const {diaIncio} = retorno
     const {diaFim} = retorno
-    
-    if(mesFim - mesComeco >=3){
-        meses = []
-        console.log('-----')
-        for(var i = mesComeco; i<=mesFim; i++){
-            console.log(i)
-            var convert = parseInt(i)
-            meses.push(convert)
-            var dataTemp = subMonths()
-        }
-        console.log(meses)
-    }
-    else if(mesFim - mesComeco <3 && mesFim - mesComeco >1){
-        //ir dimnuindo de duas em duas semanas
-
-        
-    }
-    else if(mesFim - mesComeco <=1){
-        //verificar data (dia)
-        //ir diminuindo de semana por semana 
-    }
 
 
-
+    console.log(diferencaEmMeses)
     /*
     RETORNAR 
         -VALOR DO MES (PARA COLOCAR NO RODAPE)
