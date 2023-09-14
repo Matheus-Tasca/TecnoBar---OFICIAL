@@ -318,6 +318,10 @@ ul li.item-menu a .icon > i {
     
 }
 #filtroDados{
+    margin-top: 1rem;
+    border-radius: 8px;
     width: 200px;
-    border: 1px solid black;
+    border: 1px solid rgba(133, 132, 132, 0.372);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), 
+    -4px -4px 10px rgba(0, 0, 0, 0.1);
 }

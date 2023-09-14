@@ -5,10 +5,10 @@ const dataType = Array.from(document.getElementsByClassName('dado')) //array tip
 const chartsType = Array.from(document.getElementsByClassName('tipo'))//array tipo dado (lucro, vendas...)
 const consumableType = Array.from(document.getElementsByClassName('consumable'))//array tipo de consumivel(bebida,alimentos....)
 const itemType = Array.from(document.getElementsByClassName('consumivel'))
-const dateInitial = document.querySelector('#dataInicio')
-const dateFinal = document.querySelector('#dataFinal')
 const categorias = document.querySelector('#categorias')
 const pai = document.querySelector('#apendaqui')
+const filtroDias = document.querySelector('#filtroDias')
+
 let chart
 var dados = []
 let tipoGraph = ''
@@ -222,72 +222,77 @@ const configura = () =>{
   })
 
 
-
+  const diasEmNumero = () =>{
+    if(filtroDias.value == "0")
+      return 0 
+    if(filtroDias.value == "1 dia")
+        return 1
+    else if(filtroDias.value == "7 dias")
+        return 7
+    else if (filtroDias.value == "30 dias")
+        return 30
+    else if (filtroDias.value == "3 meses")
+        return 90
+    else if (filtroDias.value == "6 meses")
+        return 180
+    else 
+        return 360
+  }
 
 function getSelectedOptions() {
   if (chart) {// regera o grafico
     chart.destroy()
     chart = null
   }
-  var dataIncio = dateInitial.value
-  var dataFinal = dateFinal.value
+
   var selectedOptions = document.querySelectorAll('.selecionavel.selected')
   var valoresSelecionados = Array.from(selectedOptions).map(function (option) { //array dos valores selecionados
     return option.getAttribute('data-value')
   })
-  
-  console.log(dataFinal, dataIncio)
 
-  if(dataIncio === ""){
-    alert("Insira uma data inicial!")
-    document.querySelector('#dataInicio').focus()
+  valoresSelecionados.push(diasEmNumero())
+
+  if(valoresSelecionados.length <4){
+    alert("Selecione todos os campos para gerar o grafico!")
   }
-  else if(dataFinal === ""){
-    alert("Insira uma data final!")
-    document.querySelector('#dataFinal').focus()
-  }
-  else if(dataFinal < dataIncio){
-    alert("A data final não pode ser menor que a data inicial.")
-  }/*
-  else if (tipoGraph == null || dadoSelected == null || cat == null)
-    alert("Preencha todos os campos!") 
-    */
   else{
-  const [ tipoGraph,dadoSelected, cat] = valoresSelecionados
-  console.log(valoresSelecionados)
-  const options = {
-    responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true
+    console.log(valoresSelecionados)
+    const [ tipoGraph,dadoSelected, cat] = valoresSelecionados
+    console.log(valoresSelecionados)
+    const options = {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       }
     }
-  }
 
-  var data = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-    datasets: [{
-      label: dadoSelected + " de " + cat,
-      data: [12, 14, 18, 10, 12, 16],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      borderWidth: 4,
-      borderColor: 'rgb(0,0,0)'
-    }]
-  }
+    var data = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+      datasets: [{
+        label: dadoSelected + " de " + cat,
+        data: [12, 14, 18, 10, 12, 16],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        borderWidth: 4,
+        borderColor: 'rgb(0,0,0)'
+      }]
+    }
 
-  chart = new Chart(ctx, {
-    type: tipoGraph.toString(),
-    data: data,
-    options: options
-  })
-  var canva = document.querySelector('#containerChart')
-  canva.style.display = 'flex'
+    chart = new Chart(ctx, {
+      type: tipoGraph.toString(),
+      data: data,
+      options: options
+    })
+    var canva = document.querySelector('#containerChart')
+    canva.style.display = 'flex'
 }
 }
+
 
 botao.addEventListener('click',() =>{
   getSelectedOptions()

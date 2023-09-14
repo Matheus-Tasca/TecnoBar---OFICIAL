@@ -154,79 +154,39 @@ const salesHistory = async (days)=>{
     `)
 }
 */
-const formataDatas = (datas) =>{
-    const {inicio} = datas
-    const {fim} = datas
+const decremento = (dias) =>{
+    let resultArray = []
+    if(dias == 1)
+        resultArray.push("1")
+    else if(dias == 7){
 
-    const inicioArray = inicio.split('-')
-    const fimArray = fim.split('-')
-
-    const anoInicio = parseInt(inicioArray[0])
-    const mesInicio = parseInt(inicioArray[1]) - 1
-    const diaIncio = parseInt(inicioArray[2])
-    const anoFim = parseInt(fimArray[0])
-    const mesFim = parseInt(fimArray[1]) - 1
-    const diasFim = parseInt(fimArray[2])
-
-    const objectDataIncio = new Date(anoInicio, mesInicio, diaIncio)
-    const objectDataFim = new Date(anoFim,mesFim,diasFim)
-
-    const anoFormatadoIncio = objectDataIncio.getFullYear()
-    const mesFormatadoIncio = (objectDataIncio.getMonth()+1).toString().padStart(2,'0')
-    const diaFormatadoIncio = objectDataIncio.getDate().toString().padStart(2,'0')
-    const anoFormatadoFim = objectDataFim.getFullYear()
-    const mesFormatadoFim = (objectDataFim.getMonth()+1).toString().padStart(2,'0')
-    const diaFormatadoFim = objectDataFim.getDate().toString().padStart(2,'0')
-
-    const inicioFormatado = `${anoFormatadoIncio}-${mesFormatadoIncio}-${diaFormatadoIncio}`
-    const fimFormatado = `${anoFormatadoFim}-${mesFormatadoFim}-${diaFormatadoFim}`
-
-    const data = new Date()
-    const ano = data.getFullYear()
-    const mes = (data.getMonth()+1).toString().padStart(2,'0')
-    const dia = data.getDate().toString().padStart(2,'0')
-
-    const dataFormatada = `${ano}-${mes}-${dia}`
-
-    
-    const datasJSON = {
-       "inicio" : inicioFormatado,
-        "fim" : fimFormatado,
-        "dataAtual" : dataFormatada,
-        "mesComeco" : mesFormatadoIncio,
-        "mesFim" : mesFormatadoFim,
-        "diaIncio" : diaFormatadoIncio,
-        "diaFim" : diaFormatadoFim
     }
-    return datasJSON
-
 }
-const dashEsp = (datas) =>{
-    var nomeMes
-    var meses = []
-    const {dadoSelecionado} = datas
-    const retorno = formataDatas(datas)
-    const {dataInicio} = retorno
-    const {dataFim} = retorno
-    const {dataAtual} = retorno
-    const {mesComeco} = retorno
-    const {mesFim} = retorno
-    const {diaIncio} = retorno
-    const {diaFim} = retorno
 
+const dashEspecifico = async (dados) =>{
+    
+    const {dias} = dados
+    const {dataType} = dados
+    const {item} = dados
+    const {categoriaItem} = dados
 
-    console.log(diferencaEmMeses)
-    /*
-    RETORNAR 
-        -VALOR DO MES (PARA COLOCAR NO RODAPE)
-        -SUBDIVIDIR DATAS PARA AS LABELS
-        -LABELS
-    */
-   return meses
+    const datamin = new Date()
+    datamin.setDate(datamin.getDate() - [dias])
+
+    if(dataType == 'Lucro'){
+
+    }
+    else if(dataType == 'Vendas'){
+
+    }
+    else if(dataType == 'Faturamento'){
+
+    }
 }
+
 module.exports = {
     getData,
     loadData,
     loadItem,
-    dashEsp
+    dashEspecifico
 }
