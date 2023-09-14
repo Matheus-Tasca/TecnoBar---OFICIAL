@@ -16,8 +16,13 @@ const loadItem = async (req,res)=>{
     const itens = await dashModel.loadItem(req.body)
     return res.status(200).json(itens)
 }
+const dashEspecifico = async (req,res)=>{
+    const dados = await dashModel.dashEspecifico(req.body)
+    return res.status(200).json(dados)
+}
 module.exports = {
     getData,
     loadData,
-    loadItem
+    loadItem,
+    dashEspecifico
 }

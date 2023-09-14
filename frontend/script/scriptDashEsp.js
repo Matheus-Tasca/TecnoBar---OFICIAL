@@ -256,9 +256,13 @@ function getSelectedOptions() {
     alert("Selecione todos os campos para gerar o grafico!")
   }
   else{
+    const sendAndReciveData  = async() =>{
+      const dados = {valoresSelecionados}
+
+      await fetch ('')
+    }
     console.log(valoresSelecionados)
     const [ tipoGraph,dadoSelected, cat] = valoresSelecionados
-    console.log(valoresSelecionados)
     const options = {
       responsive: true,
       scales: {

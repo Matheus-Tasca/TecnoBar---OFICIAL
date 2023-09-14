@@ -156,10 +156,39 @@ const salesHistory = async (days)=>{
 */
 const decremento = (dias) =>{
     let resultArray = []
-    if(dias == 1)
-        resultArray.push("1")
+    if(dias == 1){
+        resultArray.push(1)
+        return resultArray
+    }
     else if(dias == 7){
-
+        for(let i = 1; i<7; i++){
+            resultArray.push(i)
+        }
+        return resultArray
+    }
+    else if(dias == 30){
+        for(let i = 1; i<30; i+=6){
+            resultArray.push(i)
+        }
+        return resultArray
+    }
+    else if(dias == 90){
+        for(let i = 1; i<90;i+=15){
+            resultArray.push(i)
+        }
+        return resultArray
+    }
+    else if(dias == 180){
+        for(let i = 1; i<160; i+=160){
+            resultArray.push(i)
+        }
+        return resultArray
+    }
+    else{
+        for(let i = 0; i<360; i+=60){
+            resultArray.push(i)
+        }
+        return resultArray
     }
 }
 
@@ -170,8 +199,14 @@ const dashEspecifico = async (dados) =>{
     const {item} = dados
     const {categoriaItem} = dados
 
+    
     const datamin = new Date()
-    datamin.setDate(datamin.getDate() - [dias])
+    for(let i in decremento(dias)){
+
+        console.log(decremento(dias)[i])
+        datamin.setDate(datamin.getDate() - decremento(dias)[i])
+        console.log(datamin)
+    }
 
     if(dataType == 'Lucro'){
 
@@ -182,6 +217,8 @@ const dashEspecifico = async (dados) =>{
     else if(dataType == 'Faturamento'){
 
     }
+
+    
 }
 
 module.exports = {
