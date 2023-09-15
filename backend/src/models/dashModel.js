@@ -163,8 +163,19 @@ const salesHistory = async (days)=>{
     return dataSale[0]
 }
 
-const completeSalesHistory = async ()=>{
+const completeSalesHistory = async (id)=>{
+    const saleDetails = await (await connection).query(`
+        select 
+            produto.codProd, produto.nomeProd, Venda.QtdProd as quantidade, produto.valorVenda * Venda.QtdProd as ValorVenda 
+        from    
+            Venda 
+        inner join 
+            produto on Venda.codProd = produto.codProd 
+        where 
+            Venda.codVenda = ?;
+    `,[id])
     
+    return saleDetails[0]
 }
 
 const decremento = (dias) =>{
@@ -249,5 +260,6 @@ module.exports = {
     loadData,
     loadItem,
     dashEspecifico,
-    salesHistory
+    salesHistory,
+    completeSalesHistory
 }
