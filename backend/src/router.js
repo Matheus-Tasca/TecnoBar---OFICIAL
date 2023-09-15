@@ -6,4 +6,6 @@ router.post('/data', dashController.getData)
 router.post('/dataload',dashController.loadData)
 router.post('/itens',dashController.loadItem)
 router.post('/especifico',dashController.dashEspecifico)
+router.post('/historico',dashController.salesHistory)
+
 module.exports = router

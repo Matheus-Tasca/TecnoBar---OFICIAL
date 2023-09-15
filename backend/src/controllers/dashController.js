@@ -20,9 +20,14 @@ const dashEspecifico = async (req,res)=>{
     const dados = await dashModel.dashEspecifico(req.body)
     return res.status(200).json(dados)
 }
+const salesHistory = async (req,res)=>{
+    const historico = await dashModel.salesHistory(req.body)
+    return res.status(200).json(historico)
+}
 module.exports = {
     getData,
     loadData,
     loadItem,
-    dashEspecifico
+    dashEspecifico,
+    salesHistory
 }

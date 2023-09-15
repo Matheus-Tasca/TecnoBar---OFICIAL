@@ -10,45 +10,45 @@ const getData = async (days) =>{
 
     // query para gerar o lucro de cada produto
     const arrayLucro = await (await connection).query(` 
-    SELECT 
-        produto.nomeProd,
-        (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto,
-         Venda.Data_Registro
-    FROM 
-        Venda 
-    INNER JOIN 
-        produto ON Venda.codProd = produto.codProd
-    WHERE
-        Venda.Data_Registro >= ? 
-    GROUP BY
-        produto.codProd;
-    `,[datamin])
+        SELECT 
+            produto.nomeProd,
+            (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto,
+            Venda.Data_Registro
+        FROM 
+            Venda 
+        INNER JOIN 
+            produto ON Venda.codProd = produto.codProd
+        WHERE
+            Venda.Data_Registro >= ? 
+        GROUP BY
+            produto.codProd;
+        `,[datamin])
 
     // query para gerar o faturamento de cada produto
     const arrayFaturamento = await (await connection).query(`
-    Select 
-	    produto.nomeProd, produto.ValorVenda * (SUM(Venda.QtdProd)) as FaturamentoTotalProduto, Venda.Data_Registro 
-    from
-	    Venda 
-    inner join 
-	    produto on Venda.codProd = produto.codProd
-    where
-	    Venda.Data_Registro >= ?
-    group by
-	    produto.codProd;
-    `,[datamin])
+        Select 
+            produto.nomeProd, produto.ValorVenda * (SUM(Venda.QtdProd)) as FaturamentoTotalProduto, Venda.Data_Registro 
+        from
+            Venda 
+        inner join 
+            produto on Venda.codProd = produto.codProd
+        where
+            Venda.Data_Registro >= ?
+        group by
+            produto.codProd;
+        `,[datamin])
     
     // query para pegar o valor total de vendas
     const arrayVendas = await (await connection).query(`
-    Select 
-        count(Venda.codVenda) as VendasTotais 
-    from 
-        Venda 
-    inner join 
-        produto on produto.codProd = Venda.codProd
-    where 
-        Venda.Data_Registro >= ?;
-    `,[datamin])
+        Select 
+            count(Venda.codVenda) as VendasTotais 
+        from 
+            Venda 
+        inner join 
+            produto on produto.codProd = Venda.codProd
+        where 
+            Venda.Data_Registro >= ?;
+        `,[datamin])
 
     const faturamentoReal = arrayFaturamento[0]//variavel sem o buffer gerado pelo db
     const lucroReal = arrayLucro[0]//variavel sem o buffer gerado pelo db
@@ -73,45 +73,45 @@ const loadData = async (days) =>{
 
     // query para gerar o lucro de cada produto
     const arrayLucro = await (await connection).query(` 
-    SELECT 
-        produto.nomeProd,
-        (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto,
-         Venda.Data_Registro
-    FROM 
-        Venda 
-    INNER JOIN 
-        produto ON Venda.codProd = produto.codProd
-    WHERE
-        Venda.Data_Registro >= ? 
-    GROUP BY
-        produto.codProd;
-    `,[datamin])
+        SELECT 
+            produto.nomeProd,
+            (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto,
+            Venda.Data_Registro
+        FROM 
+            Venda 
+        INNER JOIN 
+            produto ON Venda.codProd = produto.codProd
+        WHERE
+            Venda.Data_Registro >= ? 
+        GROUP BY
+            produto.codProd;
+        `,[datamin])
 
     // query para gerar o faturamento de cada produto
     const arrayFaturamento = await (await connection).query(`
-    Select 
-	    produto.nomeProd, produto.ValorVenda * (SUM(Venda.QtdProd)) as FaturamentoTotalProduto, Venda.Data_Registro 
-    from
-	    Venda 
-    inner join 
-	    produto on Venda.codProd = produto.codProd
-    where
-	    Venda.Data_Registro >= ?
-    group by
-	    produto.codProd;
-    `,[datamin])
+        Select 
+            produto.nomeProd, produto.ValorVenda * (SUM(Venda.QtdProd)) as FaturamentoTotalProduto, Venda.Data_Registro 
+        from
+            Venda 
+        inner join 
+            produto on Venda.codProd = produto.codProd
+        where
+            Venda.Data_Registro >= ?
+        group by
+            produto.codProd;
+        `,[datamin])
     
     // query para pegar o valor total de vendas
     const arrayVendas = await (await connection).query(`
-    Select 
-        count(Venda.codVenda) as VendasTotais 
-    from 
-        Venda 
-    inner join 
-        produto on produto.codProd = Venda.codProd
-    where 
-        Venda.Data_Registro >= ?;
-    `,[datamin])
+        Select 
+            count(Venda.codVenda) as VendasTotais 
+        from 
+            Venda 
+        inner join 
+            produto on produto.codProd = Venda.codProd
+        where 
+            Venda.Data_Registro >= ?;
+        `,[datamin])
 
     const faturamentoReal = arrayFaturamento[0]//variavel sem o buffer gerado pelo db
     const lucroReal = arrayLucro[0]//variavel sem o buffer gerado pelo db
@@ -130,30 +130,43 @@ const loadData = async (days) =>{
 const loadItem = async (categoria)=>{
     const {tipo} = categoria
     const produtos = await (await connection).query(`
-    select 
-        produto.nomeProd, 
-        produto.codProd 
-    from 
-        produto 
-    where 
-        produto.codCategoria = ?;
+        select 
+            produto.nomeProd, 
+            produto.codProd 
+        from 
+            produto 
+        where 
+            produto.codCategoria = ?;
 
-    `,
-    [tipo]
+        `,
+        [tipo]
     )
     return produtos[0]
 }
-/*AGUARDANDO RESTRUTURAÇÃO DO DB
+
 const salesHistory = async (days)=>{ 
     const {dia} = days
     const datamin = new Date()
     datamin.setDate(datamin.getDate() - [dia])
     const dataSale = await (await connection).query(`
-    SELECT 
+    select 
+        Venda.codVenda,Venda.Data_Registro as DataVenda, SUM(produto.valorVenda * Venda.QtdProd) as ValorVenda 
+    from 
+        Venda 
+    inner join 
+        produto on Venda.codProd = produto.codProd 
+    where   Venda.Data_Registro >= ? 
+        group by Venda.codVenda;
+    `,[datamin])
 
-    `)
+    console.log(datamin)
+    return dataSale[0]
 }
-*/
+
+const completeSalesHistory = async ()=>{
+    
+}
+
 const decremento = (dias) =>{
     let resultArray = []
     if(dias == 1){
@@ -235,5 +248,6 @@ module.exports = {
     getData,
     loadData,
     loadItem,
-    dashEspecifico
+    dashEspecifico,
+    salesHistory
 }

@@ -71,7 +71,7 @@
     <div class="containerFiltroDados center">
         <div id="filtroDados">
             <span class="texto_filtro">Dados dos últimos:</span><br>
-                <select name="filtro" id="filtroDias" onchange="dados(this.value)"> 
+                <select name="filtro" id="filtroDias" onchange="loadHistory()"> 
                     <option value="1 dia"> 1 dia </option> 
                     <option value="7 dias">7 dias</option> 
                     <option value="30 dias" selected>30 dias</option> 
@@ -104,11 +104,8 @@
         </thead>
         
         
-        <tbody>
+        <tbody id="pai">
             <tr class="linha">
-               <td>1</td> 
-               <td>06/09/2023</td>
-               <td>R$200,00</td>
             </tr>
                 <tr class="cabecalho table-secondary">
                     <th>Descrição</th>
