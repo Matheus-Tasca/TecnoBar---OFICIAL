@@ -198,18 +198,28 @@ const dashEspecifico = async (dados) =>{
     const {dataType} = dados
     const {item} = dados
     const {categoriaItem} = dados
-
-    
     const datamin = new Date()
-    for(let i in decremento(dias)){
-
-        console.log(decremento(dias)[i])
-        datamin.setDate(datamin.getDate() - decremento(dias)[i])
-        console.log(datamin)
-    }
+    const valores = []
 
     if(dataType == 'Lucro'){
-
+        for(let i in decremento(dias)){
+            datamin.setDate(datamin.getDate() - [decremento(dias)[i]])
+                const arrayLucro = await (await connection).query(` 
+            SELECT 
+                (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto
+            FROM 
+                Venda 
+            INNER JOIN 
+                produto ON Venda.codProd = produto.codProd
+            WHERE
+                Venda.Data_Registro >= ? 
+            GROUP BY
+                produto.codProd;
+            `,[datamin])
+            valores.push(arrayLucro[0])
+            console.log(datamin)
+        }
+        console.log(valores)
     }
     else if(dataType == 'Vendas'){
 
