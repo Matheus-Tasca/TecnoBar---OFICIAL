@@ -159,7 +159,6 @@ const salesHistory = async (days)=>{
         group by Venda.codVenda;
     `,[datamin])
 
-    console.log(datamin)
     return dataSale[0]
 }
 
@@ -174,7 +173,7 @@ const completeSalesHistory = async (id)=>{
         where 
             Venda.codVenda = ?;
     `,[id])
-    
+    console.log('foi')
     return saleDetails[0]
 }
 

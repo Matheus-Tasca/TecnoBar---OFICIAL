@@ -3,6 +3,7 @@ const itensVendidos = document.querySelector('.itens-vendidos')
 const cabecalho = document.querySelector('.cabecalho')
 const filtroDias = document.querySelector('#filtroDias')
 const pai = document.querySelector('#pai')
+
 linha.addEventListener("click",()=>{
     if((cabecalho.style.display === 'none') && (itensVendidos.style.display === 'none')){
     cabecalho.style.display = 'table-row'
@@ -32,6 +33,56 @@ const diasEmNumero = () =>{
 
 const loadHistory = async () => {
     const days = {dia : diasEmNumero()}
+
+    await fetch('http://localhost:4001/historico', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(days)
+    }).then((res)=>{
+        if(!res.ok){
+            console.log("erro")
+        }
+        return res.json()
+    }).then((dados)=>{
+        retornoDatas = dados
+    })
+    limpaLinhas(pai)
+    let array = []
+    let arrayItens = []
+    for(let i in retornoDatas){
+        var dataOriginal = new Date(retornoDatas[i].DataVenda);
+
+        var dia = dataOriginal.getUTCDate();
+        var mes = dataOriginal.getUTCMonth() + 1; // Adicionamos 1 ao mês, pois os meses em JavaScript são baseados em zero
+        var ano = dataOriginal.getUTCFullYear();
+        var dataFormatada = dia + "/" + (mes < 10 ? "0" : "") + mes + "/" + ano;
+        
+        var valorOriginal = retornoDatas[i].ValorVenda;
+
+        var valorFormatado = valorOriginal.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+        })
+        //const itens  = loadHistory(retornoDatas[i].codVenda)
+        console.log(itens)
+        array.push([
+            retornoDatas[i].codVenda,
+            dataFormatada,
+            valorFormatado,
+         // arrayItens
+    ])
+    }
+
+    console.log(arrayItens)
+    for(let i in array){
+        createRow(array[i][0], array[i][1], array[i][2])
+        }
+    
+}
+
+
+const onLoadHistory = async () => {
+    const days = {dia : 30}
 
     await fetch('http://localhost:4001/historico', {
         method: 'post',
@@ -103,3 +154,10 @@ const limpaLinhas = (elemento) =>{ //funcao para limpar valores ja existentes em
       elemento.removeChild(elemento.firstChild)
     }
   }
+
+const loadDetails = async (id) =>{
+    
+    const res = await fetch (`http://localhost:4001/historico/${id}`)
+    const itens = await res.json()
+    console.log(itens)
+}
