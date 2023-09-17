@@ -1,19 +1,7 @@
-const linha = document.querySelector('.linha')
 const itensVendidos = document.querySelector('.itens-vendidos')
-const cabecalho = document.querySelector('.cabecalho')
 const filtroDias = document.querySelector('#filtroDias')
 const pai = document.querySelector('#pai')
-
-linha.addEventListener("click",()=>{
-    if((cabecalho.style.display === 'none') && (itensVendidos.style.display === 'none')){
-    cabecalho.style.display = 'table-row'
-    itensVendidos.style.display = 'table-row'
-    }
-    else{
-        cabecalho.style.display = 'none'
-        itensVendidos.style.display = 'none'
-    }
-})
+let itens = ''
 
 const diasEmNumero = () =>{
     if(filtroDias.value == "1 dia")
@@ -29,7 +17,6 @@ const diasEmNumero = () =>{
     else 
         return 360
 }
-
 
 const loadHistory = async () => {
     const days = {dia : diasEmNumero()}
@@ -50,6 +37,8 @@ const loadHistory = async () => {
     let array = []
     let arrayItens = []
     for(let i in retornoDatas){
+        itens  = ""
+        
         var dataOriginal = new Date(retornoDatas[i].DataVenda);
 
         var dia = dataOriginal.getUTCDate();
@@ -63,23 +52,42 @@ const loadHistory = async () => {
         style: 'currency',
         currency: 'BRL'
         })
-        //const itens  = loadHistory(retornoDatas[i].codVenda)
-        console.log(itens)
+
+        itens = await loadDetails(retornoDatas[i].codVenda)
+
+
+        arrayItens.push(itens)
+            
         array.push([
             retornoDatas[i].codVenda,
             dataFormatada,
             valorFormatado,
+            itens
          // arrayItens
     ])
     }
-
-    console.log(arrayItens)
-    for(let i in array){
-        createRow(array[i][0], array[i][1], array[i][2])
-        }
     
-}
+    for(let i in array){
 
+        createRow(
+            array[i][0],
+            array[i][1], 
+            array[i][2])  
+
+        for(let j in array[i][3]){
+
+            criaDetalhes(
+                array[i][3][j].codProd,
+                array[i][3][j].nomeProd,
+                array[i][3][j].quantidade,
+                array[i][3][j].ValorVenda.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                    })
+                )
+        } 
+    }   
+}
 
 const onLoadHistory = async () => {
     const days = {dia : 30}
@@ -125,7 +133,7 @@ const onLoadHistory = async () => {
     
 }
 
-const createElement = (tag, classe ='', innerHTML = '',value = '') =>{
+const createElement = (tag, classe ='', innerHTML = '',value = '', innerText = '', classe2 = '') =>{
     const element = document.createElement(tag)
   
     if(classe) //class para estilização
@@ -133,11 +141,16 @@ const createElement = (tag, classe ='', innerHTML = '',value = '') =>{
     if(innerHTML)
         element.innerHTML = innerHTML
     if(value)
-        element.id = value    
+        element.id = value
+    if(innerText)
+        element.innerText = innerText    
+    if(classe2)
+        element.classList.add(classe2)
+    
     return element
   }
 
-const createRow = (codigo, data, valor) => {
+const createRow = (codigo, data, valor, ) => {
     const linha = createElement(
         'tr',
         'linha',
@@ -147,6 +160,45 @@ const createRow = (codigo, data, valor) => {
          codigo
     )
     pai.appendChild(linha)
+
+    const cabecalho = createElement(
+        'tr',
+        'cabecalho',
+        `<th>Descrição</th>
+        <th>Quantidade</th>
+        <th>Valor</th>`,
+        '',
+        '',
+        'table-secondary'
+    )
+    pai.appendChild(cabecalho)
+
+    cabecalho.style.display = 'none'
+
+    linha.addEventListener("click",()=>{
+        if((cabecalho.style.display === 'none')){
+            cabecalho.style.display = 'table-row'
+        }
+        else{
+            cabecalho.style.display = 'none'
+        }
+    })
+}
+
+const criaDetalhes = (codProd, nomeProd,quantidade, valorTotal) =>{
+    const detalhes = createElement(
+        'tr',
+        'itens-vendidos',
+        `<td>${codProd} - ${nomeProd}</td>
+        <td>${quantidade}</td>
+        <td>${valorTotal}</td>`,
+        '',
+        '',
+        'table-active'
+    )
+    pai.appendChild(detalhes)
+
+   
 }
 
 const limpaLinhas = (elemento) =>{ //funcao para limpar valores ja existentes em item 
@@ -159,5 +211,5 @@ const loadDetails = async (id) =>{
     
     const res = await fetch (`http://localhost:4001/historico/${id}`)
     const itens = await res.json()
-    console.log(itens)
+    return itens
 }
