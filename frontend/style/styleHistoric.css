@@ -130,3 +130,9 @@ thead{
     font-weight: bold;
     font-style: italic;
  }
+ .itens-vendidos{
+    display: none;
+ }
+ .cabecalho{
+    display: none;
+ }

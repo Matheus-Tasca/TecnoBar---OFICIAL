@@ -17,8 +17,6 @@ const diasEmNumero = () =>{
     else 
         return 360
 }
-let primeiraLinha = ''
-let detalhesLinha = ''
 const loadHistory = async () => {
     const days = {dia : diasEmNumero()}
 
@@ -70,15 +68,13 @@ const loadHistory = async () => {
     
 
     for(let i in array){
-        primeiraLinha = ''
-        primeiraLinha = createRow(
+       let teste =  createRow(
             array[i][0],
             array[i][1], 
             array[i][2])  
 
         for(let j in array[i][3]){
-            detalhesLinha = ''
-          detalhesLinha = criaDetalhes(
+             criaDetalhes(
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
@@ -90,13 +86,21 @@ const loadHistory = async () => {
                 )
         } 
 
-        var teste = document.querySelector(`#cod${array[i][0]}`)
-        var details = document.querySelector(`#valor${array[i][0]}`)
-        console.log(details)
-        teste.addEventListener('click',()=>{
-            details.style.display = 'block'
-        })
     }   
+    let details = ''
+    let teste = ''
+    let cabeca = ''
+    details = document.querySelector('.itens-vendidos')
+    teste = document.querySelector('.linha')
+    cabeca = document.querySelector('.cabecalho')
+    teste.addEventListener('click', ()=>{
+        if((details.style.display === 'none')&&(cabeca)){
+            details.style.display = 'table-row'
+        }
+        else{
+            details.style.display = 'none'
+        }
+    })
 }
 
 const onLoadHistory = async () => {
@@ -211,7 +215,7 @@ const createRow = (codigo, data, valor, ) => {
     )
     pai.appendChild(cabecalho)
 
-    cabecalho.style.display = 'none'
+    
 
     linha.addEventListener("click",()=>{
         if((cabecalho.style.display === 'none')){
