@@ -17,7 +17,8 @@ const diasEmNumero = () =>{
     else 
         return 360
 }
-
+let primeiraLinha = ''
+let detalhesLinha = ''
 const loadHistory = async () => {
     const days = {dia : diasEmNumero()}
 
@@ -67,25 +68,34 @@ const loadHistory = async () => {
     ])
     }
     
-    for(let i in array){
 
-        createRow(
+    for(let i in array){
+        primeiraLinha = ''
+        primeiraLinha = createRow(
             array[i][0],
             array[i][1], 
             array[i][2])  
 
         for(let j in array[i][3]){
-
-            criaDetalhes(
+            detalhesLinha = ''
+          detalhesLinha = criaDetalhes(
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
                 array[i][3][j].ValorVenda.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
-                    })
+                    }),
+                array[i][3][j].codProd
                 )
         } 
+
+        var teste = document.querySelector(`#cod${array[i][0]}`)
+        var details = document.querySelector(`#valor${array[i][0]}`)
+        console.log(details)
+        teste.addEventListener('click',()=>{
+            details.style.display = 'block'
+        })
     }   
 }
 
@@ -185,7 +195,7 @@ const createRow = (codigo, data, valor, ) => {
         `<td>${codigo}</td>
          <td>${data}</td>
          <td>${valor}</td>`,
-         codigo
+         `cod${codigo}`
     )
     pai.appendChild(linha)
 
@@ -220,7 +230,7 @@ const criaDetalhes = (codProd, nomeProd,quantidade, valorTotal) =>{
         `<td>${codProd} - ${nomeProd}</td>
         <td>${quantidade}</td>
         <td>${valorTotal}</td>`,
-        '',
+        `valor${codProd}`,
         '',
         'table-active'
     )
