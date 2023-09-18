@@ -106,7 +106,10 @@ const onLoadHistory = async () => {
     })
     limpaLinhas(pai)
     let array = []
+    let arrayItens = []
     for(let i in retornoDatas){
+        itens  = ""
+        
         var dataOriginal = new Date(retornoDatas[i].DataVenda);
 
         var dia = dataOriginal.getUTCDate();
@@ -121,17 +124,42 @@ const onLoadHistory = async () => {
         currency: 'BRL'
         })
 
+        itens = await loadDetails(retornoDatas[i].codVenda)
+
+
+        arrayItens.push(itens)
+            
         array.push([
             retornoDatas[i].codVenda,
             dataFormatada,
-        valorFormatado])
+            valorFormatado,
+            itens
+         // arrayItens
+    ])
     }
-
-    for(let i in array){
-        createRow(array[i][0], array[i][1], array[i][2])
-        }
     
+    for(let i in array){
+
+        createRow(
+            array[i][0],
+            array[i][1], 
+            array[i][2])  
+
+        for(let j in array[i][3]){
+
+            criaDetalhes(
+                array[i][3][j].codProd,
+                array[i][3][j].nomeProd,
+                array[i][3][j].quantidade,
+                array[i][3][j].ValorVenda.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                    })
+                )
+        } 
+    }   
 }
+
 
 const createElement = (tag, classe ='', innerHTML = '',value = '', innerText = '', classe2 = '') =>{
     const element = document.createElement(tag)
