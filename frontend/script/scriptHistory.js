@@ -17,7 +17,9 @@ const diasEmNumero = () =>{
     else 
         return 360
 }
-
+let details = []
+    let teste = []
+    let cabeca = []
 const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
     const days = {dia : diasEmNumero()}//passe o numero de dias como arquivo JSON
 
@@ -56,15 +58,20 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
             itens
             ])
     }
+
+    details = document.querySelector('.itens-vendidos')
     
-    for(let i in array){
-        createRow(
+    cabeca = document.querySelector('.cabecalho')
+    
+
+    for(let i in array){//percorre o array que contem os dados das vendas
+        createRow(//cria uma nova linha com o valor do, codigo, data e valor
             array[i][0],
             array[i][1], 
             array[i][2])  
-
-        for(let j in array[i][3]){
-            criaDetalhes(
+            teste = document.querySelector('.linha')
+        for(let j in array[i][3]){ //percorre o array que contem os itens 
+            criaDetalhes(//cria uma linha para cada item com o seu, codigo, nome, quantidade e valor de venda
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
@@ -74,23 +81,24 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
                     }),
                 array[i][3][j].codProd
                 )
-        } 
+               
+                let detas = document.querySelector(`#valor${array[i][3][j].codProd}`)
 
+                
+                console.log(detas)
+
+                teste.addEventListener('click', ()=>{
+                    if((detas.style.display === 'none')){
+                        detas.style.display = 'table-row'
+                    }
+                    else{
+                        detas.style.display = 'none'
+                    }
+                })
+        } 
+        
     }   
-    let details = ''
-    let teste = ''
-    let cabeca = ''
-    details = document.querySelector('.itens-vendidos')
-    teste = document.querySelector('.linha')
-    cabeca = document.querySelector('.cabecalho')
-    teste.addEventListener('click', ()=>{
-        if((details.style.display === 'none')&&(cabeca)){
-            details.style.display = 'table-row'
-        }
-        else{
-            details.style.display = 'none'
-        }
-    })
+   
 }
 
 const onLoadHistory = async () => {
