@@ -17,64 +17,54 @@ const diasEmNumero = () =>{
     else 
         return 360
 }
-const loadHistory = async () => {
-    const days = {dia : diasEmNumero()}
 
-    await fetch('http://localhost:4001/historico', {
+const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
+    const days = {dia : diasEmNumero()}//passe o numero de dias como arquivo JSON
+
+    await fetch('http://localhost:4001/historico', { //faz um post com a data JSON
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(days)
-    }).then((res)=>{
+    }).then((res)=>{ //verifica se o retorno da funcao foi de erro
         if(!res.ok){
             console.log("erro")
         }
         return res.json()
-    }).then((dados)=>{
+    }).then((dados)=>{ //se chegar até aqui, o retorno foi positivo. Ele ja atribui o retorno dos dados a uma variavel
         retornoDatas = dados
     })
-    limpaLinhas(pai)
-    let array = []
-    let arrayItens = []
-    for(let i in retornoDatas){
+    limpaLinhas(pai) //funcao para limpar linhas ja existentes a cada vez que a função for chamada
+    let array = [] // declaração de array para guardar os dados retornados sobre a visão geral de vendas
+    for(let i in retornoDatas){ //utiliza o indice "i" para percorrer no tamanho do array, ou seja, para cada item retornado
         itens  = ""
         
-        var dataOriginal = new Date(retornoDatas[i].DataVenda);
-
+        var dataOriginal = new Date(retornoDatas[i].DataVenda); //cria uma nova data com o valor retornado da coluna DataVenda no indice "i" do array.
         var dia = dataOriginal.getUTCDate();
         var mes = dataOriginal.getUTCMonth() + 1; // Adicionamos 1 ao mês, pois os meses em JavaScript são baseados em zero
         var ano = dataOriginal.getUTCFullYear();
-        var dataFormatada = dia + "/" + (mes < 10 ? "0" : "") + mes + "/" + ano;
+        var dataFormatada = dia + "/" + (mes < 10 ? "0" : "") + mes + "/" + ano; // pega todas as ramifiações do objeto data que fizemos e formata da maneira desejada
         
-        var valorOriginal = retornoDatas[i].ValorVenda;
-
-        var valorFormatado = valorOriginal.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-        })
-
-        itens = await loadDetails(retornoDatas[i].codVenda)
-
-
-        arrayItens.push(itens)
+        itens = await loadDetails(retornoDatas[i].codVenda) //armazena na var os dados dos itens que compoem cada venda
             
-        array.push([
+        array.push([ // adiciona no array os dados gerais das vendas e a variavel (array) que armazena os dados dos itens ventidos
             retornoDatas[i].codVenda,
             dataFormatada,
-            valorFormatado,
+            retornoDatas[i].ValorVenda.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+                }),
             itens
-         // arrayItens
-    ])
+            ])
     }
     
-
     for(let i in array){
-       let teste =  createRow(
+        createRow(
             array[i][0],
             array[i][1], 
             array[i][2])  
 
         for(let j in array[i][3]){
-             criaDetalhes(
+            criaDetalhes(
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
