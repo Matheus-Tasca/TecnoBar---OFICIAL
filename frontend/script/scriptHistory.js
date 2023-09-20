@@ -79,24 +79,16 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
                     style: 'currency',
                     currency: 'BRL'
                     }),
-                array[i][3][j].codProd
+                array[i][0]
                 )
-               
-                let detas = document.querySelector(`#valor${array[i][3][j].codProd}`)
-
+                let vai = ''
+                vai = document.querySelector(`#valorLinha${array[i][0]}-codProd${array[i][3][j].codProd}`)
+                vai.style.display = 'table-row'
+                let vai2 = document.querySelector(`#cod${array[i][0]}`)
                 
-                console.log(detas)
-
-                teste.addEventListener('click', ()=>{
-                    if((detas.style.display === 'none')){
-                        detas.style.display = 'table-row'
-                    }
-                    else{
-                        detas.style.display = 'none'
-                    }
-                })
+                console.log(vai,array[i][3].indexOf(this))
         } 
-        
+       
     }   
    
 }
@@ -225,14 +217,14 @@ const createRow = (codigo, data, valor, ) => {
     })
 }
 
-const criaDetalhes = (codProd, nomeProd,quantidade, valorTotal) =>{
+const criaDetalhes = (codProd, nomeProd,quantidade, valorTotal,valorLinha) =>{
     const detalhes = createElement(
         'tr',
         'itens-vendidos',
         `<td>${codProd} - ${nomeProd}</td>
         <td>${quantidade}</td>
         <td>${valorTotal}</td>`,
-        `valor${codProd}`,
+        `valorLinha${valorLinha}-codProd${codProd}`,
         '',
         'table-active'
     )
