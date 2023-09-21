@@ -20,6 +20,7 @@ const diasEmNumero = () =>{
 let details = []
     let teste = []
     let cabeca = []
+    let vai
 const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
     const days = {dia : diasEmNumero()}//passe o numero de dias como arquivo JSON
 
@@ -65,13 +66,16 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
     
 
     for(let i in array){//percorre o array que contem os dados das vendas
-        createRow(//cria uma nova linha com o valor do, codigo, data e valor
+       const [b,c]=  createRow(//cria uma nova linha com o valor do, codigo, data e valor
             array[i][0],
             array[i][1], 
             array[i][2])  
             teste = document.querySelector('.linha')
+
+            console.log(b,c)
         for(let j in array[i][3]){ //percorre o array que contem os itens 
-            criaDetalhes(//cria uma linha para cada item com o seu, codigo, nome, quantidade e valor de venda
+            vai = ''
+           const a =  criaDetalhes(//cria uma linha para cada item com o seu, codigo, nome, quantidade e valor de venda
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
@@ -81,12 +85,10 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
                     }),
                 array[i][0]
                 )
-                let vai = ''
-                vai = document.querySelector(`#valorLinha${array[i][0]}-codProd${array[i][3][j].codProd}`)
-                vai.style.display = 'table-row'
+              
+               
                 let vai2 = document.querySelector(`#cod${array[i][0]}`)
-                
-                console.log(vai,array[i][3].indexOf(this))
+                a.style.display = 'none'
         } 
        
     }   
@@ -165,7 +167,7 @@ const onLoadHistory = async () => {
 }
 
 
-const createElement = (tag, classe ='', innerHTML = '',value = '', innerText = '', classe2 = '') =>{
+const createElement = (tag, classe ='', innerHTML = '',value = '', innerText = '', classe2 = '', classe3 = '') =>{
     const element = document.createElement(tag)
   
     if(classe) //class para estilização
@@ -178,6 +180,8 @@ const createElement = (tag, classe ='', innerHTML = '',value = '', innerText = '
         element.innerText = innerText    
     if(classe2)
         element.classList.add(classe2)
+    if(classe3)
+        element.classList.add(classe3)
     
     return element
   }
@@ -207,14 +211,7 @@ const createRow = (codigo, data, valor, ) => {
 
     
 
-    linha.addEventListener("click",()=>{
-        if((cabecalho.style.display === 'none')){
-            cabecalho.style.display = 'table-row'
-        }
-        else{
-            cabecalho.style.display = 'none'
-        }
-    })
+    return [linha, cabecalho]
 }
 
 const criaDetalhes = (codProd, nomeProd,quantidade, valorTotal,valorLinha) =>{
@@ -224,13 +221,14 @@ const criaDetalhes = (codProd, nomeProd,quantidade, valorTotal,valorLinha) =>{
         `<td>${codProd} - ${nomeProd}</td>
         <td>${quantidade}</td>
         <td>${valorTotal}</td>`,
-        `valorLinha${valorLinha}-codProd${codProd}`,
         '',
+        '',
+        `valorLinha${valorLinha}`,
         'table-active'
     )
     pai.appendChild(detalhes)
 
-   
+   return detalhes
 }
 
 const limpaLinhas = (elemento) =>{ //funcao para limpar valores ja existentes em item 
