@@ -17,10 +17,7 @@ const diasEmNumero = () =>{
     else 
         return 360
 }
-let details = []
-    let teste = []
-    let cabeca = []
-    let vai
+
 const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
     const days = {dia : diasEmNumero()}//passe o numero de dias como arquivo JSON
 
@@ -36,8 +33,11 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
     }).then((dados)=>{ //se chegar até aqui, o retorno foi positivo. Ele ja atribui o retorno dos dados a uma variavel
         retornoDatas = dados
     })
+
     limpaLinhas(pai) //funcao para limpar linhas ja existentes a cada vez que a função for chamada
+
     let array = [] // declaração de array para guardar os dados retornados sobre a visão geral de vendas
+
     for(let i in retornoDatas){ //utiliza o indice "i" para percorrer no tamanho do array, ou seja, para cada item retornado
         itens  = ""
         
@@ -60,22 +60,18 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
             ])
     }
 
-    details = document.querySelector('.itens-vendidos')
-    
-    cabeca = document.querySelector('.cabecalho')
-    
-
     for(let i in array){//percorre o array que contem os dados das vendas
-       const [b,c]=  createRow(//cria uma nova linha com o valor do, codigo, data e valor
+
+       const [linha,cabecalho]=  createRow(//cria uma nova linha com o valor do, codigo, data e valor
             array[i][0],
             array[i][1], 
             array[i][2])  
-            teste = document.querySelector('.linha')
 
-            console.log(b,c)
+            cabecalho.style.display = 'none'
+
         for(let j in array[i][3]){ //percorre o array que contem os itens 
-            vai = ''
-           const a =  criaDetalhes(//cria uma linha para cada item com o seu, codigo, nome, quantidade e valor de venda
+
+           const detalhesVenda =  criaDetalhes(//cria uma linha para cada item com o seu, codigo, nome, quantidade e valor de venda
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
@@ -85,87 +81,115 @@ const loadHistory = async () => { //funcao chamada no onchange do filtro de dias
                     }),
                 array[i][0]
                 )
-              
-               
-                let vai2 = document.querySelector(`#cod${array[i][0]}`)
-                a.style.display = 'none'
+
+                detalhesVenda.style.display = 'none'
+
+                linha.addEventListener('click',()=>{
+                if(detalhesVenda.style.display == 'none'){
+                    detalhesVenda.style.display = 'table-row'
+                }
+                else{
+                    detalhesVenda.style.display = 'none'
+                }
+       })   
         } 
-       
+            linha.addEventListener('click',()=>{
+                if(cabecalho.style.display == 'none'){
+                    cabecalho.style.display = 'table-row'
+                }
+                else{
+                    cabecalho.style.display = 'none'
+                }
+       })     
     }   
    
 }
+const onLoadHistory = async () => { //funcao chamada no onchange do filtro de dias
+    const days = {dia : 30}//passe o numero de dias como arquivo JSON
 
-const onLoadHistory = async () => {
-    const days = {dia : 30}
-
-    await fetch('http://localhost:4001/historico', {
+    await fetch('http://localhost:4001/historico', { //faz um post com a data JSON
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(days)
-    }).then((res)=>{
+    }).then((res)=>{ //verifica se o retorno da funcao foi de erro
         if(!res.ok){
             console.log("erro")
         }
         return res.json()
-    }).then((dados)=>{
+    }).then((dados)=>{ //se chegar até aqui, o retorno foi positivo. Ele ja atribui o retorno dos dados a uma variavel
         retornoDatas = dados
     })
-    limpaLinhas(pai)
-    let array = []
-    let arrayItens = []
-    for(let i in retornoDatas){
+
+    limpaLinhas(pai) //funcao para limpar linhas ja existentes a cada vez que a função for chamada
+
+    let array = [] // declaração de array para guardar os dados retornados sobre a visão geral de vendas
+
+    for(let i in retornoDatas){ //utiliza o indice "i" para percorrer no tamanho do array, ou seja, para cada item retornado
         itens  = ""
         
-        var dataOriginal = new Date(retornoDatas[i].DataVenda);
-
+        var dataOriginal = new Date(retornoDatas[i].DataVenda); //cria uma nova data com o valor retornado da coluna DataVenda no indice "i" do array.
         var dia = dataOriginal.getUTCDate();
         var mes = dataOriginal.getUTCMonth() + 1; // Adicionamos 1 ao mês, pois os meses em JavaScript são baseados em zero
         var ano = dataOriginal.getUTCFullYear();
-        var dataFormatada = dia + "/" + (mes < 10 ? "0" : "") + mes + "/" + ano;
+        var dataFormatada = dia + "/" + (mes < 10 ? "0" : "") + mes + "/" + ano; // pega todas as ramifiações do objeto data que fizemos e formata da maneira desejada
         
-        var valorOriginal = retornoDatas[i].ValorVenda;
-
-        var valorFormatado = valorOriginal.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-        })
-
-        itens = await loadDetails(retornoDatas[i].codVenda)
-
-
-        arrayItens.push(itens)
+        itens = await loadDetails(retornoDatas[i].codVenda) //armazena na var os dados dos itens que compoem cada venda
             
-        array.push([
+        array.push([ // adiciona no array os dados gerais das vendas e a variavel (array) que armazena os dados dos itens ventidos
             retornoDatas[i].codVenda,
             dataFormatada,
-            valorFormatado,
+            retornoDatas[i].ValorVenda.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+                }),
             itens
-         // arrayItens
-    ])
+            ])
     }
-    
-    for(let i in array){
 
-        createRow(
+    for(let i in array){//percorre o array que contem os dados das vendas
+
+       const [linha,cabecalho]=  createRow(//cria uma nova linha com o valor do, codigo, data e valor
             array[i][0],
             array[i][1], 
             array[i][2])  
+            
+            cabecalho.style.display = 'none'
 
-        for(let j in array[i][3]){
+        for(let j in array[i][3]){ //percorre o array que contem os itens 
 
-            criaDetalhes(
+           const detalhesVenda =  criaDetalhes(//cria uma linha para cada item com o seu, codigo, nome, quantidade e valor de venda
                 array[i][3][j].codProd,
                 array[i][3][j].nomeProd,
                 array[i][3][j].quantidade,
                 array[i][3][j].ValorVenda.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
-                    })
+                    }),
+                array[i][0]
                 )
-        } 
-    }   
-}
 
+                detalhesVenda.style.display = 'none'
+
+                linha.addEventListener('click',()=>{
+                if(detalhesVenda.style.display == 'none'){
+                    detalhesVenda.style.display = 'table-row'
+                }
+                else{
+                    detalhesVenda.style.display = 'none'
+                }
+       })   
+        } 
+            linha.addEventListener('click',()=>{
+                if(cabecalho.style.display == 'none'){
+                    cabecalho.style.display = 'table-row'
+                }
+                else{
+                    cabecalho.style.display = 'none'
+                }
+       })     
+    }   
+   
+}
 
 const createElement = (tag, classe ='', innerHTML = '',value = '', innerText = '', classe2 = '', classe3 = '') =>{
     const element = document.createElement(tag)
@@ -208,8 +232,6 @@ const createRow = (codigo, data, valor, ) => {
         'table-secondary'
     )
     pai.appendChild(cabecalho)
-
-    
 
     return [linha, cabecalho]
 }
