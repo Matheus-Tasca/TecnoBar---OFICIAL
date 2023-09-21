@@ -173,7 +173,6 @@ const completeSalesHistory = async (id)=>{
         where 
             Venda.codVenda = ?;
     `,[id])
-    console.log('foi')
     return saleDetails[0]
 }
 
