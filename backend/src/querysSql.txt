@@ -1,6 +1,0 @@
-
-/*Calcula o lucro do produto*/
-Select produto.nomeProd, (produto.ValorVenda - produto.ValorEntrada) * (count(*)) as LucroTotalProduto, Venda.Data_Registro from Venda inner join produto on Venda.codProd = produto.codProd group by produto.codProd;
-
-/*Calcula o faturamento do produto*/
-Select produto.nomeProd, produto.ValorVenda * (count(*)) as FaturamentoTotalProduto, Venda.Data_Registro from Venda inner join produto on Venda.codProd = produto.codProd group by produto.codProd;
