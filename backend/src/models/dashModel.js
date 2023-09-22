@@ -180,38 +180,34 @@ const decremento = (dias) =>{
     let resultArray = []
     if(dias == 1){
         resultArray.push(1)
-        return resultArray
     }
     else if(dias == 7){
         for(let i = 1; i<7; i++){
             resultArray.push(i)
         }
-        return resultArray
     }
     else if(dias == 30){
         for(let i = 1; i<30; i+=6){
             resultArray.push(i)
         }
-        return resultArray
     }
     else if(dias == 90){
         for(let i = 1; i<90;i+=15){
             resultArray.push(i)
         }
-        return resultArray
     }
     else if(dias == 180){
         for(let i = 1; i<160; i+=160){
             resultArray.push(i)
         }
-        return resultArray
     }
     else{
         for(let i = 0; i<360; i+=60){
             resultArray.push(i)
         }
-        return resultArray
     }
+    
+    return resultArray
 }
 
 const dashEspecifico = async (dados) =>{
@@ -226,6 +222,7 @@ const dashEspecifico = async (dados) =>{
     if(dataType == 'Lucro'){
         for(let i in decremento(dias)){
             datamin.setDate(datamin.getDate() - [decremento(dias)[i]])
+            console.log(decremento(dias)[i])
                 const arrayLucro = await (await connection).query(` 
             SELECT 
                 (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto
@@ -238,10 +235,9 @@ const dashEspecifico = async (dados) =>{
             GROUP BY
                 produto.codProd;
             `,[datamin])
+            console.log(datamin + '-' + arrayLucro)
             valores.push(arrayLucro[0])
-            console.log(datamin)
         }
-        console.log(valores)
     }
     else if(dataType == 'Vendas'){
 
