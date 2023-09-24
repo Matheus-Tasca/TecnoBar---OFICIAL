@@ -68,7 +68,7 @@ namespace DESKTOP2019
         public void Busca()
         {
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ;
-            string query = "SELECT * FROM produto"; // Substitua pelo seu SQL
+            string query = "SELECT * FROM produto"; 
 
             using (conection = new MySqlConnection(conString))
             {
@@ -133,6 +133,7 @@ namespace DESKTOP2019
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            int linhasAfetadas = 0;
             try
             {
                 if ((campoCategoria.SelectedIndex == -1) || (campoVenda.Text == "") || (campoNome.Text == "") || (campoCusto.Text == "") || (campoQTDInicio.Text == "") || (campoQTDMinima.Text == ""))
@@ -141,10 +142,10 @@ namespace DESKTOP2019
                 }
                 else
                 {
-                    string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda, linkImg)"
-                        + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda, @linkImg)";
-                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //pega a localização que foi explicada
-                    using (conection = new MySqlConnection(conString))//Criar conexão com o banco (chega no local)
+                    string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda)"
+                        + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda)";
+                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //pega a localização que foi explicada (endereco)
+                    using (conection = new MySqlConnection(conString))//Criar conexão com o banco (manda um whats pro banco falando que ta indo) 
                     {
                         conection.Open(); //abre
 
@@ -155,9 +156,8 @@ namespace DESKTOP2019
                         comando.Parameters.AddWithValue("@qtdEst", campoQTDInicio.Text);
                         comando.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
                         comando.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
-                        comando.Parameters.AddWithValue("@linkImg", "TESTE");
-
-                        int linhasAfetadas = comando.ExecuteNonQuery();
+                        
+                        linhasAfetadas = comando.ExecuteNonQuery();
                         conection.Close();
 
                         if (linhasAfetadas > 0)
@@ -185,27 +185,30 @@ namespace DESKTOP2019
             int id;
             id = Convert.ToInt32(this.listProd.SelectedValue);
             String qryDelete = $"DELETE from produto where codProd = {id}";
-            if (MessageBox.Show("Tem certeza que deseja excluir este produto do seu sistema? A ação será irreversível", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes) {
-                try
+            if (MessageBox.Show("Tem certeza que deseja inativar este produto do seu sistema? ", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes) {
+                //try
                 {
-                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-                    conection = new MySqlConnection(conString);
-
-                    conection.Open();
-                    MySqlCommand delete = new MySqlCommand(qryDelete, conection);
-
-                    conection.Close();
-                    MessageBox.Show("Produto excluído com sucesso", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    // INATIVAR
                 }
-                catch (Exception ex)
+            }
+        }
+
+        private void campoCod_TextChanged(object sender, EventArgs e)
+        {
+            string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            using (MySqlConnection connection = new MySqlConnection(conString))
+            {
+                connection.Open();
+                string query = "SELECT MAX(codProd) FROM produto";
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    MessageBox.Show("Não foi possível excluir esse produto", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        int ultimoCodigo = Convert.ToInt32(result);
+                        int proximoCodigo = ultimoCodigo + 1;
+                    }
                 }
-                finally
-                {
-                    if (conection.State == ConnectionState.Open)
-                        conection.Close();
-                } 
             }
         }
     }

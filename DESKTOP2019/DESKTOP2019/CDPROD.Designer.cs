@@ -61,6 +61,7 @@ namespace DESKTOP2019
             this.campoCod.Name = "campoCod";
             this.campoCod.Size = new System.Drawing.Size(63, 20);
             this.campoCod.TabIndex = 0;
+            this.campoCod.TextChanged += new System.EventHandler(this.campoCod_TextChanged);
             // 
             // campoNome
             // 

@@ -17,7 +17,7 @@ namespace DESKTOP2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CDPROD());
+            Application.Run(new Estoque());
         }
 
         public static void DoubleNumber(KeyPressEventArgs e)
