@@ -162,6 +162,7 @@ const salesHistory = async (days)=>{
     return dataSale[0]
 }
 
+
 const completeSalesHistory = async (id)=>{
     const saleDetails = await (await connection).query(`
         select 
@@ -176,6 +177,19 @@ const completeSalesHistory = async (id)=>{
     return saleDetails[0]
 }
 
+function valoresIntermediariosInteiros(valor1, valor2, quantidade) {
+  
+    const intermediarios = [];
+    const step = (valor2 - valor1) / (quantidade + 1);
+  
+    for (let i = 1; i <= quantidade; i++) {
+      intermediarios.push(Math.round(valor1 + i * step));
+    }
+  
+    return intermediarios;
+  }
+  
+
 const decremento = (dias) =>{
     let resultArray = []
     if(dias == 1){
@@ -187,9 +201,7 @@ const decremento = (dias) =>{
         }
     }
     else if(dias == 30){
-        for(let i = 1; i<30; i+=6){
-            resultArray.push(i)
-        }
+       resultArray = valoresIntermediariosInteiros(1,30,6)
     }
     else if(dias == 90){
         for(let i = 1; i<90;i+=15){
@@ -216,28 +228,33 @@ const dashEspecifico = async (dados) =>{
     const {dataType} = dados
     const {item} = dados
     const {categoriaItem} = dados
-    const datamin = new Date()
+   
     const valores = []
 
     if(dataType == 'Lucro'){
-        for(let i in decremento(dias)){
-            datamin.setDate(datamin.getDate() - [decremento(dias)[i]])
-            console.log(decremento(dias)[i])
-                const arrayLucro = await (await connection).query(` 
-            SELECT 
-                (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto
-            FROM 
-                Venda 
-            INNER JOIN 
-                produto ON Venda.codProd = produto.codProd
-            WHERE
-                Venda.Data_Registro >= ? 
-            GROUP BY
-                produto.codProd;
+        let arrayDias = decremento(dias)
+        for(let i in arrayDias){
+            const datamin = new Date()
+            let valor = arrayDias[i]
+            datamin.setDate(datamin.getDate() - valor)
+            
+            const arrayLucro = await (await connection).query(` 
+                SELECT 
+                    (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto
+                FROM 
+                    Venda 
+                INNER JOIN 
+                    produto ON Venda.codProd = produto.codProd
+                WHERE
+                    Venda.Data_Registro >= ? 
+                GROUP BY
+                    produto.codProd;
             `,[datamin])
-            console.log(datamin + '-' + arrayLucro)
+            console.log(arrayLucro[0])
             valores.push(arrayLucro[0])
         }
+        return valores
+        
     }
     else if(dataType == 'Vendas'){
 
