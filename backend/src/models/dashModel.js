@@ -228,12 +228,12 @@ const dashEspecifico = async (dados) =>{
     const {dataType} = dados
     const {item} = dados
     const {categoriaItem} = dados
-   
+    let result
     const valores = []
 
     if(dataType == 'Lucro'){
         let arrayDias = decremento(dias)
-        for(let i in arrayDias){
+        for(let i = 1; i<arrayDias.length; i++){
             const datamin = new Date()
             let valor = arrayDias[i]
             datamin.setDate(datamin.getDate() - valor)
@@ -246,11 +246,15 @@ const dashEspecifico = async (dados) =>{
                 INNER JOIN 
                     produto ON Venda.codProd = produto.codProd
                 WHERE
-                    Venda.Data_Registro >= ? 
+                    Venda.Data_Registro >= ?
                 GROUP BY
                     produto.codProd;
             `,[datamin])
-            console.log(arrayLucro[0])
+            console.log("----------------\nPOSICAO "+ i + " do vetor \n"+"data:"+datamin)
+            console.log(arrayLucro[0] )
+            for(let j in arrayLucro[0]){
+                console.log(arrayLucro[0][j].LucroTotalProduto)
+            }
             valores.push(arrayLucro[0])
         }
         return valores
