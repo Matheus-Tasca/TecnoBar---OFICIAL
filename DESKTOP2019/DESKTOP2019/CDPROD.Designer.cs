@@ -44,13 +44,13 @@ namespace DESKTOP2019
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.listProd = new System.Windows.Forms.ListBox();
             this.campoCategoria = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnNovaCate = new System.Windows.Forms.Button();
+            this.cbAtivo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,20 +187,11 @@ namespace DESKTOP2019
             this.btnAlterar.TabIndex = 14;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Location = new System.Drawing.Point(235, 307);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(88, 23);
-            this.btnExcluir.TabIndex = 15;
-            this.btnExcluir.Text = "Inativar";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(343, 307);
+            this.btnSalvar.Location = new System.Drawing.Point(247, 307);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(88, 23);
             this.btnSalvar.TabIndex = 16;
@@ -210,7 +201,7 @@ namespace DESKTOP2019
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(446, 307);
+            this.btnCancelar.Location = new System.Drawing.Point(370, 307);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(88, 23);
             this.btnCancelar.TabIndex = 18;
@@ -257,18 +248,30 @@ namespace DESKTOP2019
             this.btnNovaCate.Text = "Nova";
             this.btnNovaCate.UseVisualStyleBackColor = true;
             // 
+            // cbAtivo
+            // 
+            this.cbAtivo.AutoSize = true;
+            this.cbAtivo.Checked = true;
+            this.cbAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbAtivo.Location = new System.Drawing.Point(208, 25);
+            this.cbAtivo.Name = "cbAtivo";
+            this.cbAtivo.Size = new System.Drawing.Size(50, 17);
+            this.cbAtivo.TabIndex = 23;
+            this.cbAtivo.Text = "Ativo";
+            this.cbAtivo.UseVisualStyleBackColor = true;
+            // 
             // CDPROD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 362);
+            this.Controls.Add(this.cbAtivo);
             this.Controls.Add(this.btnNovaCate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.campoCategoria);
             this.Controls.Add(this.listProd);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.groupBox1);
@@ -307,12 +310,12 @@ namespace DESKTOP2019
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ListBox listProd;
         private System.Windows.Forms.ComboBox campoCategoria;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnNovaCate;
+        private System.Windows.Forms.CheckBox cbAtivo;
     }
 }

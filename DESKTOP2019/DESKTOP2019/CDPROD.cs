@@ -23,6 +23,7 @@ namespace DESKTOP2019
         string pastaDestino = Global.caminhoFotos;
         string destinoCompleto = "";
         int modo = 0; // 0 = padrão ; 1 = inclusão
+        bool ativo;
 
         public void limpar()
         {
@@ -43,14 +44,12 @@ namespace DESKTOP2019
                 {
                     case 0:
                         btnNovo.Enabled = true;
-                        btnExcluir.Enabled = true;
                         btnAlterar.Enabled = true;
                         btnCancelar.Enabled = false;
                         btnSalvar.Enabled = false;
                         break;
                     case 1:
                         btnNovo.Enabled = false;
-                        btnExcluir.Enabled = false;
                         btnAlterar.Enabled = false;
                         btnCancelar.Enabled = true;
                         btnSalvar.Enabled = true;
@@ -83,7 +82,8 @@ namespace DESKTOP2019
                         string nome = reader["nomeProd"].ToString();
                         string cod = reader["codProd"].ToString();
                         string qtd = reader["qtdEstoque"].ToString();
-                        listProd.Items.Add($"{cod} - {nome} - {qtd}");
+                        string atv = reader["ativo"].ToString();
+                        listProd.Items.Add($"{cod} - {nome} - {qtd} - {atv}");
                     }
 
                     reader.Close();
@@ -136,14 +136,22 @@ namespace DESKTOP2019
             int linhasAfetadas = 0;
             try
             {
+                if(cbAtivo.Checked == true)
+                {
+                    ativo = true;
+                }
+                else
+                {
+                    ativo = false;
+                }
                 if ((campoCategoria.SelectedIndex == -1) || (campoVenda.Text == "") || (campoNome.Text == "") || (campoCusto.Text == "") || (campoQTDInicio.Text == "") || (campoQTDMinima.Text == ""))
                 {
                     throw new CampoVazioException("Todos os campos devem ser preenchidos");
                 }
                 else
                 {
-                    string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda)"
-                        + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda)";
+                    string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda, ativo)"
+                        + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda, @ativo)";
                     String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //pega a localização que foi explicada (endereco)
                     using (conection = new MySqlConnection(conString))//Criar conexão com o banco (manda um whats pro banco falando que ta indo) 
                     {
@@ -156,6 +164,7 @@ namespace DESKTOP2019
                         comando.Parameters.AddWithValue("@qtdEst", campoQTDInicio.Text);
                         comando.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
                         comando.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
+                        comando.Parameters.AddWithValue("@ativo", ativo);
                         
                         linhasAfetadas = comando.ExecuteNonQuery();
                         conection.Close();
@@ -210,6 +219,14 @@ namespace DESKTOP2019
                     }
                 }
             }
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            /*campo precisa estar selecionado no listbox 
+             * dai então tras ele para os campos de preenchimento
+             * clcia em salvar mandando um update*/
+            
         }
     }
 }

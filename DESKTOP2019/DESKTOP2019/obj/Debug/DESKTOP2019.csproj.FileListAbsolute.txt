@@ -216,3 +216,5 @@ C:\Users\Matheus\Desktop\TCC\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.cspro
 C:\Users\Matheus\Desktop\TCC\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.exe
 C:\Users\Matheus\Desktop\TCC\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.pdb
 C:\Users\Matheus\Desktop\TCC\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.formPrincipal.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.formCaixa.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.formPrincipal.resources
