@@ -197,26 +197,22 @@ const decremento = (dias) =>{
     }
     else if(dias == 7){
         for(let i = 1; i<7; i++){
-            resultArray.push(i)
+            resultArray = valoresIntermediariosInteiros(1,7,6)
         }
     }
     else if(dias == 30){
        resultArray = valoresIntermediariosInteiros(1,30,6)
     }
     else if(dias == 90){
-        for(let i = 1; i<90;i+=15){
-            resultArray.push(i)
-        }
+        resultArray = valoresIntermediariosInteiros(1,90,6)
+
     }
     else if(dias == 180){
-        for(let i = 1; i<160; i+=160){
-            resultArray.push(i)
-        }
+        resultArray = valoresIntermediariosInteiros(1,180,6)
+
     }
     else{
-        for(let i = 0; i<360; i+=60){
-            resultArray.push(i)
-        }
+        resultArray = valoresIntermediariosInteiros(1,360,6)
     }
     
     return resultArray
@@ -250,22 +246,40 @@ const dashEspecifico = async (dados) =>{
                 GROUP BY
                     produto.codProd;
             `,[datamin])
-            console.log("----------------\nPOSICAO "+ i + " do vetor \n"+"data:"+datamin)
-            console.log(arrayLucro[0] )
-            console.log('******************************')
-            console.info(arrayLucro[0].LucroTotalProduto)
+            
+            result = 0
             for(let j in arrayLucro[0]){
                 let temp = Number(arrayLucro[0][j].LucroTotalProduto)
                result += temp
-               console.info(result)
             }
-            valores.push(arrayLucro[0])
+            console.log("Lucro da data "+datamin +' - '+result)
+            const cont = i
+            const vai = `${i} - ${result}`
+            valores.push(vai)
         }
         return valores
         
     }
     else if(dataType == 'Vendas'){
-
+        let arrayDias = decremento(dias)
+        for(let i = 1; i<arrayDias.length; i++){
+            const datamin = new Date()
+            let valor = arrayDias[i]
+            datamin.setDate(datamin.getDate() - valor)
+            
+            const arrayVendas = await (await connection).query(`
+                Select 
+                    count(Venda.codVenda) as VendasTotais 
+                from 
+                    Venda 
+                inner join 
+                    produto on produto.codProd = Venda.codProd
+                where 
+                    Venda.Data_Registro >= ?;
+        `,[datamin])
+        console.log(arrayVendas[0])
+        }
+        
     }
     else if(dataType == 'Faturamento'){
 
