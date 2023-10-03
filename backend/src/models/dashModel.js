@@ -228,7 +228,7 @@ const dashEspecifico = async (dados) =>{
     const {dataType} = dados
     const {item} = dados
     const {categoriaItem} = dados
-    let result
+    let result = 0
     const valores = []
 
     if(dataType == 'Lucro'){
@@ -240,7 +240,7 @@ const dashEspecifico = async (dados) =>{
             
             const arrayLucro = await (await connection).query(` 
                 SELECT 
-                    (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto
+                    produto.codProd, (produto.ValorVenda - produto.ValorEntrada) * COUNT(*) AS LucroTotalProduto
                 FROM 
                     Venda 
                 INNER JOIN 
@@ -252,8 +252,12 @@ const dashEspecifico = async (dados) =>{
             `,[datamin])
             console.log("----------------\nPOSICAO "+ i + " do vetor \n"+"data:"+datamin)
             console.log(arrayLucro[0] )
+            console.log('******************************')
+            console.info(arrayLucro[0].LucroTotalProduto)
             for(let j in arrayLucro[0]){
-                console.log(arrayLucro[0][j].LucroTotalProduto)
+                let temp = Number(arrayLucro[0][j].LucroTotalProduto)
+               result += temp
+               console.info(result)
             }
             valores.push(arrayLucro[0])
         }
