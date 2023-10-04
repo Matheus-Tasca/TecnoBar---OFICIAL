@@ -277,12 +277,30 @@ const dashEspecifico = async (dados) =>{
                 where 
                     Venda.Data_Registro >= ?;
         `,[datamin])
-        console.log(arrayVendas[0])
         }
         
     }
     else if(dataType == 'Faturamento'){
-
+        let arrayDias = decremento(dias)
+        for(let i = 1; i<arrayDias.length; i++){
+            const datamin = new Date()
+            let valor = arrayDias[i]
+            datamin.setDate(datamin.getDate() - valor)
+            
+        const arrayFaturamento = await (await connection).query(`
+        Select 
+            produto.nomeProd, produto.ValorVenda * (SUM(Venda.QtdProd)) as FaturamentoTotalProduto, Venda.Data_Registro 
+        from
+            Venda 
+        inner join 
+            produto on Venda.codProd = produto.codProd
+        where
+            Venda.Data_Registro >= ?
+        group by
+            produto.codProd;
+        `,[datamin])
+        console.log(arrayFaturamento[0][0])
+        }
     }
 
     
