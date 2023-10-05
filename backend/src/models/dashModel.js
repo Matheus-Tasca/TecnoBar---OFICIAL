@@ -277,8 +277,10 @@ const dashEspecifico = async (dados) =>{
                 where 
                     Venda.Data_Registro >= ?;
         `,[datamin])
-        }
-        
+            let totalVendas = arrayVendas[0][0].VendasTotais
+            valores.push(totalVendas)
+        }   
+        return valores
     }
     else if(dataType == 'Faturamento'){
         let arrayDias = decremento(dias)
@@ -299,8 +301,12 @@ const dashEspecifico = async (dados) =>{
         group by
             produto.codProd;
         `,[datamin])
-        console.log(arrayFaturamento[0][0])
-        }
+
+        let totalFaturamento = arrayFaturamento[0][0].FaturamentoTotalProduto
+        console.log(totalFaturamento)
+        valores.push(totalFaturamento) 
+   }
+   return valores
     }
 
     
