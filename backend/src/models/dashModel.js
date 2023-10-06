@@ -220,8 +220,8 @@ const decremento = (dias) =>{
 
 const dashEspecifico = async (dados) =>{
     
-    const {dias} = dados
     const {dataType} = dados
+    const {dias} = dados
     const {item} = dados
     const {categoriaItem} = dados
     let result = 0

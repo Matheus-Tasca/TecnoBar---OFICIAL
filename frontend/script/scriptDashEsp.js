@@ -16,7 +16,7 @@ let dadoSelected = ''
 let cat = ''
 let arqType = ''
 let cont = 0 
-
+let itemSelected = ''
 
 const createElement = (tag, classe ='',innerText = '', innerHTML = '',value = '', classe2 = '') =>{
   const element = document.createElement(tag)
@@ -188,6 +188,7 @@ const configura = () =>{
     consumableType.forEach(consumable => {
         if (consumable === clickedConsumable) {
           consumable.classList.add("selected")
+          return document.querySelector('.item.selecionavel.consumable.selected')
         } else {
           consumable.classList.remove("selected")
         }
@@ -198,7 +199,8 @@ const configura = () =>{
     itemType.forEach(item => {
       let classe = item.classList
       if(classe.contains("checked")){
-        console.log(item.value)
+        itemSelected = ''
+        itemSelected = item.value
       }
     })
   }
@@ -214,10 +216,10 @@ const configura = () =>{
         selectDataType(this)
       })
   })
-  
+  let codCategoria = ''
   consumableType.forEach(consumable => {//chamada da funcao ao clicar num elemnto do array
     consumable.addEventListener("click", function() {
-        selectConsumableType(this)
+       codCategoria = selectConsumableType(this).getAttribute(value)
       })
   })
 
@@ -249,9 +251,9 @@ function getSelectedOptions() {
   var valoresSelecionados = Array.from(selectedOptions).map(function (option) { //array dos valores selecionados
     return option.getAttribute('data-value')
   })
+  valoresSelecionados.push(diasEmNumero(),itemSelected, codCategoria)
 
-  valoresSelecionados.push(diasEmNumero())
-
+  console.log(valoresSelecionados + 'item>:')
   if(valoresSelecionados.length <4){
     alert("Selecione todos os campos para gerar o grafico!")
   }
