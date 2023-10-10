@@ -67,7 +67,7 @@ namespace DESKTOP2019
             // 
             this.campoNome.Location = new System.Drawing.Point(24, 78);
             this.campoNome.Name = "campoNome";
-            this.campoNome.Size = new System.Drawing.Size(234, 20);
+            this.campoNome.Size = new System.Drawing.Size(271, 20);
             this.campoNome.TabIndex = 1;
             // 
             // campoQTDInicio
@@ -152,9 +152,9 @@ namespace DESKTOP2019
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Quantida inicial ";
+            this.label6.Text = "Quantidade Atual";
             // 
             // groupBox1
             // 
@@ -216,6 +216,7 @@ namespace DESKTOP2019
             this.listProd.Name = "listProd";
             this.listProd.Size = new System.Drawing.Size(223, 264);
             this.listProd.TabIndex = 19;
+            this.listProd.SelectedIndexChanged += new System.EventHandler(this.listProd_SelectedIndexChanged);
             // 
             // campoCategoria
             // 

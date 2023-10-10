@@ -100,7 +100,7 @@ namespace DESKTOP2019
             {
                 int quantidade = int.Parse(txtQuantidade.Text);
                 double valorUnitario;
-                if(doubl.TryParse(lblValorUnitario.Text,out valorUnitario))
+                if(double.TryParse(lblValorUnitario.Text,out valorUnitario))
                 {
                     Console.WriteLine(valorUnitario);
                 }
