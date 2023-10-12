@@ -47,13 +47,23 @@ namespace DESKTOP2019
                         btnAlterar.Enabled = true;
                         btnCancelar.Enabled = false;
                         btnSalvar.Enabled = false;
+                        listProd.Enabled = false;
                         break;
                     case 1:
                         btnNovo.Enabled = false;
                         btnAlterar.Enabled = false;
                         btnCancelar.Enabled = true;
                         btnSalvar.Enabled = true;
+                        listProd.Enabled = false;
                         campoNome.Focus();
+                        break;
+                    case 2:
+                        listProd.Enabled = true;
+                        btnNovo.Enabled = false;
+                        btnAlterar.Enabled = false;
+                        btnCancelar.Enabled = true;
+                        btnSalvar.Enabled = true;
+                        listProd.Enabled = true;
                         break;
                 }
             }
@@ -95,6 +105,8 @@ namespace DESKTOP2019
         {
             InitializeComponent();
             Busca();
+            modo = 0;
+            habilitar();
         }
 
         private void campoQTDInicio_KeyPress(object sender, KeyPressEventArgs e)
@@ -189,19 +201,6 @@ namespace DESKTOP2019
 
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            int id;
-            id = Convert.ToInt32(this.listProd.SelectedValue);
-            String qryDelete = $"DELETE from produto where codProd = {id}";
-            if (MessageBox.Show("Tem certeza que deseja inativar este produto do seu sistema? ", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes) {
-                //try
-                {
-                    // INATIVAR
-                }
-            }
-        }
-
         private void campoCod_TextChanged(object sender, EventArgs e)
         {
             string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
@@ -223,10 +222,67 @@ namespace DESKTOP2019
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            /*campo precisa estar selecionado no listbox 
-             * dai então tras ele para os campos de preenchimento
-             * clcia em salvar mandando um update*/
-            
+            modo = 2;
+            habilitar();
+
+            //fazer update
+
+
         }
+
+        private void listProd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           if (listProd.SelectedIndex != -1)
+                {
+                    // Obtém o item selecionado
+                    string selected = listProd.SelectedItem.ToString();
+                    string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                // Conexão com o banco de dados (substitua a string de conexão conforme necessário)
+                using (MySqlConnection connection = new MySqlConnection(conString))
+                {
+                        connection.Open();
+
+                        // Consulta SQL para selecionar os dados com base no código
+                        string query = "SELECT * FROM produto WHERE codProd = @codigo";
+
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            // Adiciona o parâmetro da consulta SQL
+                            command.Parameters.AddWithValue("@codigo", selected);
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                // Verifica se há linhas retornadas
+                                if (reader.Read())
+                                {
+                                    campoCod.Text = reader["codProd"].ToString();
+                                    campoNome.Text = reader["nomeProd"].ToString();
+                                    campoCusto.Text = reader["valorEntrada"].ToString();
+                                    campoVenda.Text = reader["valorVenda"].ToString();
+                                    campoQTDMinima.Text = reader["qtdMin"].ToString();
+                                    campoCategoria.Text = reader["codCategoria"].ToString();
+                                    campoQTDInicio.Text = reader["qtdEstoque"].ToString();
+                                    int ativoValue = Convert.ToInt32(reader["ativo"]);
+                                    if (ativoValue == 1)
+                                    {
+                                         cbAtivo.Checked = true;
+                                    }
+                                    else
+                                    {
+                                        cbAtivo.Checked = false;
+                                    }
+                                }
+                                else
+                                {
+                                     MessageBox.Show("Não foi possível selecionar o produto");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
     }
-}
+
