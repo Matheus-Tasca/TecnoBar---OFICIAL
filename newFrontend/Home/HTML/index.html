@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Inicio links -->
+    <div>
+        <!-- CSS e js -->
+        <div>
+            <link rel="stylesheet" href="../CSS/index.css">
+            <script src="../Script/index.js"></script>
+        </div>
+        <!-- jQuery -->
+        <div>
+            <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+        </div>
+        <!-- bootstrap CSS-->
+        <div>
+            <link rel='stylesheet'
+                href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+        </div>
+        <!-- Bootstrap JS -->
+        <div>
+            <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+        </div>
+        <!-- Carrossel -->
+        <div>
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        </div>
+        <!-- Font Awesome -->
+        <div>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+                integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+                crossorigin="anonymous">
+        </div>
+        <!-- Fim links -->
+    </div>
+</head>
+
+<body>
+    <!-- Inicio Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-titulo text-center">
+                        <h4>Entrar</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email1"
+                                    placeholder="Seu email de acesso...">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password1" placeholder="Sua senha...">
+                            </div>
+                            <button type="button" class="btn btn-info btn-block btn-border">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div class="cadastre-se">Não possui conta? <a href="#a" class="text-info">Cadastrar-se</a>.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fim Modal -->
+
+    <!-- Inicio Navbar -->
+    <nav>
+        <div class="content-tec">
+            <div class="navtec">
+                <div class="navtec-logo">Tecnobar</div>
+                <input type="checkbox" id="navtec-toggle">
+                <label for="navtec-toggle" class=" burger-menutec">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <li class="navtec-hide navtec-home"><a href="#tituloApresentacao">Empresa</a></li>
+                <li class="navtec-hide navtec-about"><a href="#">Planos</a></li>
+                <li class="navtec-hide navtec-contact"><a href="#TelaContatos">Contato</a></li>
+                <li class="navtec-hide navtec-s-up"><a href="#">Cadastre-se<i class="fas fa-user-plus"></i></a></li>
+                <li class="navtec-hide navtec-s-in" data-toggle="modal" data-target="#loginModal"><a href="#">Entrar<i
+                            class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Fim Navbar -->
+
+    <div style="height: 10vh;"></div>
+
+    <!-- Inicio Conteudo tela -->
+    <div class="container-fluid">
+
+        <!--Final Apresentacao-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="tituloApresentacao">TECNOBAR</div>
+                </div>
+                <div class="col-sm-12">
+                    <div id="subTituloApresentacao">
+                        O sistema que facilitará o seu Gerenciamento de Vendas
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Final apresentação-->
+
+        <div style="height: 10vh;"></div>
+
+        <!-- incio Cards -->
+        <div id="sistema">
+            <div class="d-none d-md-block">
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="solucoes-box">
+                            <div class="solucoes-ico">
+                                <span class="icone-solucoes"><i class='fas fa-question'></i></span>
+                            </div>
+                            <div class="solucoes-content">
+                                <h2 class="s-titulo">QUEM SOMOS
+                                </h2>
+                                <p class="s-descricao text-justify">
+                                    A Tecnobar foi fundada na cidade de Limeira, em 2022, no Colégio Técnico de
+                                    Limeira
+                                    (COTIL). A iniciativa veio a partir de uma demanda que os fundadores notaram nos
+                                    bares
+                                    próximos à região, que tinham um sistema de gerenciamento defasado e
+                                    ineficiente. A
+                                    partir disso, criamos o sistema Tecnobar Gerenciamento e Administração, que
+                                    consegue
+                                    ser
+                                    implantado em qualquer estabelecimento com facilidade e permite uma visualização
+                                    intuitiva e amigável para todos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="solucoes-box">
+                            <div class="solucoes-ico">
+                                <span class="icone-solucoes"><i class="fas fa-balance-scale"></i></span>
+                            </div>
+                            <div class="solucoes-content">
+                                <h2 class="s-titulo">VALORES E MISSÃO
+                                </h2>
+                                <p class="s-descricao text-justify">
+                                    A Tecnobar tem como missão oferecer as melhores soluções para a administração do
+                                    seu
+                                    negócio, sempre com uma interface muito intuitiva, que qualquer um consiga
+                                    administrar e
+                                    gerenciar seu próprio comércio. Sempre com muita transparência e
+                                    responsabilidade,
+                                    entregando o melhor sistema e pós venda aos clientes, com relatórios e gráficos
+                                    essenciais em uma boa gestão administrativa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="solucoes-box">
+                            <div class="solucoes-ico">
+                                <span class="icone-solucoes"><i class="fas fa-handshake"></i></span>
+                            </div>
+                            <div class="solucoes-content">
+                                <h2 class="s-titulo">O que oferecemos ?
+                                </h2>
+                                <p class="s-descricao text-justify">
+                                    Dashboards e gráficos intuítivos e amigáveis, cadastro de produtos separados por
+                                    categorias para melhor visualização e gerenciamento, resumos mensais de
+                                    desempenho
+                                    de
+                                    vendas do produto, controle e caixa e muito mais
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="solucoes-box">
+                            <div class="solucoes-ico">
+                                <span class="icone-solucoes"><i class="fa fa-chart-pie"></i></span>
+                            </div>
+                            <div class="solucoes-content">
+                                <h2 class="s-titulo">Dashboards
+                                </h2>
+                                <p class="s-descricao text-justify">
+                                    Um visualização rápida e intuitiva do seu sistema, com relatórios sorbre vendas,
+                                    faturamento, lucro e muito mais.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="solucoes-box">
+                            <div class="solucoes-ico">
+                                <span class="icone-solucoes"><i class="fa fa-window-restore"></i></span>
+                            </div>
+                            <div class="solucoes-content">
+                                <h2 class="s-titulo">Estoque
+                                </h2>
+                                <p class="s-descricao text-justify">
+                                    Uma forma organizada e centrada de saber o que tem em sua loja, sem precisar de
+                                    planilhas físicas ou digitais, facilitando sua gestão.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-4">
+                        <div class="solucoes-box">
+                            <div class="solucoes-ico">
+                                <span class="icone-solucoes"><i class="fas fa-network-wired"></i></span>
+                            </div>
+                            <div class="solucoes-content">
+                                <h2 class="s-titulo">Caixa
+                                </h2>
+                                <p class="s-descricao text-justify">
+                                    Um controle de quais produtos são vendidos e com qual frequência, essencial para
+                                    uma
+                                    administração eficiente e uma estratégia de marketing assertiva.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container d-block d-md-none">
+                <div class="row ">
+
+                    <div class="col-12 owl-carousel owl-theme">
+                        <div class="col-md-4 mx-auto item">
+                            <div class="solucoes-box">
+                                <div class="solucoes-ico">
+                                    <span class="icone-solucoes"><i class='fas fa-question'></i></span>
+                                </div>
+                                <div class="solucoes-content">
+                                    <h2 class="s-titulo">QUEM SOMOS
+                                    </h2>
+                                    <p class="s-descricao text-justify">
+                                        A Tecnobar foi fundada na cidade de Limeira, em 2022, no Colégio Técnico de
+                                        Limeira
+                                        (COTIL). A iniciativa veio a partir de uma demanda que os fundadores notaram
+                                        nos
+                                        bares
+                                        próximos à região, que tinham um sistema de gerenciamento defasado e
+                                        ineficiente. A
+                                        partir disso, criamos o sistema Tecnobar Gerenciamento e Administração, que
+                                        consegue ser
+                                        implantado em qualquer estabelecimento com facilidade e permite uma
+                                        visualização
+                                        intuitiva e amigável para todos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mx-auto item">
+                            <div class="solucoes-box">
+                                <div class="solucoes-ico">
+                                    <span class="icone-solucoes"><i class="fas fa-balance-scale"></i></span>
+                                </div>
+                                <div class="solucoes-content">
+                                    <h2 class="s-titulo">VALORES E MISSÃO
+                                    </h2>
+                                    <p class="s-descricao text-justify">
+                                        A Tecnobar tem como missão oferecer as melhores soluções para a
+                                        administração do
+                                        seu negócio, sempre com uma interface muito intuitiva, que qualquer um
+                                        consiga
+                                        administrar e gerenciar seu próprio comércio. Sempre com muita transparência
+                                        e
+                                        responsabilidade, entregando o melhor sistema e pós venda aos clientes, com
+                                        relatórios e gráficos essenciais em uma boa gestão administrativa.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mx-auto item">
+                            <div class="solucoes-box">
+                                <div class="solucoes-ico">
+                                    <span class="icone-solucoes"><i class="fas fa-handshake"></i></span>
+                                </div>
+                                <div class="solucoes-content">
+                                    <h2 class="s-titulo">O que oferecemos ?
+                                    </h2>
+                                    <p class="s-descricao text-justify">
+                                        Dashboards e gráficos intuítivos e amigáveis, cadastro de produtos separados
+                                        por
+                                        categorias para melhor visualização e gerenciamento, resumos mensais de
+                                        desempenho de vendas do produto, controle e caixa e muito mais
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mx-auto item">
+                            <div class="solucoes-box">
+                                <div class="solucoes-ico">
+                                    <span class="icone-solucoes"><i class="fa fa-chart-pie"></i></span>
+                                </div>
+                                <div class="solucoes-content">
+                                    <h2 class="s-titulo">Dashboard
+                                    </h2>
+                                    <p class="s-descricao text-justify">
+                                        Um visualização rápida e intuitiva do seu sistema, com relatórios sorbre
+                                        vendas,
+                                        faturamento, lucro e muito mais
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mx-auto item">
+                            <div class="solucoes-box">
+                                <div class="solucoes-ico">
+                                    <span class="icone-solucoes"><i class="fa fa-window-restore"></i></span>
+                                </div>
+                                <div class="solucoes-content">
+                                    <h2 class="s-titulo">Estoque
+                                    </h2>
+                                    <p class="s-descricao text-justify">
+                                        Uma forma organizada e centrada de saber o que tem em sua loja, sem precisar
+                                        de
+                                        planilhas físicas ou digitais, facilitando sua gestão.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mx-auto item">
+                            <div class="solucoes-box">
+                                <div class="solucoes-ico">
+                                    <span class="icone-solucoes"><i class="fas fa-network-wired"></i></span>
+                                </div>
+                                <div class="solucoes-content">
+                                    <h2 class="s-titulo">Caixa
+                                    </h2>
+                                    <p class="s-descricao text-justify">
+                                        Um controle de quais produtos são vendidos e com qual frequência, essencial
+                                        para
+                                        uma administração eficiente e uma estratégia de marketing assertiva
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Fim Cards -->
+    </div>
+    <!-- Fim conteudo tela -->
+
+    <div style="height: 5vh;"></div>
+
+    <!-- inicio Contatos -->
+    <div style="background-color: grey;" id="TelaContatos">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="tituloApresentacao">Contate-nos</div>
+                </div>
+            </div>
+
+            <div style="height: 1vh;"></div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="contatos" class="text-left">Localização
+                    </div>
+                    <div class="text-left d-none d-md-block" style="padding: 1vw 0vw 0vw 2vw;">
+                        <iframe id="mapa"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.457469634066!2d-47.42667007469976!3d-22.56198727949933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8806c2c324933%3A0xe2108428886c8646!2sCotil%20-%20Unicamp!5e0!3m2!1sen!2sbr!4v1695812106809!5m2!1sen!2sbr"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="text-left d-block d-md-none">
+                        <div class="txtContatos">Cotil - Unicamp</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="contatos">Email</div>
+                    <div class="txtContatos">contato@tecnobar.com</div>
+                    <div class="contatos">Telefone</div>
+                    <div class="txtContatos">9999-9999</div>
+                    <div id="redes">
+                        <div class="solucoes-ico">
+                            <a class="icone-solucoes" href="https://www.instagram.com/unicamp.cotil/#"><i
+                                    class='fab fa-facebook' style="font-size: 48px;"></i></a>
+                        </div>
+                        <div class="solucoes-ico">
+                            <a class="icone-solucoes" href="https://www.instagram.com/unicamp.cotil/#"><i
+                                    class='fab fa-instagram' style="font-size: 48px;"></i></a>
+                        </div>
+                        <div class="solucoes-ico">
+                            <a class="icone-solucoes" href="https://www.instagram.com/unicamp.cotil/#"><i
+                                    class='fab fa-twitter' style="font-size: 48px;""></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style=" height: 10vh;">
+                        </div>
+
+                    </div>
+                    <!-- Fim Contatos -->
+</body>
+
+</html>
