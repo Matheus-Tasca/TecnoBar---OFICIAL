@@ -251,9 +251,9 @@ function getSelectedOptions() {
   var valoresSelecionados = Array.from(selectedOptions).map(function (option) { //array dos valores selecionados
     return option.getAttribute('data-value')
   })
+  console.log()
   valoresSelecionados.push(diasEmNumero(),itemSelected, codCategoria)
 
-  console.log(valoresSelecionados + 'item>:')
   if(valoresSelecionados.length <4){
     alert("Selecione todos os campos para gerar o grafico!")
   }
