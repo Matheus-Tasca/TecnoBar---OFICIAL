@@ -230,6 +230,7 @@ namespace DESKTOP2019
             this.campoCategoria.Name = "campoCategoria";
             this.campoCategoria.Size = new System.Drawing.Size(194, 21);
             this.campoCategoria.TabIndex = 21;
+            this.campoCategoria.SelectedIndexChanged += new System.EventHandler(this.campoCategoria_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -248,6 +249,7 @@ namespace DESKTOP2019
             this.btnNovaCate.TabIndex = 22;
             this.btnNovaCate.Text = "Nova";
             this.btnNovaCate.UseVisualStyleBackColor = true;
+            this.btnNovaCate.Click += new System.EventHandler(this.btnNovaCate_Click);
             // 
             // cbAtivo
             // 

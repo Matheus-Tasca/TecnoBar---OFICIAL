@@ -98,6 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCategoria.Designer.cs">
+      <DependentUpon>AddCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="CamadaDadosformCaixa.cs" />
     <Compile Include="CampoVazioException.cs" />
     <Compile Include="CDPROD.cs">
@@ -127,6 +133,9 @@
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddCategoria.resx">
+      <DependentUpon>AddCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CDPROD.resx">
       <DependentUpon>CDPROD.cs</DependentUpon>
     </EmbeddedResource>

@@ -22,7 +22,7 @@ namespace DESKTOP2019
         string foto = "";
         string pastaDestino = Global.caminhoFotos;
         string destinoCompleto = "";
-        int modo = 0; // 0 = padrão ; 1 = inclusão
+        int modo = 1;
         bool ativo;
 
         public void limpar()
@@ -45,11 +45,11 @@ namespace DESKTOP2019
                     case 0:
                         btnNovo.Enabled = true;
                         btnAlterar.Enabled = true;
-                        btnCancelar.Enabled = false;
-                        btnSalvar.Enabled = false;
-                        listProd.Enabled = false;
+                        btnSalvar.Enabled = true;
+                        btnCancelar.Enabled = true;
+                        listProd.Enabled = true;
                         break;
-                    case 1:
+                    case 1: //salvar
                         btnNovo.Enabled = false;
                         btnAlterar.Enabled = false;
                         btnCancelar.Enabled = true;
@@ -57,7 +57,7 @@ namespace DESKTOP2019
                         listProd.Enabled = false;
                         campoNome.Focus();
                         break;
-                    case 2:
+                    case 2: //alterar
                         listProd.Enabled = true;
                         btnNovo.Enabled = false;
                         btnAlterar.Enabled = false;
@@ -77,7 +77,7 @@ namespace DESKTOP2019
         public void Busca()
         {
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ;
-            string query = "SELECT * FROM produto"; 
+            string query = "SELECT * FROM produto";
 
             using (conection = new MySqlConnection(conString))
             {
@@ -145,60 +145,110 @@ namespace DESKTOP2019
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            int linhasAfetadas = 0;
-            try
+            if (listProd.SelectedIndex != -1)
             {
-                if(cbAtivo.Checked == true)
+                try
                 {
-                    ativo = true;
-                }
-                else
-                {
-                    ativo = false;
-                }
-                if ((campoCategoria.SelectedIndex == -1) || (campoVenda.Text == "") || (campoNome.Text == "") || (campoCusto.Text == "") || (campoQTDInicio.Text == "") || (campoQTDMinima.Text == ""))
-                {
-                    throw new CampoVazioException("Todos os campos devem ser preenchidos");
-                }
-                else
-                {
-                    string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda, ativo)"
-                        + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda, @ativo)";
-                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //pega a localização que foi explicada (endereco)
-                    using (conection = new MySqlConnection(conString))//Criar conexão com o banco (manda um whats pro banco falando que ta indo) 
                     {
-                        conection.Open(); //abre
+                        string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-                        MySqlCommand comando = new MySqlCommand(qryInsereProd, conection); //da o comando
-                        comando.Parameters.AddWithValue("@nome", campoNome.Text);
-                        comando.Parameters.AddWithValue("@codcategoria", campoCategoria.SelectedIndex);
-                        comando.Parameters.AddWithValue("@qtdMin", campoQTDMinima.Text);
-                        comando.Parameters.AddWithValue("@qtdEst", campoQTDInicio.Text);
-                        comando.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
-                        comando.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
-                        comando.Parameters.AddWithValue("@ativo", ativo);
-                        
-                        linhasAfetadas = comando.ExecuteNonQuery();
-                        conection.Close();
+                        using (MySqlConnection connection = new MySqlConnection(conString))
+                        {
+                            connection.Open();
 
-                        if (linhasAfetadas > 0)
-                        {
-                            MessageBox.Show("Produto inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            listProd.Items.Clear();
-                            Busca();                        
-                        }
-                        else
-                        {
-                            MessageBox.Show("Falha ao inserir o produto.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            string query = "UPDATE produto SET nomeProd = @nome, valorEntrada = @valorEntrada, valorVenda = @valorVenda, " +
+                                           "qtdMin = @qtdMin, codCategoria = @codCategoria, qtdEstoque = @qtdEstoque, ativo = @ativo " +
+                                           "WHERE codProd = @codProd";
+
+                            using (MySqlCommand command = new MySqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@codProd", campoCod.Text);
+                                command.Parameters.AddWithValue("@nome", campoNome.Text);
+                                command.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
+                                command.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
+                                command.Parameters.AddWithValue("@qtdMin", campoQTDMinima.Text);
+                                command.Parameters.AddWithValue("@codCategoria", campoCategoria.SelectedIndex);
+                                command.Parameters.AddWithValue("@qtdEstoque", campoQTDInicio.Text);
+                                command.Parameters.AddWithValue("@ativo", cbAtivo.Checked ? 1 : 0);
+
+                                int linhasAfetadas = command.ExecuteNonQuery();
+
+                                if (linhasAfetadas > 0)
+                                {
+                                    MessageBox.Show("Produto atualizado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    listProd.Items.Clear();
+                                    Busca();
+                                    return; // para a função 
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falha ao atualizar o produto.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao alterar produto: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (CampoVazioException cv)
+            if (listProd.SelectedIndex == -1)
             {
-                MessageBox.Show($"{cv.Message}");
-            }
+                int linhasAfetadas = 0;
+                try
+                {
+                    if (cbAtivo.Checked == true)
+                    {
+                        ativo = true;
+                    }
+                    else
+                    {
+                        ativo = false;
+                    }
+                    if ((campoCategoria.SelectedIndex == -1) || (campoVenda.Text == "") || (campoNome.Text == "") || (campoCusto.Text == "") || (campoQTDInicio.Text == "") || (campoQTDMinima.Text == ""))
+                    {
+                        throw new CampoVazioException("Todos os campos devem ser preenchidos");
+                    }
+                    else
+                    {
+                        string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda, ativo)"
+                            + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda, @ativo)";
+                        String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //pega a localização que foi explicada (endereco)
+                        using (conection = new MySqlConnection(conString))//Criar conexão com o banco (manda um whats pro banco falando que ta indo) 
+                        {
+                            conection.Open(); //abre
 
+                            MySqlCommand comando = new MySqlCommand(qryInsereProd, conection); //da o comando
+                            comando.Parameters.AddWithValue("@nome", campoNome.Text);
+                            comando.Parameters.AddWithValue("@codcategoria", campoCategoria.SelectedIndex);
+                            comando.Parameters.AddWithValue("@qtdMin", campoQTDMinima.Text);
+                            comando.Parameters.AddWithValue("@qtdEst", campoQTDInicio.Text);
+                            comando.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
+                            comando.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
+                            comando.Parameters.AddWithValue("@ativo", ativo);
+
+                            linhasAfetadas = comando.ExecuteNonQuery();
+                            conection.Close();
+
+                            if (linhasAfetadas > 0)
+                            {
+                                MessageBox.Show("Produto inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                listProd.Items.Clear();
+                                Busca();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falha ao inserir o produto.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (CampoVazioException cv)
+                {
+                    MessageBox.Show($"{cv.Message}");
+                }
+            }
         }
 
         private void campoCod_TextChanged(object sender, EventArgs e)
@@ -232,57 +282,65 @@ namespace DESKTOP2019
 
         private void listProd_SelectedIndexChanged(object sender, EventArgs e)
         {
-           if (listProd.SelectedIndex != -1)
-                {
-                    // Obtém o item selecionado
-                    string selected = listProd.SelectedItem.ToString();
-                    string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            if (listProd.SelectedIndex != -1)
+            {
+                // Obtém o item selecionado
+                string selected = listProd.SelectedItem.ToString();
+                string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
                 // Conexão com o banco de dados (substitua a string de conexão conforme necessário)
                 using (MySqlConnection connection = new MySqlConnection(conString))
                 {
-                        connection.Open();
+                    connection.Open();
 
-                        // Consulta SQL para selecionar os dados com base no código
-                        string query = "SELECT * FROM produto WHERE codProd = @codigo";
+                    // Consulta SQL para selecionar os dados com base no código
+                    string query = "SELECT * FROM produto WHERE codProd = @codigo";
 
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        // Adiciona o parâmetro da consulta SQL
+                        command.Parameters.AddWithValue("@codigo", selected);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            // Adiciona o parâmetro da consulta SQL
-                            command.Parameters.AddWithValue("@codigo", selected);
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            // Verifica se há linhas retornadas
+                            if (reader.Read())
                             {
-                                // Verifica se há linhas retornadas
-                                if (reader.Read())
+                                campoCod.Text = reader["codProd"].ToString();
+                                campoNome.Text = reader["nomeProd"].ToString();
+                                campoCusto.Text = reader["valorEntrada"].ToString();
+                                campoVenda.Text = reader["valorVenda"].ToString();
+                                campoQTDMinima.Text = reader["qtdMin"].ToString();
+                                campoCategoria.Text = reader["codCategoria"].ToString();
+                                campoQTDInicio.Text = reader["qtdEstoque"].ToString();
+                                int ativoValue = Convert.ToInt32(reader["ativo"]);
+                                if (ativoValue == 1)
                                 {
-                                    campoCod.Text = reader["codProd"].ToString();
-                                    campoNome.Text = reader["nomeProd"].ToString();
-                                    campoCusto.Text = reader["valorEntrada"].ToString();
-                                    campoVenda.Text = reader["valorVenda"].ToString();
-                                    campoQTDMinima.Text = reader["qtdMin"].ToString();
-                                    campoCategoria.Text = reader["codCategoria"].ToString();
-                                    campoQTDInicio.Text = reader["qtdEstoque"].ToString();
-                                    int ativoValue = Convert.ToInt32(reader["ativo"]);
-                                    if (ativoValue == 1)
-                                    {
-                                         cbAtivo.Checked = true;
-                                    }
-                                    else
-                                    {
-                                        cbAtivo.Checked = false;
-                                    }
+                                    cbAtivo.Checked = true;
                                 }
                                 else
                                 {
-                                     MessageBox.Show("Não foi possível selecionar o produto");
+                                    cbAtivo.Checked = false;
                                 }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Não foi possível selecionar o produto");
                             }
                         }
                     }
                 }
             }
-
         }
 
+        private void btnNovaCate_Click(object sender, EventArgs e)
+        {
+            AddCategoria novaCat = new AddCategoria();
+            novaCat.Show();
+        }
+
+        private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+    }
     }
 

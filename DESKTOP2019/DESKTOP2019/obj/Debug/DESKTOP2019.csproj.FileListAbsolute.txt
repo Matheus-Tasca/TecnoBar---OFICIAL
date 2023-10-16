@@ -263,3 +263,4 @@ C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DES
 C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.csproj.CopyComplete
 C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.exe
 C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.pdb
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.AddCategoria.resources
