@@ -1,7 +1,6 @@
 // Novo Script
 document.addEventListener('DOMContentLoaded', function () {
     const owlCarousel = document.querySelector('.owl-carousel');
-
     if (owlCarousel) { // Verifica si se encontró un elemento con la clase "owl-carousel"
         // Configura el carrusel utilizando el método Owl Carousel
         const owl = $(owlCarousel);
@@ -20,7 +19,34 @@ document.addEventListener('DOMContentLoaded', function () {
     
 });
 
-// Antigo script
+const email = document.querySelector('#email1')
+const senha = document.querySelector('#password1')
+const btnEntrar = document.querySelector("#entrar")
+
+const login = () =>{
+    let email1 = email.value
+    let senha1 = senha.value
+    if(email1 === "master" && senha1 === "12345678"){
+        alert("LOGIN REALIZADO, BEM VINDO")
+        window.location.href = "InicioDashboard.html"
+    }
+    else if(email1 == "")
+        alert('Preencha o campo email para realizar login!')
+    else if(senha1 == "")
+        alert('Preencha o campo senha para realizar login!')
+    else{
+        alert('Verifique se suas credenciais estão corretas e tente novamente!')
+        email.value = ""
+        senha.value = ""
+    }
+}
+btnEntrar.addEventListener("click",function(){
+    login()
+})
+senha.addEventListener('keyup',(e)=>{
+    if(e.code === 'Enter')
+    login()
+})
 
 // const btnMostrarLogin = document.querySelector(".btnNavbar")
 // const btnEscondeLogin = document.querySelector(".esconderLoginBtn")
