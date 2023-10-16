@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CamadaDadosformCaixa.cs" />
     <Compile Include="CampoVazioException.cs" />
     <Compile Include="CDPROD.cs">
       <SubType>Form</SubType>

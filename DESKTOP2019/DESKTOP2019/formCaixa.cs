@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DESKTOP2019.CamadaDadosformCaixa;
+using System.Collections.Generic;
 
 namespace DESKTOP2019
 {
@@ -19,31 +21,17 @@ namespace DESKTOP2019
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        public void limpar()
         {
-
+            txtCodigoProduto.Clear();
+            txtQuantidade.Clear();
+            txtCategoria.Clear();
+            txtNomeProduto.Clear();
+            lblValorUnitario.Text = "R$ 0,00";
+            lblValorTotal.Text = "R$ 0,00";
         }
-
-        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCategoria_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grpFiltrar_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        double total = 0;
+        
 
         //Evento de enter ao digitar o codigo do produto
         private void pressionaEnter(object sender, KeyEventArgs e)
@@ -80,7 +68,7 @@ namespace DESKTOP2019
                                     string valorVenda = reader["valorVenda"].ToString();
                                     txtNomeProduto.Text = nomeProduto;
                                     txtCategoria.Text = categoria;
-                                    lblValorUnitario.Text = "R$ " + valorVenda;
+                                    lblValorUnitario.Text =valorVenda;
                                 }
                             }
                         }
@@ -91,22 +79,114 @@ namespace DESKTOP2019
                 }
             e.SuppressKeyPress = true;
             }
-
         }
 
         private void enterQuantidadeItem(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
-                int quantidade = int.Parse(txtQuantidade.Text);
-                double valorUnitario;
-                if(double.TryParse(lblValorUnitario.Text,out valorUnitario))
+                try {
+                    int quantidade = int.Parse(txtQuantidade.Text);
+                    string valorUnitarioCampo = lblValorUnitario.Text;
+                    if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
+                    {
+                        double total = valorUnitario * quantidade;
+                        lblValorTotal.Text = "R$" + total.ToString();
+                    }
+                } catch (System.FormatException ex)
                 {
-                    Console.WriteLine(valorUnitario);
+                    MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
 
-                double total = quantidade * valorUnitario;
-                lblValorTotal.Text = "R$: " + total.ToString();
+        private void mudaCampoCodigo(object sender, EventArgs e)
+        {
+            //estabelecendo conexão com o banco de dados
+            String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            //query com o banco
+            String sqlSelect = "select nomeProd, codCategoria, valorVenda from produto where codProd = @codProd";
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conString))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(sqlSelect, con);
+                    using (cmd)
+                    {
+                        cmd.Parameters.AddWithValue("@codProd", txtCodigoProduto.Text);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string nomeProduto = reader["nomeProd"].ToString();
+                                string categoria = reader["codCategoria"].ToString();
+                                if (categoria.Equals("1"))
+                                {
+                                    categoria = "bebidas";
+                                }
+                                else
+                                {
+                                    categoria = "comidas";
+                                }
+                                string valorVenda = reader["valorVenda"].ToString();
+                                txtNomeProduto.Text = nomeProduto;
+                                txtCategoria.Text = categoria;
+                                lblValorUnitario.Text = valorVenda;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("ERRO NO SISTEMA :" + ex.Message, "ERRO");
+            }
+        }
+
+        private void LeaveCampoQuantidade(object sender, EventArgs e)
+        {
+            try
+            {
+                int quantidade = int.Parse(txtQuantidade.Text);
+                string valorUnitarioCampo = lblValorUnitario.Text;
+                if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
+                {
+                    double total = valorUnitario * quantidade;
+                    lblValorTotal.Text = "R$" + total.ToString();
+                }
+            }
+            catch (System.FormatException ex)
+            {
+                MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAdicionarProduto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nomeProduto = txtNomeProduto.Text;
+                double valorVenda = double.Parse(lblValorUnitario.Text);
+                int quantidade = int.Parse(txtQuantidade.Text);
+                Produto produto = new Produto(nomeProduto, valorVenda, quantidade);
+                List<Produto> produtos = new List<Produto>();
+                produtos.Add(produto);
+
+                foreach(Produto prod in produtos)
+                {
+                    double valorTotalProduto = produto.quantidade * produto.valorVenda;
+                    listBoxProdutos.Items.Add("Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
+                    listBoxProdutos.Items.Add("===================================================================");
+                    total += valorTotalProduto;
+                }
+                limpar();
+                lblSubTotal.Text = "R$: " + total.ToString();
+            }
+            catch (System.FormatException ex)
+            {
+                MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     } 

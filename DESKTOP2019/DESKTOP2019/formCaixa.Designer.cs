@@ -30,6 +30,7 @@ namespace DESKTOP2019
         private void InitializeComponent()
         {
             this.grpFiltrar = new System.Windows.Forms.GroupBox();
+            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.lblQuantidade = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@ namespace DESKTOP2019
             this.listBoxProdutos = new System.Windows.Forms.ListBox();
             this.lblSubTotalTitulo = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
-            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.grpFiltrar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +72,13 @@ namespace DESKTOP2019
             this.grpFiltrar.TabIndex = 0;
             this.grpFiltrar.TabStop = false;
             this.grpFiltrar.Text = "Filtrar produtos";
-            this.grpFiltrar.Enter += new System.EventHandler(this.grpFiltrar_Enter);
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.Location = new System.Drawing.Point(25, 135);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(135, 20);
+            this.txtCategoria.TabIndex = 13;
             // 
             // btnAdicionarProduto
             // 
@@ -82,19 +88,21 @@ namespace DESKTOP2019
             this.btnAdicionarProduto.TabIndex = 12;
             this.btnAdicionarProduto.Text = "Adicionar produto";
             this.btnAdicionarProduto.UseVisualStyleBackColor = true;
+            this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(206, 135);
+            this.txtQuantidade.Location = new System.Drawing.Point(204, 66);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(77, 20);
+            this.txtQuantidade.Size = new System.Drawing.Size(124, 20);
             this.txtQuantidade.TabIndex = 11;
             this.txtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterQuantidadeItem);
+            this.txtQuantidade.Leave += new System.EventHandler(this.LeaveCampoQuantidade);
             // 
             // lblQuantidade
             // 
             this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Location = new System.Drawing.Point(203, 105);
+            this.lblQuantidade.Location = new System.Drawing.Point(201, 36);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(99, 13);
             this.lblQuantidade.TabIndex = 10;
@@ -108,7 +116,6 @@ namespace DESKTOP2019
             this.lblValorTotal.Size = new System.Drawing.Size(45, 13);
             this.lblValorTotal.TabIndex = 9;
             this.lblValorTotal.Text = "R$ 0,00";
-            this.lblValorTotal.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblValorTotalTitulo
             // 
@@ -127,17 +134,15 @@ namespace DESKTOP2019
             this.lblCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblCategoria.TabIndex = 6;
             this.lblCategoria.Text = "Categoria";
-            this.lblCategoria.Click += new System.EventHandler(this.lblCategoria_Click);
             // 
             // lblValorUnitario
             // 
             this.lblValorUnitario.AutoSize = true;
-            this.lblValorUnitario.Location = new System.Drawing.Point(22, 219);
+            this.lblValorUnitario.Location = new System.Drawing.Point(29, 219);
             this.lblValorUnitario.Name = "lblValorUnitario";
             this.lblValorUnitario.Size = new System.Drawing.Size(45, 13);
             this.lblValorUnitario.TabIndex = 5;
             this.lblValorUnitario.Text = "R$ 0,00";
-            this.lblValorUnitario.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblValorUnitarioTitulo
             // 
@@ -150,16 +155,15 @@ namespace DESKTOP2019
             // 
             // txtNomeProduto
             // 
-            this.txtNomeProduto.Location = new System.Drawing.Point(206, 66);
+            this.txtNomeProduto.Location = new System.Drawing.Point(204, 135);
             this.txtNomeProduto.Name = "txtNomeProduto";
             this.txtNomeProduto.Size = new System.Drawing.Size(135, 20);
             this.txtNomeProduto.TabIndex = 3;
-            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             // 
             // lblNomeProduto
             // 
             this.lblNomeProduto.AutoSize = true;
-            this.lblNomeProduto.Location = new System.Drawing.Point(203, 36);
+            this.lblNomeProduto.Location = new System.Drawing.Point(201, 108);
             this.lblNomeProduto.Name = "lblNomeProduto";
             this.lblNomeProduto.Size = new System.Drawing.Size(35, 13);
             this.lblNomeProduto.TabIndex = 2;
@@ -172,6 +176,7 @@ namespace DESKTOP2019
             this.txtCodigoProduto.Size = new System.Drawing.Size(135, 20);
             this.txtCodigoProduto.TabIndex = 1;
             this.txtCodigoProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pressionaEnter);
+            this.txtCodigoProduto.Leave += new System.EventHandler(this.mudaCampoCodigo);
             // 
             // lblCodigoProduto
             // 
@@ -202,35 +207,32 @@ namespace DESKTOP2019
             // 
             // listBoxProdutos
             // 
+            this.listBoxProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxProdutos.FormattingEnabled = true;
+            this.listBoxProdutos.ItemHeight = 20;
             this.listBoxProdutos.Location = new System.Drawing.Point(420, 32);
             this.listBoxProdutos.Name = "listBoxProdutos";
-            this.listBoxProdutos.Size = new System.Drawing.Size(368, 290);
+            this.listBoxProdutos.Size = new System.Drawing.Size(368, 284);
             this.listBoxProdutos.TabIndex = 15;
             // 
             // lblSubTotalTitulo
             // 
             this.lblSubTotalTitulo.AutoSize = true;
+            this.lblSubTotalTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotalTitulo.Location = new System.Drawing.Point(436, 344);
             this.lblSubTotalTitulo.Name = "lblSubTotalTitulo";
-            this.lblSubTotalTitulo.Size = new System.Drawing.Size(67, 13);
+            this.lblSubTotalTitulo.Size = new System.Drawing.Size(126, 25);
             this.lblSubTotalTitulo.TabIndex = 16;
             this.lblSubTotalTitulo.Text = "SUBTOTAL:";
             // 
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
+            this.lblSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.Location = new System.Drawing.Point(668, 344);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(0, 13);
+            this.lblSubTotal.Size = new System.Drawing.Size(0, 25);
             this.lblSubTotal.TabIndex = 17;
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.Location = new System.Drawing.Point(25, 135);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(135, 20);
-            this.txtCategoria.TabIndex = 13;
             // 
             // formCaixa
             // 
