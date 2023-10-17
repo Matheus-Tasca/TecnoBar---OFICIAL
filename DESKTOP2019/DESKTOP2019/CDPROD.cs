@@ -48,6 +48,7 @@ namespace DESKTOP2019
                         btnSalvar.Enabled = true;
                         btnCancelar.Enabled = true;
                         listProd.Enabled = true;
+                        listProd.SelectedIndex = -1;
                         break;
                     case 1: //salvar
                         btnNovo.Enabled = false;
@@ -91,9 +92,9 @@ namespace DESKTOP2019
                     {
                         string nome = reader["nomeProd"].ToString();
                         string cod = reader["codProd"].ToString();
-                        string qtd = reader["qtdEstoque"].ToString();
-                        string atv = reader["ativo"].ToString();
-                        listProd.Items.Add($"{cod} - {nome} - {qtd} - {atv}");
+                        //string qtd = reader["qtdEstoque"].ToString();
+                        //string atv = reader["ativo"].ToString();
+                        listProd.Items.Add($"{cod} - {nome}");
                     }
 
                     reader.Close();
@@ -141,6 +142,7 @@ namespace DESKTOP2019
             limpar();
             modo = 0;
             habilitar();
+            campoCategoria.SelectedIndex = -1;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)

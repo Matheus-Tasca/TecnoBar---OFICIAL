@@ -41,8 +41,6 @@ namespace DESKTOP2019
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnTotal = new System.Windows.Forms.Button();
             this.btnRetirar = new System.Windows.Forms.Button();
-            this.campoQTDatual = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.campoAjuste = new System.Windows.Forms.GroupBox();
@@ -53,7 +51,7 @@ namespace DESKTOP2019
             // 
             // campoFiltro
             // 
-            this.campoFiltro.BackColor = System.Drawing.Color.DodgerBlue;
+            this.campoFiltro.BackColor = System.Drawing.Color.Transparent;
             this.campoFiltro.Controls.Add(this.campoCate);
             this.campoFiltro.Controls.Add(this.label3);
             this.campoFiltro.Controls.Add(this.label2);
@@ -118,7 +116,7 @@ namespace DESKTOP2019
             // listaEst
             // 
             this.listaEst.Font = new System.Drawing.Font("Papyrus", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaEst.ForeColor = System.Drawing.SystemColors.Info;
+            this.listaEst.ForeColor = System.Drawing.SystemColors.ControlText;
             this.listaEst.FormattingEnabled = true;
             this.listaEst.ItemHeight = 33;
             this.listaEst.Location = new System.Drawing.Point(11, 131);
@@ -128,7 +126,7 @@ namespace DESKTOP2019
             // 
             // campoQTDajust
             // 
-            this.campoQTDajust.Location = new System.Drawing.Point(290, 31);
+            this.campoQTDajust.Location = new System.Drawing.Point(140, 33);
             this.campoQTDajust.Name = "campoQTDajust";
             this.campoQTDajust.Size = new System.Drawing.Size(222, 20);
             this.campoQTDajust.TabIndex = 3;
@@ -167,23 +165,6 @@ namespace DESKTOP2019
             this.btnRetirar.UseVisualStyleBackColor = true;
             this.btnRetirar.Click += new System.EventHandler(this.btnRetirar_Click);
             // 
-            // campoQTDatual
-            // 
-            this.campoQTDatual.Enabled = false;
-            this.campoQTDatual.Location = new System.Drawing.Point(16, 30);
-            this.campoQTDatual.Name = "campoQTDatual";
-            this.campoQTDatual.Size = new System.Drawing.Size(220, 20);
-            this.campoQTDatual.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Quantidade Atual";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -196,11 +177,11 @@ namespace DESKTOP2019
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Gadugi", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(393, 16);
+            this.label6.Location = new System.Drawing.Point(175, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 14);
+            this.label6.Size = new System.Drawing.Size(142, 14);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Quantidade de Ajuste";
+            this.label6.Text = "Quantidade a ser ajustada";
             // 
             // campoAjuste
             // 
@@ -208,15 +189,13 @@ namespace DESKTOP2019
             this.campoAjuste.Controls.Add(this.label6);
             this.campoAjuste.Controls.Add(this.btnInserir);
             this.campoAjuste.Controls.Add(this.btnTotal);
-            this.campoAjuste.Controls.Add(this.label4);
             this.campoAjuste.Controls.Add(this.btnRetirar);
-            this.campoAjuste.Controls.Add(this.campoQTDatual);
             this.campoAjuste.Location = new System.Drawing.Point(12, 374);
             this.campoAjuste.Name = "campoAjuste";
             this.campoAjuste.Size = new System.Drawing.Size(519, 100);
             this.campoAjuste.TabIndex = 12;
             this.campoAjuste.TabStop = false;
-            this.campoAjuste.Text = "Ajuste";
+            this.campoAjuste.Text = "Ajuste de Estoque";
             // 
             // Estoque
             // 
@@ -229,7 +208,6 @@ namespace DESKTOP2019
             this.Controls.Add(this.campoFiltro);
             this.Name = "Estoque";
             this.Text = "Estoque";
-            this.Load += new System.EventHandler(this.Estoque_Load);
             this.campoFiltro.ResumeLayout(false);
             this.campoFiltro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.campoQTDajust)).EndInit();
@@ -254,8 +232,6 @@ namespace DESKTOP2019
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnTotal;
         private System.Windows.Forms.Button btnRetirar;
-        private System.Windows.Forms.TextBox campoQTDatual;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox campoAjuste;

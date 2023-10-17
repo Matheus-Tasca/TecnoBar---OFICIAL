@@ -86,21 +86,8 @@ namespace DESKTOP2019
             {
                 MessageBox.Show("Não foi possível se comunicar com o Banco de Dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void Estoque_Load(object sender, EventArgs e)
-        {
-            this.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-            campoFiltro.BackColor = ColorTranslator.FromHtml("#2a53a1");
-            campoAjuste.BackColor = ColorTranslator.FromHtml("#2a53a1");
-            listaEst.BackColor = ColorTranslator.FromHtml("#2a53a1");
-
-            /*2a53a1
-             * 1c8897
-             * 1b138d
-             * FFFFFF
-             * 000000
-             */
+            campoQTDajust.Value = 0;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -136,6 +123,8 @@ namespace DESKTOP2019
             } catch (MySqlException){
                 MessageBox.Show("Não foi possível se comunicar com o Banco de Dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            campoQTDajust.Value = 0;
         }
 
         private void btnTotal_Click(object sender, EventArgs e)
@@ -168,6 +157,8 @@ namespace DESKTOP2019
                         }
                     }
                 }
+
+                campoQTDajust.Value = 0;
             }
             catch (MySqlException)
             {

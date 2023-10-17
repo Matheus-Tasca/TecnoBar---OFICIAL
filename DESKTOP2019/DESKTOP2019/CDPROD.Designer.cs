@@ -171,9 +171,9 @@ namespace DESKTOP2019
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(24, 307);
+            this.btnNovo.Location = new System.Drawing.Point(24, 286);
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(88, 23);
+            this.btnNovo.Size = new System.Drawing.Size(122, 23);
             this.btnNovo.TabIndex = 13;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
@@ -181,9 +181,9 @@ namespace DESKTOP2019
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(130, 307);
+            this.btnAlterar.Location = new System.Drawing.Point(173, 286);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(88, 23);
+            this.btnAlterar.Size = new System.Drawing.Size(122, 23);
             this.btnAlterar.TabIndex = 14;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
@@ -191,9 +191,9 @@ namespace DESKTOP2019
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(247, 307);
+            this.btnSalvar.Location = new System.Drawing.Point(24, 328);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(88, 23);
+            this.btnSalvar.Size = new System.Drawing.Size(122, 23);
             this.btnSalvar.TabIndex = 16;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -201,9 +201,9 @@ namespace DESKTOP2019
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(370, 307);
+            this.btnCancelar.Location = new System.Drawing.Point(173, 328);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(88, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(122, 23);
             this.btnCancelar.TabIndex = 18;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -211,10 +211,12 @@ namespace DESKTOP2019
             // 
             // listProd
             // 
+            this.listProd.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listProd.FormattingEnabled = true;
-            this.listProd.Location = new System.Drawing.Point(311, 16);
+            this.listProd.ItemHeight = 33;
+            this.listProd.Location = new System.Drawing.Point(311, 17);
             this.listProd.Name = "listProd";
-            this.listProd.Size = new System.Drawing.Size(223, 264);
+            this.listProd.Size = new System.Drawing.Size(318, 334);
             this.listProd.TabIndex = 19;
             this.listProd.SelectedIndexChanged += new System.EventHandler(this.listProd_SelectedIndexChanged);
             // 
@@ -267,7 +269,7 @@ namespace DESKTOP2019
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 362);
+            this.ClientSize = new System.Drawing.Size(641, 360);
             this.Controls.Add(this.cbAtivo);
             this.Controls.Add(this.btnNovaCate);
             this.Controls.Add(this.label8);
