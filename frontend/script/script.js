@@ -19,26 +19,52 @@ document.addEventListener('DOMContentLoaded', function () {
     
 });
 
+
 const email = document.querySelector('#email1')
 const senha = document.querySelector('#password1')
 const btnEntrar = document.querySelector("#entrar")
 
-const login = () =>{
+const limpaCampos =  () =>{
+    email.value = ""
+    senha.value = ""
+}
+
+const login = async () =>{
     let email1 = email.value
     let senha1 = senha.value
-    if(email1 === "master" && senha1 === "12345678"){
-        alert("LOGIN REALIZADO, BEM VINDO")
-        window.location.href = "InicioDashboard.html"
-    }
-    else if(email1 == "")
+    const dadosLogin = {user: email1, senha: senha1}
+
+    if(email1 == ""){
         alert('Preencha o campo email para realizar login!')
-    else if(senha1 == "")
-        alert('Preencha o campo senha para realizar login!')
-    else{
-        alert('Verifique se suas credenciais estão corretas e tente novamente!')
-        email.value = ""
-        senha.value = ""
+        limpaCampos()
     }
+    else if(senha1 == ""){
+        alert('Preencha o campo senha para realizar login!')
+        limpaCampos()
+    }
+    else{
+        await fetch('http://localhost:4001/login',{
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(dadosLogin)
+        }).then((res)=>{
+            if(!res.ok){
+                console.log("erro")
+            }
+            return res.json()
+        }).then((dados)=>{
+            retornoDatas = dados
+        })
+        if(retornoDatas == "Usuario não encontrado na base de dados!"){
+            alert(retornoDatas)
+            limpaCampos()
+        }
+        else{
+            window.location.href = "InicioDashboard.html"
+            limpaCampos()
+        }
+    }
+    
 }
 btnEntrar.addEventListener("click",function(){
     login()

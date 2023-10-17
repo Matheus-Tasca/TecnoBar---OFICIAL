@@ -32,5 +32,9 @@ router.get(
     '/historico/:id',
     dashController.completeSalesHistory
     )
+router.post(
+    '/login',
+    dashController.login
+)
 
 module.exports = router

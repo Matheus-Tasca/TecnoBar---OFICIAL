@@ -29,11 +29,16 @@ const completeSalesHistory = async(req,res)=>{
     const completeSale = await dashModel.completeSalesHistory(id)
     return res.status(200).json(completeSale)
 }
+const login = async (req,res)=>{
+    const dadosLogin = await dashModel.login(req.body)
+    return res.status(200).json(dadosLogin)
+}
 module.exports = {
     getData,
     loadData,
     loadItem,
     dashEspecifico,
     salesHistory,
-    completeSalesHistory
+    completeSalesHistory,
+    login
 }
