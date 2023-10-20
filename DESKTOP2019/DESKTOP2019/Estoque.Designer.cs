@@ -105,6 +105,7 @@ namespace DESKTOP2019
             this.campoCod.Name = "campoCod";
             this.campoCod.Size = new System.Drawing.Size(141, 20);
             this.campoCod.TabIndex = 2;
+            this.campoCod.TextChanged += new System.EventHandler(this.campoCod_TextChanged);
             // 
             // campoNome
             // 
@@ -115,13 +116,13 @@ namespace DESKTOP2019
             // 
             // listaEst
             // 
-            this.listaEst.Font = new System.Drawing.Font("Papyrus", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaEst.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaEst.ForeColor = System.Drawing.SystemColors.ControlText;
             this.listaEst.FormattingEnabled = true;
-            this.listaEst.ItemHeight = 33;
+            this.listaEst.ItemHeight = 25;
             this.listaEst.Location = new System.Drawing.Point(11, 131);
             this.listaEst.Name = "listaEst";
-            this.listaEst.Size = new System.Drawing.Size(520, 202);
+            this.listaEst.Size = new System.Drawing.Size(520, 229);
             this.listaEst.TabIndex = 1;
             // 
             // campoQTDajust

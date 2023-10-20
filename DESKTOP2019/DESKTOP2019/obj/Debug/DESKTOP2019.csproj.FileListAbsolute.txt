@@ -264,3 +264,6 @@ C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DES
 C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.exe
 C:\Users\Matheus\Downloads\TecnoBar---OFICIAL\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.pdb
 C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.AddCategoria.resources
+C:\Users\aluno\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.AddCategoria.resources
+C:\Users\aluno\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.formCaixa.resources
+C:\Users\aluno\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.formPrincipal.resources

@@ -165,5 +165,37 @@ namespace DESKTOP2019
                 MessageBox.Show("Não foi possível se comunicar com o Banco de Dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void campoCod_TextChanged(object sender, EventArgs e)
+        {
+            String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            String qryBuscaCod = "SELECT * from produto where codProd = @codProd";
+            using (conection = new MySqlConnection(conString))
+            {
+                conection.Open();
+                using(MySqlCommand commnad = new MySqlCommand(qryBuscaCod, conection))
+                {
+                    commnad.Parameters.AddWithValue("@codProd", campoCod.Text);
+                    MySqlDataReader reader = commnad.ExecuteReader();
+                    string nome = reader["nomeProd"].ToString();
+                    string qtd = reader["qtdEstoque"].ToString();
+
+                    int linhasAfetadas = commnad.ExecuteNonQuery();
+                    
+                    if(linhasAfetadas > 0)
+                    {
+                        listaEst.Items.Clear();
+                        listaEst.Items.Add($"{qtd} {nome}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possível achar esse código", "Falha", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    }
+                }
+
+                conection.Close();
+                AppSettingsReader.Close();
+            }
+        }
     }
 }
