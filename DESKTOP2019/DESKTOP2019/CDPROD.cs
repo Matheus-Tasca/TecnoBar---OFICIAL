@@ -342,7 +342,30 @@ namespace DESKTOP2019
 
         private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string conStrin = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            string qryNomeCat = "SELECT * FROM categoria";
+
+            using (MySqlConnection con = new MySqlConnection(conStrin))
+            {
+                con.Open();
+
+                campoCategoria.Items.Clear();
+
+                using (MySqlCommand command = new MySqlCommand(qryNomeCat, con))
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string nomeCategoria = reader["nomeCategoria"].ToString();
+                        campoCategoria.Items.Add(nomeCategoria);
+                    }
+
+                    reader.Close();
+                }
+            }
         }
+
     }
-    }
+}
 

@@ -35,7 +35,7 @@ namespace DESKTOP2019
                         string nome = reader["nomeProd"].ToString();
                         string cod = reader["codProd"].ToString();
                         string qtd = reader["qtdEstoque"].ToString();
-                        listaEst.Items.Add($"{cod}  {nome} : {qtd}");
+                        listaEst.Items.Add($"{cod}  {nome} -> Quantidade: {qtd}");
                     }
 
                     reader.Close();
@@ -166,35 +166,52 @@ namespace DESKTOP2019
             }
         }
 
-        private void campoCod_TextChanged(object sender, EventArgs e)
+        private void PressionouCod(object sender, KeyPressEventArgs e)
         {
-            String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            String qryBuscaCod = "SELECT * from produto where codProd = @codProd";
-            using (conection = new MySqlConnection(conString))
+            if (string.IsNullOrEmpty(campoCod.Text))
             {
-                conection.Open();
-                using(MySqlCommand commnad = new MySqlCommand(qryBuscaCod, conection))
+                listaEst.Items.Clear();
+                Busca();
+                return;
+            }
+            else
+            {
+                String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                String qryBuscaCod = "SELECT * from produto where codProd = @codProd";
+                try
                 {
-                    commnad.Parameters.AddWithValue("@codProd", campoCod.Text);
-                    MySqlDataReader reader = commnad.ExecuteReader();
-                    string nome = reader["nomeProd"].ToString();
-                    string qtd = reader["qtdEstoque"].ToString();
-
-                    int linhasAfetadas = commnad.ExecuteNonQuery();
-                    
-                    if(linhasAfetadas > 0)
+                    using (conection = new MySqlConnection(conString))
                     {
-                        listaEst.Items.Clear();
-                        listaEst.Items.Add($"{qtd} {nome}");
+                        conection.Open();
+                        using (MySqlCommand commnad = new MySqlCommand(qryBuscaCod, conection))
+                        {
+                            commnad.Parameters.AddWithValue("@codProd", campoCod.Text);
+                            using (MySqlDataReader reader = commnad.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    string nome = reader["nomeProd"].ToString();
+                                    string qtd = reader["qtdEstoque"].ToString();
+                                    string cod = reader["codProd"].ToString();
+                                    listaEst.Items.Clear();
+                                    listaEst.Items.Add($"{cod} {nome} -> Quantidade: {qtd}");
+                                    reader.Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Não foi possível achar esse código", "Falha", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                                    reader.Close();
+                                }
+                            }
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Não foi possível achar esse código", "Falha", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                    }
+                    conection.Close();
                 }
-
-                conection.Close();
-                AppSettingsReader.Close();
+                catch
+                {
+                    MessageBox.Show("Falha para se comunicar com o banco", "Falha", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    conection.Close();
+                }
             }
         }
     }

@@ -47,10 +47,10 @@ namespace DESKTOP2019
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.listProd = new System.Windows.Forms.ListBox();
-            this.campoCategoria = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnNovaCate = new System.Windows.Forms.Button();
             this.cbAtivo = new System.Windows.Forms.CheckBox();
+            this.campoCategoria = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +61,6 @@ namespace DESKTOP2019
             this.campoCod.Name = "campoCod";
             this.campoCod.Size = new System.Drawing.Size(63, 20);
             this.campoCod.TabIndex = 0;
-            this.campoCod.TextChanged += new System.EventHandler(this.campoCod_TextChanged);
             // 
             // campoNome
             // 
@@ -220,20 +219,6 @@ namespace DESKTOP2019
             this.listProd.TabIndex = 19;
             this.listProd.SelectedIndexChanged += new System.EventHandler(this.listProd_SelectedIndexChanged);
             // 
-            // campoCategoria
-            // 
-            this.campoCategoria.FormattingEnabled = true;
-            this.campoCategoria.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.campoCategoria.Location = new System.Drawing.Point(24, 176);
-            this.campoCategoria.Name = "campoCategoria";
-            this.campoCategoria.Size = new System.Drawing.Size(194, 21);
-            this.campoCategoria.TabIndex = 21;
-            this.campoCategoria.SelectedIndexChanged += new System.EventHandler(this.campoCategoria_SelectedIndexChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -265,15 +250,24 @@ namespace DESKTOP2019
             this.cbAtivo.Text = "Ativo";
             this.cbAtivo.UseVisualStyleBackColor = true;
             // 
+            // campoCategoria
+            // 
+            this.campoCategoria.FormattingEnabled = true;
+            this.campoCategoria.Location = new System.Drawing.Point(24, 176);
+            this.campoCategoria.Name = "campoCategoria";
+            this.campoCategoria.Size = new System.Drawing.Size(194, 21);
+            this.campoCategoria.TabIndex = 24;
+            this.campoCategoria.SelectedIndexChanged += new System.EventHandler(this.campoCategoria_SelectedIndexChanged);
+            // 
             // CDPROD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 360);
+            this.Controls.Add(this.campoCategoria);
             this.Controls.Add(this.cbAtivo);
             this.Controls.Add(this.btnNovaCate);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.campoCategoria);
             this.Controls.Add(this.listProd);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
@@ -318,9 +312,9 @@ namespace DESKTOP2019
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ListBox listProd;
-        private System.Windows.Forms.ComboBox campoCategoria;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnNovaCate;
         private System.Windows.Forms.CheckBox cbAtivo;
+        private System.Windows.Forms.ComboBox campoCategoria;
     }
 }
