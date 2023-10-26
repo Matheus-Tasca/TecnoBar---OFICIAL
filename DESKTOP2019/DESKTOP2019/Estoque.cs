@@ -20,7 +20,7 @@ namespace DESKTOP2019
         public void Busca()
         {
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ;
-            string query = "SELECT * FROM produto"; // Substitua pelo seu SQL
+            string query = "SELECT * FROM produto where ativo = 1"; // Substitua pelo seu SQL
 
             using (conection = new MySqlConnection(conString))
             {
@@ -55,38 +55,49 @@ namespace DESKTOP2019
 
             try
             {
-                string select = listaEst.SelectedItem.ToString();
-                string codigo = select.Split(' ')[0];
-                if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                if (listaEst.SelectedItem != null)
                 {
-                    String qryExc = ($"UPDATE produto SET qtdEstoque = qtdEstoque - {valor} where codProd = @codigo");
-                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
-                    using (conection = new MySqlConnection(conString))
+                    string select = listaEst.SelectedItem.ToString();
+                    string codigo = select.Split(' ')[0];
+                    if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
-                        conection.Open();
-                        MySqlCommand cmd = new MySqlCommand(qryExc, conection);
-                        cmd.Parameters.AddWithValue("@codigo", codigo);
-                        int linhafetadas = cmd.ExecuteNonQuery();
-                        conection.Close();
-
-                       // MessageBox.Show("Consulta SQL: " + qryExc);
-
-                        if (linhafetadas > 0)
+                        String qryExc = ($"UPDATE produto SET qtdEstoque = qtdEstoque - {valor} where codProd = @codigo");
+                        String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
+                        using (conection = new MySqlConnection(conString))
                         {
-                            MessageBox.Show("Esoque retirado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            listaEst.Items.Clear();
-                            Busca();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Falha ao retirar o estoque", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conection.Open();
+                            MySqlCommand cmd = new MySqlCommand(qryExc, conection);
+                            cmd.Parameters.AddWithValue("@codigo", codigo);
+                            int linhafetadas = cmd.ExecuteNonQuery();
+                            conection.Close();
+
+                            // MessageBox.Show("Consulta SQL: " + qryExc);
+
+                            if (linhafetadas > 0)
+                            {
+                                MessageBox.Show("Esoque retirado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                listaEst.Items.Clear();
+                                Busca();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falha ao retirar o estoque", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (MySqlException)
             {
                 MessageBox.Show("Não foi possível se comunicar com o Banco de Dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             campoQTDajust.Value = 0;
@@ -98,39 +109,53 @@ namespace DESKTOP2019
 
             try
             {
-                string select = listaEst.SelectedItem.ToString(); //pega o item selecionado 
-                string codigo = select.Split(' ')[0]; //separa por espaço e pega o primeiro 
-
-                if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                if (listaEst.SelectedItem != null)
                 {
-                    String qryInsert = ($"UPDATE produto SET qtdEstoque = qtdEstoque + {valor} where codProd = @codigo");
-                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
-                    using (conection = new MySqlConnection(conString)) 
-                    {
-                        conection.Open();
-                        MySqlCommand cmd = new MySqlCommand(qryInsert, conection);
-                        cmd.Parameters.AddWithValue("@codigo", codigo);
-                        int linhafetadas = cmd.ExecuteNonQuery();
-                        conection.Close();
+                    string select = listaEst.SelectedItem.ToString(); //pega o item selecionado 
+                    string codigo = select.Split(' ')[0]; //separa por espaço e pega o primeiro 
 
-                        if (linhafetadas > 0)
+                    if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    {
+                        String qryInsert = ($"UPDATE produto SET qtdEstoque = qtdEstoque + {valor} WHERE codProd = @codigo");
+                        String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
+                        using (conection = new MySqlConnection(conString))
                         {
-                            MessageBox.Show("Esoque inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            listaEst.Items.Clear();
-                            Busca();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Falha ao inserir o estoque", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conection.Open();
+                            MySqlCommand cmd = new MySqlCommand(qryInsert, conection);
+                            cmd.Parameters.AddWithValue("@codigo", codigo);
+                            int linhafetadas = cmd.ExecuteNonQuery();
+                            conection.Close();
+
+                            if (linhafetadas > 0)
+                            {
+                                MessageBox.Show("Estoque inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                listaEst.Items.Clear();
+                                Busca();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falha ao inserir o estoque", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
-            } catch (MySqlException){
+                else
+                {
+                    MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (MySqlException)
+            {
                 MessageBox.Show("Não foi possível se comunicar com o Banco de Dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
             campoQTDajust.Value = 0;
         }
+
 
         private void btnTotal_Click(object sender, EventArgs e)
         {
@@ -138,39 +163,49 @@ namespace DESKTOP2019
 
             try
             {
-                string select = listaEst.SelectedItem.ToString(); //pega o item selecionado 
-                string codigo = select.Split(' ')[0]; //separa por espaço e pega o primeiro
-                if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                if (listaEst.SelectedItem != null)
                 {
-                    String qryInsert = ($"UPDATE produto SET qtdEstoque = {valor} where codProd = @codigo");
-                    String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
-                    using (conection = new MySqlConnection(conString))
+                    string select = listaEst.SelectedItem.ToString(); //pega o item selecionado 
+                    string codigo = select.Split(' ')[0]; //separa por espaço e pega o primeiro
+                    if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
-                      
-                        conection.Open();
-                        MySqlCommand cmd = new MySqlCommand(qryInsert, conection);
-                        cmd.Parameters.AddWithValue("@codigo", codigo);
-                        int linhafetadas = cmd.ExecuteNonQuery();
-                        conection.Close();
+                        String qryInsert = ($"UPDATE produto SET qtdEstoque = {valor} where codProd = @codigo");
+                        String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
+                        using (conection = new MySqlConnection(conString))
+                        {
 
-                        if (linhafetadas > 0)
-                        {
-                            MessageBox.Show("Esoque ajustado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            listaEst.Items.Clear();
-                            Busca();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Falha ao ajustar o estoque", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            conection.Open();
+                            MySqlCommand cmd = new MySqlCommand(qryInsert, conection);
+                            cmd.Parameters.AddWithValue("@codigo", codigo);
+                            int linhafetadas = cmd.ExecuteNonQuery();
+                            conection.Close();
+
+                            if (linhafetadas > 0)
+                            {
+                                MessageBox.Show("Esoque ajustado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                listaEst.Items.Clear();
+                                Busca();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falha ao ajustar o estoque", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
-
+                else
+                {
+                    MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
                 campoQTDajust.Value = 0;
             }
             catch (MySqlException)
             {
                 MessageBox.Show("Não foi possível se comunicar com o Banco de Dados", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -187,7 +222,7 @@ namespace DESKTOP2019
                 else
                 {
                     String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-                    String qryBuscaCod = "SELECT * from produto where codProd = @codProd";
+                    String qryBuscaCod = "SELECT * from produto where codProd = @codProd and ativo = 1";
                     try
                     {
                         using (conection = new MySqlConnection(conString))
