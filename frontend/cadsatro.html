@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>Tecnobar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <!-- Inicio links -->
+
+
+
+
+    <!-- CSS e js -->
+    <link rel="stylesheet" href="style/cadastro.css">
+    <script src="script/script.js"></script>
+
+
+
+
+    <!-- jQuery -->
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+
+
+
+
+    <!-- bootstrap CSS-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+
+
+
+
+    <!-- Carrossel -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+
+
+    <!-- Fim links -->
+
+
+
+
+</head>
+
+
+
+
+<body>
+    <!-- Inicio Navbar -->
+    <nav>
+        <div class="content-tec">
+            <div class="navtec">
+                <div class="navtec-logo">Tecnobar</div>
+                <input type="checkbox" id="navtec-toggle">
+                <label for="navtec-toggle" class=" burger-menutec">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <li class="navtec-hide navtec-home"><a href="index.html#tituloApresentacao">Empresa</a></li>
+                <li class="navtec-hide navtec-about"><a href="index.html#ancoraPlanos">Planos</a></li>
+                <li class="navtec-hide navtec-contact"><a href="index.html#TelaContatos">Contato</a></li>
+                <li class="navtec-hide navtec-s-in" data-toggle="modal" data-target="#loginModal"><a href="#">Entrar<i
+                            class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Fim Navbar -->
+
+
+    <!-- Inicio Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-titulo text-center">
+                        <h4>Entrar</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email-login"
+                                    placeholder="Seu email de acesso...">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password-login"
+                                    placeholder="Sua senha...">
+                            </div>
+                            <button type="button" class="btn btn-info btn-block btn-border">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fim Modal -->
+
+
+
+
+    <!-- Inicio Conteudo tela -->
+    <div class="container-fluid">
+
+
+        <div style="padding: 3vh;"></div>
+
+
+        <!--Inicio Apresentacao-->
+        <div class="row" style="padding-left: 1vw;">
+            <div class="col-sm-12">
+                <div id="tituloApresentacao">Cadastre-se</div>
+            </div>
+            <div class="col-sm-12">
+                <div id="subTituloApresentacao">
+                    e siga para o pagamento
+                </div>
+            </div>
+        </div>
+        <!--Final apresentação-->
+
+
+        <div style="padding: 3vh;"></div>
+
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col col-md-6">
+                <form action="">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="padding-bottom: 10px;">
+                                <input type="text" class="form-control" id="name" placeholder="Seu nome...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="padding-bottom: 10px;">
+                                <input type="email" class="form-control" id="email-cadastro"
+                                    placeholder="Seu email de acesso...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password-cadastro"
+                                    placeholder="Sua senha...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="tel" class="form-control " id="tel-cadastro" placeholder="Seu telefone...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-info btn-block btn-border">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!-- Fim conteudo tela -->
+
+
+    <div style="height: 5vh;"></div>
+</body>
+
+
+
+
+</html>

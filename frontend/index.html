@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <div class="cadastre-se">Não possui conta? <a href="#" class="text-info">Cadastrar-se</a>.</div>
+                    <div class="cadastre-se">Não possui conta? <a href="cadsatro.html" class="text-info">Cadastrar-se</a>.</div>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                 <li class="navtec-hide navtec-home"><a href="#tituloApresentacao">Empresa</a></li>
                 <li class="navtec-hide navtec-about"><a href="#ancoraPlanos">Planos</a></li>
                 <li class="navtec-hide navtec-contact"><a href="#TelaContatos">Contato</a></li>
-                <li class="navtec-hide navtec-s-up"><a href="#">Cadastre-se<i class="fas fa-user-plus"></i></a></li>
+                <li class="navtec-hide navtec-s-up"><a href="cadsatro.html">Cadastre-se<i class="fas fa-user-plus"></i></a></li>
                 <li class="navtec-hide navtec-s-in" data-toggle="modal" data-target="#loginModal"><a href="#">Entrar<i
                             class="fas fa-user"></i></a></li>
                 </ul>
@@ -362,7 +362,7 @@
         <div style="height: 4vh;"></div>
 
         <div class="row" style="margin: 0 20vw 0 20vw;">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-5">
 
                 <div class="box">
 
@@ -388,7 +388,7 @@
                         </p>
 
                         <button type="button" class="overlap">
-                            <div class="txt-button">Comprar</div>
+                            <div class="txt-button"><a href="pagamento.html?plano=1">Comprar</a></div>
                         </button>
                     </div>
 
@@ -397,9 +397,11 @@
 
             </div>
 
+            <div class="col-md-2"></div>
+
             <div class="d-md-none d-sm-block" style="margin: 3vw;"></div>
 
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-5">
 
                 <div class="box">
 
@@ -416,8 +418,8 @@
                             benefício
                         </p>
 
-                        <button type="button" class="overlap" style="background-color: blue;">
-                            <div class="txt-button">Comprar</div>
+                        <button type="button" class="overlap" style="background-color: blue;" onclick="trocarPlano()">
+                            <div class="txt-button"><a href="pagamento.html?plano=2">Comprar</a></div>
                         </button>
                     </div>
 
