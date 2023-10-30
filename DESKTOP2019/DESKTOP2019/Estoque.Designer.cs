@@ -114,6 +114,7 @@ namespace DESKTOP2019
             this.campoNome.Size = new System.Drawing.Size(141, 20);
             this.campoNome.TabIndex = 3;
             this.campoNome.TextChanged += new System.EventHandler(this.buscaNome);
+            this.campoNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.campoNome_KeyPress);
             // 
             // listaEst
             // 

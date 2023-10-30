@@ -263,34 +263,61 @@ namespace DESKTOP2019
 
         private void buscaNome(object sender, EventArgs e)
         {
-            try
+            
+        }
+
+        private void campoNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
             {
-                string nome = campoNome.Text;
-                string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-                using (conection = new MySqlConnection(conString))
+                if (string.IsNullOrEmpty(campoNome.Text))
                 {
-                    conection.Open();
-                    string qryBuscaNome = "select * from produto where nomeProd like @nome + '%'";
-                    using (MySqlCommand command = new MySqlCommand(qryBuscaNome, conection))
+                    listaEst.Items.Clear();
+                    Busca();
+                    return;
+                }
+                else
+                {
+                    try
                     {
-                        command.Parameters.AddWithValue("@nome", nome);
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        string nome = campoNome.Text;
+                        string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
+                        List<string> resultados = new List<string>();
+
+                        using (conection = new MySqlConnection(conString))
                         {
-                            while (reader.Read()) //lembrando que sempre que tiver que ler e retornar algo do banco usa o MySqlDataReader
+                            conection.Open();
+                            string qryBuscaNome = "SELECT * FROM produto WHERE nomeProd LIKE @nome + '%'";
+                            using (MySqlCommand command = new MySqlCommand(qryBuscaNome, conection))
                             {
-                                string Prodnome = reader["nomeProd"].ToString();
-                                string cod = reader["codProd"].ToString();
-                                string qtd = reader["qtdEstoque"].ToString();
-                                listaEst.Items.Clear();
-                                listaEst.Items.Add($"{cod} {Prodnome} -> Quantidade: {qtd}");
+                                command.Parameters.AddWithValue("@nome", nome);
+
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        string Prodnome = reader["nomeProd"].ToString();
+                                        string cod = reader["codProd"].ToString();
+                                        string qtd = reader["qtdEstoque"].ToString();
+                                        resultados.Add($"{cod} {Prodnome} -> Quantidade: {qtd}");
+                                    }
+                                }
                             }
                         }
+
+                        listaEst.Items.Clear();
+                        if (resultados.Count > 0)
+                        {
+                            listaEst.Items.AddRange(resultados.ToArray());
+                        }
+                    }
+                    catch
+                    {
+                        // Ignora o erro e mantém a lista em branco
+                        listaEst.Items.Clear();
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Não foi possível realizar essa busca");
             }
         }
     }
