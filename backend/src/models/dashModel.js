@@ -312,33 +312,11 @@ const dashEspecifico = async (dados) =>{
     
 }
 
-const login = async (dadosLogin) =>{
-    const {user} = dadosLogin
-    const {senha} = dadosLogin
-    const resultadoBusca = await (await connection).query(`
-        Select
-            id
-        from 
-            Usarios
-        where 
-            email = ? 
-        and
-            senha = ?
-    `,[user,senha])
-    if (resultadoBusca[0].length == 0){
-        return "Usuario não encontrado na base de dados!"
-    }
-    else
-        return resultadoBusca[0]
-}
-
-
 module.exports = {
     getData,
     loadData,
     loadItem,
     dashEspecifico,
     salesHistory,
-    completeSalesHistory,
-    login
+    completeSalesHistory
 }

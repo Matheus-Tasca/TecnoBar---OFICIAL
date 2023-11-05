@@ -1,7 +1,5 @@
 const dashModel = require('../models/dashModel')
 
-
-
 const getData = async (req,res) =>{
     const datas = await dashModel.getData(req.body)
     return res.status(200).json(datas)
@@ -39,6 +37,5 @@ module.exports = {
     loadItem,
     dashEspecifico,
     salesHistory,
-    completeSalesHistory,
-    login
+    completeSalesHistory
 }

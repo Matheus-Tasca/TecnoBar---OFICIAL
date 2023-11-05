@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const dashController = require('./controllers/dashController')
+const userController = require('./controllers/userController')
 const middleData = require('./middlewares/datasMiddlewares')
 
 router.post(
@@ -33,8 +34,12 @@ router.get(
     dashController.completeSalesHistory
     )
 router.post(
+    '/cadastro',
+    userController.addUser
+    )
+router.post(
     '/login',
-    dashController.login
+    userController.login
 )
 
 module.exports = router
