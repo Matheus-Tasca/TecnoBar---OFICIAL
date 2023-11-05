@@ -204,6 +204,7 @@ namespace DESKTOP2019
             this.btnFinalizarVenda.TabIndex = 14;
             this.btnFinalizarVenda.Text = "Finalizar Venda";
             this.btnFinalizarVenda.UseVisualStyleBackColor = true;
+            this.btnFinalizarVenda.Click += new System.EventHandler(this.finalizaVenda);
             // 
             // listBoxProdutos
             // 

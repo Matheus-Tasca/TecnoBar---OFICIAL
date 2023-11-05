@@ -130,6 +130,12 @@
     <Compile Include="formPrincipal.Designer.cs">
       <DependentUpon>formPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConcluirVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConcluirVenda.Designer.cs">
+      <DependentUpon>frmConcluirVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formPrincipal.resx">
       <DependentUpon>formPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConcluirVenda.resx">
+      <DependentUpon>frmConcluirVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

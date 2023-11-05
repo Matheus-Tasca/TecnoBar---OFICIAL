@@ -17,6 +17,8 @@ namespace DESKTOP2019
 {
     public partial class formCaixa : Form
     {
+        public frmConcluirVenda frmFinalizarVenda = new frmConcluirVenda();
+        double total;
         public formCaixa()
         {
             InitializeComponent();
@@ -29,8 +31,9 @@ namespace DESKTOP2019
             txtNomeProduto.Clear();
             lblValorUnitario.Text = "R$ 0,00";
             lblValorTotal.Text = "R$ 0,00";
+            double total = 0;
         }
-        double total = 0;
+        
         
 
         //Evento de enter ao digitar o codigo do produto
@@ -90,7 +93,7 @@ namespace DESKTOP2019
                     string valorUnitarioCampo = lblValorUnitario.Text;
                     if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
                     {
-                        double total = valorUnitario * quantidade;
+                        total = valorUnitario * quantidade;
                         lblValorTotal.Text = "R$" + total.ToString();
                     }
                 } catch (System.FormatException ex)
@@ -188,6 +191,12 @@ namespace DESKTOP2019
             {
                 MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void finalizaVenda(object sender, EventArgs e)
+        {
+            frmConcluirVenda frmVenda = new frmConcluirVenda(total);
+            frmVenda.Show();
         }
     } 
 }
