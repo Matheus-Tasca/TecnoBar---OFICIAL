@@ -19,7 +19,7 @@
 
     <!-- CSS e js -->
     <link rel="stylesheet" href="style/cadastro.css">
-    <script src="script/script.js"></script>
+   
 
 
 
@@ -157,36 +157,36 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group" style="padding-bottom: 10px;">
-                                <input type="text" class="form-control" id="name" placeholder="Seu nome...">
+                                <input type="text" class="form-control" id="nomeCadastro" placeholder="Seu nome..."  required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group" style="padding-bottom: 10px;">
-                                <input type="email" class="form-control" id="email-cadastro"
-                                    placeholder="Seu email de acesso...">
+                                <input type="email" class="form-control" id="emailCadastro"
+                                    placeholder="Seu email de acesso..." required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-cadastro"
-                                    placeholder="Sua senha...">
+                                <input type="password" class="form-control" id="senhaCadastro"
+                                    placeholder="Sua senha..." required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <input type="tel" class="form-control " id="tel-cadastro" placeholder="Seu telefone...">
+                                <input type="text" class="form-control " id="cpfCadastro" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="Seu CPF..." required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="button" class="btn btn-info btn-block btn-border">Cadastrar</button>
+                            <button type="button" id="btnCadastra" class="btn btn-info btn-block btn-border">Cadastrar</button>
                         </div>
                     </div>
                 </form>
@@ -202,7 +202,7 @@
 
     <div style="height: 5vh;"></div>
 </body>
-
+<script src="script/scriptCadastro.js"></script>
 
 
 
