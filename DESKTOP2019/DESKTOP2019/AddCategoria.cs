@@ -44,6 +44,7 @@ namespace DESKTOP2019
                     MessageBox.Show("Falha ao inserir a categoria.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+                this.Close();
             }
         }
     }

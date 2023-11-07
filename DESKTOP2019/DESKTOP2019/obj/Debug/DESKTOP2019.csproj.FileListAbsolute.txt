@@ -360,3 +360,4 @@ D:\TecnoBar---OFICIAL-main\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.csproj.
 D:\TecnoBar---OFICIAL-main\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.exe
 D:\TecnoBar---OFICIAL-main\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.pdb
 D:\TecnoBar---OFICIAL-main\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.frmConcluirVenda.resources
+C:\Users\joaop\Desktop\TecnoBar---OFICIAL\DESKTOP2019\DESKTOP2019\obj\Debug\DESKTOP2019.frmConcluirVenda.resources

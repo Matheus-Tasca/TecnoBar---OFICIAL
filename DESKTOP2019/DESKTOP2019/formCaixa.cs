@@ -108,7 +108,7 @@ namespace DESKTOP2019
             //estabelecendo conexão com o banco de dados
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             //query com o banco
-            String sqlSelect = "select nomeProd, codCategoria, valorVenda from produto where codProd = @codProd";
+            String sqlSelect = "select nomeProd, nomeCategoria, valorVenda from produto where codProd = @codProd";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(conString))
@@ -124,7 +124,7 @@ namespace DESKTOP2019
                             if (reader.Read())
                             {
                                 string nomeProduto = reader["nomeProd"].ToString();
-                                string categoria = reader["codCategoria"].ToString();
+                                string categoria = reader["nomeCategoria"].ToString();
                                 if (categoria.Equals("1"))
                                 {
                                     categoria = "bebidas";
