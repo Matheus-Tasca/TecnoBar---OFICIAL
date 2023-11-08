@@ -30,35 +30,14 @@ namespace DESKTOP2019
         double desconto;
         double valorInicial;
 
-
-        private void digitarValorDinheiro(object sender, EventArgs e)
-        {
-            valorInicial = getValorTotal;
-            if (double.TryParse(txtBoxDinheiro.Text, out valorEmDinheiro))
-            {
-                if (valorEmDinheiro > 0)
-                {
-                    double troco = valorEmDinheiro - (valorInicial- desconto);
-                    if (troco < 0)
-                    {
-                        lblTrocoValor.Text = "R$ 0,00";
-                    }
-                    else
-                    {
-                        lblTrocoValor.Text = "R$" + troco.ToString();
-                    }   
-                }
-            }
-        }
-
-        private void digitarValorPix(object sender, EventArgs e)
+        public void calcularTrocoPix()
         {
             valorInicial = getValorTotal;
             if (double.TryParse(txtBoxPix.Text, out valorPix))
             {
                 if (valorPix > 0)
                 {
-                    double troco = valorPix - valorInicial;
+                    double troco = (valorPix + valorEmDinheiro) - valorInicial;
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -71,19 +50,8 @@ namespace DESKTOP2019
             }
         }
 
-        private void inserirDesconto(object sender, EventArgs e)
+        public void calcularTrocoDinheiro()
         {
-            if (double.TryParse(txtBoxDesconto.Text, out desconto))
-            {
-                if(txtBoxDesconto.Text.Equals(""))
-                {
-                    txtBoxTotalPagar.Text = "R$: " + (getValorTotal).ToString();
-                    desconto = 0;
-                }
-                txtBoxTotalPagar.Text = "R$: " + (getValorTotal - desconto).ToString();
-                
-            }
-
             valorInicial = getValorTotal;
             if (double.TryParse(txtBoxDinheiro.Text, out valorEmDinheiro))
             {
@@ -100,22 +68,49 @@ namespace DESKTOP2019
                     }
                 }
             }
-            if (double.TryParse(txtBoxPix.Text, out valorPix))
+        }
+
+        private void digitarValorDinheiro(object sender, EventArgs e)
+        {
+            calcularTrocoDinheiro();
+        }
+
+        private void digitarValorPix(object sender, EventArgs e)
+        {
+            calcularTrocoPix();
+        }
+
+        private void inserirDesconto(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void digitarDesconto(object sender, EventArgs e)
+        {
+            if (double.TryParse(txtBoxDesconto.Text, out desconto))
             {
-                if (valorPix > 0)
+                if(txtBoxDesconto.Text != "")
                 {
-                    double troco = valorPix - valorInicial;
-                    if (troco < 0)
-                    {
-                        lblTrocoValor.Text = "R$ 0,00";
-                    }
-                    else
-                    {
-                        lblTrocoValor.Text = "R$" + troco.ToString();
-                    }
+                    txtBoxTotalPagar.Text = "R$: " + (getValorTotal - desconto).ToString();
                 }
             }
         }
+
+        private void digitarValorPix_Leave(object sender, EventArgs e)
+        {
+            calcularTrocoPix();
+        }
+
+        private void digitarValorPix_Enter(object sender, EventArgs e)
+        {
+            calcularTrocoPix();
+        }
+
+        private void digitarValorDinheiro_Enter(object sender, EventArgs e)
+        {
+            calcularTrocoDinheiro();
+        }
     }
 }
+
 

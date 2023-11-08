@@ -42,7 +42,7 @@ namespace DESKTOP2019
             //estabelecendo conexão com o banco de dados
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             //query com o banco
-            String sqlSelect = "select nomeProd, codCategoria, valorVenda from produto where codProd = @codProd";
+            String sqlSelect = "select nomeProd, nomeCategoria, valorVenda from produto where codProd = @codProd";
             if (e.KeyCode == Keys.Enter)
             {
                 try
@@ -60,14 +60,7 @@ namespace DESKTOP2019
                                 if (reader.Read())
                                 {
                                     string nomeProduto = reader["nomeProd"].ToString();
-                                    string categoria = reader["codCategoria"].ToString();
-                                    if (categoria.Equals("1"))
-                                    {
-                                        categoria = "bebidas";
-                                    }
-                                    else{
-                                        categoria = "comidas";
-                                    }
+                                    string categoria = reader["nomeCategoria"].ToString();
                                     string valorVenda = reader["valorVenda"].ToString();
                                     txtNomeProduto.Text = nomeProduto;
                                     txtCategoria.Text = categoria;

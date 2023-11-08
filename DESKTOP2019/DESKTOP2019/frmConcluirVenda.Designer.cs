@@ -52,11 +52,13 @@ namespace DESKTOP2019
             // 
             // txtBoxDesconto
             // 
-            this.txtBoxDesconto.Location = new System.Drawing.Point(247, 62);
+            this.txtBoxDesconto.Location = new System.Drawing.Point(277, 62);
             this.txtBoxDesconto.Name = "txtBoxDesconto";
             this.txtBoxDesconto.Size = new System.Drawing.Size(106, 20);
             this.txtBoxDesconto.TabIndex = 0;
+            this.txtBoxDesconto.Text = "0";
             this.txtBoxDesconto.TextChanged += new System.EventHandler(this.inserirDesconto);
+            this.txtBoxDesconto.Leave += new System.EventHandler(this.digitarDesconto);
             // 
             // groupBox1
             // 
@@ -75,9 +77,9 @@ namespace DESKTOP2019
             this.lblDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesconto.Location = new System.Drawing.Point(151, 63);
             this.lblDesconto.Name = "lblDesconto";
-            this.lblDesconto.Size = new System.Drawing.Size(90, 17);
+            this.lblDesconto.Size = new System.Drawing.Size(120, 17);
             this.lblDesconto.TabIndex = 2;
-            this.lblDesconto.Text = "DESCONTO:";
+            this.lblDesconto.Text = "DESCONTO:   R$";
             // 
             // lblTituloEncerramento
             // 
@@ -141,6 +143,8 @@ namespace DESKTOP2019
             this.txtBoxPix.Size = new System.Drawing.Size(132, 20);
             this.txtBoxPix.TabIndex = 6;
             this.txtBoxPix.TextChanged += new System.EventHandler(this.digitarValorPix);
+            this.txtBoxPix.Enter += new System.EventHandler(this.digitarValorPix_Enter);
+            this.txtBoxPix.Leave += new System.EventHandler(this.digitarValorPix_Leave);
             // 
             // txtBoxDinheiro
             // 
@@ -149,6 +153,7 @@ namespace DESKTOP2019
             this.txtBoxDinheiro.Size = new System.Drawing.Size(132, 20);
             this.txtBoxDinheiro.TabIndex = 5;
             this.txtBoxDinheiro.TextChanged += new System.EventHandler(this.digitarValorDinheiro);
+            this.txtBoxDinheiro.Enter += new System.EventHandler(this.digitarValorDinheiro_Enter);
             // 
             // lblCartao
             // 
