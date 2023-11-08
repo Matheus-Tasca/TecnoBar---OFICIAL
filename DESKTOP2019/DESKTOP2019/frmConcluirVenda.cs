@@ -37,7 +37,7 @@ namespace DESKTOP2019
             {
                 if (valorPix > 0)
                 {
-                    double troco = (valorPix + valorEmDinheiro) - valorInicial;
+                    double troco = (valorPix + valorEmDinheiro) - (valorInicial-desconto);
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -57,7 +57,7 @@ namespace DESKTOP2019
             {
                 if (valorEmDinheiro > 0)
                 {
-                    double troco = valorEmDinheiro - (valorInicial - desconto);
+                    double troco = (valorPix + valorEmDinheiro) - (valorInicial - desconto);
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";

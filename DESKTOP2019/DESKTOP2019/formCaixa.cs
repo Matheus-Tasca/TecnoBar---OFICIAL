@@ -118,14 +118,6 @@ namespace DESKTOP2019
                             {
                                 string nomeProduto = reader["nomeProd"].ToString();
                                 string categoria = reader["nomeCategoria"].ToString();
-                                if (categoria.Equals("1"))
-                                {
-                                    categoria = "bebidas";
-                                }
-                                else
-                                {
-                                    categoria = "comidas";
-                                }
                                 string valorVenda = reader["valorVenda"].ToString();
                                 txtNomeProduto.Text = nomeProduto;
                                 txtCategoria.Text = categoria;
@@ -143,19 +135,22 @@ namespace DESKTOP2019
 
         private void LeaveCampoQuantidade(object sender, EventArgs e)
         {
-            try
+            if(txtQuantidade.Text != "")
             {
-                int quantidade = int.Parse(txtQuantidade.Text);
-                string valorUnitarioCampo = lblValorUnitario.Text;
-                if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
+                try
                 {
-                    double total = valorUnitario * quantidade;
-                    lblValorTotal.Text = "R$" + total.ToString();
+                    int quantidade = int.Parse(txtQuantidade.Text);
+                    string valorUnitarioCampo = lblValorUnitario.Text;
+                    if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
+                    {
+                        double total = valorUnitario * quantidade;
+                        lblValorTotal.Text = "R$" + total.ToString();
+                    }
                 }
-            }
-            catch (System.FormatException ex)
-            {
-                MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (System.FormatException ex)
+                {
+                    MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -174,7 +169,6 @@ namespace DESKTOP2019
                 {
                     double valorTotalProduto = produto.quantidade * produto.valorVenda;
                     listBoxProdutos.Items.Add("Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
-                    listBoxProdutos.Items.Add("===================================================================");
                     total += valorTotalProduto;
                 }
                 limpar();
@@ -190,6 +184,74 @@ namespace DESKTOP2019
         {
             frmConcluirVenda frmVenda = new frmConcluirVenda(total);
             frmVenda.Show();
+        }
+
+        private void cmdCancelarVenda(object sender, EventArgs e)
+        {
+            listBoxProdutos.Items.Clear();
+            total = 0;
+            txtQuantidade.Clear();
+            txtNomeProduto.Clear();
+            txtCodigoProduto.Clear();
+            txtCategoria.Clear();
+            lblSubTotal.Text = "";
+        }
+
+        private void textChangedQuantidade(object sender, EventArgs e)
+        {
+            if(txtQuantidade.Text != "")
+            {
+                try
+                {
+                    int quantidade = int.Parse(txtQuantidade.Text);
+                    string valorUnitarioCampo = lblValorUnitario.Text;
+                    if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
+                    {
+                        double total = valorUnitario * quantidade;
+                        lblValorTotal.Text = "R$" + total.ToString();
+                    }
+                }
+                catch (System.FormatException ex)
+                {
+                    MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void EnterCampoQuantidade(object sender, EventArgs e)
+        {
+            if(txtQuantidade.Text != "") {
+                try
+                {
+                    int quantidade = int.Parse(txtQuantidade.Text);
+                    string valorUnitarioCampo = lblValorUnitario.Text;
+                    if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
+                    {
+                        double total = valorUnitario * quantidade;
+                        lblValorTotal.Text = "R$" + total.ToString();
+                    }
+                }
+                catch (System.FormatException ex)
+                {
+                    MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void deletarItemVenda(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (listBoxProdutos.SelectedIndex != -1)
+                {
+                    Produto produtoSelecionado = (Produto)listBoxProdutos.SelectedItem;
+                    double valorSelecionado = produtoSelecionado.valorVenda;
+                    int quantidade = produtoSelecionado.quantidade;
+                    double valorTotalItemSelecionado = valorSelecionado * quantidade;
+                    total = total-valorTotalItemSelecionado;
+                    listBoxProdutos.Items.RemoveAt(listBoxProdutos.SelectedIndex);
+                }
+            }
         }
     } 
 }
