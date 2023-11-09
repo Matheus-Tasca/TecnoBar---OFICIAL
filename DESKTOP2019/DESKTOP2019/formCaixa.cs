@@ -19,6 +19,8 @@ namespace DESKTOP2019
     {
         public frmConcluirVenda frmFinalizarVenda = new frmConcluirVenda();
         double total;
+        List<Produto> produtos = new List<Produto>();
+        int indice;
         public formCaixa()
         {
             InitializeComponent();
@@ -33,8 +35,8 @@ namespace DESKTOP2019
             lblValorTotal.Text = "R$ 0,00";
             double total = 0;
         }
-        
-        
+
+
 
         //Evento de enter ao digitar o codigo do produto
         private void pressionaEnter(object sender, KeyEventArgs e)
@@ -64,24 +66,26 @@ namespace DESKTOP2019
                                     string valorVenda = reader["valorVenda"].ToString();
                                     txtNomeProduto.Text = nomeProduto;
                                     txtCategoria.Text = categoria;
-                                    lblValorUnitario.Text =valorVenda;
+                                    lblValorUnitario.Text = valorVenda;
                                 }
                             }
                         }
                     }
-                } catch(SqlException ex)
-                {
-                    MessageBox.Show("ERRO NO SISTEMA :" + ex.Message,"ERRO");
                 }
-            e.SuppressKeyPress = true;
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("ERRO NO SISTEMA :" + ex.Message, "ERRO");
+                }
+                e.SuppressKeyPress = true;
             }
         }
 
         private void enterQuantidadeItem(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                try {
+                try
+                {
                     int quantidade = int.Parse(txtQuantidade.Text);
                     string valorUnitarioCampo = lblValorUnitario.Text;
                     if (double.TryParse(valorUnitarioCampo, out double valorUnitario))
@@ -89,7 +93,8 @@ namespace DESKTOP2019
                         total = valorUnitario * quantidade;
                         lblValorTotal.Text = "R$" + total.ToString();
                     }
-                } catch (System.FormatException ex)
+                }
+                catch (System.FormatException ex)
                 {
                     MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -135,7 +140,7 @@ namespace DESKTOP2019
 
         private void LeaveCampoQuantidade(object sender, EventArgs e)
         {
-            if(txtQuantidade.Text != "")
+            if (txtQuantidade.Text != "")
             {
                 try
                 {
@@ -162,15 +167,10 @@ namespace DESKTOP2019
                 double valorVenda = double.Parse(lblValorUnitario.Text);
                 int quantidade = int.Parse(txtQuantidade.Text);
                 Produto produto = new Produto(nomeProduto, valorVenda, quantidade);
-                List<Produto> produtos = new List<Produto>();
                 produtos.Add(produto);
-
-                foreach(Produto prod in produtos)
-                {
-                    double valorTotalProduto = produto.quantidade * produto.valorVenda;
-                    listBoxProdutos.Items.Add("Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
-                    total += valorTotalProduto;
-                }
+                double valorTotalProduto = produto.quantidade * produto.valorVenda;
+                listBoxProdutos.Items.Add("Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
+                total += valorTotalProduto;
                 limpar();
                 lblSubTotal.Text = "R$: " + total.ToString();
             }
@@ -199,7 +199,7 @@ namespace DESKTOP2019
 
         private void textChangedQuantidade(object sender, EventArgs e)
         {
-            if(txtQuantidade.Text != "")
+            if (txtQuantidade.Text != "")
             {
                 try
                 {
@@ -220,7 +220,8 @@ namespace DESKTOP2019
 
         private void EnterCampoQuantidade(object sender, EventArgs e)
         {
-            if(txtQuantidade.Text != "") {
+            if (txtQuantidade.Text != "")
+            {
                 try
                 {
                     int quantidade = int.Parse(txtQuantidade.Text);
@@ -240,19 +241,29 @@ namespace DESKTOP2019
 
         private void deletarItemVenda(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Delete)
             {
                 if (listBoxProdutos.SelectedIndex != -1)
                 {
-                    Produto produtoSelecionado = (Produto)listBoxProdutos.SelectedItem;
-                    double valorSelecionado = produtoSelecionado.valorVenda;
-                    int quantidade = produtoSelecionado.quantidade;
-                    double valorTotalItemSelecionado = valorSelecionado * quantidade;
-                    total = total-valorTotalItemSelecionado;
-                    listBoxProdutos.Items.RemoveAt(listBoxProdutos.SelectedIndex);
+                    List<Produto> produtosCopia = new List<Produto>(produtos);
+                    foreach (Produto produto in produtosCopia)
+                    {
+                        indice = produtos.IndexOf(produto);
+                        if (indice == listBoxProdutos.SelectedIndex)
+                        {
+                                int quantidade = produto.quantidade;
+                                double valor = produto.valorVenda;
+                                total = total - (quantidade * valor);
+                                produtos.Remove(produto);
+                                listBoxProdutos.Items.RemoveAt(listBoxProdutos.SelectedIndex);
+                                lblSubTotal.Text = "R$: " + total.ToString();
+                        }
+                    }
                 }
             }
         }
-    } 
+    }
 }
+
 
