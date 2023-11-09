@@ -70,6 +70,7 @@ const login = async () => {
             limpaCampos()
         }
         else {
+            alert('Login feito com sucesso!')
             window.location.href = "InicioDashboard.html"
             limpaCampos()
         }

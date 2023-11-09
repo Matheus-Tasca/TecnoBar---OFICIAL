@@ -50,8 +50,8 @@ const cadastrar = async () => {
     }).then((dados)=>{
         resultado = dados
         alert('Cadastro realizado com sucesso!')
+        window.location.href = "InicioDashboard.html"
     })
-    console.log(resultado)
     limparCampos()
 }
 }
@@ -69,3 +69,13 @@ cpfCampo.addEventListener('keyup',(e)=>{
     if (e.code === 'Enter')
     cadastrar()
 })
+
+const validaEmail = (email) =>{
+    var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // Testa o valor do campo em relação à regex
+    return regex.test(email);
+}
+const validaSenha = (senha) =>{
+
+}
