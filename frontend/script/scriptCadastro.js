@@ -27,14 +27,21 @@ const limparCampos = () =>{
     cpfCampo.value = ""
 }
 const cadastrar = async () => {
+   let msg
    let nome  = nomeCampo.value
-   let email = emailCampo.value 
-   let senha = senhaCampo.value 
-   let cpf = cpfCampo.value
+   let email = validaEmail(emailCampo.value) 
+   let senha = validaSenha(senhaCampo.value) 
+   let cpf = parseInt(validaCPF(cpfCampo.value))
 
-   if(nome == "" ||email == ""||senha == ""|| cpf == ""){
-        alert('Preencha todos os campos!')
-        limparCampos()
+   console.log('Nome: '+nome)
+   console.log('email: '+email)
+   console.log('cpf: '+cpf)
+   console.log('senha: '+senha) 
+
+   if (validacoes(nome,email,senha,cpf,msg) !== ""){
+    let alerta = validacoes(nome,email,senha,cpf,msg)
+    alert(alerta) 
+
    }
    else{
     const dadosCadastrais = {nome: nome, email:email, senha: senha, cpf: cpf}
@@ -71,11 +78,34 @@ cpfCampo.addEventListener('keyup',(e)=>{
 })
 
 const validaEmail = (email) =>{
-    var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-    // Testa o valor do campo em relação à regex
-    return regex.test(email);
+    if (regex.test(email))
+        return email
 }
 const validaSenha = (senha) =>{
-
+    var regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/
+    if (regex.test(senha))
+        return senha
+}
+const validaCPF = (cpf) =>{
+    cpf = cpf.replace(/\D/g, '')
+    if(cpf.length !== 11)
+        return false
+    else if(/^(\d)\1{10}$/.test(cpf))
+        return false
+    else 
+        return cpf
+}
+const validacoes = (nome,email,senha , cpf,msg)=>{
+    msg = ""
+    if(nome =="")
+        msg = 'Preencha o campo NOME!'
+    else if(email == undefined)
+        msg = 'Preencha o campo EMAIL corretamente!'
+    else if(cpf == NaN)
+        msg = 'Preencha o campo CPF corretamente!'
+    else if(senha == undefined)
+        msg = 'Senha deve ter no minimo 8 caracteres, 1 letra maiuscúla e 1 número!'
+    return msg
 }
