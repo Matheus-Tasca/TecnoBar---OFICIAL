@@ -96,6 +96,8 @@ namespace DESKTOP2019
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(124, 20);
             this.txtQuantidade.TabIndex = 11;
+            this.txtQuantidade.TextChanged += new System.EventHandler(this.textChangedQuantidade);
+            this.txtQuantidade.Enter += new System.EventHandler(this.EnterCampoQuantidade);
             this.txtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterQuantidadeItem);
             this.txtQuantidade.Leave += new System.EventHandler(this.LeaveCampoQuantidade);
             // 
@@ -195,6 +197,7 @@ namespace DESKTOP2019
             this.btnCancelarVenda.TabIndex = 13;
             this.btnCancelarVenda.Text = "Cancelar Venda";
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
+            this.btnCancelarVenda.Click += new System.EventHandler(this.cmdCancelarVenda);
             // 
             // btnFinalizarVenda
             // 
@@ -215,6 +218,7 @@ namespace DESKTOP2019
             this.listBoxProdutos.Name = "listBoxProdutos";
             this.listBoxProdutos.Size = new System.Drawing.Size(368, 284);
             this.listBoxProdutos.TabIndex = 15;
+            this.listBoxProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.deletarItemVenda);
             // 
             // lblSubTotalTitulo
             // 

@@ -107,7 +107,9 @@ namespace DESKTOP2019
             InitializeComponent();
             Busca();
             modo = 0;
-            habilitar();
+            habilitar();     
+            CarregaDadosCombo();
+            campoCategoria.SelectedIndex = -1;
         }
 
         private void campoQTDInicio_KeyPress(object sender, KeyPressEventArgs e)
@@ -147,54 +149,6 @@ namespace DESKTOP2019
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (listProd.SelectedIndex != -1)
-            {
-                try
-                {
-                    {
-                        string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
-                        using (MySqlConnection connection = new MySqlConnection(conString))
-                        {
-                            connection.Open();
-
-                            string query = "UPDATE produto SET nomeProd = @nome, valorEntrada = @valorEntrada, valorVenda = @valorVenda, " +
-                                           "qtdMin = @qtdMin, codCategoria = @codCategoria, qtdEstoque = @qtdEstoque, ativo = @ativo " +
-                                           "WHERE codProd = @codProd";
-
-                            using (MySqlCommand command = new MySqlCommand(query, connection))
-                            {
-                                command.Parameters.AddWithValue("@codProd", campoCod.Text);
-                                command.Parameters.AddWithValue("@nome", campoNome.Text);
-                                command.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
-                                command.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
-                                command.Parameters.AddWithValue("@qtdMin", campoQTDMinima.Text);
-                                command.Parameters.AddWithValue("@codCategoria", campoCategoria.SelectedIndex);
-                                command.Parameters.AddWithValue("@qtdEstoque", campoQTDInicio.Text);
-                                command.Parameters.AddWithValue("@ativo", cbAtivo.Checked ? 1 : 0);
-
-                                int linhasAfetadas = command.ExecuteNonQuery();
-
-                                if (linhasAfetadas > 0)
-                                {
-                                    MessageBox.Show("Produto atualizado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    listProd.Items.Clear();
-                                    Busca();
-                                    return; // para a função 
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Falha ao atualizar o produto.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro ao alterar produto: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
             if (listProd.SelectedIndex == -1)
             {
                 int linhasAfetadas = 0;
@@ -214,8 +168,8 @@ namespace DESKTOP2019
                     }
                     else
                     {
-                        string qryInsereProd = "INSERT into produto (nomeProd,  codCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda, ativo)"
-                            + "VALUES (@nome, @codcategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda, @ativo)";
+                        string qryInsereProd = "INSERT into produto (nomeProd,  nomeCategoria, qtdMin, qtdEstoque, valorEntrada, valorVenda, ativo)"
+                            + "VALUES (@nome, @nomeCategoria, @qtdMin, @qtdEst, @valorEntrada, @valorVenda, @ativo)";
                         String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //pega a localização que foi explicada (endereco)
                         using (conection = new MySqlConnection(conString))//Criar conexão com o banco (manda um whats pro banco falando que ta indo) 
                         {
@@ -223,7 +177,7 @@ namespace DESKTOP2019
 
                             MySqlCommand comando = new MySqlCommand(qryInsereProd, conection); //da o comando
                             comando.Parameters.AddWithValue("@nome", campoNome.Text);
-                            comando.Parameters.AddWithValue("@codcategoria", campoCategoria.SelectedIndex);
+                            comando.Parameters.AddWithValue("@nomeCategoria", campoCategoria.SelectedValue); // SELECTEDVALEU PEGA O Valeu atribuido lá embaixo ao c
                             comando.Parameters.AddWithValue("@qtdMin", campoQTDMinima.Text);
                             comando.Parameters.AddWithValue("@qtdEst", campoQTDInicio.Text);
                             comando.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
@@ -253,32 +207,60 @@ namespace DESKTOP2019
             }
         }
 
-        private void campoCod_TextChanged(object sender, EventArgs e)
-        {
-            string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            using (MySqlConnection connection = new MySqlConnection(conString))
-            {
-                connection.Open();
-                string query = "SELECT MAX(codProd) FROM produto";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
-                {
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
-                    {
-                        int ultimoCodigo = Convert.ToInt32(result);
-                        int proximoCodigo = ultimoCodigo + 1;
-                    }
-                }
-            }
-        }
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            modo = 2;
-            habilitar();
+            if (listProd.SelectedIndex != -1)
+            {
+                try
+                {
+                    {
+                        string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-            //fazer update
+                        using (MySqlConnection connection = new MySqlConnection(conString))
+                        {
+                            connection.Open();
 
+                            string query = "UPDATE produto SET nomeProd = @nome, valorEntrada = @valorEntrada, valorVenda = @valorVenda, " +
+                                           "qtdMin = @qtdMin, nomeCategoria = @nomeCategoria, qtdEstoque = @qtdEstoque, ativo = @ativo " +
+                                           "WHERE codProd = @codProd";
+
+                            using (MySqlCommand command = new MySqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@codProd", campoCod.Text);
+                                command.Parameters.AddWithValue("@nome", campoNome.Text);
+                                command.Parameters.AddWithValue("@valorEntrada", campoCusto.Text);
+                                command.Parameters.AddWithValue("@valorVenda", campoVenda.Text);
+                                command.Parameters.AddWithValue("@qtdMin", campoQTDMinima.Text);
+                                command.Parameters.AddWithValue("@nomeCategoria", campoCategoria.SelectedValue);
+                                command.Parameters.AddWithValue("@qtdEstoque", campoQTDInicio.Text);
+                                command.Parameters.AddWithValue("@ativo", cbAtivo.Checked ? 1 : 0);
+
+                                int linhasAfetadas = command.ExecuteNonQuery();
+
+                                if (linhasAfetadas > 0)
+                                {
+                                    MessageBox.Show("Produto atualizado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    listProd.Items.Clear();
+                                    Busca();
+                                    return; // para a função 
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falha ao atualizar o produto.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao alterar produto: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione um produto para alterar", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
@@ -286,6 +268,8 @@ namespace DESKTOP2019
         {
             if (listProd.SelectedIndex != -1)
             {
+                btnSalvar.Enabled = false;
+                btnNovo.Enabled = false;
                 // Obtém o item selecionado
                 string selected = listProd.SelectedItem.ToString();
                 string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
@@ -312,7 +296,7 @@ namespace DESKTOP2019
                                 campoCusto.Text = reader["valorEntrada"].ToString();
                                 campoVenda.Text = reader["valorVenda"].ToString();
                                 campoQTDMinima.Text = reader["qtdMin"].ToString();
-                                campoCategoria.Text = reader["codCategoria"].ToString();
+                                campoCategoria.Text = reader["nomeCategoria"].ToString();
                                 campoQTDInicio.Text = reader["qtdEstoque"].ToString();
                                 int ativoValue = Convert.ToInt32(reader["ativo"]);
                                 if (ativoValue == 1)
@@ -340,29 +324,44 @@ namespace DESKTOP2019
             novaCat.Show();
         }
 
-        private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e) // Aqui mostra no combo o que selecionou 
         {
-            string conStrin = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            string qryNomeCat = "SELECT * FROM categoria";
-
-            using (MySqlConnection con = new MySqlConnection(conStrin))
+            if (campoCategoria.SelectedItem != null)
             {
-                con.Open();
+                DataRowView selectedRow = (DataRowView)campoCategoria.SelectedItem;
+                string nomeSelecionado = selectedRow["nomeCategoria"].ToString();
+            }
+        }
 
-                campoCategoria.Items.Clear();
-
-                using (MySqlCommand command = new MySqlCommand(qryNomeCat, con))
+        private void CarregaDadosCombo()
+        {
+            try
+            {
+                string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                using (MySqlConnection connection = new MySqlConnection(conString))
                 {
-                    MySqlDataReader reader = command.ExecuteReader();
+                    connection.Open();
 
-                    while (reader.Read())
+                    string query = "SELECT nomeCategoria FROM categoria";
+                    using (MySqlCommand comando = new MySqlCommand(query, connection))
                     {
-                        string nomeCategoria = reader["nomeCategoria"].ToString();
-                        campoCategoria.Items.Add(nomeCategoria);
-                    }
+                        comando.CommandText = query; //executa a query
 
-                    reader.Close();
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(comando); //  trás para o seu datatable ou dataset
+                        DataTable dataTable = new DataTable(); //criando uma tabela
+                        adapter.Fill(dataTable); //preenche os dados que recebeu do comando sql 
+
+                        campoCategoria.DisplayMember = "nomeCategoria";
+                        campoCategoria.ValueMember = "nomeCategoria"; 
+                        campoCategoria.DataSource = dataTable;
+
+                        connection.Close();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar dados: " + ex.Message);
             }
         }
 
