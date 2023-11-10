@@ -204,21 +204,16 @@ nav.content-tec {
 /* Fim login */
 
 /* Inicio planos */
-.box {
-    width: 244px;
-    height: 422px;
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.box .overlap-group {
-    width: 244px;
-    height: 422px;
+.overlap-group {
+    width: 344px;
+    height: 522px;
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 0px 4px 50px #00000040;
     /* text-align: center; */
+
+    margin-left: auto;
+    margin-right: auto;
 
     display: flex;
     flex-direction: row;
@@ -227,26 +222,26 @@ nav.content-tec {
     flex-wrap: wrap;
 }
 
-.box .txt {
+.txt {
     padding-top: 80px;
     color: #000000;
-    font-size: 32px;
+    font-size: 42px;
     line-height: normal;
     font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
 }
 
-.box .txt-beneficios {
+.txt-beneficios {
     color: #000000;
-    font-size: 23px;
-    line-height: 30px;
+    font-size: 33px;
+    line-height: 35px;
     font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
 }
 
-.box .overlap {
+.overlap {
     width: 170px;
     height: 35px;
     background-color: #000000;
@@ -258,27 +253,27 @@ nav.content-tec {
     align-items: center;
 }
 
-.box .overlap:hover {
+.overlap:hover {
     cursor: pointer;
     transition: 0.3s;
     transform: scale(1.2);
     box-shadow: 4px 4px 5px #00000040;
 }
 
-.box .txt-button {
+.txt-button {
     color: #ffffff;
     font-size: 20px;
     line-height: normal;
     white-space: nowrap;
     font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0;
 }
 
-.box .background-title {
+.background-title {
     position: absolute;
     top: 0;
-    width: 244px;
+    width: 344px;
     height: 73px;
     background-color: #000000;
     border-radius: 16px 16px 0px 0px;
@@ -289,17 +284,17 @@ nav.content-tec {
     align-items: center;
 }
 
-.box .txt-title {
+.txt-title {
     color: #ffffff;
     font-size: 30px;
     line-height: normal;
     white-space: nowrap;
     font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
 }
 
-.box .overlap-2 {
+.overlap-2 {
     position: absolute;
     width: 108px;
     height: 19px;
@@ -307,21 +302,146 @@ nav.content-tec {
     left: 0;
 }
 
-.box .box-subtitle {
+.box-subtitle {
     width: 120px;
     height: 18px;
     background-color: #f00000;
     text-align: center;
 }
 
-.box .txt-subtitle {
+.txt-subtitle {
     color: #ffffff;
     font-size: 16px;
     line-height: normal;
     white-space: nowrap;
     font-family: 'Orbitron', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
 }
 
+.fundo {
+    width: 559px;
+    height: 150px;
+    background-color: #cdcdcd;
+    border-radius: 16px;
+    box-shadow: 5px 4px 10px #00000040;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (max-width: 1250px) {
+        width: 450px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        width: 340px;
+    }
+}
+
+.fundoCartao {
+    width: 559px;
+    height: 450px;
+    background-color: #cdcdcd;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px #00000040;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (max-width: 1250px) {
+        width: 450px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        width: 340px;
+    }
+}
+
+.fundo:hover {
+    transition: 0.3s;
+    transform: scale(1.01);
+    box-shadow: 5px 4px 30px #00000040;
+}
+
+.title {
+    /* font-family: "Russo One-Regular", Helvetica; */
+    font-weight: 500;
+    color: #000000;
+    font-size: 32px;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    padding-left: 50px;
+    padding-top: 8px;
+}
+
+.subtitle {
+    /* font-family: "Russo One-Regular", Helvetica; */
+    font-weight: 500;
+    color: #000000;
+    font-size: 20px;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    padding-left: 40px;
+}
+
+.botao {
+    width: 128px;
+    height: 33px;
+    background-color: #000000;
+    border-radius: 10px;
+    margin-left: 65%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: 600px) {
+        margin-left: 57%;
+    }
+}
+
+.botao:hover {
+    cursor: pointer;
+    /* transition: 0.3s;
+    transform: scale(1.01);
+    box-shadow: 4px 4px 5px #00000040; */
+}
+
+.txt-button {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: normal;
+    white-space: nowrap;
+    /* font-family: "Russo One-Regular", Helvetica; */
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+
+.fundoCartao:hover {
+    transition: 0.3s;
+    transform: scale(1.01);
+    box-shadow: 5px 4px 30px #00000040;
+}
+
+.text {
+    /* font-family: "Russo One-Regular", Helvetica; */
+    font-weight: 500;
+    color: #000000;
+    font-size: 20px;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: normal;
+    padding-left: 10px;
+}
+
+.campos {
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
 /* Fim Planos */

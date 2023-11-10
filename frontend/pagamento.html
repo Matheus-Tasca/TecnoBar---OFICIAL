@@ -47,7 +47,8 @@
                 </label>
                 <li class="navtec-hide navtec-home"><a href="index.html#tituloApresentacao">Empresa</a></li>
                 <li class="navtec-hide navtec-contact"><a href="index.html#TelaContatos">Contato</a></li>
-                <li class="navtec-hide navtec-s-up"><a href="cadsatro.html">Cadastre-se<i class="fas fa-user-plus"></i></a></li>
+                <li class="navtec-hide navtec-s-up"><a href="cadsatro.html">Cadastre-se<i
+                            class="fas fa-user-plus"></i></a></li>
                 <li class="navtec-hide navtec-s-in" data-toggle="modal" data-target="#loginModal"><a href="#">Entrar<i
                             class="fas fa-user"></i></a></li>
                 </ul>
@@ -91,22 +92,21 @@
     <div style="height: 5vh;"></div>
 
     <!-- Inicio Conteudo tela -->
-    
+
     <div class="container-fluid">
 
-        <!-- Inicio Planos -->
         <div class="row">
             <div class="col-12">
-                <h1 id="ancoraPlanos" class="text-left">Plano escolhiodo:</h1>
+                <h1 style="font-weight: 500;" class="text-left">Plano escolhiodo:</h1>
             </div>
         </div>
 
         <div style="height: 4vh;"></div>
 
         <div class="row">
-            <div class="col-sm-12 col-md-3">
+            <div class="col-12 col-lg-6">
 
-                <div id="plano1" class="box" style="display: none;">
+                <div id="plano1" style="display: none;">
 
                     <div class="overlap-group">
 
@@ -122,12 +122,19 @@
                         </div>
 
                         <div class="txt">R$ 50,00</div>
-                        <p class="txt-beneficios">
-                            benefício <br>
-                            benefício <br>
-                            benefício <br>
-                            benefício
-                        </p>
+
+                        <div class="row">
+                            <div class="col">
+                                <div style="width: 344px;">
+                                    <p class="txt-beneficios">
+                                        benefício <br>
+                                        benefício <br>
+                                        benefício <br>
+                                        benefício
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
                         <button type="button" class="overlap" onclick="trocarPlano();">
                             <div class="txt-button">Trocar</div>
@@ -138,32 +145,151 @@
 
                 </div>
 
-                <div id="plano2" class="box" style="display: none;">
+                <div id="plano2" style="display: none;">
 
                     <div class="overlap-group">
+
                         <div class="background-title" style="background-color: blue;">
                             <div class="txt-title">Premium</div>
                         </div>
 
-                        <div class="txt">R$ 100,00</div>
-                        <p class="txt-beneficios">
-                            benefício <br>
-                            benefício <br>
-                            benefício <br>
-                            benefício
-                        </p>
+                        <!-- <div style="width: 344px;"> -->
+                            <div class="txt">R$ 100,00</div>
+                        <!-- </div> -->
 
-                        <button type="button" class="overlap" onclick="trocarPlano()" style="background-color: blue;">
-                            <div class="txt-button">Trocar</div>
-                        </button>
+                        <div class="row">
+                            <div class="col">
+                                <div style="width: 344px;">
+                                    <p class="txt-beneficios">
+                                        benefício <br>
+                                        benefício <br>
+                                        benefício <br>
+                                        benefício <br>
+                                        benefício <br>
+                                        benefício <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="overlap" onclick="trocarPlano()"
+                                    style="background-color: blue;">
+                                    <div class="txt-button">Trocar</div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
             </div>
-        </div>
-        <!-- Fim Planos -->
 
+            <div class="col-12 col-lg-6">
+
+                <div style="padding: 5vh;" class="d-lg-none"></div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="fundo">
+                            <p class="title">PIX</p>
+                            <p class="subtitle">Aprovação em minutos</p>
+                            <button type="button" class="botao">
+                                <div class="txt-button">Pagar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding: 3vh;"></div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="fundo">
+                            <p class="title">Boleto bancário</p>
+                            <p class="subtitle">Vencimento em até 4 dias</p>
+                            <button type="button" class="botao">
+                                <div class="txt-button">Pagar</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding: 3vh;"></div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="fundoCartao">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="title">Cartão de crédito</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="campos col-10">
+                                    <!-- <p class="text">Nome do títular</p> -->
+                                    <input type="number" class="form-control" id="numberCard"
+                                        placeholder="Número do cartão" style="background-color: #d9d9d9;">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="campos col-10">
+                                    <!-- <p class="text">Número do cartão</p> -->
+                                    <input type="text" class="form-control" id="nome"
+                                        placeholder="Nome do titular (como gravado no cartão)"
+                                        style="background-color: #d9d9d9;">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="campos col-5">
+                                    <p class="text">Data de <br> validade</p>
+                                    <input type="month" class="form-control" id="mesAno"
+                                        placeholder="Insira o número..." style="background-color: #d9d9d9;">
+                                </div>
+                                <div class="campos col-5">
+                                    <p class="text">Código de <br> segurança</p>
+                                    <input type="text" class="form-control" id="css" placeholder="cvv"
+                                        style="background-color: #d9d9d9;">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="campos col-10">
+                                    <div>
+                                        <div>
+                                            <span>Número de parcelas</span><br>
+                                            <select name="filtro" onchange="dados(this.value)">
+                                                <option value="null" selected> Opções de parcelamento</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7"> 7 </option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" style="padding-top: 20px;">
+                                    <button type="button" class="botao">
+                                        <div class="txt-button">Pagar</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
     <!-- Fim conteudo tela -->
 

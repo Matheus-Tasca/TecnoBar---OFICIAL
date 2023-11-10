@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Exibir o plano correspondente com base no valor do parâmetro 'plano'
     if (plano === '1') {
         document.getElementById('plano1').style.display = 'block';
+        trocarPlano();
     } else if (plano === '2') {
         document.getElementById('plano2').style.display = 'block';
     }
-
 });
 
 
@@ -85,7 +85,7 @@ senha.addEventListener('keyup', (e) => {
         login()
 })
 
-var planoAtual = 1;
+var planoAtual;
 
 function atualizarExibicao() {
     var caixaPlano1 = document.getElementById("plano1");
@@ -106,7 +106,7 @@ function trocarPlano() {
     } else {
         planoAtual = 1;
     }
-    atualizarExibicao(); // Atualize a exibição após a troca de plano
+    atualizarExibicao();
 }
 
 
