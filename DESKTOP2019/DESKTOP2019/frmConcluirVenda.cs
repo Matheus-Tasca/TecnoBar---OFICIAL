@@ -1,23 +1,26 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DESKTOP2019.CamadaDadosformCaixa;
 
 namespace DESKTOP2019
 {
     public partial class frmConcluirVenda : Form
     {
-        public frmConcluirVenda(double valorTotal)
+        public frmConcluirVenda(double valorTotal, List<Produto> produtos)
         {
             InitializeComponent();
             getValorTotal = valorTotal;
             txtBoxTotalPagar.Text = "R$: " + (getValorTotal).ToString();
-           
+            produtosVenda = produtos;
     }
         public frmConcluirVenda()
         {
@@ -29,7 +32,12 @@ namespace DESKTOP2019
         public double valorPix;
         double desconto;
         double valorInicial;
-
+        List<Produto> produtosVenda = new List<Produto>();
+        List<int> codProdutosVenda = new List<int>();
+        List<int> qtdProdutosVenda = new List<int>();
+        DateTime data;
+        int codvendaSelect;
+        int codVendaAdicionar;
         public void calcularTrocoPix()
         {
             valorInicial = getValorTotal;
@@ -109,6 +117,56 @@ namespace DESKTOP2019
         private void digitarValorDinheiro_Enter(object sender, EventArgs e)
         {
             calcularTrocoDinheiro();
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            //estabelecendo conexão com o banco de dados
+            String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            //query com o banco
+            String sqlSelectcodVenda = "select codVenda from Venda order by codVenda DESC";
+            String sqlAdicionarVenda = "insert into Venda (codVenda, codProd, nomeProd, QtdProd, ValorProd, ValorTotalVenda, Data_Registro) VALUES (@codVenda, @codProd, @nomeProd, @QtdProd, @ValorProd, @ValorTotalVenda, @Data_Registro)";
+            data = DateTime.Now;
+            try
+            {
+                foreach(Produto p in produtosVenda)
+                {
+                    codProdutosVenda.Add(p.codProduto);
+                    qtdProdutosVenda.Add(p.quantidade);
+                }
+
+                using (MySqlConnection con = new MySqlConnection(conString))
+                {
+                    con.Open();
+                    MySqlCommand cmdSelectcodVenda = new MySqlCommand(sqlSelectcodVenda, con);
+                    MySqlCommand cmdAdicionarVenda = new MySqlCommand(sqlAdicionarVenda, con);
+
+                    using (cmdSelectcodVenda)
+                    {
+                       using (MySqlDataReader reader = cmdSelectcodVenda.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                codvendaSelect = int.Parse(reader["codVenda"].ToString());
+                                codVendaAdicionar = codvendaSelect;
+                            }
+                        }
+                    }
+                    using (cmdAdicionarVenda)
+                    {
+                        foreach(int i in codProdutosVenda)
+                        {
+                            Console.WriteLine("Pasei");
+                            cmdAdicionarVenda.Parameters.AddWithValue("@codVenda", codVendaAdicionar + 1);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@codProd", i);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@Data_Registro", data);
+                        }
+                    }
+                }
+            }catch(MySqlException ex)
+            {
+                MessageBox.Show("ERRO NO SISTEMA :" + ex.Message, "ERRO");
+            }
         }
     }
 }

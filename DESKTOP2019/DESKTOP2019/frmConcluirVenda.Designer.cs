@@ -211,6 +211,7 @@ namespace DESKTOP2019
             this.btnFinalizar.TabIndex = 3;
             this.btnFinalizar.Text = "FINALIZAR";
             this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // btnCancelar
             // 

@@ -70,6 +70,7 @@ namespace DESKTOP2019
                                 }
                             }
                         }
+                        con.Close();
                     }
                 }
                 catch (SqlException ex)
@@ -163,13 +164,14 @@ namespace DESKTOP2019
         {
             try
             {
+                int codProd = int.Parse(txtCodigoProduto.Text);
                 string nomeProduto = txtNomeProduto.Text;
                 double valorVenda = double.Parse(lblValorUnitario.Text);
                 int quantidade = int.Parse(txtQuantidade.Text);
-                Produto produto = new Produto(nomeProduto, valorVenda, quantidade);
+                Produto produto = new Produto(codProd, nomeProduto, valorVenda, quantidade);
                 produtos.Add(produto);
                 double valorTotalProduto = produto.quantidade * produto.valorVenda;
-                listBoxProdutos.Items.Add("Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
+                listBoxProdutos.Items.Add("Cod: "+ produto.codProduto + " | "+" Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
                 total += valorTotalProduto;
                 limpar();
                 lblSubTotal.Text = "R$: " + total.ToString();
@@ -182,7 +184,7 @@ namespace DESKTOP2019
 
         private void finalizaVenda(object sender, EventArgs e)
         {
-            frmConcluirVenda frmVenda = new frmConcluirVenda(total);
+            frmConcluirVenda frmVenda = new frmConcluirVenda(total, produtos);
             frmVenda.Show();
         }
 

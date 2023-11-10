@@ -10,11 +10,13 @@ namespace DESKTOP2019
     {
         public class Produto
         {
+            public int codProduto { get; set; }
             public string nomeProduto { get; set; }
             public double valorVenda { get; set; }
             public int quantidade { get; set; }
-            public Produto(string nome, double valorVenda, int quantidade)
+            public Produto(int codProduto, string nome, double valorVenda, int quantidade)
             {
+                this.codProduto = codProduto;
                 this.nomeProduto = nome;
                 this.valorVenda = valorVenda;
                 this.quantidade = quantidade;
