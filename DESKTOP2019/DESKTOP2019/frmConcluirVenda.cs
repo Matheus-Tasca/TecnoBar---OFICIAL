@@ -33,8 +33,7 @@ namespace DESKTOP2019
         double desconto;
         double valorInicial;
         List<Produto> produtosVenda = new List<Produto>();
-        List<int> codProdutosVenda = new List<int>();
-        List<int> qtdProdutosVenda = new List<int>();
+        List<Venda> listaVenda = new List<Venda>();
         DateTime data;
         int codvendaSelect;
         int codVendaAdicionar;
@@ -129,12 +128,6 @@ namespace DESKTOP2019
             data = DateTime.Now;
             try
             {
-                foreach(Produto p in produtosVenda)
-                {
-                    codProdutosVenda.Add(p.codProduto);
-                    qtdProdutosVenda.Add(p.quantidade);
-                }
-
                 using (MySqlConnection con = new MySqlConnection(conString))
                 {
                     con.Open();
@@ -154,12 +147,23 @@ namespace DESKTOP2019
                     }
                     using (cmdAdicionarVenda)
                     {
-                        foreach(int i in codProdutosVenda)
+                        foreach(Produto p in produtosVenda)
                         {
-                            Console.WriteLine("Pasei");
-                            cmdAdicionarVenda.Parameters.AddWithValue("@codVenda", codVendaAdicionar + 1);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@codProd", i);
+                            Venda venda = new Venda(codVendaAdicionar,p.quantidade, p.codProduto, data);
+                            listaVenda.Add(venda);
+                        }
+                        
+                        foreach (Venda v in listaVenda)
+                        {
+                            cmdAdicionarVenda.Parameters.Clear();
+                            cmdAdicionarVenda.Parameters.AddWithValue("@codVenda", codVendaAdicionar+1);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@codProd", v.codProd);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@nomeProd", DBNull.Value);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@QtdProd", v.quantidade);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@ValorProd", DBNull.Value);
+                            cmdAdicionarVenda.Parameters.AddWithValue("@ValorTotalVenda", DBNull.Value);
                             cmdAdicionarVenda.Parameters.AddWithValue("@Data_Registro", data);
+                            int linhasAfetdas = cmdAdicionarVenda.ExecuteNonQuery();
                         }
                     }
                 }

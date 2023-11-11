@@ -22,5 +22,21 @@ namespace DESKTOP2019
                 this.quantidade = quantidade;
             }
         }
+
+        public class Venda
+        {
+            public int codVenda { get; set; }
+            public int codProd { get; set; }
+            public int quantidade { get; set; }
+            public DateTime data { get; set; }
+
+            public Venda(int codVenda, int quantidade, int codProd, DateTime data)
+            {
+                this.codVenda = codVenda;
+                this.codProd = codProd;
+                this.quantidade = quantidade;
+                this.data = data;
+            }
+        }
     }
 }
