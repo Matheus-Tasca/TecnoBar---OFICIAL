@@ -16,11 +16,12 @@ namespace DESKTOP2019
     public partial class Estoque : Form
     {
         private MySqlConnection conection;
+        private DataTable dataTable;
 
         public void Busca()
         {
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ;
-            string query = "SELECT * FROM produto where ativo = 1"; // Substitua pelo seu SQL
+            string query = "SELECT codProd, nomeProd, qtdEstoque FROM produto where ativo = 1"; // Substitua pelo seu SQL
 
             using (conection = new MySqlConnection(conString))
             {
@@ -28,17 +29,11 @@ namespace DESKTOP2019
 
                 using (MySqlCommand command = new MySqlCommand(query, conection))
                 {
-                    MySqlDataReader reader = command.ExecuteReader();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    DataTable dataTab = new DataTable();
+                    adapter.Fill(dataTab);
 
-                    while (reader.Read())
-                    {
-                        string nome = reader["nomeProd"].ToString();
-                        string cod = reader["codProd"].ToString();
-                        string qtd = reader["qtdEstoque"].ToString();
-                        listaEst.Items.Add($"{cod}  {nome} -> Quantidade: {qtd}");
-                    }
-
-                    reader.Close();
+                    gridEstoque.DataSource = dataTab;  //relaciona o datasoucer do grid (que é o aramazenamento de dados) com o datatable que foi preenchido 
                 }
             }
         }
@@ -46,7 +41,17 @@ namespace DESKTOP2019
         public Estoque()
         {
             InitializeComponent();
-            Busca();   
+            Busca();
+            gridEstoque.Columns[0].HeaderText = "Codigo";
+            gridEstoque.Columns[1].HeaderText = "Nome";
+            gridEstoque.Columns[2].HeaderText = "Estoque Atual";
+
+            gridEstoque.Columns[0].Width = 150;
+            gridEstoque.Columns[1].Width = 200;
+            gridEstoque.Columns[2].Width = 200;
+
+            gridEstoque.RowHeadersWidth = 20;
+
         }
 
         private void btnRetirar_Click(object sender, EventArgs e)
@@ -55,11 +60,10 @@ namespace DESKTOP2019
 
             try
             {
-                if (listaEst.SelectedItem != null)
+                if (gridEstoque.SelectedRows.Count > 0  )
                 {
-                    string select = listaEst.SelectedItem.ToString();
-                    string codigo = select.Split(' ')[0];
-                    if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    string codigo = gridEstoque.SelectedRows[0].Cells[0].Value.ToString();
+                    if (MessageBox.Show($"Tem certeza que deseja retira {valor} itens do estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         String qryExc = ($"UPDATE produto SET qtdEstoque = qtdEstoque - {valor} where codProd = @codigo");
                         String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
@@ -76,7 +80,6 @@ namespace DESKTOP2019
                             if (linhafetadas > 0)
                             {
                                 MessageBox.Show("Esoque retirado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                listaEst.Items.Clear();
                                 Busca();
                             }
                             else
@@ -101,6 +104,7 @@ namespace DESKTOP2019
             }
 
             campoQTDajust.Value = 0;
+            campoCod.Clear();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -109,12 +113,10 @@ namespace DESKTOP2019
 
             try
             {
-                if (listaEst.SelectedItem != null)
+                if (gridEstoque.SelectedRows.Count > 0)
                 {
-                    string select = listaEst.SelectedItem.ToString(); //pega o item selecionado 
-                    string codigo = select.Split(' ')[0]; //separa por espaço e pega o primeiro 
-
-                    if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    string codigo = gridEstoque.SelectedRows[0].Cells[0].Value.ToString(); //pega a primeira linha selecionada e sua primeira celula. Armazena o valor e joga para string
+                    if (MessageBox.Show($"Tem certeza que deseja adicionar {valor} itens ao estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         String qryInsert = ($"UPDATE produto SET qtdEstoque = qtdEstoque + {valor} WHERE codProd = @codigo");
                         String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
@@ -129,7 +131,6 @@ namespace DESKTOP2019
                             if (linhafetadas > 0)
                             {
                                 MessageBox.Show("Estoque inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                listaEst.Items.Clear();
                                 Busca();
                             }
                             else
@@ -154,6 +155,7 @@ namespace DESKTOP2019
             }
 
             campoQTDajust.Value = 0;
+            campoCod.Clear();
         }
 
 
@@ -163,11 +165,10 @@ namespace DESKTOP2019
 
             try
             {
-                if (listaEst.SelectedItem != null)
+                if (gridEstoque.SelectedRows.Count > 0)
                 {
-                    string select = listaEst.SelectedItem.ToString(); //pega o item selecionado 
-                    string codigo = select.Split(' ')[0]; //separa por espaço e pega o primeiro
-                    if (MessageBox.Show("Tem certeza que deseja adicionar VALOR para o estoque desse produto", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                    string codigo = gridEstoque.SelectedRows[0].Cells[0].Value.ToString();
+                    if (MessageBox.Show($"Tem certeza que deseja definir {valor} como novo total do estoque", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
                         String qryInsert = ($"UPDATE produto SET qtdEstoque = {valor} where codProd = @codigo");
                         String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; //endereco
@@ -183,7 +184,6 @@ namespace DESKTOP2019
                             if (linhafetadas > 0)
                             {
                                 MessageBox.Show("Esoque ajustado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                listaEst.Items.Clear();
                                 Busca();
                             }
                             else
@@ -198,6 +198,7 @@ namespace DESKTOP2019
                     MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 campoQTDajust.Value = 0;
+                campoCod.Clear();
             }
             catch (MySqlException)
             {
@@ -207,6 +208,7 @@ namespace DESKTOP2019
             {
                 MessageBox.Show("Clique em um produto para selecioná-lo", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            
         }
 
         private void PressionouCod(object sender, KeyPressEventArgs e)
@@ -215,7 +217,6 @@ namespace DESKTOP2019
             {
                 if (string.IsNullOrEmpty(campoCod.Text))
                 {
-                    listaEst.Items.Clear();
                     Busca();
                     return;
                 }
@@ -231,26 +232,14 @@ namespace DESKTOP2019
                             using (MySqlCommand commnad = new MySqlCommand(qryBuscaCod, conection))
                             {
                                 commnad.Parameters.AddWithValue("@codProd", campoCod.Text);
-                                using (MySqlDataReader reader = commnad.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        string nome = reader["nomeProd"].ToString();
-                                        string qtd = reader["qtdEstoque"].ToString();
-                                        string cod = reader["codProd"].ToString();
-                                        listaEst.Items.Clear();
-                                        listaEst.Items.Add($"{cod} {nome} -> Quantidade: {qtd}");
-                                        reader.Close();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Código não encontrado", "Falha", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    }
+                                MySqlDataAdapter adapter = new MySqlDataAdapter(commnad);
+                                DataTable dataTab = new DataTable();
+                                adapter.Fill(dataTab); //o adapter preenche o datatable
 
-                                }
+                                gridEstoque.DataSource = dataTab;
+
                             }
                         }
-                        conection.Close();
                     }
                     catch
                     {
@@ -261,64 +250,22 @@ namespace DESKTOP2019
             }
         }
 
-        private void buscaNome(object sender, EventArgs e)
+        private void campoNome_TextChanged(object sender, EventArgs e)
         {
-            
-        }
+            string filtro = campoNome.Text.Trim();
 
-        private void campoNome_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
+            // Aplica o filtro ao DataTable usando o método Select
+            DataRow[] resultados = dataTable.Select($"Nome LIKE '%{filtro}%'");
+
+            // Cria um novo DataTable com os resultados filtrados
+            DataTable dataTableFiltrado = dataTable.Clone(); // Mantém a estrutura do DataTable original
+            foreach (DataRow row in resultados)
             {
-                if (string.IsNullOrEmpty(campoNome.Text))
-                {
-                    listaEst.Items.Clear();
-                    Busca();
-                    return;
-                }
-                else
-                {
-                    try
-                    {
-                        string nome = campoNome.Text;
-                        string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-
-                        List<string> resultados = new List<string>();
-
-                        using (conection = new MySqlConnection(conString))
-                        {
-                            conection.Open();
-                            string qryBuscaNome = "SELECT * FROM produto WHERE nomeProd LIKE @nome + '%'";
-                            using (MySqlCommand command = new MySqlCommand(qryBuscaNome, conection))
-                            {
-                                command.Parameters.AddWithValue("@nome", nome);
-
-                                using (MySqlDataReader reader = command.ExecuteReader())
-                                {
-                                    while (reader.Read())
-                                    {
-                                        string Prodnome = reader["nomeProd"].ToString();
-                                        string cod = reader["codProd"].ToString();
-                                        string qtd = reader["qtdEstoque"].ToString();
-                                        resultados.Add($"{cod} {Prodnome} -> Quantidade: {qtd}");
-                                    }
-                                }
-                            }
-                        }
-
-                        listaEst.Items.Clear();
-                        if (resultados.Count > 0)
-                        {
-                            listaEst.Items.AddRange(resultados.ToArray());
-                        }
-                    }
-                    catch
-                    {
-                        // Ignora o erro e mantém a lista em branco
-                        listaEst.Items.Clear();
-                    }
-                }
+                dataTableFiltrado.ImportRow(row);
             }
+
+            // Atualiza o DataGridView com os resultados filtrados
+            gridEstoque.DataSource = dataTableFiltrado;
         }
     }
 }
