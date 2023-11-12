@@ -22,7 +22,7 @@ namespace DESKTOP2019
 
         public static void DoubleNumber(KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',' && e.KeyChar != 8)//8 é barra espaco
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != 8)//8 é barra espaco
             {
                 e.Handled = true; //ignora o que foi pressionado
             }

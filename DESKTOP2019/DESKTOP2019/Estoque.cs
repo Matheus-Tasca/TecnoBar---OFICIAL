@@ -34,6 +34,7 @@ namespace DESKTOP2019
                     adapter.Fill(dataTab);
 
                     gridEstoque.DataSource = dataTab;  //relaciona o datasoucer do grid (que é o aramazenamento de dados) com o datatable que foi preenchido 
+
                 }
             }
         }
@@ -233,11 +234,11 @@ namespace DESKTOP2019
                             {
                                 commnad.Parameters.AddWithValue("@codProd", campoCod.Text);
                                 MySqlDataAdapter adapter = new MySqlDataAdapter(commnad);
-                                DataTable dataTab = new DataTable();
-                                adapter.Fill(dataTab); //o adapter preenche o datatable
+                                dataTable = new DataTable();
+                                adapter.Fill(dataTable); //o adapter preenche o datatable
 
-                                gridEstoque.DataSource = dataTab;
-
+                                gridEstoque.DataSource = dataTable;
+                                campoCod.Text = "";
                             }
                         }
                     }
@@ -250,22 +251,24 @@ namespace DESKTOP2019
             }
         }
 
+        private void Filtrar()
+        {
+            if (gridEstoque.DataSource is DataTable dataTable)
+            {
+                //conversão do datasource em um datatable. Sem isso não seria possível usar o defaultVire e o rowfilter
+                ((DataTable)gridEstoque.DataSource).DefaultView.RowFilter = string.Format("[{0}] like '%{1}%'", "nomeProd", campoNome.Text);
+                gridEstoque.DataSource = dataTable; //redefine e aplica o filtro
+            }
+        }
+
         private void campoNome_TextChanged(object sender, EventArgs e)
         {
-            string filtro = campoNome.Text.Trim();
+             Filtrar();
+        }
 
-            // Aplica o filtro ao DataTable usando o método Select
-            DataRow[] resultados = dataTable.Select($"Nome LIKE '%{filtro}%'");
-
-            // Cria um novo DataTable com os resultados filtrados
-            DataTable dataTableFiltrado = dataTable.Clone(); // Mantém a estrutura do DataTable original
-            foreach (DataRow row in resultados)
-            {
-                dataTableFiltrado.ImportRow(row);
-            }
-
-            // Atualiza o DataGridView com os resultados filtrados
-            gridEstoque.DataSource = dataTableFiltrado;
+        private void btnRecarregar_Click(object sender, EventArgs e)
+        {
+            Busca();
         }
     }
 }

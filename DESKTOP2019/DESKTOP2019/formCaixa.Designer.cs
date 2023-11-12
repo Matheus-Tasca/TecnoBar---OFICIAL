@@ -250,8 +250,11 @@ namespace DESKTOP2019
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.grpFiltrar);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "formCaixa";
-            this.Text = "formCaixa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Caixa";
             this.grpFiltrar.ResumeLayout(false);
             this.grpFiltrar.PerformLayout();
             this.ResumeLayout(false);

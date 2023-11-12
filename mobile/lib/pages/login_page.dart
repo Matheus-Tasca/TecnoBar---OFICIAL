@@ -1,6 +1,6 @@
 import 'dart:js_util';
 import 'package:flutter/material.dart';
-import 'package:login/pages/dash_geral_page.dart';
+import 'package:login/pages/home_page.dart';
 import '../model/usuario.dart';
 
 class LoginPage extends StatefulWidget {
@@ -64,12 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "O Código não pode ser vazio";
-                      } else {
-                        if (campoNome.text.length < 3) {
-                          return "O nome deve ter mais que 3 digitos";
-                        }
-                      }
+                        return "O Campo não pode estar vazio";
+                      } 
                       return null;
                     },
                   ),
@@ -87,20 +83,16 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "O Código não pode ser vazio";
-                      } else {
-                        if (campoNome.text.length < 3) {
-                          return "O nome deve ter mais que 3 digitos";
-                        }
+                        return "O Campo não pode estar vazio";
                       }
                       return null;
                     },
                   ),
                 ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text('Esqueci a senha'),
-                ),
+                // TextButton(
+                //   onPressed: () {},
+                //   child: Text('Esqueci a senha'),
+                // ),
                 Container(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: ElevatedButton(
@@ -108,28 +100,24 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           verificaLogin();
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return DashboardPage();
-                          }));
                         }
                       }),
                 ),
-                Row(
-                  children: [
-                    Text(
-                      'Não possui conta?',
-                    ),
-                    TextButton(
-                      child: Text(
-                        'Cadastre-se',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
+                // Row(
+                //   children: [
+                //     Text(
+                //       'Não possui conta?',
+                //     ),
+                //     TextButton(
+                //       child: Text(
+                //         'Cadastre-se',
+                //         style: TextStyle(fontSize: 20),
+                //       ),
+                //       onPressed: () {},
+                //     ),
+                //   ],
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                // ),
               ],
             ),
           ),
@@ -142,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Teste'),
+        title: Text('Login'),
         centerTitle: true,
       ),
       body: _body(),
@@ -157,6 +145,9 @@ class _LoginPageState extends State<LoginPage> {
     for (var usuario in _listaUsuario) {
       if (equal(nome, usuario.nome) && equal(senha, usuario.senha)) {
         verifica = true;
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return HomePage();
+        }));
         break;
       }
     }
@@ -182,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
           content: const SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Cadastre-se ou tente novamente.'),
+                Text('Por favor, tente novamente.'),
               ],
             ),
           ),
@@ -199,4 +190,6 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
+
+  
 }

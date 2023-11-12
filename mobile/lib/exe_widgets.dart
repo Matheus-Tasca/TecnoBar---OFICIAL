@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:login/pages/dash_geral_page.dart';
-import 'pages/home_page.dart';
+import 'package:login/pages/dashboard_page.dart';
+import 'package:login/pages/home_page.dart';
+import 'pages/history_page.dart';
 import 'pages/login_page.dart';
 
 class ExeWidget extends StatelessWidget {
@@ -9,9 +10,10 @@ class ExeWidget extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/login',
       routes: {
-        '/teste': (context) => HomePage(),
         '/login': (context) => LoginPage(),
-        '/home': (context) => DashboardPage(),
+        '/home': (context) => HomePage(),
+        '/dash': (context) => DashboardPage(),
+        '/history': (context) => HistoryPage(),
       },
     );
   }

@@ -30,6 +30,7 @@ namespace DESKTOP2019
         public double getValorTotal { get; set; }
         public double valorEmDinheiro;
         public double valorPix;
+        public double valorCartao;
         double desconto;
         double valorInicial;
         List<Produto> produtosVenda = new List<Produto>();
@@ -37,6 +38,8 @@ namespace DESKTOP2019
         DateTime data;
         int codvendaSelect;
         int codVendaAdicionar;
+        double troco;
+
         public void calcularTrocoPix()
         {
             valorInicial = getValorTotal;
@@ -44,14 +47,21 @@ namespace DESKTOP2019
             {
                 if (valorPix > 0)
                 {
-                    double troco = (valorPix + valorEmDinheiro) - (valorInicial-desconto);
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
                     }
                     else
                     {
-                        lblTrocoValor.Text = "R$" + troco.ToString();
+                        if (valorPix == 0 && valorEmDinheiro == 0)
+                        {
+                            lblTrocoValor.Text = "R$ 0,00";
+                        }
+                        else
+                        {
+                            lblTrocoValor.Text = "R$" + troco.ToString();
+                        }
                     }
                 }
             }
@@ -64,7 +74,7 @@ namespace DESKTOP2019
             {
                 if (valorEmDinheiro > 0)
                 {
-                    double troco = (valorPix + valorEmDinheiro) - (valorInicial - desconto);
+                    troco = valorEmDinheiro - (valorInicial - desconto);
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -72,6 +82,33 @@ namespace DESKTOP2019
                     else
                     {
                         lblTrocoValor.Text = "R$" + troco.ToString();
+                    }
+                }
+            }
+        }
+
+        public void calcularTrocoCartão()
+        {
+            valorInicial = getValorTotal;
+            if (double.TryParse(txtBoxCartao.Text, out valorCartao))
+            {
+                if (valorCartao > 0)
+                {
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    if (troco < 0)
+                    {
+                        lblTrocoValor.Text = "R$ 0,00";
+                    }
+                    else
+                    {
+                        if (valorPix == 0 && valorEmDinheiro == 0)
+                        {
+                            lblTrocoValor.Text = "R$ 0,00";
+                        }
+                        else
+                        {
+                            lblTrocoValor.Text = "R$" + troco.ToString();
+                        }
                     }
                 }
             }
@@ -85,11 +122,6 @@ namespace DESKTOP2019
         private void digitarValorPix(object sender, EventArgs e)
         {
             calcularTrocoPix();
-        }
-
-        private void inserirDesconto(object sender, EventArgs e)
-        {
-            
         }
 
         private void digitarDesconto(object sender, EventArgs e)
@@ -126,51 +158,82 @@ namespace DESKTOP2019
             String sqlSelectcodVenda = "select codVenda from Venda order by codVenda DESC";
             String sqlAdicionarVenda = "insert into Venda (codVenda, codProd, nomeProd, QtdProd, ValorProd, ValorTotalVenda, Data_Registro) VALUES (@codVenda, @codProd, @nomeProd, @QtdProd, @ValorProd, @ValorTotalVenda, @Data_Registro)";
             data = DateTime.Now;
-            try
-            {
-                using (MySqlConnection con = new MySqlConnection(conString))
-                {
-                    con.Open();
-                    MySqlCommand cmdSelectcodVenda = new MySqlCommand(sqlSelectcodVenda, con);
-                    MySqlCommand cmdAdicionarVenda = new MySqlCommand(sqlAdicionarVenda, con);
 
-                    using (cmdSelectcodVenda)
+            if ((valorPix+valorEmDinheiro+valorCartao) - getValorTotal == 0 || (valorPix + valorEmDinheiro + valorCartao) - getValorTotal > 0)
+            {
+                try
+                {
+                    using (MySqlConnection con = new MySqlConnection(conString))
                     {
-                       using (MySqlDataReader reader = cmdSelectcodVenda.ExecuteReader())
+                        con.Open();
+                        MySqlCommand cmdSelectcodVenda = new MySqlCommand(sqlSelectcodVenda, con);
+                        MySqlCommand cmdAdicionarVenda = new MySqlCommand(sqlAdicionarVenda, con);
+
+                        using (cmdSelectcodVenda)
                         {
-                            if (reader.Read())
+                            using (MySqlDataReader reader = cmdSelectcodVenda.ExecuteReader())
                             {
-                                codvendaSelect = int.Parse(reader["codVenda"].ToString());
-                                codVendaAdicionar = codvendaSelect;
+                                if (reader.Read())
+                                {
+                                    codvendaSelect = int.Parse(reader["codVenda"].ToString());
+                                    codVendaAdicionar = codvendaSelect;
+                                }
                             }
                         }
-                    }
-                    using (cmdAdicionarVenda)
-                    {
-                        foreach(Produto p in produtosVenda)
+                        using (cmdAdicionarVenda)
                         {
-                            Venda venda = new Venda(codVendaAdicionar,p.quantidade, p.codProduto, data);
-                            listaVenda.Add(venda);
-                        }
-                        
-                        foreach (Venda v in listaVenda)
-                        {
-                            cmdAdicionarVenda.Parameters.Clear();
-                            cmdAdicionarVenda.Parameters.AddWithValue("@codVenda", codVendaAdicionar+1);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@codProd", v.codProd);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@nomeProd", DBNull.Value);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@QtdProd", v.quantidade);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@ValorProd", DBNull.Value);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@ValorTotalVenda", DBNull.Value);
-                            cmdAdicionarVenda.Parameters.AddWithValue("@Data_Registro", data);
-                            int linhasAfetdas = cmdAdicionarVenda.ExecuteNonQuery();
+                            foreach (Produto p in produtosVenda)
+                            {
+                                Venda venda = new Venda(codVendaAdicionar, p.quantidade, p.codProduto, data);
+                                listaVenda.Add(venda);
+                            }
+
+                            foreach (Venda v in listaVenda)
+                            {
+                                cmdAdicionarVenda.Parameters.Clear();
+                                cmdAdicionarVenda.Parameters.AddWithValue("@codVenda", codVendaAdicionar + 1);
+                                cmdAdicionarVenda.Parameters.AddWithValue("@codProd", v.codProd);
+                                cmdAdicionarVenda.Parameters.AddWithValue("@nomeProd", DBNull.Value);
+                                cmdAdicionarVenda.Parameters.AddWithValue("@QtdProd", v.quantidade);
+                                cmdAdicionarVenda.Parameters.AddWithValue("@ValorProd", DBNull.Value);
+                                cmdAdicionarVenda.Parameters.AddWithValue("@ValorTotalVenda", DBNull.Value);
+                                cmdAdicionarVenda.Parameters.AddWithValue("@Data_Registro", data);
+                                int linhasAfetdas = cmdAdicionarVenda.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Venda concluída com sucesso !", "VENDA CONCLUÍDA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
                         }
                     }
                 }
-            }catch(MySqlException ex)
-            {
-                MessageBox.Show("ERRO NO SISTEMA :" + ex.Message, "ERRO");
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("ERRO NO SISTEMA :" + ex.Message, "ERRO");
+                }
             }
+            else
+            {
+                MessageBox.Show("VALOR INSUFICIENTE", "ERRO: VALOR INSUFICIENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void digitarValorDinheiro_Leave(object sender, EventArgs e)
+        {
+            calcularTrocoDinheiro();
+        }
+
+        private void inserirValorCartão(object sender, EventArgs e)
+        {
+            calcularTrocoCartão();
+        }
+
+        private void calculaTrocoCartao_enter(object sender, EventArgs e)
+        {
+            calcularTrocoCartão();
+        }
+
+        private void calculaTrocoCartao_leave(object sender, EventArgs e)
+        {
+            calcularTrocoCartão();
         }
     }
 }

@@ -1,5 +1,5 @@
 class Produto {
-  Produto(this.nome, this.preco);
-  final String nome;
-  final double preco;
+  Produto(this.mes, this.valor);
+  final String mes;
+  final double valor;
 }

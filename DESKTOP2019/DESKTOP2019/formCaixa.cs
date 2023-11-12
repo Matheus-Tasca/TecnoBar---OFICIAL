@@ -20,7 +20,9 @@ namespace DESKTOP2019
         public frmConcluirVenda frmFinalizarVenda = new frmConcluirVenda();
         double total;
         List<Produto> produtos = new List<Produto>();
+        int quantidadeBD;
         int indice;
+        List<int> listaQuantidadesProdutosVenda = new List<int>();
         public formCaixa()
         {
             InitializeComponent();
@@ -184,8 +186,45 @@ namespace DESKTOP2019
 
         private void finalizaVenda(object sender, EventArgs e)
         {
+            /*String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+            string sqlAtualizarQuantidade = "update produto set qtdEstoque = qtdEstoque - @quantidade where codProd = @codProd";
+            string sqlVerificarQuantidade = "select qtdEstoque from produto where codProd = @codPrd";
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(conString))
+                {
+                    con.Open();
+                    MySqlCommand cmdVerificaQuantidade = new MySqlCommand(sqlVerificarQuantidade, con);
+                    MySqlCommand cmdAtualizaQuantidade = new MySqlCommand(sqlAtualizarQuantidade, con);
+
+                    //verificando a quantidade de cada item no estoque
+                    using (cmdVerificaQuantidade)
+                    {
+                        foreach (Produto p in produtos)
+                        {
+                            cmdVerificaQuantidade.Parameters.Clear();
+                            cmdVerificaQuantidade.Parameters.AddWithValue("@codPrd", p.codProduto);
+                            using (MySqlDataReader reader = cmdVerificaQuantidade.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    quantidadeBD = int.Parse(reader["codVenda"].ToString());
+                                    listaQuantidadesProdutosVenda.Add(quantidadeBD);
+                                }
+                            }
+                        }
+                    }
+                }
+            }catch(MySqlException ex)
+            {
+                MessageBox.Show("ERRO NO SISTEMA: " + ex.Message, "ERRO");
+            }*/
             frmConcluirVenda frmVenda = new frmConcluirVenda(total, produtos);
             frmVenda.Show();
+            produtos.Clear();
+            listBoxProdutos.Items.Clear();
+            lblSubTotal.Text = "";
+            total = 0;
         }
 
         private void cmdCancelarVenda(object sender, EventArgs e)
