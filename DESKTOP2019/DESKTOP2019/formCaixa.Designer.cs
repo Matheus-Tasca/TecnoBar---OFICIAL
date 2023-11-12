@@ -66,25 +66,31 @@ namespace DESKTOP2019
             this.grpFiltrar.Controls.Add(this.lblNomeProduto);
             this.grpFiltrar.Controls.Add(this.txtCodigoProduto);
             this.grpFiltrar.Controls.Add(this.lblCodigoProduto);
-            this.grpFiltrar.Location = new System.Drawing.Point(12, 23);
+            this.grpFiltrar.Location = new System.Drawing.Point(16, 34);
+            this.grpFiltrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpFiltrar.Name = "grpFiltrar";
-            this.grpFiltrar.Size = new System.Drawing.Size(402, 334);
+            this.grpFiltrar.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpFiltrar.Size = new System.Drawing.Size(536, 488);
             this.grpFiltrar.TabIndex = 0;
             this.grpFiltrar.TabStop = false;
             this.grpFiltrar.Text = "Filtrar produtos";
             // 
             // txtCategoria
             // 
-            this.txtCategoria.Location = new System.Drawing.Point(25, 135);
+            this.txtCategoria.Enabled = false;
+            this.txtCategoria.Location = new System.Drawing.Point(33, 197);
+            this.txtCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(135, 20);
+            this.txtCategoria.Size = new System.Drawing.Size(179, 26);
             this.txtCategoria.TabIndex = 13;
             // 
             // btnAdicionarProduto
             // 
-            this.btnAdicionarProduto.Location = new System.Drawing.Point(25, 248);
+            this.btnAdicionarProduto.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarProduto.Location = new System.Drawing.Point(33, 362);
+            this.btnAdicionarProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
-            this.btnAdicionarProduto.Size = new System.Drawing.Size(316, 44);
+            this.btnAdicionarProduto.Size = new System.Drawing.Size(421, 64);
             this.btnAdicionarProduto.TabIndex = 12;
             this.btnAdicionarProduto.Text = "Adicionar produto";
             this.btnAdicionarProduto.UseVisualStyleBackColor = true;
@@ -92,90 +98,109 @@ namespace DESKTOP2019
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(204, 66);
+            this.txtQuantidade.Location = new System.Drawing.Point(272, 96);
+            this.txtQuantidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(124, 20);
+            this.txtQuantidade.Size = new System.Drawing.Size(164, 26);
             this.txtQuantidade.TabIndex = 11;
             this.txtQuantidade.TextChanged += new System.EventHandler(this.textChangedQuantidade);
             this.txtQuantidade.Enter += new System.EventHandler(this.EnterCampoQuantidade);
             this.txtQuantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterQuantidadeItem);
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             this.txtQuantidade.Leave += new System.EventHandler(this.LeaveCampoQuantidade);
             // 
             // lblQuantidade
             // 
             this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Location = new System.Drawing.Point(201, 36);
+            this.lblQuantidade.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantidade.Location = new System.Drawing.Point(268, 53);
+            this.lblQuantidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuantidade.Name = "lblQuantidade";
-            this.lblQuantidade.Size = new System.Drawing.Size(99, 13);
+            this.lblQuantidade.Size = new System.Drawing.Size(135, 19);
             this.lblQuantidade.TabIndex = 10;
             this.lblQuantidade.Text = "Quantidade do item";
             // 
             // lblValorTotal
             // 
             this.lblValorTotal.AutoSize = true;
-            this.lblValorTotal.Location = new System.Drawing.Point(283, 219);
+            this.lblValorTotal.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.Location = new System.Drawing.Point(377, 320);
+            this.lblValorTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(45, 13);
+            this.lblValorTotal.Size = new System.Drawing.Size(62, 19);
             this.lblValorTotal.TabIndex = 9;
             this.lblValorTotal.Text = "R$ 0,00";
             // 
             // lblValorTotalTitulo
             // 
             this.lblValorTotalTitulo.AutoSize = true;
-            this.lblValorTotalTitulo.Location = new System.Drawing.Point(283, 189);
+            this.lblValorTotalTitulo.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotalTitulo.Location = new System.Drawing.Point(377, 276);
+            this.lblValorTotalTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorTotalTitulo.Name = "lblValorTotalTitulo";
-            this.lblValorTotalTitulo.Size = new System.Drawing.Size(58, 13);
+            this.lblValorTotalTitulo.Size = new System.Drawing.Size(81, 19);
             this.lblValorTotalTitulo.TabIndex = 8;
             this.lblValorTotalTitulo.Text = "Valor Total";
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(22, 108);
+            this.lblCategoria.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.Location = new System.Drawing.Point(29, 158);
+            this.lblCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(52, 13);
+            this.lblCategoria.Size = new System.Drawing.Size(68, 19);
             this.lblCategoria.TabIndex = 6;
             this.lblCategoria.Text = "Categoria";
             // 
             // lblValorUnitario
             // 
             this.lblValorUnitario.AutoSize = true;
-            this.lblValorUnitario.Location = new System.Drawing.Point(29, 219);
+            this.lblValorUnitario.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorUnitario.Location = new System.Drawing.Point(39, 320);
+            this.lblValorUnitario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorUnitario.Name = "lblValorUnitario";
-            this.lblValorUnitario.Size = new System.Drawing.Size(45, 13);
+            this.lblValorUnitario.Size = new System.Drawing.Size(62, 19);
             this.lblValorUnitario.TabIndex = 5;
             this.lblValorUnitario.Text = "R$ 0,00";
             // 
             // lblValorUnitarioTitulo
             // 
             this.lblValorUnitarioTitulo.AutoSize = true;
-            this.lblValorUnitarioTitulo.Location = new System.Drawing.Point(22, 189);
+            this.lblValorUnitarioTitulo.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorUnitarioTitulo.Location = new System.Drawing.Point(29, 276);
+            this.lblValorUnitarioTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorUnitarioTitulo.Name = "lblValorUnitarioTitulo";
-            this.lblValorUnitarioTitulo.Size = new System.Drawing.Size(70, 13);
+            this.lblValorUnitarioTitulo.Size = new System.Drawing.Size(99, 19);
             this.lblValorUnitarioTitulo.TabIndex = 4;
             this.lblValorUnitarioTitulo.Text = "Valor Unitário";
             // 
             // txtNomeProduto
             // 
-            this.txtNomeProduto.Location = new System.Drawing.Point(204, 135);
+            this.txtNomeProduto.Enabled = false;
+            this.txtNomeProduto.Location = new System.Drawing.Point(272, 197);
+            this.txtNomeProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNomeProduto.Name = "txtNomeProduto";
-            this.txtNomeProduto.Size = new System.Drawing.Size(135, 20);
+            this.txtNomeProduto.Size = new System.Drawing.Size(179, 26);
             this.txtNomeProduto.TabIndex = 3;
             // 
             // lblNomeProduto
             // 
             this.lblNomeProduto.AutoSize = true;
-            this.lblNomeProduto.Location = new System.Drawing.Point(201, 108);
+            this.lblNomeProduto.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeProduto.Location = new System.Drawing.Point(268, 158);
+            this.lblNomeProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomeProduto.Name = "lblNomeProduto";
-            this.lblNomeProduto.Size = new System.Drawing.Size(35, 13);
+            this.lblNomeProduto.Size = new System.Drawing.Size(44, 19);
             this.lblNomeProduto.TabIndex = 2;
             this.lblNomeProduto.Text = "Nome";
             // 
             // txtCodigoProduto
             // 
-            this.txtCodigoProduto.Location = new System.Drawing.Point(25, 66);
+            this.txtCodigoProduto.Location = new System.Drawing.Point(33, 96);
+            this.txtCodigoProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCodigoProduto.Name = "txtCodigoProduto";
-            this.txtCodigoProduto.Size = new System.Drawing.Size(135, 20);
+            this.txtCodigoProduto.Size = new System.Drawing.Size(179, 26);
             this.txtCodigoProduto.TabIndex = 1;
             this.txtCodigoProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pressionaEnter);
             this.txtCodigoProduto.Leave += new System.EventHandler(this.mudaCampoCodigo);
@@ -183,17 +208,21 @@ namespace DESKTOP2019
             // lblCodigoProduto
             // 
             this.lblCodigoProduto.AutoSize = true;
-            this.lblCodigoProduto.Location = new System.Drawing.Point(22, 36);
+            this.lblCodigoProduto.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoProduto.Location = new System.Drawing.Point(29, 53);
+            this.lblCodigoProduto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigoProduto.Name = "lblCodigoProduto";
-            this.lblCodigoProduto.Size = new System.Drawing.Size(94, 13);
+            this.lblCodigoProduto.Size = new System.Drawing.Size(125, 19);
             this.lblCodigoProduto.TabIndex = 0;
             this.lblCodigoProduto.Text = "Codigo do produto";
             // 
             // btnCancelarVenda
             // 
-            this.btnCancelarVenda.Location = new System.Drawing.Point(420, 394);
+            this.btnCancelarVenda.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarVenda.Location = new System.Drawing.Point(560, 576);
+            this.btnCancelarVenda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelarVenda.Name = "btnCancelarVenda";
-            this.btnCancelarVenda.Size = new System.Drawing.Size(181, 44);
+            this.btnCancelarVenda.Size = new System.Drawing.Size(241, 64);
             this.btnCancelarVenda.TabIndex = 13;
             this.btnCancelarVenda.Text = "Cancelar Venda";
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
@@ -201,9 +230,11 @@ namespace DESKTOP2019
             // 
             // btnFinalizarVenda
             // 
-            this.btnFinalizarVenda.Location = new System.Drawing.Point(607, 394);
+            this.btnFinalizarVenda.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarVenda.Location = new System.Drawing.Point(809, 576);
+            this.btnFinalizarVenda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFinalizarVenda.Name = "btnFinalizarVenda";
-            this.btnFinalizarVenda.Size = new System.Drawing.Size(181, 44);
+            this.btnFinalizarVenda.Size = new System.Drawing.Size(241, 64);
             this.btnFinalizarVenda.TabIndex = 14;
             this.btnFinalizarVenda.Text = "Finalizar Venda";
             this.btnFinalizarVenda.UseVisualStyleBackColor = true;
@@ -211,12 +242,13 @@ namespace DESKTOP2019
             // 
             // listBoxProdutos
             // 
-            this.listBoxProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxProdutos.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxProdutos.FormattingEnabled = true;
-            this.listBoxProdutos.ItemHeight = 20;
-            this.listBoxProdutos.Location = new System.Drawing.Point(420, 32);
+            this.listBoxProdutos.ItemHeight = 30;
+            this.listBoxProdutos.Location = new System.Drawing.Point(560, 47);
+            this.listBoxProdutos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxProdutos.Name = "listBoxProdutos";
-            this.listBoxProdutos.Size = new System.Drawing.Size(368, 284);
+            this.listBoxProdutos.Size = new System.Drawing.Size(489, 394);
             this.listBoxProdutos.TabIndex = 15;
             this.listBoxProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.deletarItemVenda);
             // 
@@ -224,7 +256,8 @@ namespace DESKTOP2019
             // 
             this.lblSubTotalTitulo.AutoSize = true;
             this.lblSubTotalTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubTotalTitulo.Location = new System.Drawing.Point(436, 344);
+            this.lblSubTotalTitulo.Location = new System.Drawing.Point(581, 503);
+            this.lblSubTotalTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubTotalTitulo.Name = "lblSubTotalTitulo";
             this.lblSubTotalTitulo.Size = new System.Drawing.Size(126, 25);
             this.lblSubTotalTitulo.TabIndex = 16;
@@ -234,22 +267,25 @@ namespace DESKTOP2019
             // 
             this.lblSubTotal.AutoSize = true;
             this.lblSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubTotal.Location = new System.Drawing.Point(668, 344);
+            this.lblSubTotal.Location = new System.Drawing.Point(891, 503);
+            this.lblSubTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(0, 25);
             this.lblSubTotal.TabIndex = 17;
             // 
             // formCaixa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 658);
             this.Controls.Add(this.lblSubTotal);
             this.Controls.Add(this.lblSubTotalTitulo);
             this.Controls.Add(this.listBoxProdutos);
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.grpFiltrar);
+            this.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "formCaixa";

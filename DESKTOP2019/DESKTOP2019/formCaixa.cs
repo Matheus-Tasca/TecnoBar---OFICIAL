@@ -46,7 +46,7 @@ namespace DESKTOP2019
             //estabelecendo conexão com o banco de dados
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             //query com o banco
-            String sqlSelect = "select nomeProd, nomeCategoria, valorVenda from produto where codProd = @codProd";
+            String sqlSelect = "select nomeProd, nomeCategoria, valorVenda from produto where ativo = 1 and codProd = @codProd";
             if (e.KeyCode == Keys.Enter)
             {
                 try
@@ -109,7 +109,7 @@ namespace DESKTOP2019
             //estabelecendo conexão com o banco de dados
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             //query com o banco
-            String sqlSelect = "select nomeProd, nomeCategoria, valorVenda from produto where codProd = @codProd";
+            String sqlSelect = "select nomeProd, nomeCategoria, valorVenda from produto where codProd = @codProd and ativo = 1";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(conString))
@@ -240,6 +240,7 @@ namespace DESKTOP2019
 
         private void textChangedQuantidade(object sender, EventArgs e)
         {
+            
             if (txtQuantidade.Text != "")
             {
                 try
@@ -303,6 +304,11 @@ namespace DESKTOP2019
                     }
                 }
             }
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Program.IntNumber(e);
         }
     }
 }

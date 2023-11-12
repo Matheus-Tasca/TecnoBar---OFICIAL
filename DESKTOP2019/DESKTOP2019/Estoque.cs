@@ -21,7 +21,7 @@ namespace DESKTOP2019
         public void Busca()
         {
             String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString; ;
-            string query = "SELECT codProd, nomeProd, qtdEstoque FROM produto where ativo = 1"; // Substitua pelo seu SQL
+            string query = "SELECT codProd, nomeProd, qtdEstoque FROM produto  where ativo = 1"; // Substitua pelo seu SQL
 
             using (conection = new MySqlConnection(conString))
             {

@@ -406,6 +406,11 @@ namespace DESKTOP2019
             Filtrar();
         }
 
+        private void CDPROD_Load(object sender, EventArgs e)
+        {
+
+        }
+
         /* private void campoCusto_TextChanged(object sender, EventArgs e)
          {
              setTamanhoBox(campoCusto);
