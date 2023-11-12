@@ -10,7 +10,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  String _selectedDate = '30 dias';
+  String _selectedDate = '1 mês';
   String _selectedGraphType = '';
   String _selectedData = '';
   String _selectedCategory = '';
@@ -26,7 +26,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   List<Produto> getChartDataByScale(String scale) {
     switch (scale) {
-      case '30 dias':
+      case '1 mês':
         return _filterDataByScale(30);
       case '3 meses':
         return _filterDataByScale(90);
@@ -144,7 +144,7 @@ class _DashboardPageState extends State<DashboardPage> {
           DropdownButtonFormField<String>(
             value: _selectedDate,
             items: [
-              '30 dias',
+              '1 mês',
               '3 meses',
               '6 meses',
               '1 ano',
@@ -213,6 +213,14 @@ class _DashboardPageState extends State<DashboardPage> {
               title: Text('Dashboard'),
               onTap: () {
                 Navigator.of(context).pushNamed('/dash');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.history_sharp),
+              title: Text('Historico'),
+              // subtitle: Text('Exercício 3'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/history');
               },
             ),
             ListTile(

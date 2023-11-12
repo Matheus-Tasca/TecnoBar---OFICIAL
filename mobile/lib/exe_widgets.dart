@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/pages/dashboard_page.dart';
 import 'package:login/pages/home_page.dart';
+import 'pages/history_page.dart';
 import 'pages/login_page.dart';
 
 class ExeWidget extends StatelessWidget {
@@ -12,6 +13,7 @@ class ExeWidget extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         '/dash': (context) => DashboardPage(),
+        '/history': (context) => HistoryPage(),
       },
     );
   }

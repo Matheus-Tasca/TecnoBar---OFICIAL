@@ -64,12 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "O Código não pode ser vazio";
-                      } else {
-                        if (campoNome.text.length < 3) {
-                          return "O nome deve ter mais que 3 digitos";
-                        }
-                      }
+                        return "O Campo não pode estar vazio";
+                      } 
                       return null;
                     },
                   ),
@@ -87,11 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "O Código não pode ser vazio";
-                      } else {
-                        if (campoNome.text.length < 3) {
-                          return "O nome deve ter mais que 3 digitos";
-                        }
+                        return "O Campo não pode estar vazio";
                       }
                       return null;
                     },
@@ -181,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
           content: const SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('Cadastre-se ou tente novamente.'),
+                Text('Por favor, tente novamente.'),
               ],
             ),
           ),

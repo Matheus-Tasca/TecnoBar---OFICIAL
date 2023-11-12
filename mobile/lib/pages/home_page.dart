@@ -277,6 +277,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
+              leading: Icon(Icons.history_sharp),
+              title: Text('Historico'),
+              // subtitle: Text('Exercício 3'),
+              onTap: () {
+                Navigator.of(context).pushNamed('/history');
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.login),
               title: Text('Sair'),
               // subtitle: Text('Exercício 3'),
