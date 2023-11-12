@@ -18,10 +18,6 @@ namespace DESKTOP2019
         MySqlConnection conection;
         DataSet dsProd;
 
-        string origemCompleto = "";
-        string foto = "";
-        string pastaDestino = Global.caminhoFotos;
-        string destinoCompleto = "";
         int modo = 1;
         bool ativo;
 
@@ -47,24 +43,23 @@ namespace DESKTOP2019
                         btnAlterar.Enabled = true;
                         btnSalvar.Enabled = true;
                         btnCancelar.Enabled = true;
-                        listProd.Enabled = true;
-                        listProd.SelectedIndex = -1;
+                        gridProd.Enabled = true;
                         break;
                     case 1: //salvar
                         btnNovo.Enabled = false;
                         btnAlterar.Enabled = false;
                         btnCancelar.Enabled = true;
                         btnSalvar.Enabled = true;
-                        listProd.Enabled = false;
+                        gridProd.Enabled = false;
                         campoNome.Focus();
                         break;
                     case 2: //alterar
-                        listProd.Enabled = true;
+                        gridProd.Enabled = true;
                         btnNovo.Enabled = false;
                         btnAlterar.Enabled = false;
                         btnCancelar.Enabled = true;
                         btnSalvar.Enabled = true;
-                        listProd.Enabled = true;
+                        gridProd.Enabled = true;
                         break;
                 }
             }
@@ -86,18 +81,30 @@ namespace DESKTOP2019
 
                 using (MySqlCommand command = new MySqlCommand(query, conection))
                 {
-                    MySqlDataReader reader = command.ExecuteReader();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
 
-                    while (reader.Read())
+                    gridProd.AutoGenerateColumns = true;
+
+                    gridProd.DataSource = dataTable;
+
+                    foreach (DataGridViewColumn column in gridProd.Columns)
                     {
-                        string nome = reader["nomeProd"].ToString();
-                        string cod = reader["codProd"].ToString();
-                        //string qtd = reader["qtdEstoque"].ToString();
-                        //string atv = reader["ativo"].ToString();
-                        listProd.Items.Add($"{cod} - {nome}");
+                        if(column.DataPropertyName != "nomeProd" && column.DataPropertyName != "nomeCategoria" && column.DataPropertyName != "ativo")
+                        {
+                            column.Visible = false;
+                        }
                     }
 
-                    reader.Close();
+                    gridProd.Columns[1].HeaderText = "Nome";
+                    gridProd.Columns[1].Width = 160;
+                    gridProd.Columns[8].HeaderText = "Categoria";
+                    gridProd.Columns[8].Width = 160;
+                    gridProd.Columns[7].HeaderText = "Status";
+                    gridProd.Columns[7].Width = 110;
+
+                    
                 }
             }
         }
@@ -107,9 +114,10 @@ namespace DESKTOP2019
             InitializeComponent();
             Busca();
             modo = 0;
-            habilitar();     
+            habilitar();
             CarregaDadosCombo();
             campoCategoria.SelectedIndex = -1;
+            gridProd.RowHeadersWidth = 20;
         }
 
         private void campoQTDInicio_KeyPress(object sender, KeyPressEventArgs e)
@@ -149,7 +157,7 @@ namespace DESKTOP2019
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (listProd.SelectedIndex == -1)
+            if (gridProd.SelectedRows.Count > 0)
             {
                 int linhasAfetadas = 0;
                 try
@@ -190,7 +198,6 @@ namespace DESKTOP2019
                             if (linhasAfetadas > 0)
                             {
                                 MessageBox.Show("Produto inserido com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                listProd.Items.Clear();
                                 Busca();
                             }
                             else
@@ -199,6 +206,9 @@ namespace DESKTOP2019
                             }
                         }
                     }
+                    modo = 0;
+                    habilitar();
+                    Busca();
                 }
                 catch (CampoVazioException cv)
                 {
@@ -209,7 +219,7 @@ namespace DESKTOP2019
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if (listProd.SelectedIndex != -1)
+            if (gridProd.SelectedRows.Count > 0)
             {
                 try
                 {
@@ -240,7 +250,6 @@ namespace DESKTOP2019
                                 if (linhasAfetadas > 0)
                                 {
                                     MessageBox.Show("Produto atualizado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    listProd.Items.Clear();
                                     Busca();
                                     return; // para a função 
                                 }
@@ -264,56 +273,70 @@ namespace DESKTOP2019
 
         }
 
-        private void listProd_SelectedIndexChanged(object sender, EventArgs e)
+        private void gridProd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listProd.SelectedIndex != -1)
+            if (gridProd.SelectedRows.Count > 0)
             {
                 btnSalvar.Enabled = false;
                 btnNovo.Enabled = false;
-                // Obtém o item selecionado
-                string selected = listProd.SelectedItem.ToString();
-                string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-                // Conexão com o banco de dados (substitua a string de conexão conforme necessário)
-                using (MySqlConnection connection = new MySqlConnection(conString))
+
+                // Obtém o índice da linha selecionada
+                int rowIndex = gridProd.SelectedRows[0].Index;
+
+                // Obtém o valor da célula na coluna "codProd" da linha selecionada
+                object selectedCellValue = gridProd.Rows[rowIndex].Cells["codProd"].Value;
+
+                if (selectedCellValue != null)
                 {
-                    connection.Open();
+                    string selected = selectedCellValue.ToString();
+                    string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-                    // Consulta SQL para selecionar os dados com base no código
-                    string query = "SELECT * FROM produto WHERE codProd = @codigo";
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    // Conexão com o banco de dados (substitua a string de conexão conforme necessário)
+                    using (MySqlConnection connection = new MySqlConnection(conString))
                     {
-                        // Adiciona o parâmetro da consulta SQL
-                        command.Parameters.AddWithValue("@codigo", selected);
+                        connection.Open();
 
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        // Consulta SQL para selecionar os dados com base no código
+                        string query = "SELECT * FROM produto WHERE codProd = @codigo";
+
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
-                            // Verifica se há linhas retornadas
-                            if (reader.Read())
+                            // Adiciona o parâmetro da consulta SQL
+                            command.Parameters.AddWithValue("@codigo", selected);
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                campoCod.Text = reader["codProd"].ToString();
-                                campoNome.Text = reader["nomeProd"].ToString();
-                                campoCusto.Text = reader["valorEntrada"].ToString();
-                                campoVenda.Text = reader["valorVenda"].ToString();
-                                campoQTDMinima.Text = reader["qtdMin"].ToString();
-                                campoCategoria.Text = reader["nomeCategoria"].ToString();
-                                campoQTDInicio.Text = reader["qtdEstoque"].ToString();
-                                int ativoValue = Convert.ToInt32(reader["ativo"]);
-                                if (ativoValue == 1)
+                                // Verifica se há linhas retornadas
+                                if (reader.Read())
                                 {
-                                    cbAtivo.Checked = true;
+                                    campoCod.Text = reader["codProd"].ToString();
+                                    campoNome.Text = reader["nomeProd"].ToString();
+                                    campoCusto.Text = reader["valorEntrada"].ToString();
+                                    campoVenda.Text = reader["valorVenda"].ToString();
+                                    campoQTDMinima.Text = reader["qtdMin"].ToString();
+                                    campoCategoria.Text = reader["nomeCategoria"].ToString();
+                                    campoQTDInicio.Text = reader["qtdEstoque"].ToString();
+                                    int ativoValue = Convert.ToInt32(reader["ativo"]);
+                                    if (ativoValue == 1)
+                                    {
+                                        cbAtivo.Checked = true;
+                                    }
+                                    else
+                                    {
+                                        cbAtivo.Checked = false;
+                                    }
                                 }
                                 else
                                 {
-                                    cbAtivo.Checked = false;
+                                    MessageBox.Show("Selecione uma linha que não esteja vazia", "Linha Vazia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Não foi possível selecionar o produto");
                             }
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Célula selecionada está vazia.", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -322,15 +345,6 @@ namespace DESKTOP2019
         {
             AddCategoria novaCat = new AddCategoria();
             novaCat.Show();
-        }
-
-        private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e) // Aqui mostra no combo o que selecionou 
-        {
-            if (campoCategoria.SelectedItem != null)
-            {
-                DataRowView selectedRow = (DataRowView)campoCategoria.SelectedItem;
-                string nomeSelecionado = selectedRow["nomeCategoria"].ToString();
-            }
         }
 
         private void CarregaDadosCombo()
@@ -352,7 +366,7 @@ namespace DESKTOP2019
                         adapter.Fill(dataTable); //preenche os dados que recebeu do comando sql 
 
                         campoCategoria.DisplayMember = "nomeCategoria";
-                        campoCategoria.ValueMember = "nomeCategoria"; 
+                        campoCategoria.ValueMember = "nomeCategoria";
                         campoCategoria.DataSource = dataTable;
 
                         connection.Close();
@@ -365,6 +379,41 @@ namespace DESKTOP2019
             }
         }
 
+        private void setTamanhoBox(object campo){
+            this.campoCusto.AutoSize = false;
+            this.campoCusto.Size = new System.Drawing.Size(1, 65);
+        }
+
+        private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e) // Aqui mostra no combo o que selecionou 
+        {
+            if (campoCategoria.SelectedItem != null)
+            {
+                DataRowView selectedRow = (DataRowView)campoCategoria.SelectedItem;
+                string nomeSelecionado = selectedRow["nomeCategoria"].ToString();
+            }
+        }
+
+        private void Filtrar()
+        {
+            if (gridProd.DataSource is DataTable dt) {
+                ((DataTable)gridProd.DataSource).DefaultView.RowFilter = string.Format("[{0}] like '%{1}%'", "nomeProd", txtBusca.Text);
+                gridProd.DataSource = dt;
+            }
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            Filtrar();
+        }
+
+        /* private void campoCusto_TextChanged(object sender, EventArgs e)
+         {
+             setTamanhoBox(campoCusto);
+         }
+
+         private void campoVenda_TextChanged(object sender, EventArgs e)
+         {
+             setTamanhoBox(campoVenda);
+         }*/
     }
 }
-

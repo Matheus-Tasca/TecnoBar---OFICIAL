@@ -29,9 +29,10 @@ namespace DESKTOP2019
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.campoFiltro = new System.Windows.Forms.GroupBox();
-            this.campoCate = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.campoCod = new System.Windows.Forms.TextBox();
@@ -40,21 +41,20 @@ namespace DESKTOP2019
             this.btnTotal = new System.Windows.Forms.Button();
             this.btnRetirar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.campoAjuste = new System.Windows.Forms.GroupBox();
-            this.gridEstoque = new System.Windows.Forms.DataGridView();
             this.campoQTDajust = new System.Windows.Forms.NumericUpDown();
+            this.gridEstoque = new System.Windows.Forms.DataGridView();
+            this.btnRecarregar = new System.Windows.Forms.Button();
             this.campoFiltro.SuspendLayout();
             this.campoAjuste.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.campoQTDajust)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridEstoque)).BeginInit();
             this.SuspendLayout();
             // 
             // campoFiltro
             // 
             this.campoFiltro.BackColor = System.Drawing.Color.Transparent;
-            this.campoFiltro.Controls.Add(this.campoCate);
-            this.campoFiltro.Controls.Add(this.label3);
+            this.campoFiltro.Controls.Add(this.btnRecarregar);
             this.campoFiltro.Controls.Add(this.label2);
             this.campoFiltro.Controls.Add(this.label1);
             this.campoFiltro.Controls.Add(this.campoCod);
@@ -65,29 +65,11 @@ namespace DESKTOP2019
             this.campoFiltro.TabIndex = 0;
             this.campoFiltro.TabStop = false;
             // 
-            // campoCate
-            // 
-            this.campoCate.FormattingEnabled = true;
-            this.campoCate.Location = new System.Drawing.Point(362, 47);
-            this.campoCate.Name = "campoCate";
-            this.campoCate.Size = new System.Drawing.Size(141, 21);
-            this.campoCate.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(358, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Categoria";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(183, 25);
+            this.label2.Location = new System.Drawing.Point(233, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 19);
             this.label2.TabIndex = 5;
@@ -105,17 +87,19 @@ namespace DESKTOP2019
             // 
             // campoCod
             // 
+            this.campoCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.campoCod.Location = new System.Drawing.Point(16, 47);
             this.campoCod.Name = "campoCod";
-            this.campoCod.Size = new System.Drawing.Size(141, 20);
+            this.campoCod.Size = new System.Drawing.Size(141, 22);
             this.campoCod.TabIndex = 2;
             this.campoCod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PressionouCod);
             // 
             // campoNome
             // 
-            this.campoNome.Location = new System.Drawing.Point(187, 47);
+            this.campoNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campoNome.Location = new System.Drawing.Point(237, 47);
             this.campoNome.Name = "campoNome";
-            this.campoNome.Size = new System.Drawing.Size(141, 20);
+            this.campoNome.Size = new System.Drawing.Size(141, 22);
             this.campoNome.TabIndex = 3;
             this.campoNome.TextChanged += new System.EventHandler(this.campoNome_TextChanged);
             // 
@@ -161,52 +145,76 @@ namespace DESKTOP2019
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 10;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(137, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(231, 19);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Digite a quantidade para alterar";
-            // 
             // campoAjuste
             // 
             this.campoAjuste.Controls.Add(this.campoQTDajust);
-            this.campoAjuste.Controls.Add(this.label6);
             this.campoAjuste.Controls.Add(this.btnInserir);
             this.campoAjuste.Controls.Add(this.btnTotal);
             this.campoAjuste.Controls.Add(this.btnRetirar);
-            this.campoAjuste.Location = new System.Drawing.Point(12, 395);
+            this.campoAjuste.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campoAjuste.Location = new System.Drawing.Point(13, 455);
             this.campoAjuste.Name = "campoAjuste";
             this.campoAjuste.Size = new System.Drawing.Size(549, 138);
             this.campoAjuste.TabIndex = 12;
             this.campoAjuste.TabStop = false;
             this.campoAjuste.Text = "Ajuste de Estoque";
             // 
-            // gridEstoque
-            // 
-            this.gridEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridEstoque.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gridEstoque.Location = new System.Drawing.Point(12, 119);
-            this.gridEstoque.Name = "gridEstoque";
-            this.gridEstoque.Size = new System.Drawing.Size(550, 249);
-            this.gridEstoque.TabIndex = 12;
-            // 
             // campoQTDajust
             // 
             this.campoQTDajust.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.campoQTDajust.Location = new System.Drawing.Point(164, 48);
+            this.campoQTDajust.Location = new System.Drawing.Point(172, 37);
             this.campoQTDajust.Name = "campoQTDajust";
             this.campoQTDajust.Size = new System.Drawing.Size(176, 28);
             this.campoQTDajust.TabIndex = 12;
+            // 
+            // gridEstoque
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridEstoque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridEstoque.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gridEstoque.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gridEstoque.Location = new System.Drawing.Point(12, 119);
+            this.gridEstoque.Name = "gridEstoque";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridEstoque.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.gridEstoque.Size = new System.Drawing.Size(550, 319);
+            this.gridEstoque.TabIndex = 12;
+            // 
+            // btnRecarregar
+            // 
+            this.btnRecarregar.Location = new System.Drawing.Point(445, 35);
+            this.btnRecarregar.Name = "btnRecarregar";
+            this.btnRecarregar.Size = new System.Drawing.Size(74, 34);
+            this.btnRecarregar.TabIndex = 6;
+            this.btnRecarregar.Text = "Recarregar";
+            this.btnRecarregar.UseVisualStyleBackColor = true;
+            this.btnRecarregar.Click += new System.EventHandler(this.btnRecarregar_Click);
             // 
             // Estoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 560);
+            this.ClientSize = new System.Drawing.Size(575, 615);
             this.Controls.Add(this.gridEstoque);
             this.Controls.Add(this.campoAjuste);
             this.Controls.Add(this.label5);
@@ -217,9 +225,8 @@ namespace DESKTOP2019
             this.campoFiltro.ResumeLayout(false);
             this.campoFiltro.PerformLayout();
             this.campoAjuste.ResumeLayout(false);
-            this.campoAjuste.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridEstoque)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.campoQTDajust)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridEstoque)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,15 +239,13 @@ namespace DESKTOP2019
         private System.Windows.Forms.TextBox campoCod;
         private System.Windows.Forms.TextBox campoNome;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox campoCate;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnTotal;
         private System.Windows.Forms.Button btnRetirar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox campoAjuste;
         private System.Windows.Forms.DataGridView gridEstoque;
         private System.Windows.Forms.NumericUpDown campoQTDajust;
+        private System.Windows.Forms.Button btnRecarregar;
     }
 }
