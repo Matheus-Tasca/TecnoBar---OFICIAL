@@ -67,10 +67,10 @@ namespace DESKTOP2019
                                 {
                                     string nomeProduto = reader["nomeProd"].ToString();
                                     string categoria = reader["nomeCategoria"].ToString();
-                                    string valorVenda = reader["valorVenda"].ToString();
+                                    double valorVenda = double.Parse(reader["valorVenda"].ToString());
                                     txtNomeProduto.Text = nomeProduto;
                                     txtCategoria.Text = categoria;
-                                    lblValorUnitario.Text = valorVenda;
+                                    lblValorUnitario.Text = valorVenda.ToString();
                                 }
                             }
                         }

@@ -39,7 +39,7 @@ namespace DESKTOP2019
         int codvendaSelect;
         int codVendaAdicionar;
         double troco;
-
+        double valorPago;
         public void calcularTrocoPix()
         {
             valorInicial = getValorTotal;
@@ -48,6 +48,7 @@ namespace DESKTOP2019
                 if (valorPix > 0)
                 {
                     troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -74,7 +75,8 @@ namespace DESKTOP2019
             {
                 if (valorEmDinheiro > 0)
                 {
-                    troco = valorEmDinheiro - (valorInicial - desconto);
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -95,6 +97,7 @@ namespace DESKTOP2019
                 if (valorCartao > 0)
                 {
                     troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -237,6 +240,28 @@ namespace DESKTOP2019
         private void calculaTrocoCartao_leave(object sender, EventArgs e)
         {
             calcularTrocoCartão();
+        }
+
+        private void calculaSaldo(object sender, EventArgs e)
+        {
+            if (double.TryParse(txtValorPago.Text, out valorPago)){
+
+            }
+            Console.WriteLine(getValorTotal - valorPago);
+            if((getValorTotal - valorPago) < 0)
+            {
+                txtSaldo.Text = "R$ 0,00";
+            }
+            else
+            {
+                txtSaldo.Text = "R$: " + ((getValorTotal-desconto) - valorPago).ToString();
+            }
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,7 +34,7 @@ namespace DESKTOP2019
             this.lblDesconto = new System.Windows.Forms.Label();
             this.lblTituloEncerramento = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
             this.lblSaldo = new System.Windows.Forms.Label();
             this.txtValorPago = new System.Windows.Forms.TextBox();
             this.lblValorPago = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@ namespace DESKTOP2019
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtSaldo);
             this.groupBox2.Controls.Add(this.lblSaldo);
             this.groupBox2.Controls.Add(this.txtValorPago);
             this.groupBox2.Controls.Add(this.lblValorPago);
@@ -116,13 +116,13 @@ namespace DESKTOP2019
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
-            // textBox1
+            // txtSaldo
             // 
-            this.textBox1.Location = new System.Drawing.Point(277, 179);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtSaldo.Location = new System.Drawing.Point(277, 179);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.ReadOnly = true;
+            this.txtSaldo.Size = new System.Drawing.Size(155, 20);
+            this.txtSaldo.TabIndex = 12;
             // 
             // lblSaldo
             // 
@@ -141,6 +141,7 @@ namespace DESKTOP2019
             this.txtValorPago.ReadOnly = true;
             this.txtValorPago.Size = new System.Drawing.Size(155, 20);
             this.txtValorPago.TabIndex = 10;
+            this.txtValorPago.TextChanged += new System.EventHandler(this.calculaSaldo);
             // 
             // lblValorPago
             // 
@@ -270,6 +271,7 @@ namespace DESKTOP2019
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmConcluirVenda
             // 
@@ -312,7 +314,7 @@ namespace DESKTOP2019
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblTrocoValor;
         private System.Windows.Forms.Label lblTroco;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSaldo;
         private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.TextBox txtValorPago;
         private System.Windows.Forms.Label lblValorPago;
