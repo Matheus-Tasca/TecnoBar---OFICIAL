@@ -18,8 +18,8 @@ namespace DESKTOP2019
         public frmConcluirVenda(double valorTotal, List<Produto> produtos)
         {
             InitializeComponent();
-            getValorTotal = valorTotal;
-            txtBoxTotalPagar.Text = "R$: " + (getValorTotal).ToString();
+            getValorTotal = valorTotal; //- double.Parse(txtBoxDesconto.Text);
+            txtBoxTotalPagar.Text = "R$: " + (getValorTotal /*- double.Parse(txtBoxDesconto.Text)*/).ToString();
             produtosVenda = produtos;
         }
         public frmConcluirVenda()
@@ -47,7 +47,7 @@ namespace DESKTOP2019
             {
                 if (valorPix > 0)
                 {
-                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - double.Parse(txtBoxDesconto.Text));
                     txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
                     if(txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
                     {
@@ -74,12 +74,12 @@ namespace DESKTOP2019
 
         public void calcularTrocoDinheiro()
         {
-            valorInicial = getValorTotal;
+            valorInicial = getValorTotal - double.Parse(txtBoxDesconto.Text);
             if (double.TryParse(txtBoxDinheiro.Text, out valorEmDinheiro))
             {
                 if (valorEmDinheiro > 0)
                 {
-                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - double.Parse(txtBoxDesconto.Text));
                     txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
                     if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
                     {
@@ -99,12 +99,12 @@ namespace DESKTOP2019
 
         public void calcularTrocoCartão()
         {
-            valorInicial = getValorTotal;
+            valorInicial = getValorTotal - double.Parse(txtBoxDesconto.Text);
             if (double.TryParse(txtBoxCartao.Text, out valorCartao))
             {
                 if (valorCartao > 0)
                 {
-                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - double.Parse(txtBoxDesconto.Text));
                     txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
                     if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
                     {
@@ -193,8 +193,8 @@ namespace DESKTOP2019
             String sqlSelectcodVenda = "select codVenda from Venda order by codVenda DESC";
             String sqlAdicionarVenda = "insert into Venda (codVenda, codProd, nomeProd, QtdProd, ValorProd, ValorTotalVenda, Data_Registro) VALUES (@codVenda, @codProd, @nomeProd, @QtdProd, @ValorProd, @ValorTotalVenda, @Data_Registro)";
             data = DateTime.Now;
-
-            if ((valorPix+valorEmDinheiro+valorCartao) - getValorTotal == 0 || (valorPix + valorEmDinheiro + valorCartao) - getValorTotal > 0)
+            double total = getValorTotal - double.Parse(txtBoxDesconto.Text);
+            if ((valorPix+valorEmDinheiro+valorCartao) - total == 0 || (valorPix + valorEmDinheiro + valorCartao) - total > 0)
             {
                 Console.WriteLine("Passei1");
                 try

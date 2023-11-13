@@ -136,7 +136,7 @@ namespace DESKTOP2019
             // 
             this.lblTrocoValor.AutoSize = true;
             this.lblTrocoValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrocoValor.Location = new System.Drawing.Point(273, 342);
+            this.lblTrocoValor.Location = new System.Drawing.Point(273, 365);
             this.lblTrocoValor.Name = "lblTrocoValor";
             this.lblTrocoValor.Size = new System.Drawing.Size(58, 17);
             this.lblTrocoValor.TabIndex = 8;
@@ -146,7 +146,7 @@ namespace DESKTOP2019
             // 
             this.lblTroco.AutoSize = true;
             this.lblTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroco.Location = new System.Drawing.Point(193, 342);
+            this.lblTroco.Location = new System.Drawing.Point(193, 365);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(58, 17);
             this.lblTroco.TabIndex = 5;
@@ -154,7 +154,7 @@ namespace DESKTOP2019
             // 
             // txtBoxCartao
             // 
-            this.txtBoxCartao.Location = new System.Drawing.Point(119, 302);
+            this.txtBoxCartao.Location = new System.Drawing.Point(153, 269);
             this.txtBoxCartao.Name = "txtBoxCartao";
             this.txtBoxCartao.Size = new System.Drawing.Size(132, 20);
             this.txtBoxCartao.TabIndex = 7;
@@ -164,7 +164,7 @@ namespace DESKTOP2019
             // 
             // txtBoxPix
             // 
-            this.txtBoxPix.Location = new System.Drawing.Point(377, 301);
+            this.txtBoxPix.Location = new System.Drawing.Point(153, 316);
             this.txtBoxPix.Name = "txtBoxPix";
             this.txtBoxPix.Size = new System.Drawing.Size(132, 20);
             this.txtBoxPix.TabIndex = 6;
@@ -174,7 +174,7 @@ namespace DESKTOP2019
             // 
             // txtBoxDinheiro
             // 
-            this.txtBoxDinheiro.Location = new System.Drawing.Point(227, 258);
+            this.txtBoxDinheiro.Location = new System.Drawing.Point(153, 220);
             this.txtBoxDinheiro.Name = "txtBoxDinheiro";
             this.txtBoxDinheiro.Size = new System.Drawing.Size(132, 20);
             this.txtBoxDinheiro.TabIndex = 5;
@@ -186,7 +186,7 @@ namespace DESKTOP2019
             // 
             this.lblCartao.AutoSize = true;
             this.lblCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCartao.Location = new System.Drawing.Point(21, 304);
+            this.lblCartao.Location = new System.Drawing.Point(72, 272);
             this.lblCartao.Name = "lblCartao";
             this.lblCartao.Size = new System.Drawing.Size(65, 17);
             this.lblCartao.TabIndex = 4;
@@ -196,7 +196,7 @@ namespace DESKTOP2019
             // 
             this.lblPix.AutoSize = true;
             this.lblPix.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPix.Location = new System.Drawing.Point(330, 302);
+            this.lblPix.Location = new System.Drawing.Point(72, 319);
             this.lblPix.Name = "lblPix";
             this.lblPix.Size = new System.Drawing.Size(29, 17);
             this.lblPix.TabIndex = 3;
@@ -206,7 +206,7 @@ namespace DESKTOP2019
             // 
             this.lblDinheiro.AutoSize = true;
             this.lblDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDinheiro.Location = new System.Drawing.Point(105, 258);
+            this.lblDinheiro.Location = new System.Drawing.Point(72, 221);
             this.lblDinheiro.Name = "lblDinheiro";
             this.lblDinheiro.Size = new System.Drawing.Size(74, 17);
             this.lblDinheiro.TabIndex = 2;
