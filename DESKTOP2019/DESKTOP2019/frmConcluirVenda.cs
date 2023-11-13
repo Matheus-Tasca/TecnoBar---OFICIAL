@@ -21,7 +21,7 @@ namespace DESKTOP2019
             getValorTotal = valorTotal;
             txtBoxTotalPagar.Text = "R$: " + (getValorTotal).ToString();
             produtosVenda = produtos;
-    }
+        }
         public frmConcluirVenda()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace DESKTOP2019
         int codvendaSelect;
         int codVendaAdicionar;
         double troco;
-
+        double valorPago;
         public void calcularTrocoPix()
         {
             valorInicial = getValorTotal;
@@ -48,6 +48,11 @@ namespace DESKTOP2019
                 if (valorPix > 0)
                 {
                     troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
+                    if(txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+                    {
+                        txtValorPago.Text = "R$ 0,00";
+                    }
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -74,7 +79,12 @@ namespace DESKTOP2019
             {
                 if (valorEmDinheiro > 0)
                 {
-                    troco = valorEmDinheiro - (valorInicial - desconto);
+                    troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
+                    if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+                    {
+                        txtValorPago.Text = "R$ 0,00";
+                    }
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -95,6 +105,11 @@ namespace DESKTOP2019
                 if (valorCartao > 0)
                 {
                     troco = (valorPix + valorEmDinheiro + valorCartao) - (valorInicial - desconto);
+                    txtValorPago.Text = "R$: " + (valorPix + valorEmDinheiro + valorCartao).ToString();
+                    if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+                    {
+                        txtValorPago.Text = "R$ 0,00";
+                    }
                     if (troco < 0)
                     {
                         lblTrocoValor.Text = "R$ 0,00";
@@ -117,11 +132,19 @@ namespace DESKTOP2019
         private void digitarValorDinheiro(object sender, EventArgs e)
         {
             calcularTrocoDinheiro();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void digitarValorPix(object sender, EventArgs e)
         {
             calcularTrocoPix();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void digitarDesconto(object sender, EventArgs e)
@@ -138,16 +161,28 @@ namespace DESKTOP2019
         private void digitarValorPix_Leave(object sender, EventArgs e)
         {
             calcularTrocoPix();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void digitarValorPix_Enter(object sender, EventArgs e)
         {
             calcularTrocoPix();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void digitarValorDinheiro_Enter(object sender, EventArgs e)
         {
             calcularTrocoDinheiro();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)
@@ -161,6 +196,7 @@ namespace DESKTOP2019
 
             if ((valorPix+valorEmDinheiro+valorCartao) - getValorTotal == 0 || (valorPix + valorEmDinheiro + valorCartao) - getValorTotal > 0)
             {
+                Console.WriteLine("Passei1");
                 try
                 {
                     using (MySqlConnection con = new MySqlConnection(conString))
@@ -175,6 +211,7 @@ namespace DESKTOP2019
                             {
                                 if (reader.Read())
                                 {
+                                    Console.WriteLine("Passei2");
                                     codvendaSelect = int.Parse(reader["codVenda"].ToString());
                                     codVendaAdicionar = codvendaSelect;
                                 }
@@ -201,6 +238,7 @@ namespace DESKTOP2019
                                 int linhasAfetdas = cmdAdicionarVenda.ExecuteNonQuery();
                             }
                             MessageBox.Show("Venda concluída com sucesso !", "VENDA CONCLUÍDA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            produtosVenda.Clear();
                             this.Close();
                         }
                     }
@@ -219,21 +257,55 @@ namespace DESKTOP2019
         private void digitarValorDinheiro_Leave(object sender, EventArgs e)
         {
             calcularTrocoDinheiro();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void inserirValorCartão(object sender, EventArgs e)
         {
             calcularTrocoCartão();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void calculaTrocoCartao_enter(object sender, EventArgs e)
         {
             calcularTrocoCartão();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
         }
 
         private void calculaTrocoCartao_leave(object sender, EventArgs e)
         {
             calcularTrocoCartão();
+            if (txtBoxDinheiro.Text == "" && txtBoxCartao.Text == "" && txtBoxPix.Text == "")
+            {
+                txtValorPago.Text = "R$ 0,00";
+            }
+        }
+
+        private void calculaSaldo(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Deseja fechar o formulário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Verifica se o usuário clicou em "Sim"
+            if (result == DialogResult.Yes)
+            {
+                // Fecha o formulário
+                this.Close();
+            }
         }
     }
 }

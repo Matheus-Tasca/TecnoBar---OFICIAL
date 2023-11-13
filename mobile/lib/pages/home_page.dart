@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-// import 'package:login/model/classe_dash.dart';
-// import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,26 +13,6 @@ class _HomePageState extends State<HomePage> {
   String _filtro = '30dias';
   double _cardValue = 5000;
   Color _cor = Colors.blueGrey;
-  // late List<Produto> _chartData;
-  // late TooltipBehavior _tooltipBehavior;
-
-  // void initState() {
-  //   _chartData = getChartData();
-  //   _tooltipBehavior = TooltipBehavior(enable: true);
-  //   super.initState();
-  // }
-
-  // List<Color> customColors = [
-  //   Colors.red, Colors.green, Colors.blue
-  // ];
-  // List<Produto> getChartData() {
-  //   final List<Produto> chartData = [
-  //     Produto('Salgado', _cardValue),
-  //     Produto('Refrigerante', _cardValue),
-  //     Produto('Pastel', _cardValue),
-  //   ];
-  //   return chartData;
-  // }
 
   void _atualizaCards(String filter) {
     if (filter == '1dia') {
@@ -100,29 +78,6 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-          // SizedBox(
-          //   width: 150,
-          //   height: 500,
-          //   child: SfCircularChart(
-          //     title: ChartTitle(text: 'Gráfico de Produtos'),
-          //     legend: Legend(
-          //         isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
-          //     tooltipBehavior: _tooltipBehavior,
-          //     series: <CircularSeries>[
-          //       PieSeries<Produto, String>(
-          //         dataSource: _chartData,
-          //         xValueMapper: (Produto data, _) => data.nome,
-          //         yValueMapper: (Produto data, _) => data.preco,
-          //         dataLabelSettings: DataLabelSettings(isVisible: true),
-          //         enableTooltip: true,
-          //         strokeColor: Colors.black,
-          //         strokeWidth: 1,
-          //         pointColorMapper: (Produto data, _) => customColors[_chartData.indexOf(data)],
-          //       ),
-          //     ],
-          //     // primaryXAxis: CategoryAxis(),
-          //   ),
-          // ),
           SizedBox(
             height: 15,
           ),
@@ -256,14 +211,13 @@ class _HomePageState extends State<HomePage> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture:
-                  ClipOval(child: Image.asset('assets/images/sonic.jpeg')),
+                  ClipOval(child: Image.asset('assets/images/tecnobar.jpg')),
               accountName: Text("Tecnobar"),
               accountEmail: Text("tecnobar@g.unicamp.br"),
             ),
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Home'),
-              // subtitle: Text('Exercício 3'),
               onTap: () {
                 Navigator.of(context).pushNamed('/home');
               },
@@ -271,7 +225,6 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.dashboard),
               title: Text('Dashboard'),
-              // subtitle: Text('Exercício 3'),
               onTap: () {
                 Navigator.of(context).pushNamed('/dash');
               },
@@ -279,7 +232,6 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.history_sharp),
               title: Text('Historico'),
-              // subtitle: Text('Exercício 3'),
               onTap: () {
                 Navigator.of(context).pushNamed('/history');
               },
@@ -287,9 +239,8 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.login),
               title: Text('Sair'),
-              // subtitle: Text('Exercício 3'),
               onTap: () {
-                Navigator.of(context).pushNamed('/login');
+                Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
               },
             ),
           ],

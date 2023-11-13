@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'dart:math';
-import 'package:http/http.dart' as http;
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({Key? key}) : super(key: key);
@@ -11,10 +9,9 @@ class HistoryPage extends StatefulWidget {
 }
 
 class HistoryPageState extends State<HistoryPage> {
-  String selectedDuration = '10'; // Valor padrão
-  List<Map<String, dynamic>> vendas = []; // Lista para armazenar os dados simulados
+  String selectedDuration = '10';
+  List<Map<String, dynamic>> vendas = [];
 
-  // Descrições sequenciais
   final List<String> descricoes = [
     "Refrigerante",
     "Salgado",
@@ -25,30 +22,29 @@ class HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    gerarDadosSimulados(); // Chame a função para gerar dados simulados ao iniciar a tela
+    gerarDadosSimulados(); 
   }
 
   void gerarDadosSimulados() {
-    // Gere dados simulados com base nas descrições
+
     vendas = List.generate(
-      100, // Total de vendas simuladas
+      100,
       (index) {
         final descricao = descricoes[index % descricoes.length];
-        final quantidade = Random().nextInt(10) + 1; // Números aleatórios de 1 a 10
-        final valorUnitario = Random().nextDouble() * 10; // Preços aleatórios de 0 a 10
+        final quantidade = Random().nextInt(10) + 1; 
+        final valorUnitario = Random().nextDouble() * 10;
         final valorTotal = quantidade * valorUnitario;
 
         return {
           'id': index + 1,
           'title': descricao,
           'quantidade': quantidade,
-          'valorUnitario': valorUnitario.toStringAsFixed(2), // Arredonda para 2 casas decimais
-          'valorTotal': valorTotal.toStringAsFixed(2), // Arredonda para 2 casas decimais
+          'valorUnitario': valorUnitario.toStringAsFixed(2),
+          'valorTotal': valorTotal.toStringAsFixed(2),
         };
       },
     );
 
-    // Atualize a tela após gerar dados simulados
     setState(() {});
   }
 
@@ -58,10 +54,6 @@ class HistoryPageState extends State<HistoryPage> {
       children: [
         Column(
           children: [
-            Text(
-              'Histórico de vendas',
-              style: TextStyle(fontSize: 24),
-            ),
             Container(
               padding: EdgeInsets.all(16),
               child: Column(
@@ -69,7 +61,9 @@ class HistoryPageState extends State<HistoryPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Mostrar últimas:'),
+                      Text('Últimas compras:',
+                      style: TextStyle(fontSize: 18),
+                      ),
                       SizedBox(width: 10),
                       DropdownButton<String>(
                         items: [
@@ -91,7 +85,6 @@ class HistoryPageState extends State<HistoryPage> {
                         },
                         value: selectedDuration,
                       ),
-                      Text(' compras'),
                     ],
                   ),
                   SingleChildScrollView(
@@ -110,7 +103,7 @@ class HistoryPageState extends State<HistoryPage> {
                         return DataRow(
                           cells: [
                             DataCell(Container(
-                              width: 100, // Largura fixa para a coluna de descrição
+                              width: 100,
                               child: Text(venda['title']),
                             )),
                             DataCell(Text(venda['quantidade'].toString())),
@@ -138,7 +131,7 @@ class HistoryPageState extends State<HistoryPage> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture:
-                  ClipOval(child: Image.asset('assets/images/sonic.jpeg')),
+                  ClipOval(child: Image.asset('assets/images/tecnobar.jpg')),
               accountName: Text("Tecnobar"),
               accountEmail: Text("tecnobar@g.unicamp.br"),
             ),
@@ -159,7 +152,6 @@ class HistoryPageState extends State<HistoryPage> {
             ListTile(
               leading: Icon(Icons.history_sharp),
               title: Text('Historico'),
-              // subtitle: Text('Exercício 3'),
               onTap: () {
                 Navigator.of(context).pushNamed('/history');
               },
@@ -168,7 +160,7 @@ class HistoryPageState extends State<HistoryPage> {
               leading: Icon(Icons.login),
               title: Text('Sair'),
               onTap: () {
-                Navigator.of(context).pushNamed('/login');
+                Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
               },
             ),
           ],

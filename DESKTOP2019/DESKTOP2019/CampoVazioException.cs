@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DESKTOP2019
 {
-    class CampoVazioException : Exception
+    class CampoVazioException : Exception //chamando a classe Exception 
     {
         public CampoVazioException(string message)
             : base(message)

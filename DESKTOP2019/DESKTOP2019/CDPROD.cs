@@ -157,8 +157,6 @@ namespace DESKTOP2019
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (gridProd.SelectedRows.Count > 0)
-            {
                 int linhasAfetadas = 0;
                 try
                 {
@@ -215,7 +213,7 @@ namespace DESKTOP2019
                     MessageBox.Show($"{cv.Message}");
                 }
             }
-        }
+        
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
@@ -251,7 +249,7 @@ namespace DESKTOP2019
                                 {
                                     MessageBox.Show("Produto atualizado com sucesso!", "Aviso do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Busca();
-                                    return; // para a função 
+                                    return; // paraR a função 
                                 }
                                 else
                                 {
@@ -268,7 +266,7 @@ namespace DESKTOP2019
             }
             else
             {
-                MessageBox.Show("Selecione um produto para alterar", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Selecione um produto (clicando na coluna mais a esquerda da tabela) para alterar", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -280,33 +278,28 @@ namespace DESKTOP2019
                 btnSalvar.Enabled = false;
                 btnNovo.Enabled = false;
 
-                // Obtém o índice da linha selecionada
-                int rowIndex = gridProd.SelectedRows[0].Index;
+                int rowIndex = gridProd.SelectedRows[0].Index; //selciona o index
 
-                // Obtém o valor da célula na coluna "codProd" da linha selecionada
-                object selectedCellValue = gridProd.Rows[rowIndex].Cells["codProd"].Value;
+                object selectedCellValue = gridProd.Rows[rowIndex].Cells["codProd"].Value; //tu pega a coluna 
 
                 if (selectedCellValue != null)
                 {
                     string selected = selectedCellValue.ToString();
                     string conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
-                    // Conexão com o banco de dados (substitua a string de conexão conforme necessário)
                     using (MySqlConnection connection = new MySqlConnection(conString))
                     {
                         connection.Open();
 
-                        // Consulta SQL para selecionar os dados com base no código
                         string query = "SELECT * FROM produto WHERE codProd = @codigo";
 
                         using (MySqlCommand command = new MySqlCommand(query, connection))
                         {
-                            // Adiciona o parâmetro da consulta SQL
                             command.Parameters.AddWithValue("@codigo", selected);
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                // Verifica se há linhas retornadas
+
                                 if (reader.Read())
                                 {
                                     campoCod.Text = reader["codProd"].ToString();
@@ -379,11 +372,6 @@ namespace DESKTOP2019
             }
         }
 
-        private void setTamanhoBox(object campo){
-            this.campoCusto.AutoSize = false;
-            this.campoCusto.Size = new System.Drawing.Size(1, 65);
-        }
-
         private void campoCategoria_SelectedIndexChanged(object sender, EventArgs e) // Aqui mostra no combo o que selecionou 
         {
             if (campoCategoria.SelectedItem != null)
@@ -404,11 +392,6 @@ namespace DESKTOP2019
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
             Filtrar();
-        }
-
-        private void CDPROD_Load(object sender, EventArgs e)
-        {
-
         }
 
         /* private void campoCusto_TextChanged(object sender, EventArgs e)

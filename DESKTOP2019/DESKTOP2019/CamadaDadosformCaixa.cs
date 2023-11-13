@@ -21,6 +21,12 @@ namespace DESKTOP2019
                 this.valorVenda = valorVenda;
                 this.quantidade = quantidade;
             }
+
+            public Produto(int codProduto, int quantidade)
+            {
+                this.codProduto = codProduto;
+                this.quantidade = quantidade;
+            }
         }
 
         public class Venda

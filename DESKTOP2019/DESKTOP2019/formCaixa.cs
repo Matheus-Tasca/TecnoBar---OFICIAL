@@ -20,9 +20,11 @@ namespace DESKTOP2019
         public frmConcluirVenda frmFinalizarVenda = new frmConcluirVenda();
         double total;
         List<Produto> produtos = new List<Produto>();
+        List<Produto> listaQuantidadesProdutos = new List<Produto>();
         int quantidadeBD;
+        int quantidade;
         int indice;
-        List<int> listaQuantidadesProdutosVenda = new List<int>();
+        
         public formCaixa()
         {
             InitializeComponent();
@@ -65,10 +67,10 @@ namespace DESKTOP2019
                                 {
                                     string nomeProduto = reader["nomeProd"].ToString();
                                     string categoria = reader["nomeCategoria"].ToString();
-                                    string valorVenda = reader["valorVenda"].ToString();
+                                    double valorVenda = double.Parse(reader["valorVenda"].ToString());
                                     txtNomeProduto.Text = nomeProduto;
                                     txtCategoria.Text = categoria;
-                                    lblValorUnitario.Text = valorVenda;
+                                    lblValorUnitario.Text = valorVenda.ToString();
                                 }
                             }
                         }
@@ -169,63 +171,113 @@ namespace DESKTOP2019
                 int codProd = int.Parse(txtCodigoProduto.Text);
                 string nomeProduto = txtNomeProduto.Text;
                 double valorVenda = double.Parse(lblValorUnitario.Text);
-                int quantidade = int.Parse(txtQuantidade.Text);
-                Produto produto = new Produto(codProd, nomeProduto, valorVenda, quantidade);
-                produtos.Add(produto);
-                double valorTotalProduto = produto.quantidade * produto.valorVenda;
-                listBoxProdutos.Items.Add("Cod: "+ produto.codProduto + " | "+" Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
-                total += valorTotalProduto;
-                limpar();
-                lblSubTotal.Text = "R$: " + total.ToString();
+                quantidade = int.Parse(txtQuantidade.Text);
+                String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                string sqlVerificarQuantidade = "select qtdEstoque from produto where codProd = @codProd";
+                try
+                {
+                    using (MySqlConnection con = new MySqlConnection(conString))
+                    {
+                        //abre conexão
+                        con.Open();
+                        //Verifica a quantidade atual em estoque do produto
+                        MySqlCommand cmdVerificaQuantidade = new MySqlCommand(sqlVerificarQuantidade, con);
+
+                        //verificando a quantidade do item no estoque
+                        using (cmdVerificaQuantidade)
+                        {
+                            cmdVerificaQuantidade.Parameters.Clear();
+                            cmdVerificaQuantidade.Parameters.AddWithValue("@codProd", codProd);
+                            //realiza a pesquisa no bd em busca da quantidade
+                            using (MySqlDataReader reader = cmdVerificaQuantidade.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    //pega a quantidade
+                                    quantidadeBD = int.Parse(reader["qtdEstoque"].ToString());
+                                    //verifica se quantidade da venda é superior ao estoque
+                                    if (quantidadeBD < quantidade)
+                                    {
+                                        MessageBox.Show("ESTOQUE INSUFICIENTE", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        txtCodigoProduto.Text = "";
+                                        txtQuantidade.Text = "";
+                                        txtCategoria.Text = "";
+                                        txtNomeProduto.Text = "";
+                                        lblValorUnitario.Text = "R$ 0,00";
+                                        lblValorTotal.Text = "R$ 0,00";
+                                    }
+                                    else
+                                    {
+                                        Produto produto = new Produto(codProd, nomeProduto, valorVenda, quantidade);
+                                        produtos.Add(produto);
+                                        //calcula o valorTotal do produto
+                                        double valorTotalProduto = produto.quantidade * produto.valorVenda;
+                                        //adiciona ao listBox
+                                        listBoxProdutos.Items.Add("Cod: " + produto.codProduto + " | " + " Produto: " + produto.nomeProduto + " | " + produto.quantidade + "x" + " | " + "\n R$: " + valorTotalProduto.ToString());
+                                        //calcula o total de tudo
+                                        total += valorTotalProduto;
+                                        //limpa os campos
+                                        limpar();
+                                        //adiciona ao texto de subTotal
+                                        lblSubTotal.Text = "R$: " + total.ToString();
+                                    }
+                                    foreach (Produto p in produtos)
+                                    {
+                                        Produto prodQtd = new Produto(p.codProduto, quantidadeBD);
+                                        listaQuantidadesProdutos.Add(prodQtd);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("ERRO NO SISTEMA: " + ex.Message, "ERRO");
+                }
             }
             catch (System.FormatException ex)
             {
                 MessageBox.Show("INSIRA UM VALOR EM TODOS OS CAMPOS", "ERRO NO SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
-        private void finalizaVenda(object sender, EventArgs e)
-        {
-            /*String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            string sqlAtualizarQuantidade = "update produto set qtdEstoque = qtdEstoque - @quantidade where codProd = @codProd";
-            string sqlVerificarQuantidade = "select qtdEstoque from produto where codProd = @codPrd";
-            try
-            {
-                using (MySqlConnection con = new MySqlConnection(conString))
+            private void finalizaVenda(object sender, EventArgs e){
+                String conString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                string sqlAtualizarQuantidade = "update produto set qtdEstoque = qtdEstoque - @qtd where codProd = @codProd";
+                try
                 {
-                    con.Open();
-                    MySqlCommand cmdVerificaQuantidade = new MySqlCommand(sqlVerificarQuantidade, con);
-                    MySqlCommand cmdAtualizaQuantidade = new MySqlCommand(sqlAtualizarQuantidade, con);
-
-                    //verificando a quantidade de cada item no estoque
-                    using (cmdVerificaQuantidade)
+                    using (MySqlConnection con = new MySqlConnection(conString))
                     {
-                        foreach (Produto p in produtos)
+                        //abre conexão
+                        con.Open();
+                        //Verifica a quantidade atual em estoque do produto
+                        MySqlCommand cmdAtualizaQuantidade = new MySqlCommand(sqlAtualizarQuantidade, con);
+                        using (cmdAtualizaQuantidade)
                         {
-                            cmdVerificaQuantidade.Parameters.Clear();
-                            cmdVerificaQuantidade.Parameters.AddWithValue("@codPrd", p.codProduto);
-                            using (MySqlDataReader reader = cmdVerificaQuantidade.ExecuteReader())
+                            foreach (Produto prod in listaQuantidadesProdutos)
                             {
-                                if (reader.Read())
-                                {
-                                    quantidadeBD = int.Parse(reader["codVenda"].ToString());
-                                    listaQuantidadesProdutosVenda.Add(quantidadeBD);
-                                }
+                                cmdAtualizaQuantidade.Parameters.Clear();
+                                cmdAtualizaQuantidade.Parameters.AddWithValue("@qtd", quantidade);
+                                cmdAtualizaQuantidade.Parameters.AddWithValue("@codProd", prod.codProduto);
+                                int linhasAfetadas = cmdAtualizaQuantidade.ExecuteNonQuery();
                             }
                         }
                     }
+                    frmConcluirVenda frmVenda = new frmConcluirVenda(total, produtos);
+                    frmVenda.Show();
+                    listBoxProdutos.Items.Clear();
+                    lblSubTotal.Text = "";
+                    total = 0;
                 }
-            }catch(MySqlException ex)
-            {
-                MessageBox.Show("ERRO NO SISTEMA: " + ex.Message, "ERRO");
-            }*/
-            frmConcluirVenda frmVenda = new frmConcluirVenda(total, produtos);
-            frmVenda.Show();
-            produtos.Clear();
-            listBoxProdutos.Items.Clear();
-            lblSubTotal.Text = "";
-            total = 0;
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("ERRO NO SISTEMA: " + ex.Message, "ERRO");
+                }
         }
+
 
         private void cmdCancelarVenda(object sender, EventArgs e)
         {

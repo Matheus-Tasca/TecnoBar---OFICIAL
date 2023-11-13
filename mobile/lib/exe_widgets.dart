@@ -15,7 +15,10 @@ class ExeWidget extends StatelessWidget {
         '/dash': (context) => DashboardPage(),
         '/history': (context) => HistoryPage(),
       },
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+        scaffoldBackgroundColor: Colors.white,
+      ),
     );
   }
-  
 }

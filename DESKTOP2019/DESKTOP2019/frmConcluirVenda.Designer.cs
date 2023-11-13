@@ -34,8 +34,6 @@ namespace DESKTOP2019
             this.lblDesconto = new System.Windows.Forms.Label();
             this.lblTituloEncerramento = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblSaldo = new System.Windows.Forms.Label();
             this.txtValorPago = new System.Windows.Forms.TextBox();
             this.lblValorPago = new System.Windows.Forms.Label();
             this.lblTrocoValor = new System.Windows.Forms.Label();
@@ -96,8 +94,6 @@ namespace DESKTOP2019
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.lblSaldo);
             this.groupBox2.Controls.Add(this.txtValorPago);
             this.groupBox2.Controls.Add(this.lblValorPago);
             this.groupBox2.Controls.Add(this.lblTrocoValor);
@@ -116,37 +112,21 @@ namespace DESKTOP2019
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(277, 179);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
-            this.textBox1.TabIndex = 12;
-            // 
-            // lblSaldo
-            // 
-            this.lblSaldo.AutoSize = true;
-            this.lblSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldo.Location = new System.Drawing.Point(71, 167);
-            this.lblSaldo.Name = "lblSaldo";
-            this.lblSaldo.Size = new System.Drawing.Size(91, 31);
-            this.lblSaldo.TabIndex = 11;
-            this.lblSaldo.Text = "Saldo:";
-            // 
             // txtValorPago
             // 
-            this.txtValorPago.Location = new System.Drawing.Point(277, 114);
+            this.txtValorPago.Location = new System.Drawing.Point(276, 156);
             this.txtValorPago.Name = "txtValorPago";
             this.txtValorPago.ReadOnly = true;
             this.txtValorPago.Size = new System.Drawing.Size(155, 20);
             this.txtValorPago.TabIndex = 10;
+            this.txtValorPago.Text = "R$ 0,00";
+            this.txtValorPago.TextChanged += new System.EventHandler(this.calculaSaldo);
             // 
             // lblValorPago
             // 
             this.lblValorPago.AutoSize = true;
             this.lblValorPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorPago.Location = new System.Drawing.Point(70, 102);
+            this.lblValorPago.Location = new System.Drawing.Point(69, 144);
             this.lblValorPago.Name = "lblValorPago";
             this.lblValorPago.Size = new System.Drawing.Size(152, 31);
             this.lblValorPago.TabIndex = 9;
@@ -156,7 +136,7 @@ namespace DESKTOP2019
             // 
             this.lblTrocoValor.AutoSize = true;
             this.lblTrocoValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrocoValor.Location = new System.Drawing.Point(273, 376);
+            this.lblTrocoValor.Location = new System.Drawing.Point(273, 342);
             this.lblTrocoValor.Name = "lblTrocoValor";
             this.lblTrocoValor.Size = new System.Drawing.Size(58, 17);
             this.lblTrocoValor.TabIndex = 8;
@@ -166,7 +146,7 @@ namespace DESKTOP2019
             // 
             this.lblTroco.AutoSize = true;
             this.lblTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroco.Location = new System.Drawing.Point(193, 376);
+            this.lblTroco.Location = new System.Drawing.Point(193, 342);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(58, 17);
             this.lblTroco.TabIndex = 5;
@@ -174,7 +154,7 @@ namespace DESKTOP2019
             // 
             // txtBoxCartao
             // 
-            this.txtBoxCartao.Location = new System.Drawing.Point(119, 336);
+            this.txtBoxCartao.Location = new System.Drawing.Point(119, 302);
             this.txtBoxCartao.Name = "txtBoxCartao";
             this.txtBoxCartao.Size = new System.Drawing.Size(132, 20);
             this.txtBoxCartao.TabIndex = 7;
@@ -184,7 +164,7 @@ namespace DESKTOP2019
             // 
             // txtBoxPix
             // 
-            this.txtBoxPix.Location = new System.Drawing.Point(377, 335);
+            this.txtBoxPix.Location = new System.Drawing.Point(377, 301);
             this.txtBoxPix.Name = "txtBoxPix";
             this.txtBoxPix.Size = new System.Drawing.Size(132, 20);
             this.txtBoxPix.TabIndex = 6;
@@ -194,7 +174,7 @@ namespace DESKTOP2019
             // 
             // txtBoxDinheiro
             // 
-            this.txtBoxDinheiro.Location = new System.Drawing.Point(227, 292);
+            this.txtBoxDinheiro.Location = new System.Drawing.Point(227, 258);
             this.txtBoxDinheiro.Name = "txtBoxDinheiro";
             this.txtBoxDinheiro.Size = new System.Drawing.Size(132, 20);
             this.txtBoxDinheiro.TabIndex = 5;
@@ -206,7 +186,7 @@ namespace DESKTOP2019
             // 
             this.lblCartao.AutoSize = true;
             this.lblCartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCartao.Location = new System.Drawing.Point(21, 338);
+            this.lblCartao.Location = new System.Drawing.Point(21, 304);
             this.lblCartao.Name = "lblCartao";
             this.lblCartao.Size = new System.Drawing.Size(65, 17);
             this.lblCartao.TabIndex = 4;
@@ -216,7 +196,7 @@ namespace DESKTOP2019
             // 
             this.lblPix.AutoSize = true;
             this.lblPix.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPix.Location = new System.Drawing.Point(330, 336);
+            this.lblPix.Location = new System.Drawing.Point(330, 302);
             this.lblPix.Name = "lblPix";
             this.lblPix.Size = new System.Drawing.Size(29, 17);
             this.lblPix.TabIndex = 3;
@@ -226,7 +206,7 @@ namespace DESKTOP2019
             // 
             this.lblDinheiro.AutoSize = true;
             this.lblDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDinheiro.Location = new System.Drawing.Point(105, 292);
+            this.lblDinheiro.Location = new System.Drawing.Point(105, 258);
             this.lblDinheiro.Name = "lblDinheiro";
             this.lblDinheiro.Size = new System.Drawing.Size(74, 17);
             this.lblDinheiro.TabIndex = 2;
@@ -234,7 +214,7 @@ namespace DESKTOP2019
             // 
             // txtBoxTotalPagar
             // 
-            this.txtBoxTotalPagar.Location = new System.Drawing.Point(277, 55);
+            this.txtBoxTotalPagar.Location = new System.Drawing.Point(276, 97);
             this.txtBoxTotalPagar.Name = "txtBoxTotalPagar";
             this.txtBoxTotalPagar.ReadOnly = true;
             this.txtBoxTotalPagar.Size = new System.Drawing.Size(155, 20);
@@ -244,7 +224,7 @@ namespace DESKTOP2019
             // 
             this.lblTotalPagar.AutoSize = true;
             this.lblTotalPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPagar.Location = new System.Drawing.Point(70, 43);
+            this.lblTotalPagar.Location = new System.Drawing.Point(69, 85);
             this.lblTotalPagar.Name = "lblTotalPagar";
             this.lblTotalPagar.Size = new System.Drawing.Size(181, 31);
             this.lblTotalPagar.TabIndex = 0;
@@ -270,6 +250,7 @@ namespace DESKTOP2019
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmConcluirVenda
             // 
@@ -312,8 +293,6 @@ namespace DESKTOP2019
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblTrocoValor;
         private System.Windows.Forms.Label lblTroco;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lblSaldo;
         private System.Windows.Forms.TextBox txtValorPago;
         private System.Windows.Forms.Label lblValorPago;
     }
