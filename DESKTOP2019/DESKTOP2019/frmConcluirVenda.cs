@@ -161,6 +161,7 @@ namespace DESKTOP2019
 
             if ((valorPix+valorEmDinheiro+valorCartao) - getValorTotal == 0 || (valorPix + valorEmDinheiro + valorCartao) - getValorTotal > 0)
             {
+                Console.WriteLine("Passei1");
                 try
                 {
                     using (MySqlConnection con = new MySqlConnection(conString))
@@ -175,6 +176,7 @@ namespace DESKTOP2019
                             {
                                 if (reader.Read())
                                 {
+                                    Console.WriteLine("Passei2");
                                     codvendaSelect = int.Parse(reader["codVenda"].ToString());
                                     codVendaAdicionar = codvendaSelect;
                                 }
@@ -201,6 +203,7 @@ namespace DESKTOP2019
                                 int linhasAfetdas = cmdAdicionarVenda.ExecuteNonQuery();
                             }
                             MessageBox.Show("Venda concluída com sucesso !", "VENDA CONCLUÍDA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            produtosVenda.Clear();
                             this.Close();
                         }
                     }
