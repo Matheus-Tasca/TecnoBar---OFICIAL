@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _body() {
     return Padding(
       padding: EdgeInsets.only(
-        top: 180,
+        top: 8,
         right: 8,
         left: 8,
         bottom: 8,
@@ -32,22 +32,20 @@ class _LoginPageState extends State<LoginPage> {
           Container(
               alignment: Alignment.center,
               padding: EdgeInsets.all(10),
-              child: Text(
-                'Tecnobar',
-                style: TextStyle(
-                  color: Colors.blue.shade900,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 30,
-                ),
-              )),
-          Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(10),
-            child: Text(
-              'Entrar',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
+              child: Image.asset('assets/images/tecnobar.jpg')
+              ),
+          // Container(
+          //   alignment: Alignment.center,
+          //   padding: EdgeInsets.all(10),
+          //   child: Text(
+          //     'Entrar',
+          //     style: TextStyle(
+          //         color: Colors.blue.shade900,
+          //         fontWeight: FontWeight.w500,
+          //         fontSize: 30,
+          //       ),
+          //   ),
+          // ),
           Form(
             key: this._formKey,
             child: Column(
@@ -60,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                       border: OutlineInputBorder(),
                       labelText: 'Nome de usuário',
                       filled: true,
-                      fillColor: Colors.blue.shade200,
+                      fillColor: Colors.grey.shade300,
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -79,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                       border: OutlineInputBorder(),
                       labelText: 'Senha',
                       filled: true,
-                      fillColor: Colors.blue.shade200,
+                      fillColor: Colors.grey.shade300,
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -89,10 +87,6 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                 ),
-                // TextButton(
-                //   onPressed: () {},
-                //   child: Text('Esqueci a senha'),
-                // ),
                 Container(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: ElevatedButton(
@@ -103,21 +97,6 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       }),
                 ),
-                // Row(
-                //   children: [
-                //     Text(
-                //       'Não possui conta?',
-                //     ),
-                //     TextButton(
-                //       child: Text(
-                //         'Cadastre-se',
-                //         style: TextStyle(fontSize: 20),
-                //       ),
-                //       onPressed: () {},
-                //     ),
-                //   ],
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                // ),
               ],
             ),
           ),
@@ -166,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Login recusado!'),

@@ -10,7 +10,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  String _selectedDate = '1 mês';
+  String _selectedDate = '3 meses';
   String _selectedGraphType = '';
   String _selectedData = '';
   String _selectedCategory = '';
@@ -167,17 +167,14 @@ class _DashboardPageState extends State<DashboardPage> {
           margin: EdgeInsets.all(16),
           child: ElevatedButton(
             onPressed: () {
-            // Verifica se todas as opções estão selecionadas
             if (_selectedGraphType.isNotEmpty &&
                 _selectedData.isNotEmpty &&
                 _selectedCategory.isNotEmpty &&
                 _selectedDate.isNotEmpty) {
-              // Todas as opções estão selecionadas, cria o gráfico
               setState(() {
                 _showChart = true;
               });
             } else {
-              // Alguma opção não está selecionada, exibe o diálogo
               _showMyDialog();
             }
           },
@@ -197,7 +194,7 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture:
-                  ClipOval(child: Image.asset('assets/images/sonic.jpeg')),
+                  ClipOval(child: Image.asset('assets/images/tecnobar.jpg')),
               accountName: Text("Tecnobar"),
               accountEmail: Text("tecnobar@g.unicamp.br"),
             ),
@@ -218,7 +215,6 @@ class _DashboardPageState extends State<DashboardPage> {
             ListTile(
               leading: Icon(Icons.history_sharp),
               title: Text('Historico'),
-              // subtitle: Text('Exercício 3'),
               onTap: () {
                 Navigator.of(context).pushNamed('/history');
               },
@@ -227,7 +223,7 @@ class _DashboardPageState extends State<DashboardPage> {
               leading: Icon(Icons.login),
               title: Text('Sair'),
               onTap: () {
-                Navigator.of(context).pushNamed('/login');
+                Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
               },
             ),
           ],
@@ -279,7 +275,7 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ),
         style: ElevatedButton.styleFrom(
-          primary: isHighlighted ? Colors.blue : Colors.white,
+          primary: isHighlighted ? Colors.blueGrey : Colors.white,
         ),
       ),
     );
@@ -333,11 +329,12 @@ class _DashboardPageState extends State<DashboardPage> {
                 yValueMapper: (Produto data, _) => data.valor,
                 dataLabelSettings: DataLabelSettings(isVisible: true),
                 enableTooltip: true,
-                color: Colors.blue, // Cor da linha
+                color: Colors.blueGrey.shade300,
                 markerSettings: MarkerSettings(
                   isVisible: true,
-                  color: Colors.blue, // Cor do marcador
+                  color: Colors.blueGrey.shade300,
                 ),
+                name: '',
               ),
             ],
             primaryXAxis: CategoryAxis(),
@@ -365,7 +362,8 @@ class _DashboardPageState extends State<DashboardPage> {
                 yValueMapper: (Produto data, _) => data.valor,
                 dataLabelSettings: DataLabelSettings(isVisible: true),
                 enableTooltip: true,
-                color: Colors.blue, // Cor da barra
+                color: Colors.blueGrey.shade300,
+                name: '',
               ),
             ],
             primaryXAxis: CategoryAxis(),
